@@ -13,7 +13,7 @@ import { ActivatedRoute } from '@angular/router';
 @Component({
   selector: 'app-enroll-list-page',
   templateUrl: './enroll-list-page.component.html',
-  styleUrls: ['./enroll-list-page.component.scss']
+  styleUrls: ['./enroll-list-page.component.css']
 })
 export class EnrollListPageComponent implements OnInit {
   private enrollListURL: string ;
