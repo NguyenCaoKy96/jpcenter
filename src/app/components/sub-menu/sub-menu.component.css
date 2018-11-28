@@ -1,0 +1,32 @@
+ul li {
+    list-style: none;
+}
+.container {
+    margin-top: 2em;
+}
+.block-title {
+    margin-left: -40px;
+    font-family: "Lemonada", sans-serif;
+    font-size: 24px;
+    line-height: 1.5;
+    font-weight: bold;
+    color: #e11f26;
+}
+a, a:hover {
+    color: #e11f26;
+    text-decoration: none;
+}
+a {
+    color: black;
+}
+.block-title-wrap {
+    display: flex;
+    align-items: center;
+    margin-bottom: 5px;
+}
+.program .row {
+    display: flex;
+    flex-wrap: wrap;
+    margin-right: -102px;
+    margin-left: -40px;
+}

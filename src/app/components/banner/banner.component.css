@@ -1,0 +1,21 @@
+.custom-container ngx-carousel button[NgxCarouselPrev] {
+    visibility: hidden;
+  }
+.custom-container ngx-carousel button[NgxCarouselNext] {
+    visibility: hidden;
+  }
+ngx-item {
+    height: 80px;
+}
+@media only screen and (max-width: 767px) {
+    ngx-item {
+        height: 50px;
+    }
+    .custom-container ngx-carousel {
+        top: -10px;
+        margin-bottom: -25px;
+    }
+}
+.custom-container ngx-carousel {
+    margin-top: 30px;
+}

@@ -1,0 +1,45 @@
+<div class="custom-container">
+  <ngx-carousel [inputs]="carouselBanner" [moveToSlide]="1" (onMove)="onmoveFn($event)" (afterCarouselViewed)="afterCarouselViewedFn($event)">
+    <ngx-item NgxCarouselItem class="bannerStyle" *ngFor="let item of homeImagesURL | slice:0:1" [ngStyle]="{'background-image': 'url(' + item + ')'}">
+    </ngx-item>
+    <button NgxCarouselPrev></button>
+    <button NgxCarouselNext></button>
+  </ngx-carousel>
+  <div class="banner">
+    <div class="banner-bottom"></div>
+    <h1 class="banner-title">
+      <b>Cơ hội nghề nghiệp</b>
+    </h1>
+  </div>
+</div>
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item">
+      <a routerLink="/trang-chu">Trang chủ</a>
+    </li>
+    <li class="breadcrumb-item ">
+     <a routerLink="/co-hoi-nghe-nghiep/doanh-nghiep">Cơ hội nghề nghiệp</a> 
+    </li>
+    <li class="breadcrumb-item active" aria-current="page">Doanh nghiệp</li>
+  </ol>
+</nav>
+<div class="row">
+  <div class="col-md-4 col-lg-3 left-navigation">
+    <ul class="nav nav-tabs d-none d-md-block">
+      <li class="nav-item">
+        <a class="nav-link " id="JCenter-tab" routerLink="/co-hoi-nghe-nghiep/trung-tam-nhat-ban">Trung tâm Nhật Bản</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" id="JCenter-tab" routerLink="/co-hoi-nghe-nghiep/doanh-nghiep">Doanh nghiệp</a>
+      </li>
+    </ul>
+  </div>
+  <div class="col-md-8">
+    <div class="tab-content">
+      <div class="tab-pane active">
+        <h4 class="section-title">Doanh nghiệp</h4>
+        <h5>Đang cập nhật ......</h5>
+      </div>
+    </div>
+  </div>
+</div>

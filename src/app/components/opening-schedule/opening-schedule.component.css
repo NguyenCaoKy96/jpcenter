@@ -1,0 +1,59 @@
+.container {
+    margin: 40px 0;
+}
+
+#schedule {
+    position: relative;
+    text-align: center;
+    top: -16px;
+    color: black;
+    font-size: 40px;
+    font-family: "Lemonada", sans-serif;
+}
+
+table {
+    text-align: center;
+    overflow-wrap: break-word;
+}
+
+tr {
+    cursor: pointer;
+}
+
+td,
+th {
+    text-align: center;
+    vertical-align: middle !important;
+    min-width: 45px;
+}
+
+thead {
+    background-color: brown;
+    color: white;
+}
+
+@media only screen and (max-width: 767px) {
+    #schedule {
+        font-size: 25px;
+        margin-bottom: 10px;
+    }
+
+    table {
+        font-size: 12px;
+        text-align: center;
+        vertical-align: middle;
+        overflow-wrap: break-word;
+    }
+
+    td {
+        max-width: 45px;
+    }
+}
+
+.schedule {
+    max-width: 25%;
+}
+
+.detail-schedule {
+    width: 100%;
+}

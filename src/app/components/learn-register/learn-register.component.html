@@ -1,0 +1,43 @@
+<div class="container-fluid bg-light py-3">
+  <div class="row">
+    <div class="col-md-6 mx-auto">
+      <div class="card card-body">
+        <h3 class="text-center mb-4">ĐĂNG KÝ HỌC</h3>
+        <form [formGroup]="frmUser" id="register_form" action=""  method="post" (ngSubmit)="onSubmitForm()">
+          <p class="validate_msg">Vui lòng điền đầy đủ thông tin!</p>
+          <div class="form-group has-error" >
+            <label for="">Họ và tên:</label>
+            <input class="form-control input-lg" id="name" placeholder="Họ và tên..." name="name" type="text" pattern="[a-z]{1,15}"><span class="val_fname"></span>
+            <div id="result"></div>
+          </div>
+          <div class="form-group has-success">
+            <label for="">Email:</label>
+            <input class="form-control input-lg" placeholder="Email..." id="email" name="email" value="" type="text"><span class="val_email"></span> 
+          </div>
+          <div class="form-group has-success">
+            <label for="">Số điện thoại:</label>
+            <input class="form-control input-lg" placeholder="Số điện thoại..." id="phone" name="phone" value="" type="text"><span class="val_phone"></span>
+          </div>
+          <div class="form-group">
+            <label for="inputEmail3">Khóa học:</label>
+            <select class="form-control " id="course">
+              <option selecterd=""></option>
+              <option selecterd="">N5.1</option>
+              <option selecterd="">N5.2</option>
+              <option selecterd="">N4.1</option>
+              <option selecterd="">N4.2</option>
+              <option selecterd="">N3.1</option>  
+              <option selecterd="">N3.2</option>
+            </select>
+            <span class="val_course"></span>
+          </div>
+          <div  class="form-group">
+            <label>Ghi chú:</label>
+           <textarea class="form-control" id="notes" rows="3"  placeholder="Ghi chú..."></textarea>
+          </div>
+          <button [disabled]="frmUser.invalid" class="btn btn-lg btn-block"  type="submit" name="submit" id="register">Đăng ký</button> 
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

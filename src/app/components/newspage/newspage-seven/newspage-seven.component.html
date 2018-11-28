@@ -1,0 +1,116 @@
+<div class="custom-container">
+  <ngx-carousel [inputs]="carouselBanner" [moveToSlide]="1" (onMove)="onmoveFn($event)" (afterCarouselViewed)="afterCarouselViewedFn($event)">
+    <ngx-item NgxCarouselItem class="bannerStyle" *ngFor="let item of homeImagesURL | slice:0:1" [ngStyle]="{'background-image': 'url(' + item + ')'}">
+    </ngx-item>
+    <button NgxCarouselPrev></button>
+    <button NgxCarouselNext></button>
+  </ngx-carousel>
+  <div class="banner">
+    <div class="banner-bottom"></div>
+    <h1 class="banner-title"><b>Tin tức và Sự kiện</b></h1>
+  </div>
+</div>
+  <!-- creat breadscrumb -->
+  <nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item" >
+        <a routerLink = "/trang-chu">Trang chủ</a>
+      </li>
+      <li class="breadcrumb-item ">
+        <a routerLink = "/tin-tuc-su-kien">Tin tức & sự kiện</a>
+      </li>
+      <li class="breadcrumb-item active">
+        Anh đào nở vườn Haiku
+      </li>
+    </ol>
+  </nav>
+  <h4 class="section-title">Anh đào nở vườn Haiku</h4>
+  <div class="course-content pt-4 mb-0">
+    <p class="mb-4">
+      <strong>1. Triết mĩ tự nhiên</strong>
+    </p>
+    <p class="mb-4">
+      Biểu tượng tam tuyệt tuyết – nguyệt – hoa là cái đẹp tuyệt vời của bốn mùa trôi chảy ở xứ sở Phù Tang mà con cháu Nữ thần Mặt trời cảm nghiệm được từ sự giao cảm giữa con người và thiên nhiên được gói gọn trong bài tanka Mùa xuân có hoa đào – Mùa hạ chim cu hót – Mùa thu thì trăng soi – Mùa đông tuyết lạnh buốt – Và sáng ngời nơi nơi. Vẻ đẹp ấy không phô diễn mà lặng lẽ ẩn giấu trong nỗi niềm san sẻ như văn hào Kawabata từng diễn giải “Vẻ đẹp của bốn mùa lướt tới và đánh thức chúng tôi dậy, đó chính là lúc chúng tôi nghĩ nhiều nhất đến những người thân và muốn chia sẻ sự sung sướng cùng họ. Kích thích bởi cái đẹp, ta thấy rất cần người chia sẻ, rất cần tình bạn – mà chữ “bạn” ở đây có thể hiểu là “nhân gian”.
+    </p>
+    <p class="mb-4">
+      Lòng nhạy cảm bao dung theo khuynh hướng duy mĩ – duy tình cho con người một kỹ năng sống biết nhìn ra cái đẹp ẩn giấu, như tiến sĩ Yashiro Yukia cũng từng xúc động “Khi tuyết rơi, khi hoa nở, khi trăng lên, hơn bao giờ hết, ta nhớ tới bạn”. Ấy là cái khoảnh khắc – vĩnh hằng ở đóa anh đào đầu tiên bung nở báo hiệu một năm qua đi và một năm mới lại đến. Đóa anh đào đầu tiên – đỗ quyên, trăng, tuyết – lại một năm qua (Sanpu).
+    </p>
+    <p class="mb-4">
+      Đẹp giản dị mà đầy bí ẩn nên mãi vẫy gọi khát khao kiếm tìm và từng khoảnh khắc bộc lộ, lưu dấu trong muôn vàn cung bậc cuộc sống tự nhiên biến đổi, chưa cần gọi tên, không màng định vị. Mùa xuân đến rồi – vô danh ngọn đồi ấy - sáng nay khoác áo sương mù. Bạn có thấy không, sương mù và tình yêu, hai kẻ lãng du, lang thang lên đồi tìm niềm vui bất chợt trong từng cánh mây hoa. Nhờ những khoảnh khắc tương giao nhất thể mà nhạy cảm chẳng trơ lỳ, thanh thản giàu có, bốn phương mang về những cánh mây hoa nhẹ gợn sóng hồn ta. Đẹp giản dị chẳng cần phải mãi loay hoay kiếm tìm, Onitsura bất chợt reo vui như một đứa trẻ khi nhận ra những sự vật quen thuộc đơn sơ quanh mình. Hoa đào nở rộ - chim có hai chân – và ngựa có bốn chân. Chân lý không cầu kỳ, chân lý chỉ có một nhưng đa diện dưới góc nhìn không trói buộc, mãi buông bay từ những cánh anh đào mong manh buông mình trong gió ấy thôi và mãi thơm ngược hương thời gian. Cây hoa nào – mà ta chưa biết – gợi lại một làn hương (Basho). Cái ngọt ngào của một tình yêu vỗ cánh, cái mùi vị cô đơn của giọt sương trắng… mãi ủ hương thời gian ở cánh hoa đào tâm tưởng, trong tín hiệu xuân về cũng là tiễn xuân qua, cây hư không nở hoa bản thể. Đêm xuân phai nhòa – và rạng đông đến – trên cánh hoa đào. Ấy là đóa hoa vô thường mà chẳng đoạn thường, trống mà đầy, trong suốt chân không. Nhiều chuyện – làm nhớ lại – những cánh hoa đào.
+    </p>
+    <p class="mb-4">Những nỗi niềm, tư tưởng triết mĩ được ký thác vào những cánh hoa bé nhỏ trong tâm thức xứ sở Phù Tang. “Giá trị quan truyền thống của Nhật Bản là giản đơn và thanh khiết được phản ánh trong hình ảnh và màu sắc của hoa anh đào. Thời kỳ khai hoa của sakura rất ngắn và lập tức tàn phai nên tượng trưng cho vẻ đẹp ngắn ngủi phù du, được xem là trung tâm mĩ học Nhật Bản” (D.T. Suzuki). Hanami có nghĩa là thưởng lãm hoa và đây cũng là tên gọi của lễ hội truyền thống nổi tiếng của xứ sở hoa anh đào từ cuối tháng 3 đến đầu tháng 4 bừng sáng những đám mây hoa.</p>
+    <p class="mb-4">
+      <strong>2. Mãn khai cười lìa cành</strong>
+    </p>
+    <p class="mb-4">
+      Nhật Bản được xem là đất nước của sự thu nhỏ. Mỹ cảm yêu thích cái nhỏ xinh từ chiếc quạt giấy, búp bê, bonsai, vườn đá, cả vi mạch điện tử… cho đến thể loại văn học thơ haiku, truyện trong lòng bàn tay. Haiku – một loại thơ ngắn nhất thế giới chỉ gói gọn trong 17 âm tiết nhưng chứa đựng một trường liên tưởng rộng lớn, giàu sức gợi và lan tỏa mạnh mẽ nên được gọi là thi đạo mang quốc hồn. Anh đào vừa cá thể đa cảm vừa cộng đồng mạnh mẽ được xem là hoa đạo – quốc hoa. Đạo ở đây chẳng có gì cao siêu mơ hồ trừu tượng, chẳng khoác áo diễm ảo, mà giản dị đơn sơ như ánh nắng quang hợp, bóng đêm bí ẩn gợi mở, như cơm ăn, nước uống, không khí để thở vậy thôi. Bình thường tâm thị đạo. “Nếu người ta muốn biết tinh thần Nhật Bản Đại Hòa hồn, hãy ngắm hoa anh đào ngát hương thơm trên đỉnh núi sớm mai” (Norinaga). Ấy là loài anh đào núi – yamasakura (sơn anh) phổ biến khắp nước Nhật, bung hoa trằng hòa hợp sắc lục, vàng, nâu… tuyệt đẹp. Yêu nước đến giản dị là vậy. Nhật Bản – Cái đẹp và tôi (Kawabata). Sakura là hoa của các nhà thơ, thơ là hơi thở của tâm hồn Nhật, haiku là đóa hoa thời gian mang bản thể con người xứ sở Phù Tang. Haiku là một nghệ thuật ẩn giấu, là thơ của thơ… theo thi pháp làn hương giữa ngưỡng cửa cuộc đời hòa nhập vũ trụ. Mùa xuân lều cỏ - tuyệt không có gì – không gì không có (Sodo). Cả anh đào và haiku đều nhỏ bé mà mênh mông, trống mà đầy, đầy những khoảng lặng – xôn xao, tự nhiên mà giàu tính ám thị tượng trưng.
+    </p>
+    <p class="mb-4">
+      Đóa anh đào – haiku là khoảnh khắc hằng thưởng cả vũ trụ thu về. Sakura là biểu tượng thẩm mĩ của cái đẹp xứ sở Phù Tang. Bước vào ngưỡng cửa mùa xuân, Buson với bút pháp hội họa tạo ấn tượng từ một cánh anh đào tươi thắm khoe sắc gợi tình. Một cánh đào đơn sơ – của buổi sáng đẹp trời – trang điểm một hồ sâu. Nghệ thuật chấm phá hài hòa giữa diện và điểm, trừu tượng và cụ thể, tường minh và hàm ẩn… tạo sự ngân vang của điệp trùng âm bậc rồi dừng lại như một lực hút – bất khả tri sâu ở lòng hồ. Anh đào hé nụ bình minh, giai điệu xuân thì rơi nốt nhạc vấn vương mặt hồ, lắng mình trong lòng hồ sâu thẳm tạo sự tương giao không lời.
+    </p>
+    <p class="mb-4">
+      Cũng là loài hoa tình, Buson phác một nét ngay trong câu đầu và soi chiếu câu 3, Basho trầm mặc rong ruổi chân trần trong câu đầu vụt hiện và tan trong câu 3 dáng xuân thơ ngây Năm dặm mỗi ngày – ta tìm em đấy – hoa đào yêu dấu ơi. Nàng thiếu nữ như một tình nhân lãng mạn ngủ quên sau một giấc đông dài, gió xuân khẽ chạm bừng giấc gọi mời, chẳng ai cưỡng lại được sức hút vô biên từ điều giản dị. Đồng điệu tâm hồn đi vào thơ trong kết cấu bỏ lửng. Chốn này Kyoto – chín vạn chín người ra ngắm – lễ hội hoa anh đào. Cái đẹp là tự nó, cái tình là ở mắt ngắm.
+    </p>
+    <p class="mb-4">
+      Cao thượng mà khiêm cung, cá biệt mà tan hòa, nhạy cảm mà mạnh mẽ, khoan dung buồn bã… những nghịch lý đầy đối cực đồng nhất trong cánh hoa thơ. Nếu là hoa, xin làm hoa anh đào. Nếu là người, xin làm một võ sĩ đạo. Sức sống nội tại là năng lượng diệu kỳ. Uống làn mây trắng – rồi phun anh đào – đỉnh Yoshino. Anh đào trở thành biểu tượng của sức sống mãnh liệt. Hùng vĩ Phú Sĩ, kiên dũng samurai mà tình tứ lãng mạn đến tự nhiên trong tương tác nhất thể sắc thắm tình xuân qua vài nét phác họa của Buson. Những khoảng trống gợi mở lấp mãi chẳng đầy trong một kết cấu thơ giản phác hư không.
+    </p>
+    <p class="mb-4">
+      Khác với Đường thi diễm lệ, haiku là mĩ học bình thường. Buồn mà đẹp, mong manh đến ngắn ngủi phù du, đầy sức sống mà khiêm nhường nhẫn nhịn, thanh cao mà giản dị đời thường… như bữa cơm đạm bạc mà thú vị nên thơ Dưới cây lao xao – chén canh đĩa cá – đều vương hoa đào. Bức tranh xuân của Buson không hoa mĩ, phô trương mà nhỏ bé đơn sơ ôm chứa những rung cảm vi tế tâm hồn Trong ngôi chùa cổ - hoa đào nở - người đàn ông đạp lúa. Ba hình ảnh chủ thể ngôi chùa cổ - hoa đào – người đàn ông đạp lúa ở ba chiều kích không gian trên cao – lưng chừng – dưới thấp được bao bọc trong một chủ thể mùa xuân hòa quyện. Cái tưởng như rời rạc chênh nhịp ở hành động hoa nở của thiên nhiên và đang đạp lúa của con người làm nên nhịp xuân chuyển mình nơi lặng lẽ, cổ kính mà gợi đầy tình ý tự nhiên. Nhịp xuân tương giao trong sự vận chuyển của tự nhiên và con người. Khoảnh khắc rơi tự nhiên không bấu víu làm nên cái đẹp giản phác đến tuyệt diệu. Trên bè giông bão – áo rơm người chèo chống – hóa áo hoa đào. Nhờ bút hoa mà phác họa được vẻ đẹp lao động – vương hoa. Nghệ thuật là thấy được điều kỳ diệu trong cái giản dị đời thường. Tình xuân là hơi thở nở hoa lồng ngực. Người chèo thuyền - ống điếu ngậm trong miệng – gió mùa xuân lên. Những chủ thể ngỡ như riêng biệt nhưng được kết hợp hài hòa và được bao bọc trong mùa xuân vạn vật chuyển mình vừa thân quen vừa lạ lẫm. Con chó – sủa người bán hàng rong – hoa đào nở rộ.
+    </p>
+    <p class="mb-4">Khiêm nhường nhẫn nhịn mà giàu lòng tự trọng, bung nở hồn nhiên, rực cháy, buông rơi nhẹ nhàng không vướng bận. Sống đẹp tất chết đẹp. Chết là một thách thức mĩ lệ, là vẻ đẹp tuyệt đối của tỉnh giác. Mỹ học Phật giáo về lẽ vô thường từ một câu kinh – Một cái hoa rụng có thể trở lại cành của nó không làm nên một thế giới vô cùng trong cái nhìn tinh tế về nhịp điệu thời gian, vòng quay không gian, sắc độ ánh sáng, cảm thức con người trước vũ trụ hóa sinh bất tận. Hoa đào rơi rụng – trở lại cành xanh – Ô, cánh bướm lung linh (Moritake). Sinh diệt cứ phôi thai trong màu xuân hiện hữu. Trong tàn phai, hoa bướm từ tiền kiếp bước ra. Cây đời cứ xanh trong màu đạo khôn cùng. Mỹ học về cái mong manh tàn phai làm con người nhẹ nhàng thanh thản, biết nâng niu từng khoảnh khắc trong nhịp thở. Ước vọng đầy tim tôi – ngọn nến nào thắp sáng – hoa đào đang rơi (Shirao). Bùng nở và rụng rơi đều chứa đựng tính triết mĩ về sự sống và cái chết của người Nhật Bản. Ôi hoa đào trôi… bơ vơ đông đảo…
+    </p>
+    <p class="mb-4">
+      <strong>3. Tương giao hằng thường</strong>
+    </p>
+    <p class="mb-4">
+      Đạo là hơi thở văn hóa Nhật. Sakura đi vào haiku đượm ý vị đơn sơ như một thứ đạo giản dị đến vô cùng. Ngồi mãi trong chùa – khách không biết – anh đào đã ra hoa. Không gì thiền sư Basho, con người và tự nhiên không can thiệp lạm dụng nhau, cuốn theo nhau. Đạo trong bản thể là bỏ quên thời gian, không bị cuốn trôi theo mà nâng niu từng khoảnh khắc ngưng đọng nó lại vĩnh hằng. Tự nhiên nhi nhiên như cánh hoa anh đào bừng nở đánh thức không – thời gian, vị đời tự nó trong hương đạo nép mình mái chùa xưa.
+    </p>
+    <p class="mb-4">
+      Tưởng như đơn giản khi Basho thức tỉnh màu đạo trong cảnh anh đào nở hoa, còn Buson làm nên nét trầm mặc của ngôi chùa ở những cánh đào trơ cội tàn cánh. Hoa đào rụng hết – bóng chùa thoáng hiện – giữa trơ cội cành. Nhưng thực ra là đồng điệu vô chấp nở tàn, ở “Basho thì hiền hòa, minh triết và huyền ảo, còn Buson thì thông minh, đa diện, tài tình” (Henderson). Ấy cũng là tâm thức xuân Việt Nhất xuân tâm tại bách hoa trung (Trần Nhân Tông). Bút pháp chỉ là chiếc áo của tư tưởng.
+    </p>
+    <p class="mb-4">
+      Thật là an nhiên tự tại, không chút gượng ép trong màn đêm yên tĩnh gợi mở những cảm nhận thính giác, thức nhận khứu giác, cho ta bao bí ẩn giản dị trong sự tương giao làn hương thoảng và tiếng chuông chùa vọng. Tiếng chuông chùa tan – hương hoa đào buổi tối – như còn ngân vang. Ấy là hoa anh đào nở ban đêm – Yozakura (dạ anh) được ánh trăng bàng bạc ngắm nhìn tạo sự hấp dẫn tuyệt vời. Hoa đào ban đêm – từ trời rơi xuống – nhưng con gái tiên (Issa). Tồn sinh trên vành đai núi nửa, sóng thần… tạo cho tâm hồn Nhật Bản hết sức nhạy cảm. Nhạy cảm về nghệ thuật hài hòa cân đối qua sự bất đối xứng… như cánh hoa anh đào – bản thể - vũ trụ trong tương quan đầy những khoảng trống của giản dị và toàn thiện là một. Anh đào – haiku “muốn nhắc ta nhớ lại nhịp rung của vũ trụ vô hình mà chúng ta thường quên” (Hoa đạo – Ohsawa). Hoa anh đào kín hương. Haiku ít dùng tính từ, chủ yếu danh từ - tự nó. Hoa đào núi – trên đỉnh tuyết – thinh không (Shuoshi). Có vậy mới bước vào đời bằng tâm nguyện độ tha, không dằn vặt trong ý niệm xuất xử, lưu luyến hay chạy trốn… mà nhẹ nhàng tự nhiên cuộc chơi quán trọ dặm dài. Bước vào hoa đào – người người lũ lượt – bước ra hoa đào (Chora).
+    </p>
+    <p class="mb-4">
+      Haiku là đóa hoa giản dị một khắc hằng xuân. Trong thế giới nghiêng, nghệ thuật Nhật Bản không đưa ra quy luật, không chuộng cân đối, mà cân xứng biến ảo trong dáng hoa trôi bay. Sau giêng hai, nhưng làn mưa xuân êm đềm khoác áo, tuyết giá tan dần, dáng núi non cứ dần thon thả phô ra những đường cong, thiên nhiên mỉm cười rộ thắm anh đào. Hoa mơ một chút nhụy – Ba nghìn thế giới thơm. Cõi người vô lượng, vạn nẻo đường đời, tạ ơn ánh sáng, hoa nở từ tâm. Con đường dài – những cánh hoa đào trắng – soi sáng lối đi.
+    </p>
+  </div>
+  <div class="other-news">
+    <h4 class="section-title">Tin tức & Sự kiện khác</h4>
+    <div class="card-container">
+      <div class="row">
+        <div class="col-md-6 col-lg-3 card-wrap">
+          <a class="card" routerLink="/tin-tuc-su-kien/dinh-huong-nghe-nghiep-va-co-hoi-viec-lam-voi-TMA-solutions">
+                  <img class="card-img-top" src="./assets/images/dinh-huong-nghe-nghiep-va-co-hoi-viec-lam-voi-TMA-solutions.png" alt="Card image cap">
+                  <div class="card-body">
+                      <h5 class="card-title">Định hướng nghề nghiệp và cơ hội việc làm với TMA Solutions</h5>
+                  </div>
+              </a>
+        </div>
+        <div class="col-md-6 col-lg-3 card-wrap">
+          <a class="card" routerLink="/tin-tuc-va-su-kien/truong-dh-quy-nhon-dong-hanh-cung-tinh-binh-dinh-trong-thu-hut-dau-tu-nhat-ban">
+                  <img class="card-img-top" src="assets/images/dong-hanh-cung-tinh-binh-dinh.png" alt="Card image cap">
+                  <div class="card-body">
+                      <h5 class="card-title">Trường ĐH QN đồng hành cùng tỉnh Bình Định trong thu hút đầu tư Nhật Bản</h5>
+                  </div>
+              </a>
+        </div>
+        <div class="col-md-6 col-lg-3 card-wrap">
+          <a class="card" routerLink="tin-tuc-va-su-kien/anh-dao-no-vuon-haiku">
+                      <img class="card-img-top" src="./assets/images/hoa anh dao.png" alt="Card image cap">
+                      <div class="card-body">
+                          <h5 class="card-title">Anh đào nở vườn Haiku</h5>
+                      </div>
+                  </a>
+        </div>
+        <div class="col-md-6 col-lg-3 card-wrap">
+          <a class="card" routerLink="/tin-tuc-va-su-kien/xuan-sang-khong-chi-co-hoa-anh-dao">
+                  <img class="card-img-top" src="./assets/images/xuan-sang.png" alt="Card image cap">
+                  <div class="card-body">
+                      <h5 class="card-title">Xuân sang... không chỉ có hoa anh đào</h5>
+                  </div>
+              </a>
+        </div>
+      </div>
+    </div>
+  </div>

@@ -1,0 +1,85 @@
+<div class="row search-bar">
+    <div class="col-12 col-md-auto search-item">
+        <span
+            class="badge badge-danger" 
+            placement="top" 
+            ngbTooltip="Chọn Danh mục mà bài viết sẽ được lưu trữ"
+        >Danh mục</span><span class="required">(*)</span>
+        <select class="form-control dropdown" id="categories" [(ngModel)]="categories">
+            <option *ngFor="let item of headerData" [value]="item.Name"> {{item.Name}} </option>
+        </select>
+    </div>
+    <div class="col-12 col-md-auto search-item" id="b">
+        <span class="badge badge-danger">Mục</span>
+        <select class="form-control dropdown" id="sub-categories" [(ngModel)]="subCategories">
+            <option *ngFor="let item of subCategoriesDropDown" [value]="item.name"> {{ item.name }} </option>
+        </select>
+    </div>
+</div>
+<br>
+<div class="title">
+    <span
+        class="badge badge-danger" 
+        placement="top" 
+        ngbTooltip="Tiêu đề bài viết"
+    >Tiêu đề Tiếng Việt</span><span class="required">(*)</span>
+    <input type="text" placeholder="Tiêu đề" class="form-control title" id="vi-title">
+</div>
+<div class="title">
+        <span
+            class="badge badge-danger" 
+            placement="top" 
+            ngbTooltip="Tiêu đề bài viết"
+        >Tiêu đề Tiếng Nhật</span><span class="required">(*)</span>
+        <input type="text" placeholder="Tiêu đề" class="form-control title" id="jp-title">
+    </div>
+<div class="slug">
+        <span
+            class="badge badge-danger" 
+            placement="top" 
+            ngbTooltip="Đường dẫn đến bài viết"
+        >Đường dẫn</span><span class="required">(*)</span>
+        <input type="text" placeholder="Đường dẫn đến bài viết" class="form-control slug" id="news-link">
+    </div>
+<div class="content">
+    <span
+        class="badge badge-danger"
+        placement="top" 
+        ngbTooltip="Nội dung bài viết trong Tiếng Việt"
+    >Nội dung Tiếng Việt</span>
+    <span class="required">(*)</span>
+    <ckeditor
+        id="ckeditor-vn" 
+        [editor]="Editor" 
+        [disabled]="isDisabled" 
+        (change)="onChange($event)" 
+        [(ngModel)]="model.editorDataVi"
+        [config]="config">
+    </ckeditor>
+</div>
+<div class="content">
+        <span
+            class="badge badge-danger" 
+            placement="top" 
+            ngbTooltip="Nội dung bài viết trong Tiếng Nhật"
+        >Nội dung Tiếng Nhật</span>
+        <span class="required">(*)</span>
+        <ckeditor
+            id="ckeditor-jp" 
+            [editor]="Editor" 
+            [disabled]="isDisabled" 
+            (change)="onChange($event)" 
+            [(ngModel)]="model.editorDataJp"
+            [config]="config">
+        </ckeditor>
+    </div>
+<div class="tags">
+        <span
+            class="badge badge-danger" 
+            placement="top" 
+            ngbTooltip="Từ khóa liên quan đến bài viết"
+        >Tags</span> 
+        <input type="text" placeholder="Tags" class="form-control tags" id="tags">
+    </div>
+<button type="button" class="btn btn-outline-danger" id="submit-article" (click)="submitArticle()">Gửi bài viết</button>
+<button class="btn btn-success message-popup">Đã gửi bài thành công, chờ Quản trị viên phê duyệt!</button>

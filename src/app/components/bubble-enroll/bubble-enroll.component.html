@@ -1,0 +1,54 @@
+<!-- <div *ngIf="language" class="bubble" cdkDrag>登録</div> -->
+<div class="container-fluid bg-light py-3">
+    <div class="row">
+        <div class="col-md-6 mx-auto">
+            <div class=" card-body">
+                <h3 class="text-center mb-4" *ngIf="lang === 'vi'">ĐĂNG KÝ HỌC</h3>
+                 <h3 class="text-center mb-4" *ngIf="lang === 'jp'">登録</h3>
+                <form [formGroup]="frmUser" id="register_form" action="" method="post" autocomplete="false" novalidate="true" (ngSubmit)="onSubmitForm()">
+                    <div class="form-group has-error">
+                        <label for="" *ngIf="lang === 'vi'">Họ và tên<a>*</a>:</label>
+                        <label for="" *ngIf="lang === 'jp'">名前と姓<a>*</a>:</label>
+                        <input class="form-control input-lg" id="name" placeholder="Họ và tên..." name="txtFullname"  type="text" formControlName="fullname" autofocus maxlength="255" (blur)=onNameBlur()>
+                        <span class="lable lable-danger" *ngIf="frmUser.controls.fullname.dirty && frmUser.controls.fullname.errors?.required"> Vui lòng nhập họ và tên.</span> 
+                        <span class="lable lable-danger" *ngIf="frmUser.controls.fullname.dirty && frmUser.controls.fullname.errors?.pattern"> Họ và tên không đúng.</span>
+                        <span class="val_fname"></span>
+                    </div>
+                    <div class="form-group has-success">
+                        <label for="" *ngIf="lang === 'vi'">Email<a>*</a>:</label>
+                        <label for="" *ngIf="lang === 'jp'">電子メール<a>*</a>:</label>
+                        <input class="form-control input-lg" placeholder="Email..." id="email" name="txtEmail"  type="email" formControlName="email" maxlength="255">
+                        <span class="lable lable-danger" *ngIf="frmUser.controls.email.dirty && frmUser.controls.email.errors?.required"> Vui lòng nhập email.</span>
+                        <span class="lable lable-danger" *ngIf="frmUser.controls.email.dirty && frmUser.controls.email.errors?.pattern"> Email không đúng định dạng.</span>
+                        <span class="val_email"></span>
+                    </div>
+                    <div class="form-group has-success">
+                        <label for="" *ngIf="lang === 'vi'">Số điện thoại<a>*</a>:</label>
+                        <label for="" *ngIf="lang === 'jp'">電話番号<a>*</a>:</label>
+                        <input class="form-control input-lg" placeholder="Số điện thoại..." id="phone" name="txtPhone"  type="tel" formControlName="phone" >
+                        <span class="lable lable-danger" *ngIf="frmUser.controls.phone.dirty && frmUser.controls.phone.errors?.required"> Vui lòng nhập số điện thoại.</span>
+                        <span class="lable lable-danger" *ngIf="frmUser.controls.phone.dirty && frmUser.controls.phone.errors?.pattern"> Số điện thoại không đúng.</span>
+                        <span class="val_phone"></span>
+                    </div>
+                    <div class="form-group">
+                        <label for="" *ngIf="lang === 'vi'">Khóa học<a>*</a>:</label>
+                        <label for="" *ngIf="lang === 'jp'">コース<a>*</a>:</label>
+                        <select class="form-control" id="course" formControlName="course" >
+                            <option selecterd=""></option>
+                            <option selecterd="" *ngFor="let register of registerData">{{ register.name }} </option> 
+                        </select>
+                        <span class="lable lable-danger" *ngIf="frmUser.controls.course.dirty && frmUser.controls.course.errors?.required"> Vui lòng nhập khóa học.</span>
+                        <span class="val_course"></span>
+                    </div>
+                    <div class="form-group">
+                        <label *ngIf="lang === 'vi'">Ghi chú<a>*</a>:</label>
+                        <label *ngIf="lang === 'jp'">ノート<a>*</a>:</label>
+                        <textarea class="form-control" id="notes" rows="3" placeholder="Ghi chú..." formControlName="notes" type="text" maxlength="200"></textarea>
+                    </div>
+                    <button [disabled]="frmUser.invalid" class="btn btn" type="submit" name="submit" id="register" *ngIf="lang === 'vi'">Đăng ký</button>
+                     <button [disabled]="frmUser.invalid" class="btn btn" type="submit" name="submit" id="register" *ngIf="lang === 'jp'">サインアップ</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

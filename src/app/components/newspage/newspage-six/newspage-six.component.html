@@ -1,0 +1,107 @@
+<div class="custom-container">
+  <ngx-carousel [inputs]="carouselBanner" [moveToSlide]="1" (onMove)="onmoveFn($event)" (afterCarouselViewed)="afterCarouselViewedFn($event)">
+    <ngx-item NgxCarouselItem class="bannerStyle" *ngFor="let item of homeImagesURL | slice:0:1" [ngStyle]="{'background-image': 'url(' + item + ')'}">
+    </ngx-item>
+    <button NgxCarouselPrev></button>
+    <button NgxCarouselNext></button>
+  </ngx-carousel>
+  <div class="banner">
+    <div class="banner-bottom"></div>
+    <h1 class="banner-title"><b>Tin tức và Sự kiện</b></h1>
+  </div>
+</div>
+<!-- creat breadscrumb -->
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item" >
+      <a routerLink = "/trang-chu">Trang chủ</a>
+    </li>
+    <li class="breadcrumb-item ">
+      <a routerLink = "/tin-tuc-su-kien">Tin tức & sự kiện</a>
+    </li>
+    <li class="breadcrumb-item active">
+      Trưởng Đại học Quy Nhơn đồng hành cùng tỉnh Bình Định trong thu hút đầu tư Nhật Bản
+    </li>
+  </ol>
+</nav>
+<h4 class="section-title">Trường Đại học Quy Nhơn đồng hành cùng tỉnh Bình Định trong thu hút đầu tư Nhật Bản</h4>
+<div class="course-content pt-4 mb-0">
+  <div class="card-info mb-3">
+    <p class="card-subtitle text-muted"><span>06/10/2017</span>
+    </p>
+  </div>
+  <p class="mb-4">
+    Nhận lời mời của UBND tỉnh Bình Định, PGS.TS. Đỗ Ngọc Mỹ, Hiệu trưởng Trường ĐH Quy Nhơn đã tham gia đoàn đại biểu tỉnh Bình
+    Định tham dự Hội nghị Gặp gỡ Nhật Bản - Khu vực Nam Trung Bộ tại TP Nha Trang, Khánh Hoà ngày 06/10/2017.
+  </p>
+  <p class="mb-4">
+    Sự kiện này nằm trong chuỗi các hoạt động chuẩn bị cho Hội nghị APEC 2017 tại Việt Nam. Hội nghị "Meet Japan 2017" lần này
+    tạo diễn đàn cho 7 tỉnh khu vực Nam Trung Bộ gặp gỡ Đại sứ và lãnh đạo các tổ chức Nhật Bản tại Việt Nam
+    (JICA, IM Japan, Japan Foundation...). Hội nghị thảo luận về các vấn đề: Hợp tác phát triển, Đào tạo và hợp
+    tác nguồn nhân lực, Hợp tác địa phương, văn hoá và du lịch, và Hợp tác kinh tế đầu tư.
+  </p>
+  <p class="mb-4">
+    Một trong các yếu tố then chốt để thu hút đầu tư từ Nhật Bản chính là chất lượng nguồn nhân lực biết tiếng Nhật có sẵn tại
+    địa phương, theo phát biểu của Đại sứ đặc mệnh toàn quyền Nhật Bản tại Việt Nam Umeda Kunio tại phiên khai
+    mạc và được đề cập trong các phiên thảo luận.
+  </p>
+  <p class="mb-4">
+    Tại phiên làm việc riêng giữa UBND tỉnh Bình Định và Đại sứ quán Nhật Bản, Chủ tịch Hồ Quốc Dũng đã thông báo cho phía bạn
+    biết Trường ĐH Quy Nhơn sẽ thực hiện nhiệm vụ đào tạo tiếng Nhật cùng với cung cấp nguồn nhân lực đạt chuẩn
+    yêu cầu của các doanh nghiệp Nhật Bản nhằm tạo điều kiện thuận lợi hơn cho đầu tư FDI từ phía bạn.
+  </p>
+  <p class="mb-4">
+    Hiệu trưởng Đỗ Ngọc Mỹ cam kết Nhà trường sẽ tiếp tục đồng hành cùng tỉnh nhà trong đào tạo nguồn nhân lực chất lượng cao,
+    trước mắt sẽ bắt đầu tuyển sinh các lớp tiếng Nhật tại Trường qua việc thành lập Trung tâm Văn hoá Giáo dục
+    Việt Nhật. Chương trình này còn sẽ giúp sinh viên của Trường có thêm cơ hội làm việc cho các doanh nghiệp
+    Nhật Bản trong và ngoài nước. Hiệu trưởng kỳ vọng Đại sứ Kunio làm cầu nối để Nhà trường tiếp cận được sự
+    hỗ trợ từ các tổ chức, trường đại học Nhật Bản trong các hoạt động hợp tác đào tạo ngành nghề, Nhật ngữ và
+    giao học thuật, văn hoá.
+  </p>
+  <p>
+    Cùng tham dự buổi gặp mặt, ông Hitoshi Kato, Chủ tịch Hội Hữu nghị Việt-Nhật tại Sakai đánh giá cao nỗ lực của Nhà trường
+    trong việc thúc đẩy hoạt động giảng dạy tiếng Nhật và giao lưu văn hoá, cho biết sẽ tiếp tục đồng hành, kết
+    nối tỉnh Bình Định và Trường ĐH Quy Nhơn với các đối tác Nhật Bản.
+  </p>
+  <img src="./assets/images/truong-dh-quy-nhon-dong-hanh-cung-tinh-binh-dinh-trong-thu-hut-dau-tu-nhat-ban .png"
+      class="img-fluid d-block" alt="Le hoi Hinamatsuri" />
+  </div>
+  <div class="other-news">
+    <h4 class="section-title">Tin tức & Sự kiện khác</h4>
+    <div class="card-container">
+      <div class="row">
+        <div class="col-md-6 col-lg-3 card-wrap">
+          <a class="card" href="/tin-tuc-su-kien/dinh-huong-nghe-nghiep-va-co-hoi-viec-lam-voi-TMA-solutions">
+                    <img class="card-img-top" src="./assets/images/dinh-huong-nghe-nghiep-va-co-hoi-viec-lam-voi-TMA-solutions.png" alt="Card image cap">
+                    <div class="card-body">
+                        <h5 class="card-title">Định hướng nghề nghiệp và cơ hội việc làm với TMA Solutions</h5>
+                    </div>
+                </a>
+        </div>
+        <div class="col-md-6 col-lg-3 card-wrap">
+          <a class="card" href="/tin-tuc-va-su-kien/truong-dh-quy-nhon-dong-hanh-cung-tinh-binh-dinh-trong-thu-hut-dau-tu-nhat-ban">
+                    <img class="card-img-top" src="assets/images/dong-hanh-cung-tinh-binh-dinh.png" alt="Card image cap">
+                    <div class="card-body">
+                        <h5 class="card-title">Trường ĐH QN đồng hành cùng tỉnh Bình Định trong thu hút đầu tư Nhật Bản</h5>
+                    </div>
+                </a>
+        </div>
+        <div class="col-md-6 col-lg-3 card-wrap">
+          <a class="card" routerLink="/tin-tuc-va-su-kien/anh-dao-no-vuon-haiku">
+                        <img class="card-img-top" src="./assets/images/hoa anh dao.png" alt="Card image cap">
+                        <div class="card-body">
+                            <h5 class="card-title">Anh đào nở vườn Haiku</h5>
+                        </div>
+                    </a>
+        </div>
+        <div class="col-md-6 col-lg-3 card-wrap">
+          <a class="card" routerLink="/tin-tuc-va-su-kien/xuan-sang-khong-chi-co-hoa-anh-dao">
+                    <img class="card-img-top" src="./assets/images/xuan-sang.png" alt="Card image cap">
+                    <div class="card-body">
+                        <h5 class="card-title">Xuân sang... không chỉ có hoa anh đào</h5>
+                    </div>
+                </a>
+        </div>
+      </div>
+    </div>
+  </div>

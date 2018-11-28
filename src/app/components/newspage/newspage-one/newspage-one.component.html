@@ -1,0 +1,86 @@
+<div class="custom-container">
+  <ngx-carousel [inputs]="carouselBanner" [moveToSlide]="1" (onMove)="onmoveFn($event)" (afterCarouselViewed)="afterCarouselViewedFn($event)">
+    <ngx-item NgxCarouselItem class="bannerStyle" *ngFor="let item of homeImagesURL | slice:0:1" [ngStyle]="{'background-image': 'url(' + item + ')'}">
+    </ngx-item>
+    <button NgxCarouselPrev></button>
+    <button NgxCarouselNext></button>
+  </ngx-carousel>
+  <div class="banner">
+    <div class="banner-bottom"></div>
+    <h1 class="banner-title"><b>Tin tức và Sự kiện</b></h1>
+  </div>
+</div>
+<!-- creat breadscrumb -->
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item">
+      <a routerLink = "/trang-chu">Trang chủ</a>
+    </li>
+    <li class="breadcrumb-item ">
+      <a routerLink = "/tin-tuc-su-kien">Tin tức & sự kiện</a>
+    </li>
+    <li class="breadcrumb-item active">
+      QNU Japan Center - Đăng ký học viên
+    </li>
+  </ol>
+</nav>
+<h4 class="section-title">QNU Japan Center - Đăng ký học viên</h4>
+<div  class=" card course-content pt-4 mb-0">
+  <p>
+    <strong>QNU Japan Center - Đăng ký học viên</strong>
+  </p>
+  <p class="mb-3">Trung tâm Ngôn ngữ và Văn hóa Nhật Bản Trường Đại học Quy Nhơn thường xuyên nhận học viên các lớp tiếng Nhật. Hiện nay Trung tâm đang đào tạo trình độ từ N5 đến N3. Trung tâm sẽ mở lớp nếu có đủ học viên đăng ký vào các khung giờ phù hợp.</p>
+  <p class="mb-3">Học viên của Trung tâm có cơ hội được giới thiệu đi học tập, thực tập sinh, lao động tại Nhật Bản qua các đối tác uy tín của Trung tâm. Học viên thường xuyên được tiếp xúc với người Nhật theo các chương trình giao lưu văn hóa Việt - Nhật của Trung tâm.</p>
+  <p class="mb-3">
+    Thông tin về các khóa học vui lòng xem tại:
+    <a class="mail" routerLink = "/khoa-hoc/cac-khoa-tieng-nhat-JLPT">
+            https://japancenter.qnu.edu.vn/khoa-hoc/cac-khoa-tieng-nhat-JLPT.html
+        </a>
+  </p>
+  <p class="mb-3">Hoặc theo dõi Fanpage:
+    <a class="mail" href="https://www.facebook.com/QNUJapanCenter/">https://www.facebook.com/QNUJapanCenter/</a> để có thông tin cập nhật nhất.</p>
+  <p class="mb-3">
+    Học viên có nhu cầu hoặc ý định học tiếng Nhật vui lòng cung cấp thông tin theo link <a class="mail" href="https://docs.google.com/forms/d/e/1FAIpQLSexr7bhMIBnngIVB93TQ-o6Mws03wH2DQFEZpKX3GBQHnij8Q/viewform">
+            QNU Japan Center - Đăng ký học viên
+        </a>, Trung tâm sẽ liên lạc để tư vấn.
+  </p>
+</div>
+<div class="other-news">
+  <h4 class="section-title">Tin tức & Sự kiện khác</h4>
+  <div class="card-container">
+    <div class="row">
+      <div class="col-md-6 col-lg-3 card-wrap">
+        <a class="card" routerLink="/tin-tuc-su-kien/dinh-huong-nghe-nghiep-va-co-hoi-viec-lam-voi-TMA-solutions">
+                    <img class="card-img-top" src="./assets/images/dinh-huong-nghe-nghiep-va-co-hoi-viec-lam-voi-TMA-solutions.png" alt="Card image cap">
+                    <div class="card-body">
+                        <h5 class="card-title">Định hướng nghề nghiệp và cơ hội việc làm với TMA Solutions</h5>
+                    </div>
+                </a>
+      </div>
+      <div class="col-md-6 col-lg-3 card-wrap">
+        <a class="card" routerLink="/tin-tuc-va-su-kien/truong-dh-quy-nhon-dong-hanh-cung-tinh-binh-dinh-trong-thu-hut-dau-tu-nhat-ban">
+                    <img class="card-img-top" src="./assets/images/dong-hanh-cung-tinh-binh-dinh.png" alt="Card image cap">
+                    <div class="card-body">
+                        <h5 class="card-title">Trường ĐH QN đồng hành cùng tỉnh Bình Định trong thu hút đầu tư Nhật Bản</h5>
+                    </div>
+                </a>
+      </div>
+      <div class="col-md-6 col-lg-3 card-wrap">
+        <a class="card" routerLink="/tin-tuc-va-su-kien/anh-dao-no-vuon-haiku">
+                        <img class="card-img-top" src="./assets/images/hoa anh dao.png" alt="Card image cap">
+                        <div class="card-body">
+                            <h5 class="card-title">Anh đào nở vườn Haiku</h5>
+                        </div>
+                    </a>
+      </div>
+      <div class="col-md-6 col-lg-3 card-wrap">
+        <a class="card" routerLink="/tin-tuc-va-su-kien/xuan-sang-khong-chi-co-hoa-anh-dao">
+                    <img class="card-img-top" src="./assets/images/xuan-sang.png" alt="Card image cap">
+                    <div class="card-body">
+                        <h5 class="card-title">Xuân sang... không chỉ có hoa anh đào</h5>
+                    </div>
+                </a>
+      </div>
+    </div>
+  </div>
+</div>

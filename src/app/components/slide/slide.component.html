@@ -1,0 +1,11 @@
+<div class="custom-container">
+    <ngx-carousel [inputs]="carouselBanner" [moveToSlide]="1" (onMove)="onmoveFn($event)" (afterCarouselViewed)="afterCarouselViewedFn($event)">
+        <ngx-item NgxCarouselItem class="bannerStyle" *ngFor="let item of homeImagesURL | slice:0:3" [ngStyle]="{'background-image': 'url(' + item + ')'}">
+        </ngx-item>
+        <button NgxCarouselPrev></button>
+        <button NgxCarouselNext></button>
+    </ngx-carousel>
+    <div class="banner">
+        <div class="banner-bottom"></div>
+    </div>
+</div>

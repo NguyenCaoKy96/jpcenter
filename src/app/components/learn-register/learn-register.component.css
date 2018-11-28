@@ -1,0 +1,39 @@
+.py-3 {
+  background-image: url(/assets/images/hoaanhdao.jpg);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  padding: 10px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.btn:not(:disabled):not(.disabled) {
+  cursor: pointer;
+  color: white;
+  background-color: rgb(188, 0, 45);
+}
+
+.btn:hover {
+  background-image: -webkit-linear-gradient(top, brown, rgb(188, 0, 45));
+  font-weight: bold;
+}
+
+.text-center {
+  text-align: center !important;
+  color: rgb(188, 0, 45);
+}
+.card-body{
+	margin-top: 0px;
+}
+span.validate  {
+  color:#F00;
+  padding-left:8px;
+  font-style:italic;
+}
+p.validate_msg {
+  font-weight: bold;
+  display:none;
+  color:#F00;
+  font-style:italic;
+}

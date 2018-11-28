@@ -1,0 +1,182 @@
+<div class="custom-container">
+  <ngx-carousel [inputs]="carouselBanner" [moveToSlide]="1" (onMove)="onmoveFn($event)" (afterCarouselViewed)="afterCarouselViewedFn($event)">
+    <ngx-item NgxCarouselItem class="bannerStyle" *ngFor="let item of homeImagesURL | slice:0:1" [ngStyle]="{'background-image': 'url(' + item + ')'}">
+    </ngx-item>
+    <button NgxCarouselPrev></button>
+    <button NgxCarouselNext></button>
+  </ngx-carousel>
+  <div class="banner">
+    <div class="banner-bottom"></div>
+    <h1 class="banner-title"><b>Tin tức và Sự kiện</b></h1>
+  </div>
+</div>
+<!-- creat breadscrumb -->
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item">
+      <a routerLink="/trang-chu">Trang chủ</a>
+    </li>
+    <li class="breadcrumb-item active">
+      <a routerLink="/tin-tuc-su-kien">Tin tức & sự kiện</a>
+    </li>
+  </ol>
+</nav>
+<!-- creat content -->
+<a class="post-highlight" routerLink="/tin-tuc-su-kien/dinh-huong-nghe-nghiep-va-co-hoi-viec-lam-voi-TMA-solutions">
+    <!-- <div class="col-lg-7 pl-0 pr-0">
+        <img src="./assets/images/news-main.png" class="img-fluid d-block" alt="news-main" />
+    </div>
+    <div class="col-lg-5 card-body card-wrap">
+        <h5 class="card-title">
+            Định hướng nghề nghiệp và cơ hội việc làm với TMA Solutions
+        </h5>
+        <div class="card-info">
+            <p class="card-text">
+                <i class="fa fa-clock-o mr-2" aria-hidden="true"></i>
+                <span>Thời gian: 05/05/2018 (08:00 - 17:30)</span>
+            </p>
+            <p class="card-text">
+                <i class="fa fa-map-marker mr-2"></i>
+                <span> Địa điểm: Hội trường B, Phòng kỹ năng (nhà 4 tầng), trường ĐH Quy Nhơn, 170 An Dương Vương, TP.
+                    Quy Nhơn</span>
+            </p>
+        </div>
+        <p class="card-text">
+            <span>
+                <i class="fa fa-user-o mr-2"></i>
+            </span> Đối tượng: Sinh viên ngành Công nghệ thông tin, Kỹ thuật điện - Điện tử, Kỹ thuật Điện tử, truyền
+            thông,
+            Toán và các
+            ngành có liên quan; các đối tượng đang tìm kiếm việc làm ngành CNTT tại địa phương...
+            <span class="read-more">
+                Đọc tiếp
+            </span>
+        </p>
+    </div> -->
+    <div class="row">
+        <div class="col-sm-7 thumnail">Hình ảnh (thumnail)</div>
+        <div class="col-sm-5 short-content">
+            <div class="article-title">
+                <h2 *ngIf="newestArticle">{{ newestArticle.name }}</h2>
+            </div>
+            <div class="article-content" *ngIf="shortArticleContent" [innerHTML]="shortArticleContent + '<strong>...Đọc tiếp</strong>'"></div>
+        </div>
+    </div>
+</a>
+<br>
+<!-- page 1 -->
+<div class="card-container pb-5" *ngIf="p==1">
+  <div class="row">
+    <div class="col-md-6 col-lg-4 card-wrap">
+      <a routerLink="/tin-tuc-su-kien/QNU-JAPAN-CENTER-Dang-ky-hoc-vien" class="card">
+                <img class="card-img-top" [src]="[newspageImage1]" alt="Card img cap">
+                <div class="card-body">
+                    <h5 class="card-title">
+                        {{ nameNewspage1 }}
+                    </h5>
+                    <p class="card-text">
+                        <span class="read-more"  *ngIf="contenNewspage1" [innerHTML]="contenNewspage1 + '<strong>...Đọc tiếp</strong>'"></span>
+                    </p>
+                </div>
+            </a>
+    </div>
+    <div class="col-md-6 col-lg-4 card-wrap">
+      <a routerLink="/tin-tuc-su-kien/bup-be-thang-nam-samurai" class="card">
+                <img class="card-img-top" src="./assets/images/event2.jpg" alt="Card img cap">
+                <div class="card-body">
+                    <h5 class="card-title">
+                        Búp bê tháng Năm Samurai
+                    </h5>
+                    <p class="card-text">Trung tâm Nhật Bản chân thành cảm ơn FPT Japan đã tặng Búp bê Samurai cùng
+                        với những lời chúc tốt đẹp ngày 4/8 vừa qua. Trong tháng 8, thỏa thuận về việc QNU Japan
+                        Center là đối tác chiến lược Chương trình 10K BrSE của FPT Software sẽ được ký kết....
+                        <span class="read-more">Đọc tiếp</span>
+                    </p>
+                </div>
+            </a>
+    </div>
+    <div class="col-md-6 col-lg-4 card-wrap">
+      <a class="card" routerLink="/tin-tuc-su-kien/ngai-dai-su-nhat-ban-umeda-kunio-du-khai-truong">
+                <img class="card-img-top" src="./assets/images/event3.jpg" alt="Card image cap">
+                <div class="card-body">
+                    <h5 class="card-title">Ngài Đại sứ Nhật Bản Umeda Kunio dự khai trương Trung tâm Ngôn ngữ và Văn
+                        hóa Nhật Bản</h5>
+                    <h6 class="card-subtitle text-muted mt-3 mb-3">27/04/2018</h6>
+                    <p class="card-text">Chiều ngày 27/4/2018, Ngài Umeda Kunio – Đại sứ đặc mệnh toàn quyền Nhật
+                        Bản tại Việt Nam...
+                        <span class="read-more">Đọc tiếp</span>
+                    </p>
+                </div>
+            </a>
+    </div>
+    <div class="col-md-6 col-lg-4 card-wrap">
+      <a class="card" routerLink="/tin-tuc-va-su-kien/hieu-truong-dh-quy-nhon-tham-du-hoi-nghi-xuc-tien-dau-tu-binh-dinh-tai-nhat-ban">
+                <img class="card-img-top" src="./assets/images/event4.png" alt="Card image cap">
+                <div class="card-body">
+                    <h5 class="card-title">Hiệu trưởng ĐH Quy Nhơn tham dự Hội nghị xúc tiến đầu tư Bình Định tại
+                        Nhật Bản</h5>
+                    <h6 class="card-subtitle text-muted mt-3 mb-3">07/12/2017</h6>
+                    <p class="card-text">PGS.TS. Đỗ Ngọc Mỹ đã có bài phát biểu, giới thiệu về trưởng Đại học Quy
+                        Nhơn, về nguồn...
+                        <span class="read-more">Đọc tiếp</span>
+                    </p>
+                </div>
+            </a>
+    </div>
+    <div class="col-md-6 col-lg-4 card-wrap">
+      <a class="card" routerLink="/tin-tuc-va-su-kien/truong-dh-quy-nhon-dong-hanh-cung-tinh-binh-dinh-trong-thu-hut-dau-tu-nhat-ban">
+                <img class="card-img-top" src="./assets/images/event5.png" alt="Card image cap">
+                <div class="card-body">
+                    <h5 class="card-title">Trường ĐH Quy Nhơn đồng hành cùng tỉnh Bình Định trong thu hút đầu tư
+                        Nhật Bản</h5>
+                    <h6 class="card-subtitle text-muted mt-3 mb-3">06/10/2017</h6>
+                    <p class="card-text">Nhận lời mời của UBND tỉnh Bình Định, PGS.TS. Đỗ Ngọc Mỹ, Hiệu trưởng
+                        Trường ĐH Quy Nhơn đã tham gia đoàn đại biểu
+                        tỉnh Bình Định...
+                        <span class="read-more">Đọc tiếp</span>
+                    </p>
+                </div>
+            </a>
+    </div>
+    <div class="col-md-6 col-lg-4 card-wrap">
+      <a class="card" routerLink="/tin-tuc-va-su-kien/anh-dao-no-vuon-haiku">
+                <img class="card-img-top" src="./assets/images/event6.png" alt="Card image cap">
+                <div class="card-body">
+                    <h5 class="card-title">Anh đào nở vườn Haiku</h5>
+                    <h6 class="card-subtitle text-muted mt-3 mb-3">30/09/2017</h6>
+                    <p class="card-text">Biểu tượng tam tuyệt tuyết – nguyệt – hoa là cái đẹp tuyệt vời của bốn mùa
+                        trôi chảy ở xứ sở Phù Tang mà con cháu
+                        Nữ thần Mặt trời cảm...
+                        <span class="read-more">Đọc tiếp</span>
+                    </p>
+                </div>
+            </a>
+    </div>
+  </div>
+</div>
+<!-- page 2 -->
+<div class="card-container pb-5" *ngIf="p ==2">
+  <div class="row">
+    <div class="col-md-6 col-lg-4 card-wrap">
+      <a class="card" routerLink="/tin-tuc-va-su-kien/xuan-sang-khong-chi-co-hoa-anh-dao">
+                <img class="card-img-top" src="./assets/images/event7.png" alt="Card image cap">
+                <div class="card-body">
+                    <h5 class="card-title">Xuân sang... không chỉ có hoa anh đào</h5>
+                    <h6 class="card-subtitle text-muted mt-3 mb-3">15/09/2017</h6>
+                    <p class="card-text">Mùa xuân sang có hoa anh đào (Lời một bài hát) Ấy là loài hoa không chỉ là
+                        tín hiệu thẩm mĩ của mùa xuân mà còn là
+                        biểu tượng của một vùng...
+                        <span class="read-more">Đọc tiếp</span>
+                    </p>
+                </div>
+            </a>
+    </div>
+  </div>
+</div>
+<!-- create Pagination -->
+<div class="pagination">
+  <ul>
+    <li *ngFor="let item of collection | paginate: { itemsPerPage: 10, currentPage: p }"></li>
+  </ul>
+  <pagination-controls (pageChange)="p = $event"></pagination-controls>
+</div>

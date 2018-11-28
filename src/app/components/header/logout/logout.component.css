@@ -1,0 +1,17 @@
+.btn {
+    color: black;
+    line-height: 1em;
+    font-size: 14px;
+    border: none;
+    width: 100%;
+    text-align: left;
+}
+
+:root {
+    --input-padding-x: 1.5rem;
+    --input-padding-y: .75rem;
+}
+
+.modal-body {
+    overflow-x: auto;
+}

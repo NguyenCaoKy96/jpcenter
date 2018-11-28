@@ -1,0 +1,35 @@
+  .section-padding {
+    padding-top: 30px;
+    padding-bottom: 30px;
+  }
+  .card-body .card-text {
+    line-height: 1.71;
+    font-family: "Muli", sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    color: #000;
+  }
+  .read-more {
+    color: #e11f26;
+    font-size: 12px;
+    font-weight: 600;
+  }
+  .btn-outline {
+    border: 1px solid #e11f26;
+    border-radius: 3em;
+    color: #e11f26;
+    background-color: white;
+    font-weight: bold;
+    font-size: 18px;
+    width: 13em;
+    padding: 3px 78px;
+  }
+  .btn-outline:hover, .btn-outline:focus {
+    background-color: #e11f26;
+    color: #fff;
+    box-shadow: none;
+  }
+  .card-img-top {
+    max-height: 160px;
+    height: 100%;
+  }

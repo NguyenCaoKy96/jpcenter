@@ -1,0 +1,80 @@
+<!-- create breadcrumb -->
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item">
+      <a routerLink = "/trang-chu">Trang chủ</a>
+    </li>
+    <li class="breadcrumb-item active">
+      <a routerLink = "/gioi-thieu">Giới thiệu</a>
+    </li>
+    <li class="breadcrumb-item active" aria-current="page"> Nhân sự trung tâm</li>
+  </ol>
+</nav>
+<div class="row">
+  <div class="col-md-4 col-lg-4 ">
+    <ul class="nav nav-tabs d-none d-md-block">
+      <li class="nav-item">
+        <a class="nav-link " id="JCenter-tab" routerLink = "/gioi-thieu/trung-tam-nhat-ban">Trung tâm Nhật Bản</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" id="JCenter-tab" routerLink = "/gioi-thieu/truong-dai-hoc-quy-nhon">Trường Đại học Quy Nhơn</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" id="JCenter-tab" routerLink = "/gioi-thieu/quy-nhon-binh-dinh">Quy Nhơn, Bình Định</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" id="JCenter-tab" routerLink = "/gioi-thieu/nhan-su-trung-tam">Nhân sự trung tâm</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" id="JCenter-tab" routerLink = "/gioi-thieu/tai-sao-chon-qnu-japan-center">Tại sao chọn QNU Japan Center</a>
+      </li>
+    </ul>
+  </div>
+  <div class="col-md-8">
+    <div class="tab-content">
+      <div class="tab-pane active" id="Personnel" role="tabpanel" aria-labelledby="Personnel-tab">
+        <h4 class="section-title">
+                    Nhân sự trung tâm
+                </h4>
+        <div class="personnel-wrap course-content">
+          <div class="card-title">Ban điều hành</div>
+          <div class="director text-center">
+            <a href="#" class="personnel-block" data-toggle="modal" data-target="#personnel-1">
+                            <img class="img-fluid" src="./assets/images/chuong.png"
+                                    alt="Personnel image">
+                            <div class="personnel-name">Trần Minh Chương</div>
+                            <p class="position">Giám đốc</p>
+                        </a>
+          </div>
+          <div class="card-title">Đội ngũ giảng viên</div>
+          <div class="row">
+            <div class="col-md-4">
+              <a href="#;" class="personnel-block" data-toggle="modal"
+                                data-target="#personnel-2">
+                                <img class="img-fluid" src="./assets/images/hang.png"
+                                        alt="Personnel image">
+                                <div class="personnel-name">Đặng Thị Thúy Hằng</div>
+                            </a>
+            </div>
+            <div class="col-md-4">
+              <a href="#;" class="personnel-block" data-toggle="modal"
+                                data-target="#personnel-3">
+                                <img class="img-fluid" src="./assets/images/doan.png"
+                                        alt="Personnel image">
+                                <div class="personnel-name">Lê Công Đoàn</div>
+                            </a>
+            </div>
+            <div class="col-md-4">
+              <a href="#" class="personnel-block" data-toggle="modal"
+                                data-target="#personnel-4">
+                                <img class="img-fluid" src="./assets/images/sato.png"
+                                        alt="Personnel image">
+                                <div class="personnel-name">Takafumi Sato</div>
+                            </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

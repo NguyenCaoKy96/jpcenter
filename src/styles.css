@@ -1,0 +1,391 @@
+/* CSS slide */
+ngx-item {
+    height: 450px;
+    width: 100%;
+    background-size: 100% 100%;
+}
+
+ngx-carousel {
+    margin: 3em 0 0 0;
+}
+
+.banner {
+    width: 100%;
+    height: 4em;
+    position: relative;
+    bottom: 0.6em;
+}
+
+.banner-bottom {
+    width: 75%;
+    height: 4em;
+    margin: -2.7em 0 0 -1.5em;
+    background-color: rgb(188, 0, 45);
+    -webkit-transform: perspective(200px) rotateX(-22deg);
+    transform-origin: top left;
+}
+
+.banner-title {
+    position: relative;
+    margin-left: 2em;
+    color: white;
+    font-size: 30px;
+    font-weight: bold;
+    font-family: "Lemonada", sans-serif;
+    bottom: 1.7em;
+}
+
+@media only screen and (max-width: 768px) {
+    ngx-item {
+        height: 150px;
+    }
+
+    .banner-bottom {
+        bottom: -3px;
+        margin-left: 0 !important;
+        width: 100% !important;
+        background-color: rgb(188, 0, 45);
+        -webkit-transform: perspective(200px) rotateX(0deg);
+        display: none !important;
+    }
+
+    .banner {
+        height: 30px;
+        background: rgb(188, 0, 45);
+        position: relative !important;
+        top: -20px;
+    }
+
+    .breadcrumb {
+        margin-top: 5em;
+    }
+
+    h1 {
+        margin-left: 10px;
+        font-size: 14px;
+        margin-bottom: -34px;
+        top: 9px;
+    }
+    .banner-title {
+        left: -25px;
+        top: 8px;
+        font-size: 14px;
+    }
+}
+
+/* .left-menu {
+    border: solid 1px #e5e5e5;
+    margin-bottom: 30em;
+}
+
+.nav {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.col-md-8 {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+} */
+#japancenter {
+    font-size: 17px;
+}
+
+
+@media (min-width: 768px) {
+    .col-md-6 {
+        -webkit-box-flex: 0;
+        -ms-flex: 0 0 50%;
+        flex: 0 0 50%;
+        max-width: 50%;
+    }
+}
+
+.left-navigation a:hover {
+    color: rgb(188, 0, 45) !important;
+}
+
+/* breadcrumb */
+.breadcrumb {
+    background-color: transparent;
+    margin-top: -5px;
+    font-size: 14px;
+    margin-left: 10px;
+    background-color: white !important;
+    font-family: Muli, sans-serif;
+
+}
+
+.breadcrumb .breadcrumb-item+.breadcrumb-item::before {
+    content: ">";
+}
+
+.breadcrumb-item a {
+    color: #000 !important;
+    font-weight: 600;
+}
+
+.breadcrumb-item a:hover {
+    color: red !important;
+    text-decoration: none;
+}
+
+/* left-menu of pages */
+ul,
+li {
+    margin: 0;
+    padding: 0;
+}
+
+li {
+    list-style: none;
+    display: block;
+    cursor: pointer;
+}
+
+a,
+a:visited {
+    color: black;
+    text-decoration: none;
+}
+
+a:hover {
+    color: #dc3545;
+    text-decoration: none;
+}
+
+.nav-tabs {
+    padding: 20px 5px;
+    background-color: white;
+    margin-bottom: 30px;
+    display: block;
+    font-size: 15px;
+}
+
+.left-navigation .nav-link {
+    font-size: 18px;
+    display: block;
+    font-family: 'Muli', sans-serif;
+    line-height: normal;
+    font-stretch: 100%;
+}
+
+.nav-link.active {
+    background-color: transparent;
+    border-color: transparent;
+    font-weight: 600;
+}
+
+.nav-link.nav-link:hover {
+    color: #dc3545;
+}
+
+.nav-link.active:hover {
+    font-weight: 600 !important;
+    color: inherit !important;
+}
+
+.nav {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+/* pagination */
+.pagination,
+pagination-controls {
+    text-align: center;
+    margin: 0 auto !important;
+    padding: 0 !important;
+}
+
+.pagination ul li {
+    list-style-type: none;
+}
+
+.ngx-pagination {
+    padding-left: 0 !important;
+}
+
+/* news and event */
+.section-padding {
+    padding-top: 30px;
+    padding-bottom: 30px;
+}
+
+.row {
+    margin-top: 2em;
+}
+
+.card-wrap {
+    margin-bottom: 30px;
+}
+
+.card {
+    display: block;
+    height: 100%;
+    border-radius: 0;
+}
+
+.card:hover {
+    -webkit-box-shadow: 0 0 40px 0 rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0 40px 0 rgba(0, 0, 0, 0.1);
+    -webkit-transform: translateY(-5px);
+    -moz-transform: translateY(-5px);
+    -ms-transform: translateY(-5px);
+    -o-transform: translateY(-5px);
+    transform: translateY(-5px);
+    text-decoration: none;
+    color: black;
+}
+
+.card-title {
+    color: #000;
+    font-size: 24px;
+    margin-bottom: .75rem;
+    margin-left: 20px;
+}
+
+.card-body {
+    flex: 1 1 auto;
+    padding: 1rem !important;
+}
+
+/* event */
+.read-more {
+    color: #e11f26;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+/* letter */
+.section-title {
+    font-size: 20px;
+    font-weight: 800;
+    padding: 28px 50px;
+    background: url(/assets/images/flower-icon-1.png) no-repeat;
+    background-size: auto;
+    font-family: 'Muli', sans-serif;
+}
+
+.other-news .section-title {
+    background: none;
+    padding-left: 0;
+    /*   padding: 28px 50px;*/
+}
+
+.course-content {
+    padding: 30px;
+    margin: 40px 0 60px;
+    border: 1px solid #e5e5e5;
+    background-color: white;
+}
+
+.course-content img {
+    margin: 20px auto;
+}
+.course-description, .opening-schedule {
+    margin-left: 20px;
+}
+.title-content p {
+    margin-left: 40px;
+    margin-top: -41px;
+}
+.content-sub{
+    margin-left: 20px;
+}
+.align-items-center{
+    align-items: center!important;
+    margin-left: 20px;
+}
+/* Custom the Bootstrap input */
+textarea:focus,
+input[type="text"]:focus,
+input[type="password"]:focus,
+input[type="datetime"]:focus,
+input[type="datetime-local"]:focus,
+input[type="date"]:focus,
+input[type="month"]:focus,
+input[type="time"]:focus,
+input[type="week"]:focus,
+input[type="number"]:focus,
+input[type="email"]:focus,
+input[type="url"]:focus,
+input[type="search"]:focus,
+input[type="tel"]:focus,
+input[type="color"]:focus,
+.uneditable-input:focus {
+    /*border-color: rgb(188, 0, 45);*/
+    box-shadow: none;
+    outline: 0 none !important;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+}
+
+.bootstrap-select .dropdown-toggle:focus {
+    outline: none !important;
+}
+input.ng-invalid.ng-touched{
+    border: 1px solid rgb(188, 0, 45) ;
+}
+
+/* Academics */
+
+
+#schedule {
+    position: relative;
+    text-align: center;
+    top: -7px;
+    color: black;
+    font-size: 40px;
+    font-family: "Lemonada", sans-serif;
+}
+
+table {
+    text-align: center;
+    overflow-wrap: break-word;
+}
+
+tr {
+    cursor: pointer;
+}
+
+td,
+th {
+    text-align: center;
+    vertical-align: middle !important;
+    min-width: 45px;
+}
+
+thead {
+    background-color: brown;
+    color: white;
+}
+
+@media only screen and (max-width: 767px) {
+    #schedule {
+        font-size: 25px;
+        margin-bottom: 10px;
+    }
+
+    table {
+        font-size: 12px;
+        text-align: center;
+        vertical-align: middle;
+        overflow-wrap: break-word;
+    }
+
+    td {
+        max-width: 45px;
+    }
+}
+
+.schedule {
+    max-width: 25%;
+}
+
+.detail-schedule {
+    width: 100%;
+}
+.btn {
+    color: #fff;
+    background-color: rgb(188, 0, 45);
+    border-color: rgb(188, 0, 45);
+    float: right;
+}

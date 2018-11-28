@@ -1,0 +1,94 @@
+<!-- create slide -->
+<div class="custom-container">
+  <ngx-carousel [inputs]="carouselBanner" [moveToSlide]="1" (onMove)="onmoveFn($event)" (afterCarouselViewed)="afterCarouselViewedFn($event)">
+    <ngx-item NgxCarouselItem class="bannerStyle" *ngFor="let item of homeImagesURL | slice:0:1" [ngStyle]="{'background-image': 'url(' + item + ')'}">
+    </ngx-item>
+    <button NgxCarouselPrev></button>
+    <button NgxCarouselNext></button>
+  </ngx-carousel>
+  <div class="banner">
+    <div class="banner-bottom"></div>
+    <h1 class="banner-title"><b>Tin tức và Sự kiện</b></h1>
+  </div>
+</div>
+<!-- create breadscrumb -->
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item" >
+      <a routerLink = "/trang-chu">Trang chủ</a>
+    </li>
+    <li class="breadcrumb-item ">
+      <a routerLink = "/tin-tuc-su-kien">Tin tức & sự kiện</a>
+    </li>
+    <li class="breadcrumb-item active">
+      Búp bê tháng Năm Samurai
+    </li>
+  </ol>
+</nav>
+<!-- create content -->
+<h4 class="section-title">Búp bê tháng Năm Samurai</h4>
+<div class="course-content pt-4 mb-0">
+  <p class="mb-3">
+    <strong>Búp bê tháng Năm Samurai</strong>
+  </p>
+  <p class="mb-3">Trung tâm Nhật Bản chân thành cảm ơn FPT Japan đã tặng Búp bê Samurai cùng với những lời chúc tốt đẹp ngày 4/8 vừa qua. Trong tháng 8, thỏa thuận về việc QNU Japan Center là đối tác chiến lược Chương trình 10K BrSE của FPT Software sẽ được ký kết.</p>
+  <p class="mb-3">Búp bê tháng Năm là búp bê được trang trí vào dip tiết đoan ngọ hằng năm (Ngày 5/5 – Ngảy của bé Trai) ở Nhật Bản. Nó thể hiện niềm mong ước của cha mẹ Nhật mong cho đứa con trai của mình trưởng thành một cách khỏe mạnh, cường tráng. Đồng thời nó còn được xem như là bùa hộ mệnh để bảo vệ cho con trai của họ.</p>
+  <p class="mb-3">Búp bê tháng Năm có nhiều loại: Áo giáp và mũ sắt; Kintaro; harikonotora; cung tên và đao kiếm, và mỗi loại búp bê có ý nghĩa khác nhau.</p>
+  <p class="mb-3">Tủ búp bê được FPT Japan tặng QNU Japan Center là loại Áo giáp và mũ sắt – là loại búp bê mà được người Nhật lựa chọn để trang trí nhiều nhất hiện nay.</p>
+  <p class="mb-3">Ngày xưa, đối với gia đình vũ sĩ thì người ta hay dâng hai vật này vào trong đền để cầu mong cho cơ thể được an toàn, bình yên. Đồng thời, trong chiến tranh thì áo giáp và mũ sắt cũng là dụng cụ không thể thiếu để bảo vệ cho cơ thể. Chính vì ý nghĩa như vậy, khi trang trí loại búp bê tháng Năm này, cha mẹ Nhật có ý muốn cầu nguyện cho con trai mình phát triển thành cậu bé khỏe mạnh, cường tráng và thông minh. Đồng thời còn thể hiện niềm mong ước nó như là bùa hộ mệnh có thể thay thế chống đỡ và bảo vệ cho con mình trước những tai bệnh tật, tai ương giáng xuống.</p>
+  <div class="row text-center">
+    <div class="col-md-8 col-sm">
+      <div class="row">
+        <div class="col-sm"><img class="img-fluid" src="./assets/images/bup-be-thang-nam-samurai.jpg" style="margin: 20px auto;" alt=""></div>
+        </div>
+      </div>
+      <div class="col-md-4 col-sm">
+        <img class="img-fluid" src="./assets/images/bup-be-thang-nam-samurai-1.jpg" style="margin: 20px auto;" alt="">
+        <img class="img-fluid" src="./assets/images/bup-be-thang-nam-samurai-2.jpg" style="margin: 20px auto;" alt="">
+        </div>
+      </div>
+      <p class="mb-5">五月人形</p>
+      <p class="mb-3">五月人形は、端午の節句に飾る人形のことで、強く逞しく賢く大人になるよう願いが込められています。また、男の子に降りかかる災いの身代わりになってくれると考えられています。</p>
+      <p class="mb-3">五月人形は鎧や兜・金太郎・張子の虎・弓と太刀等色々な物があります。それと、それぞれの意味があります。</p>
+      <p class="mb-3">こちらは「鎧と兜」の種類です。現在、五月人形と言えばそれはが主流となっています。</p>
+      <p class="mb-3">武家では、身の安全を願って鎧や兜を神社に奉納するしきたりがあり、鎧や兜は戦争の道具であると同時に、身を護る大事な道具であり、大切な宝物でした。そのことから、現在は病気や交通事故等の災いから子供を守ってくれると考えられるようになったと言われています。</p>
+    </div>
+    <div class="other-news">
+      <h4 class="section-title">Tin tức & Sự kiện khác</h4>
+      <div class="card-container">
+        <div class="row">
+          <div class="col-md-6 col-lg-3 card-wrap">
+            <a class="card" routerLink="/tin-tuc-su-kien/dinh-huong-nghe-nghiep-va-co-hoi-viec-lam-voi-TMA-solutions">
+                    <img class="card-img-top" src="./assets/images/dinh-huong-nghe-nghiep-va-co-hoi-viec-lam-voi-TMA-solutions.png" alt="Card image cap">
+                    <div class="card-body">
+                        <h5 class="card-title">Định hướng nghề nghiệp và cơ hội việc làm với TMA Solutions</h5>
+                    </div>
+                </a>
+          </div>
+          <div class="col-md-6 col-lg-3 card-wrap">
+            <a class="card" routerLink="/tin-tuc-va-su-kien/truong-dh-quy-nhon-dong-hanh-cung-tinh-binh-dinh-trong-thu-hut-dau-tu-nhat-ban">
+                    <img class="card-img-top" src="./assets/images/dong-hanh-cung-tinh-binh-dinh.png" alt="Card image cap">
+                    <div class="card-body">
+                        <h5 class="card-title">Trường ĐH QN đồng hành cùng tỉnh Bình Định trong thu hút đầu tư Nhật Bản</h5>
+                    </div>
+                </a>
+          </div>
+          <div class="col-md-6 col-lg-3 card-wrap">
+            <a class="card" routerLink="/tin-tuc-va-su-kien/anh-dao-no-vuon-haiku">
+                        <img class="card-img-top" src="./assets/images/hoa anh dao.png" alt="Card image cap">
+                        <div class="card-body">
+                            <h5 class="card-title">Anh đào nở vườn Haiku</h5>
+                        </div>
+                    </a>
+          </div>
+          <div class="col-md-6 col-lg-3 card-wrap">
+            <a class="card" routerLink="/tin-tuc-va-su-kien/xuan-sang-khong-chi-co-hoa-anh-dao">
+                    <img class="card-img-top" src="./assets/images/xuan-sang.png" alt="Card image cap">
+                    <div class="card-body">
+                        <h5 class="card-title">Xuân sang... không chỉ có hoa anh đào</h5>
+                    </div>
+                </a>
+          </div>
+        </div>
+      </div>
+    </div>

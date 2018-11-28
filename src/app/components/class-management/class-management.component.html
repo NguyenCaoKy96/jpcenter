@@ -1,0 +1,36 @@
+<div class="row">
+  <div class="col-md-4 col-lg-3">
+      <ul class="nav nav-tabs d-none d-md-block"  *ngFor="let item of classData">
+          <li class="nav-item">
+              <a class="nav-link left-item" id="JCenter-tab"  (click)="onChangeClass(item.class)">
+                  {{item.class}}
+              </a>
+          </li>
+      </ul>
+  </div>
+  <div class="col-md-8 col-lg-9">
+    <div>
+      <table class="table left-navigation">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Họ và tên</th>
+            <th>Ngày sinh</th>   
+            <th>Email</th>
+            <th>Số điện thoại</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor = "let item of currentClassList">
+            <td scope="row">{{item.studentID}}</td>
+            <td>{{item.name}}</td>
+            <td>{{item.BirthDay}}</td>
+            <td>{{item.email}}</td>
+            <td>{{item.phone}}</td>
+            <td></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

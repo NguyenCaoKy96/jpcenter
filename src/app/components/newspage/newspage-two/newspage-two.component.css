@@ -1,0 +1,28 @@
+.img-fluid {
+	margin: 20px auto;
+}
+.align-items-center {
+    align-items: center!important;
+    margin-left: 20px;
+}
+
+.mb-4{
+	margin-left: 20px;
+}
+.breadcrumb {
+    display: flex;
+    flex-wrap: wrap;
+    padding: .75rem 1rem;
+    margin-bottom: 1rem;
+    list-style: none;
+    
+    border-radius: .25rem;
+}
+.card p{
+
+    margin-top: 0;
+    margin-bottom: 0rem;
+}
+
+
+

@@ -1,0 +1,295 @@
+.sticky.is-sticky {
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    z-index: 1000;
+    width: 100%;
+}
+
+body {
+    min-height: 1200px;
+}
+
+#nav {
+    background-color: rgb(188, 0, 45);
+    min-height: 60px;
+}
+
+span {
+    cursor: pointer;
+    outline: none;
+}
+
+.main-hotline {
+    left: 290px;
+    top: -58px;
+}
+
+.main-hotline {
+    position: absolute;
+    background-position: left 15px;
+    background-repeat: no-repeat;
+    padding-left: 40px;
+    line-height: 25px;
+    cursor: pointer;
+}
+
+.name-hotline {
+    margin-left: 35px;
+    margin-top: -19px;
+
+}
+
+.name-hotline:hover {
+    color: rgb(188, 0, 45);
+    text-decoration: none;
+}
+
+.name-email a {
+    color: black;
+}
+
+.name-email a:hover {
+    color: rgb(188, 0, 45) !important;
+    text-decoration: none;
+}
+
+.icon-hotline {
+    margin-top: 16px;
+}
+
+.main-email {
+    position: absolute;
+    background-position: left 15px;
+    background-repeat: no-repeat;
+    padding-left: 40px;
+    line-height: 25px;
+    cursor: pointer;
+}
+
+.main-email {
+    left: 655px;
+    top: -58px;
+}
+
+.name-email {
+    margin-left: 39px;
+    margin-top: -23px;
+}
+
+.icon-email {
+    margin-top: 13px;
+}
+
+.logo {
+    float: right;
+    margin-top: -2.5em;
+    cursor: pointer;
+}
+
+.login {
+    cursor: pointer;
+    width: 20px;
+    height: 20px;
+}
+
+.dropdown a .flag {
+    margin-right: 0;
+
+}
+
+.name a {
+    font-size: 12px;
+    outline: none;
+    cursor: pointer;
+    font-family: "Muli", sans-serif;
+    text-decoration: none;
+    color: black;
+
+}
+
+.name-center {
+    line-height: 0.3;
+    margin-left: 60px;
+    margin-top: -43px;
+}
+
+.sub-name a {
+    font-size: 19px;
+    font-family: "Muli", sans-serif;
+    text-decoration: none;
+    color: black;
+}
+
+.flag {
+    cursor: pointer;
+    margin-right: 10px;
+}
+
+#menu-language {
+    right: -2em;
+    width: 140px;
+    margin-top: -0.3em;
+}
+
+#menu-language a {
+    font-size: 14px;
+}
+
+#menu-login {
+    right: 0em;
+    width: 140px;
+    margin-top: -0.3em;
+}
+
+#menu-login a {
+    font-size: 14px;
+}
+
+.dropdown-content a:hover {
+    color: rgb(188, 0, 45) !important;
+    font-weight: bold;
+}
+
+.dropdown-content a:hover {
+    background-color: #e1dee3;
+
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+#navbarSupportedContent ul li a {
+    color: white !important;
+}
+
+
+#navbarSupportedContent ul li a:hover {
+    font-weight: bold;
+}
+
+#navbarSupportedContent .dropdown .dropdown-content a {
+    color: black !important;
+}
+
+#navbarSupportedContent .dropdown .dropdown-content a:hover {
+    color: rgb(188, 0, 45) !important;
+}
+
+#navbarSupportedContent {
+    max-width: 1050px;
+}
+
+.navbar {
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0;
+}
+
+#logo-hide {
+    display: none;
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    width: 330px;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+    background-color: white;
+}
+
+.dropdown-content a {
+    color: black;
+    padding: 6px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown[_ngcontent-c1] .dropdown-content[_ngcontent-c1] {
+    background-color: #F8F8FF;
+
+}
+
+@media only screen and (max-width: 990px) {
+    .main-email {
+        display: none;
+    }
+}
+
+@media only screen and (max-width: 990px) {
+    .main-hotline {
+        display: none;
+    }
+}
+
+@media only screen and (max-width: 350px) {
+    .name-center {
+        display: none;
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    .navbar-nav {
+        margin-left: 30px;
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    #logo-hide {
+        margin-left: 10px;
+    }
+}
+
+.language-icon {
+    width: 20px;
+    height: 20px;
+    margin-right: 10px;
+}
+
+#bubble {
+    position: sticky;
+    position: -webkit-sticky;
+    top: 250px;
+    z-index: 99999;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    position: absolute;
+    box-shadow: 0 0px 20px rgba(0, 0, 0, 0.19), 0 0px 6px rgba(0, 0, 0, 0.23);
+    background-color: rgb(188, 0, 45);
+    background-size: cover;
+    color: white;
+    font-weight: bold;
+    word-wrap: initial;
+    padding: 20px 0px;
+    text-align: center;
+    overflow: none !important;
+    position: fixed;
+    outline: none;
+    right: 0;
+    font-size: 12px;
+}
+
+
+@media only screen and (max-width: 767px) {
+    #bubble {
+        width:  46px;
+        height: 47px;
+        padding: 15px 0px;
+        margin-top: -57px;
+        font-size: 10px;
+
+
+    }
+}

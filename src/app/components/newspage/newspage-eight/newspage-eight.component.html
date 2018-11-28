@@ -1,0 +1,120 @@
+<div class="custom-container">
+  <ngx-carousel [inputs]="carouselBanner" [moveToSlide]="1" (onMove)="onmoveFn($event)" (afterCarouselViewed)="afterCarouselViewedFn($event)">
+    <ngx-item NgxCarouselItem class="bannerStyle" *ngFor="let item of homeImagesURL | slice:0:1" [ngStyle]="{'background-image': 'url(' + item + ')'}">
+    </ngx-item>
+    <button NgxCarouselPrev></button>
+    <button NgxCarouselNext></button>
+  </ngx-carousel>
+  <div class="banner">
+    <div class="banner-bottom"></div>
+    <h1 class="banner-title"><b>Tin tức và Sự kiện</b></h1>
+  </div>
+</div>
+<!-- creat breadscrumb -->
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item">
+      <a routerLink = "/trang-chu">Trang chủ</a>
+    </li>
+    <li class="breadcrumb-item ">
+      <a routerLink = "/tin-tuc-su-kien">Tin tức & sự kiện</a>
+    </li>
+    <li class="breadcrumb-item active">
+      Xuân sang... không chỉ có hoa anh đào
+    </li>
+  </ol>
+</nav>
+<h4 class="section-title">Xuân sang... không chỉ có hoa anh đào</h4>
+<div class="course-content pt-4 mb-0">
+  <p class="mb-3">
+    Ấy là loài hoa không chỉ là tín hiệu thẩm mĩ của mùa xuân mà còn là biểu tượng của một vùng xứ sở. Bạn sẽ bảo, mùa xuân sang có hoa anh đào ở Nhật Bản, cũng giống như mùa xuân sang có hoa mai, hoa đào ở Trung Quốc hay Việt Nam… những loài hoa báo tin và tinh kết vẻ đẹp mùa xuân, chiếm một vị trí đặc biệt trong tâm thức văn hóa dân tộc cũng như cảm thức sáng tạo nghệ thuật. Thế nhưng giống mà không giống, mỗi loài hoa mang trong mình một quan niệm riêng của mỗi dân tộc, một sự lựa chọn riêng, và quả thật anh đào là sự lựa chọn mang đậm tâm hồn Nhật Bản. Như một định mệnh, sự lựa chọn từ truyền thuyết xa xưa, họ đã chọn kiếp sống ngắn ngủi của Hoa thay vì tính vững bền của Đá, lựa chọn khoảnh khắc chứ không phải vĩnh cửu. Con người bị giới hạn bởi không – thời gian nên vẫn hay khát thèm vĩnh cửu, người Nhật thì không vậy, có lẽ vì vậy mà họ có được một thứ, đó là sự tự do . Tự do với sự sống và cả sự chết, như đóa hoa đẹp rực rỡ trong thoáng chốc rồi nhẹ tênh buông mình theo gió mà những cánh hoa vẫn tươi nguyên.
+  </p>
+  <p class="mb-3">
+    Cũng với tinh thần khi lựa chọn anh đào, họ lựa chọn haiku. Mặc dù đây là thể thơ thuộc loại bé nhỏ nhất với 17 âm tiết chia thành 3 dòng 5-7-5, nhưng haiku vươn ra nhân loại không chỉ vì điều đó. Ngắn và hàm súc, thế giới cũng có những thể thơ khác, ví như tuyệt cú, với bốn dòng dao động từ 20 đến 28 âm tiết. Nhưng tuyệt cú là một vẻ đẹp khác, vẻ đẹp của sự cân xứng đăng đối, của mĩ cảm hướng đến cái cao cả vĩnh hằng. Đó là vẻ đẹp mang tính mĩ đức – gắn liền với đạo đức, tính cách của người quân tử, thích nhắc nói đến lưu danh thiên cổ, ngàn năm, trường tồn… mang dấu ấn quan niệm của người Trung Hoa. Thế giới cảm thấy haiku gần gũi với mình hơn, không hẳn chỉ vì haiku không bị những niêm luật chặt chẽ gò bó, mà chủ yếu vì bị hấp dẫn bởi tinh thần của nó. Haiku đẹp như một đóa anh đào, bé nhỏ, khoảnh khắc, vô thường và mang đậm dấu ấn của mĩ học Nhật Bản – mĩ học của đời thường. Đến với thế giới thơ haiku là đến với vũ trụ thu nhỏ vần xoay theo nhịp bốn mùa xuân hạ thu đông với muôn loài hiện diện đông đảo đến ngạc nhiên trong sự bình đẳng không phân biệt. Thế nên mùa xuân sang anh đào nghiễm nhiên góp mặt trong haiku như hiện thân của cái đẹp kỳ diệu, nhưng dẫu thế thì trong thơ haiku mùa xuân không chỉ có anh đào…
+  </p>
+  <p class="mb-3">
+    Không thể đếm hết những vần thơ hay về mùa xuân gắn với hoa anh đào (sakura) trong thơ haiku… và nếu khát vọng của các nhà thơ haiku là sáng tạo ra những danh từ thiện mĩ thì những danh từ thiện mĩ đó không ít gắn với hoa anh đào. Trong bài thơ nổi tiếng của bậc đại sư Matsuo Basho, đám mây hoa (hana no kumo) gợi hình ảnh những bông hoa đào như mây trong buổi chiều tà, trong khoảnh khắc tiếng chuông mơ hồ vẳng lại không rõ từ ngôi chùa nào như một sự hòa hợp giữa màu sắc – hương thơm và âm thanh đẹp buồn man mác:
+  </p>
+  <div class="row justify-content-start mb-3 pl-lg-5 font-italic">
+    <div class="col-6 col-md-3 col-lg-2">
+      <p class="mb-2">hana no kumo</p>
+      <p class="mb-2">kane wa Ueno ka</p>
+      <p class="mb-2">Asakusa ka</p>
+      <p class="pl-3">(Issa)</p>
+    </div>
+    <div class="col-6 col-md-3 col-lg-4">
+      <p class="mb-2">đám mây hoa</p>
+      <p class="mb-2">chuông chùa Ueno có phải</p>
+      <p class="mb-2">hay là Asakusa?</p>
+    </div>
+  </div>
+  <p class="mb-3">
+    Trong một bài khác, cũng của Basho, những cánh hoa đào từ bốn phương bay lại làm hồ Nio gợn sóng: Từ bốn phương trời – cánh hoa đào lả tả - gợn sóng hồ Nio (Đoàn Lê Giang dịch). Vẻ đẹp nào trong những cánh hoa rơi nổi trôi trên dòng nước mang bi cảm aware về thế giới vô thường, trong sự tương giao giữa những cánh hoa mong manh như làm mặt hồ gợn sóng? Còn với Buson thì, những cánh hoa rơi rụng trên cánh đồng cũng hệt như là sao trên bầu trời đêm trăng: Sakura chiru – nawashiro mizu ya – hoshi zuki yo. Cũng có thể gặp thêm những loài hoa bạn bầy như hoa mơ, thược dược, mẫu đơn… thế giới trăm hoa được các nhà thơ haiku nâng niu lưu dấu bằng sự quan sát tinh tế và tâm hồn nhạy cảm.
+  </p>
+  <p class="mb-3">
+    Bạn sẽ bảo, thơ cổ điển phương Đông vốn thiên ái vẻ đẹp tự nhiên sơn thủy yên hoa tuyết nguyệt phong, nên yêu hoa có gì là lạ. Có thể lắm, vì những bài thơ vừa nêu vẫn gợi lên vẻ đẹp phong nhã (fuga) thường gặp trong thơ cổ điển trong sự kiệm lời đến tối giản, trong sự tỉnh lược đến chỉ còn gần như một nét vẽ nhanh gợi thần sự vật trong khoảnh khắc và tinh thần hòa hợp trong một vũ trụ tương giao nhất thể. Nhưng đến những bài thơ dưới đây, bạn sẽ khó gặp ở đâu ngoài thơ haiku của người Nhật, và Basho cũng hạ bút tạo nên những dòng này:
+  </p>
+  <div class="pl-lg-5 font-italic">
+    <p class="mb-2">Dưới hoa lao xao</p>
+    <p class="mb-2">chén canh đĩa cá</p>
+    <p class="mb-2">đều vương hoa đào</p>
+  </div>
+  <p class="pl-lg-5 ml-lg-5 mb-4">(Nhật Chiêu dịch)</p>
+  <div class="pl-lg-5 font-italic">
+    <p class="mb-2">Trên đôi tay tôi</p>
+    <p class="mb-2">hồng đào với anh đào</p>
+    <p class="mb-2">và cả bánh rau xanh</p>
+  </div>
+  <p class="pl-lg-5 ml-lg-5 mb-3">(Quỳnh Như dịch)</p>
+  <p class="mb-3">
+    Một cách tự nhiên, ông đưa vào thơ chén canh đĩa cá, bánh rau xanh, hoa đào cũng ngang bằng trái đào, sự ngắm cái đẹp cũng được ưa thích bằng sự làm no dạ dày. Những vần thơ không hề vì thế mà kém đi tinh thần tao nhã, chỉ thêm vào sự thoải mái hài hước, một niềm karumi nhẹ nhàng bay lượn giữa ánh sáng và cát bụi cuộc đời. Hành trình đến miền sâu thẳm của thơ và của đời – oku no michi – của bậc thánh thơ, được ghi lại bằng những bài thơ như thế…
+  </p>
+  <p class="mb-3">
+    Vậy là, với tinh thần bình đẳng giữa vạn vật mang đậm cái chất thiền (zen), mùa xuân trong thơ haiku tựu hình với sự hội tụ của trăm loài không phân biệt, chim oanh cũng như chim sẻ, chú chuột, con mèo… thi nhân cũng như hành khất, phụ nữ, trẻ con… trong sự tồn tại bình đẳng. Xuân mới là xuân của mọi nhà… xuân không chỉ riêng ai là vậy. Bước xuân vô hình mà làm tuyết tan, suối reo, chim hót, hoa nở… trong thơ haiku lại lưu dấu thật độc đáo:
+  </p>
+  <p class="mb-3">
+    Khi người thế kỷ 21 còn chưa hết băn khoăn về Tiếng Việt như bùn và như lụa thì nhà thơ từ thế kỷ 18 đã nâng niu từng bước chân xuân lấm vết bùn tươi thắm trên từng ngưỡng cửa mùa xuân. Khi xuân về, chim oanh có thể đậu và hót ngay trên… cán cuốc, chú chuột uống từng ngụm mùa xuân trong cơn mưa ngọt lành. Khi xuân về, bầy sẻ chơi trò đuổi bắt trong đám trà hay tắm mình trong cát, cô gái hái trà soi mình trong gương… Mùa xuân trong thơ haiku được dệt nên bởi bức tranh vũ trụ và cuộc đời giản dị mà đẹp đến nao lòng.
+  </p>
+  <p class="mb-3">
+    Thơ haiku không triết lý, không đưa ra bài học nào, chỉ bày ra một bức tranh đơn sơ rồi để tự người đọc lắng lòng cảm nhận. Mùa xuân trong thơ haiku có anh đào có trăm hoa, có muôn loài trong vẻ đẹp đời thường kỳ diệu. Xuân khai dịp, mời bạn rón chân vào cõi thơ đẹp cổ điển mà vượt không gian thời gian, khoảnh khắc mà vô tình miên viễn. Cũng là một cuộc ngắm hoa (hanami) bên thức ăn quà bánh, hay chung trà chén rượu… tùy tâm sở dục, cần gì phân biệt đâu tục đâu tiên. Để rồi rời cõi thơ về với thực, buổi sớm đầu năm đẩy cửa ra bạn sẽ thấy những gì… Trước sân – chú mèo đùa giỡn – nắng xuân (Lưu Đức Trung).
+  </p>
+</div>
+<div class="other-news">
+  <h4>Tin tức & Sự kiện khác</h4>
+  <div class="card-container">
+    <div class="row">
+      <div class="col-md-6 col-lg-3 card-wrap">
+        <a class="card" routerLink="dinh-huong-nghe-nghiep-va-co-hoi-viec-lam-voi-TMA-solutions.html">
+                    <img class="card-img-top" src="./assets/images/dinh-huong-nghe-nghiep-va-co-hoi-viec-lam-voi-TMA-solutions.png" alt="Card image cap">
+                    <div class="card-body">
+                        <h5 class="card-title">Định hướng nghề nghiệp và cơ hội việc làm với TMA Solutions</h5>
+                    </div>
+                </a>
+      </div>
+      <div class="col-md-6 col-lg-3 card-wrap">
+        <a class="card" routerLink="truong-dh-quy-nhon-dong-hanh-cung-tinh-binh-dinh-trong-thu-hut-dau-tu-nhat-ban.html">
+                    <img class="card-img-top" src="./assets/images/dong-hanh-cung-tinh-binh-dinh.png" alt="Card image cap">
+                    <div class="card-body">
+                        <h5 class="card-title">Trường ĐH QN đồng hành cùng tỉnh Bình Định trong thu hút đầu tư Nhật Bản</h5>
+                    </div>
+                </a>
+      </div>
+      <div class="col-md-6 col-lg-3 card-wrap">
+        <a class="card" routerLink="/tin-tuc-va-su-kien/anh-dao-no-vuon-haiku">
+                        <img class="card-img-top" src="./assets/images/hoa anh dao.png" alt="Card image cap">
+                        <div class="card-body">
+                            <h5 class="card-title">Anh đào nở vườn Haiku</h5>
+                        </div>
+                    </a>
+      </div>
+      <div class="col-md-6 col-lg-3 card-wrap">
+        <a class="card" routerLink="/tin-tuc-va-su-kien/xuan-sang-khong-chi-co-hoa-anh-dao">
+                    <img class="card-img-top" src="./assets/images/xuan-sang.png" alt="Card image cap">
+                    <div class="card-body">
+                        <h5 class="card-title">Xuân sang... không chỉ có hoa anh đào</h5>
+                    </div>
+                </a>
+      </div>
+    </div>
+  </div>
+</div>

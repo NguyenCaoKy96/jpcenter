@@ -1,0 +1,71 @@
+
+<div class="custom-container">
+    <ngx-carousel [inputs]="carouselBanner" [moveToSlide]="1" (onMove)="onmoveFn($event)" (afterCarouselViewed)="afterCarouselViewedFn($event)">
+        <ngx-item NgxCarouselItem class="bannerStyle" *ngFor="let item of homeImagesURL | slice:0:1" [ngStyle]="{'background-image': 'url(' + item + ')'}">
+        </ngx-item>
+        <button NgxCarouselPrev></button>
+        <button NgxCarouselNext></button>
+    </ngx-carousel>
+    <div class="banner">
+        <div class="banner-bottom"></div>
+        <h1 class="banner-title">
+            <b>Học vụ</b>
+        </h1>
+    </div>
+</div>
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+            <a routerLink="/trang-chu">Trang chủ</a>
+        </li>
+        <li class="breadcrumb-item ">
+            <a routerLink="/hoc-vu">Học vụ</a>
+        </li>
+        <li class="breadcrumb-item active">
+            Lịch học
+        </li>
+    </ol>
+</nav>
+<div class="row">
+    <div class="col-md-4 col-lg-3 left-navigation">
+    <ul class="nav nav-tabs d-none d-md-block">
+      <li class="nav-item">
+        <a class="nav-link " id="JCenter-tab" [queryParams]="{lang: lang ? 'vi' : 'jp'}" routerLink = "/hoc-vu/lich-hoc">Lịch học</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" id="JCenter-tab" [queryParams]="{lang: lang ? 'vi' : 'jp'}" routerLink = "/hoc-vu/diem-thi">Điểm thi</a>
+      </li>
+    </ul>
+  </div>
+    <div class="col-md-8 col-lg-9">
+        <div class="tab-content">
+            <div class="container">
+                <h1 id="schedule">
+                	<b>Lịch học</b>
+                </h1>
+                <div class="detail-schedule">
+                    <table class="table table-hover table-bordered table-striped">
+                        <thead>
+                            <tr>
+                                <th scope="col">TÊN LỚP HỌC</th>
+                                <th scope="col">LỊCH HỌC</th>
+                                <th scope="col">THỜI GIAN HỌC</th>
+                                <th scope="col">NGÀY KHAI GIẢNG</th>
+                                <th scope="col">HỌC PHÍ</th>
+                            </tr>
+                        </thead>
+                        <tr *ngFor="let item of openingSchedule">
+                            <td>{{ item.Course_Name }}</td>
+                            <td class="schedule">{{ item.Schedule }}</td>
+                            <td>{{ item.Duration }} Giờ / khóa</td>
+                            <td>{{ item.Start_Date }}</td>
+                            <td>{{ item.Fee }}.000 VNĐ</td>
+                        </tr>
+                    </table>
+                </div>
+                <button  class="btn btn" type="submit" name="submit" id="register">Dowload</button>
+            </div>
+        </div>
+    </div>
+</div>
+

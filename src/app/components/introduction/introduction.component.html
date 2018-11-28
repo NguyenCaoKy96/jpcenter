@@ -1,0 +1,80 @@
+<!-- <div class="custom-container">
+  <ngx-carousel [inputs]="carouselBanner" [moveToSlide]="1" (onMove)="onmoveFn($event)" (afterCarouselViewed)="afterCarouselViewedFn($event)">
+    <ngx-item NgxCarouselItem class="bannerStyle" *ngFor="let item of homeImagesURL | slice:0:3" [ngStyle]="{'background-image': 'url(' + item + ')'}">
+    </ngx-item>
+    <button NgxCarouselPrev></button>
+    <button NgxCarouselNext></button>
+  </ngx-carousel>
+  <div class="banner">
+    <div class="banner-bottom"></div>
+    <h1 class="banner-title" *ngIf="lang === 'vi'"><b>Giới thiệu</b></h1>
+    <h1 class="banner-title" *ngIf="lang === 'jp'"><b>紹介</b></h1>
+  </div>
+</div>
+
+<nav aria-label="breadcrumb" *ngIf="lang === 'vi'">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item">
+      <a routerLink="/trang-chu">Trang chủ</a>
+    </li>
+    <li *ngFor="let breadcrumb of data">
+      <a [routerLink]="[breadcrumb.url, breadcrumb.params]">{{breadcrumb.label}}</a>
+    </li>
+
+    <li *ngIf="isLoading == false && lang === 'vi'" class="breadcrumb-item active" aria-current="page">{{introductionItemData.name}}</li>
+    <li *ngIf="isLoading == false && lang === 'jp'" class="breadcrumb-item active" aria-current="page">{{introductionItemData.japanses_name}}</li>
+  </ol>
+</nav>
+<nav aria-label="breadcrumb" *ngIf="lang === 'jp'">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item">
+        <a routerLink="/trang-chu">ホーム</a>
+      </li>
+      <li class="breadcrumb-item active">
+        <a routerLink="/gioi-thieu">紹介</a>
+      </li>
+      <li class="breadcrumb-item active" aria-current="page">日本センター</li>
+    </ol>
+</nav>
+
+  <div class="row left-navigation" *ngIf="lang === 'vi'">
+      <div class="col-md-4 col-lg-3 ">
+        <ul class="nav nav-tabs d-none d-md-block" *ngFor="let item of introductionsData">
+          <li class="nav-item">
+            <a class="nav-link left-item" id="JCenter-tab"  [ngClass]="{'active': item.name == introductionItemData.name}" (click)="onChangeIntroduction(item.id, $event)">{{item.name}}</a>
+          </li>
+        </ul>
+      </div>
+      <div class="col-md-8 col-lg-9">
+        <div class="tab-content" *ngIf="isLoading == false">
+          <div class="tab-pane active">
+            <h4 class="section-title">{{introductionItemData.name}}</h4>
+            <div class="course-content pt-3">
+              {{introductionItemData.contents}}
+            </div>
+          </div>        
+        </div>
+      </div>
+  </div>
+
+  <div class="row left-navigation" *ngIf="lang === 'jp'">
+      <div class="col-md-4 col-lg-3 ">
+        <ul class="nav nav-tabs d-none d-md-block" *ngFor="let item of introductionsData">
+          <li class="nav-item">
+            <a class="nav-link left-item" id="JCenter-tab" (click)="onChangeIntroduction(item.id, $event)">{{item.japanese_name}}</a>
+          </li>
+        </ul>
+      </div>
+      <div class="col-md-8 col-lg-9">
+        <div class="tab-content" *ngIf="isLoading == false">
+          <div class="tab-pane active">
+            <h4 class="section-title">{{introductionItemData.japanese_name}}</h4>
+            <div class="course-content pt-3">
+              {{introductionItemData.japanese_contents}}
+            </div>
+          </div>        
+        </div>
+      </div>
+  </div>-->
+
+  <router-outlet></router-outlet>

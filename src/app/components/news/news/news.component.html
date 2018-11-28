@@ -1,0 +1,58 @@
+ <div class="images-card-wrap section-padding">
+        <div class="row">
+            <div class="col-md-6 col-lg-3 card-wrap">
+                <a class="card" routerLink="/gioi-thieu" [queryParams]="{lang: lang ? 'vi' : 'jp'}">
+                  <img class="card-img-top" [src]="[newsImage]">
+                  <div class="card-body">
+                      <h6 class="block-title" *ngIf="lang === 'vi'">{{nameNews}}</h6>
+                      <h6 class="block-title" *ngIf="lang === 'jp'">{{japannameNews}}</h6>
+                  </div>
+                </a>
+            </div>
+            <div class="col-md-6 col-lg-3 card-wrap">
+                <a class="card" routerLink="/gioi-thieu" [queryParams]="{lang: lang ? 'vi' : 'jp'}">
+                    <img class="card-img-top" [src]="[newsImage1]">
+                    <div class="card-body">
+                        <h6 class="block-title" *ngIf="lang === 'vi'">{{nameNews1}}</h6>
+                        <h6 class="block-title" *ngIf="lang === 'jp'">{{japannameNews1}}</h6>
+                    </div>
+                </a>
+            </div>
+            <div class="col-md-6 col-lg-3 card-wrap">
+                <a class="card" routerLink="/gioi-thieu" [queryParams]="{lang: lang ? 'vi' : 'jp'}">
+                    <img class="card-img-top" [src]="[newsImage2]">
+                    <div class="card-body">
+                        <h6 class="block-title" *ngIf="lang === 'vi'">{{nameNews2}}</h6>
+                        <h6 class="block-title" *ngIf="lang === 'jp'">{{japannameNews2}}</h6>
+                    </div>
+                </a>
+            </div>
+            <div class="col-md-6 col-lg-3 card-wrap">
+                <a class="card" routerLink="/gioi-thieu" [queryParams]="{lang: lang ? 'vi' : 'jp'}">
+                    <img class="card-img-top" [src]="[newsImage3]">
+                    <div class="card-body">
+                        <h6 class="block-title" *ngIf="lang === 'vi'">{{nameNews3}}</h6>
+                        <h6 class="block-title" *ngIf="lang === 'jp'">{{japannameNews3}}</h6>
+                    </div>
+                </a>
+            </div>
+        </div>
+</div> 
+
+<div class="recruitment">
+    <div class="announce-wrapper">
+        <div id="slider-wrap2" class="banner carousel slide" data-ride="carousel">
+            <ol class="carousel-indicators">
+                <li data-target="#slider-wrap2" data-slide-to="0" class="active"></li>
+            </ol>
+            <div class="carousel-inner">
+                <div class="carousel-item active" align="center">
+                    <img class="img-responsive"
+                            src="https://japancenter.qnu.edu.vn/images/home/event-class-openning-2018.jpg"
+                            style="height: 310px;" alt="Chiêu sinh 2018">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>  
+      

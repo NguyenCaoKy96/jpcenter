@@ -1,0 +1,46 @@
+.btn-outline-danger{
+    border: 1px solid #e11f26;
+	border-radius:28px;
+	display:inline-block;
+	cursor:pointer;
+	font-family: Muli, sans-serif;
+	font-size:17px;
+    font-weight: bold;
+    padding:5px 18px;
+	text-decoration:none;
+    margin: 2em auto;
+    display: block;
+}
+
+.search-bar{
+    margin: 2em 0 auto;
+    /* position: relative; */
+}
+.alert {
+    text-align: center;
+    margin: 1em auto;
+    display: none;
+    position: fixed;
+    top: 3em;
+    z-index: 11;
+}
+.title {
+    margin: 0 auto;
+}
+.badge {
+    margin: 1em 0;
+    font-size: 14px !important;
+}
+.search-item {
+    padding: 0 !important;
+}
+.required {
+    color: #e11f26;
+    font-weight: bold;
+    margin: 0 0.5em;
+}
+.message-popup {
+    display: none;
+    margin: 1em auto;
+    width: 100%;
+}

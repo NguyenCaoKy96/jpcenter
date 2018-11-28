@@ -1,0 +1,25 @@
+<div class="container">
+  <h1 id="schedule">
+    <b>Lịch khai giảng</b>
+  </h1>
+  <div class="detail-schedule">
+    <table class="table table-hover table-bordered table-striped">
+      <thead>
+        <tr>
+          <th scope="col">TÊN KHÓA HỌC</th>
+          <th scope="col">LỊCH HỌC</th>
+          <th scope="col">THỜI GIAN HỌC</th>
+          <th scope="col">NGÀY KHAI GIẢNG</th>
+          <th scope="col">HỌC PHÍ</th>
+        </tr>
+      </thead>
+      <tr *ngFor="let item of openingSchedule">
+        <td>{{ item.Course_Name }}</td>
+        <td class="schedule">{{ item.Schedule }}</td>
+        <td>{{ item.Duration }} Giờ / khóa</td>
+        <td>{{ item.Start_Date }}</td>
+        <td>{{ item.Fee }}.000 VNĐ</td>
+      </tr>
+    </table>
+  </div>
+</div>

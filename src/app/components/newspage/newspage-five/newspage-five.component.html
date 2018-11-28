@@ -1,0 +1,83 @@
+<!-- create slide -->
+<div class="custom-container">
+  <ngx-carousel [inputs]="carouselBanner" [moveToSlide]="1" (onMove)="onmoveFn($event)" (afterCarouselViewed)="afterCarouselViewedFn($event)">
+    <ngx-item NgxCarouselItem class="bannerStyle" *ngFor="let item of homeImagesURL | slice:0:1" [ngStyle]="{'background-image': 'url(' + item + ')'}">
+    </ngx-item>
+    <button NgxCarouselPrev></button>
+    <button NgxCarouselNext></button>
+  </ngx-carousel>
+  <div class="banner">
+    <div class="banner-bottom"></div>
+    <h1 class="banner-title"><b>Tin tức và Sự kiện</b></h1>
+  </div>
+</div>
+<!-- creat breadscrumb -->
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item" >
+      <a routerLink = "/trang-chu">Trang chủ</a>
+    </li>
+    <li class="breadcrumb-item ">
+      <a routerLink = "/tin-tuc-su-kien">Tin tức & sự kiện</a>
+    </li>
+    <li class="breadcrumb-item active">
+      Hiệu trưởng ĐH Quy Nhơn tham dự Hội nghị xúc tiến đầu tư Bình Định tại Nhật Bản
+    </li>
+  </ol>
+</nav>
+<h4 class="section-title">Hiệu trưởng ĐH Quy Nhơn tham dự Hội nghị xúc tiến đầu tư Bình Định tại Nhật Bản</h4>
+<div class="course-content pt-4 mb-0">
+  <p class="mb-4">
+    Ngày 7/12/2017, PGS.TS. Đỗ Ngọc Mỹ, Hiệu trưởng Trường Đại học Quy Nhơn đã tham dự Hội nghị xúc tiến đầu tư tỉnh Bình Định tại Tổng Lãnh sự quán Việt Nam tại Osaka. Hội nghị nhằm mục giới thiệu tiềm năng của tỉnh Bình Định và kêu gọi các doanh nghiệp Nhật Bản đầu tư vào tỉnh nhà và xây dựng mối quan hệ giao lưu, hợp tác, trao đổi sinh viên với các trường đại học tại Nhật Bản.
+  </p>
+  <p class="mb-4">
+    Tham dự Hội nghị còn có Ông Phan Cao Thắng PCT Thường trực UBND tỉnh Bình Định và ông Võ Đình Long, TGĐ Công ty CP Khu công nghiệp Sài Gòn – Nhơn Hội. Phía Nhật có sự tham dự của Ông Vũ Tuấn Hải, Tổng lãnh sự quán Việt Nam tại TP. Sakai, Osaka; ông Kato Hiroki Chủ tịch Hội Hữu nghị Việt Nam – Nhật Bản tại Sakai); TGĐ Công ty Marubeni Lumber Vietnam tại Nhật Bản và rất nhiều doanh nghiệp đến từ các tỉnh, khu vực khác nhau ở Nhật Bản
+  </p>
+  <p class="mb-4">
+    Trong Hội nghị, liên quan đến việc đào tạo nhân lực tại tỉnh Bình Định, PGS.TS. Đỗ Ngọc Mỹ đã có bài phát biểu, giới thiệu về trưởng Đại học Quy Nhơn, về nguồn nhân lực trình độ cao, dồi dào và sẵn có tại tỉnh nhà. Hiệu trưởng cho biết vấn đề mà các doanh nghiệp quan tâm nhất chính là nguồn nhân lực, không chỉ giỏi về chuyên môn mà phải có khả năng tiếng Nhật. Vì vậy, Hiệu trưởng Mỹ đã cam kết trước toàn thể các doanh nghiệp Nhật sẽ quan tâm đẩy mạnh hoạt động của Trung tâm Ngôn ngữ và Văn hóa Nhật Bản phát triển mạnh, nơi đây sẽ là nơi đào tạo nguồn nhân lực cho doanh nghiệp Nhật Bản một cách có chất lượng và hiệu quả nhất. Đồng thời Trung tâm cũng sẽ là đầu mối tổ chức các hoạt động giao lưu văn hóa, kinh tế, thắt chặt mối quan hệ hai nước Việt -Nhật; là nơi hỗ trợ, cung cấp các thông tin chính xác và đầy đủ nhất cho các doanh nghiệp Nhật khi có nguyện vọng vào tỉnh Bình Định đầu tư.
+  </p>
+  <img src="./assets/images/truong-dh-quy-nhon-dong-hanh-cung-tinh-binh-dinh-trong-thu-hut-dau-tu-nhat-ban .png" style="margin: 20px auto;" class="img-fluid d-block">
+  <p class="mb-4">
+    Kết thúc buổi Hội nghị, theo thông tin từ ông Kato Hiroki, đã có rất nhiều doanh nghiệp Nhật Bản đến để chào hỏi và thể hiện mong muốn được về tỉnh Bình Định khảo sát đầu tư. Điều này cho thấy đây là dấu hiệu rất tốt cho nền kinh tế Tỉnh nhà nói riêng, cũng như là bước chuyển quan trọng trong chiến lược thu hút đầu tư từ Nhật Bản vào nước ta nói chung. Và hơn nữa, điều này cũng cho thấy việc thành lập Trung tâm Ngôn ngữ - Văn hóa Nhật Bản là một bước khởi đầu rất có triển vọng trong việc đào tạo nguồn nhân lực quốc tế tại Trường Đại học Quy Nhơn.
+  </p>
+</div>
+<div>
+  <div class="other-news">
+    <h4 class="section-title">Tin tức & Sự kiện khác</h4>
+    <div class="card-container">
+      <div class="row">
+        <div class="col-md-6 col-lg-3 card-wrap">
+          <a class="card" routerLink="/tin-tuc-su-kien/dinh-huong-nghe-nghiep-va-co-hoi-viec-lam-voi-TMA-solutions">
+                            <img class="card-img-top" src="./assets/images/dinh-huong-nghe-nghiep-va-co-hoi-viec-lam-voi-TMA-solutions.png" alt="Card image cap">
+                            <div class="card-body">
+                                <h5 class="card-title">Định hướng nghề nghiệp và cơ hội việc làm với TMA Solutions</h5>
+                            </div>
+                        </a>
+        </div>
+        <div class="col-md-6 col-lg-3 card-wrap">
+          <a class="card" routerLink="/tin-tuc-va-su-kien/truong-dh-quy-nhon-dong-hanh-cung-tinh-binh-dinh-trong-thu-hut-dau-tu-nhat-ban">
+                            <img class="card-img-top" src="./assets/images/dong-hanh-cung-tinh-binh-dinh.png" alt="Card image cap">
+                            <div class="card-body">
+                                <h5 class="card-title">Trường ĐH QN đồng hành cùng tỉnh Bình Định trong thu hút đầu tư Nhật Bản</h5>
+                            </div>
+                        </a>
+        </div>
+        <div class="col-md-6 col-lg-3 card-wrap">
+          <a class="card" routerLink="/tin-tuc-va-su-kien/anh-dao-no-vuon-haiku">
+                                <img class="card-img-top" src="./assets/images/hoa anh dao.png" alt="Card image cap">
+                                <div class="card-body">
+                                    <h5 class="card-title">Anh đào nở vườn Haiku</h5>
+                                </div>
+                            </a>
+        </div>
+        <div class="col-md-6 col-lg-3 card-wrap">
+          <a class="card" routerLink="/tin-tuc-va-su-kien/xuan-sang-khong-chi-co-hoa-anh-dao">
+                            <img class="card-img-top" src="./assets/images/xuan-sang.png" alt="Card image cap">
+                            <div class="card-body">
+                                <h5 class="card-title">Xuân sang... không chỉ có hoa anh đào</h5>
+                            </div>
+                        </a>
+        </div>
+      </div>
+    </div>
+  </div>

@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="program" *ngIf="lang === 'vi'">
+            <div class="row">
+                <div class="col-md-6 col-lg-3">
+                    <div class="card-wrap">
+                        <div class="block-title-wrap">
+                            <img src="./assets/images/flower-icon-1.png" alt="flower icon">
+                            <h5 class="block-title">{{introductonItem}}</h5>
+                        </div>
+                        <ul>
+                            <li *ngFor="let introduction of introductionData">
+                                <a [routerLink]="[introduction.slug]" [queryParams]="{lang: lang ? 'vi' : 'jp'}">
+                                    <i class="fa fa-angle-right" aria-hidden="true"></i>
+                                {{introduction.name}}
+                                </a>
+                            </li>
+                        </ul>                        
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3">
+                    <div class="card-wrap">
+                        <div class="block-title-wrap">
+                            <img src="./assets/images/flower-icon-1.png" alt="flower icon">
+                            <h5 class="block-title">{{ courseData }}</h5>
+                        </div>
+                        <ul>
+                            <li *ngFor="let item of courseDataItem">
+                                <a [routerLink]="[item.slug]" [queryParams]="{lang: lang ? 'vi' : 'jp'}">
+                                    <i class="fa fa-angle-right" aria-hidden="true"></i>
+                                {{item.name}}
+                                </a>
+                            </li>
+                        </ul>                        
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3">
+                    <div class="card-wrap">
+                        <div class="block-title-wrap">
+                            <img src="./assets/images/flower-icon-1.png" alt="flower icon">
+                                <h5 class="block-title">{{servicesItem}}</h5>
+                        </div>
+                        <ul>
+                            <li *ngFor="let services of services">
+                                <a [routerLink]="[services.slug]" [queryParams]="{lang: lang ? 'vi' : 'jp'}">
+                                    <i class="fa fa-angle-right" aria-hidden="true"></i>
+                                    {{services.name}}
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3">
+                    <div class="card-wrap">
+                        <div class="block-title-wrap">
+                            <img src="./assets/images/flower-icon-1.png" alt="flower icon">
+                            <h5 class="block-title">{{jobsItem}}</h5>
+                        </div>
+                        <ul>
+                            <li *ngFor="let jobs of jobs">
+                                <a [routerLink]="[jobs.slug]" [queryParams]="{lang: lang ? 'vi' : 'jp'}">
+                                    <i class="fa fa-angle-right" aria-hidden="true"></i>
+                                {{jobs.name}}
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="program" *ngIf="lang === 'jp'">
+            <div class="row">
+                <div class="col-md-6 col-lg-3">
+                    <div class="card-wrap">
+                        <div class="block-title-wrap">
+                            <img src="./assets/images/flower-icon-1.png" alt="flower icon">
+                            <h5 class="block-title">{{jpintroduction}}</h5>
+                        </div>
+                        <ul>
+                            <li *ngFor="let introduction of introductionData">
+                                <a [routerLink]="[introduction.slug]" [queryParams]="{lang: lang ? 'vi' : 'jp'}">
+                                    <i class="fa fa-angle-right" aria-hidden="true"></i>
+                                {{introduction.japanese_name}}
+                                </a>
+                            </li>
+                        </ul>                        
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3">
+                    <div class="card-wrap">
+                        <div class="block-title-wrap">
+                            <img src="./assets/images/flower-icon-1.png" alt="flower icon">
+                            <h5 class="block-title">{{jpcourse}}</h5>
+                        </div>
+                        <ul>
+                            <li *ngFor="let introduction of introductionData">
+                                <a [routerLink]="[introduction.slug]" [queryParams]="{lang: lang ? 'vi' : 'jp'}">
+                                    <i class="fa fa-angle-right" aria-hidden="true"></i>
+                                {{introduction.japanese_name}}
+                                </a>
+                            </li>
+                        </ul>                        
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3">
+                    <div class="card-wrap">
+                        <div class="block-title-wrap">
+                            <img src="./assets/images/flower-icon-1.png" alt="flower icon">
+                                <h5 class="block-title">{{jbservices}}</h5>
+                        </div>
+                        <ul>
+                            <li *ngFor="let services of services">
+                                <a [routerLink]="[services.slug]" [queryParams]="{lang: lang ? 'vi' : 'jp'}">
+                                    <i class="fa fa-angle-right" aria-hidden="true"></i>
+                                    {{services.japanses_name}}
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3">
+                    <div class="card-wrap">
+                        <div class="block-title-wrap">
+                            <img src="./assets/images/flower-icon-1.png" alt="flower icon">
+                            <h5 class="block-title">{{jpjobs}}</h5>
+                        </div>
+                        <ul>
+                            <li *ngFor="let jobs of jobs">
+                                <a [routerLink]="[jobs.slug]" [queryParams]="{lang: lang ? 'vi' : 'jp'}">
+                                    <i class="fa fa-angle-right" aria-hidden="true"></i>
+                                {{jobs.japanese_name}}
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>   
+</body>
+
+</html>

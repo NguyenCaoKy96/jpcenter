@@ -1,0 +1,64 @@
+<!-- 
+<div class="container">
+  <div class="panel-group">
+    <div class="panel panel-danger">
+      <div class="panel-body">
+        <div class="row">
+          <div class="col-md-4">
+              <div class="panel panel-danger">
+                <div class="panel-heading">
+                  <p><a routerLink="#" class="mb-1" (click)="onclick()">Chức Năng</a></p>
+                </div>
+                <div class="panel-body">
+                   <p><a routerLink="/student/schedule" class="mb-1" (click)="onSchedule()">Thời khóa biểu</a></p>
+                   <p><a routerLink="/student/course" class="mb-1" (click)="OnCourse()">Thông tin khóa học</a></p>
+                   <p><a routerLink="/student/result" class="mb-1" (click)="onResult()">Kết quả học tập</a></p>
+                   <p><a routerLink="/student/register" class="mb-1" (click)="onRegister()">Đăng ký khóa học</a></p>
+                </div>
+              </div>
+          </div>
+          <div class="col-md-8">
+              <div class="panel panel-danger">
+                <div class="panel-heading">{{isshow}}</div>
+                <div class="panel-body">
+                  <div class="container">
+                    <router-outlet></router-outlet>
+                  </div>
+                </div>
+              </div>
+            </div>
+        </div>
+      </div>
+    </div>
+
+  </div> -->
+<!-- </div> -->
+<div class="container">
+  <div class="panel panel-danger">
+    <div class="panel-body">
+      <div class="col-md-3 col-lg-3 ">
+          <div class="panel panel-danger">
+            <div class="panel-heading"><strong>Chức năng</strong></div>
+            <div class="panel-body">
+              <p><a routerLink="/student/schedule" class="mb-1" (click)="onSchedule()">Thời khóa biểu</a></p>
+              <p><a routerLink="/student/course" class="mb-1" (click)="OnCourse()">Thông tin khóa học</a></p>
+              <p><a routerLink="/student/result" class="mb-1" (click)="onResult()">Kết quả học tập</a></p>
+              <p><a routerLink="/student/register" class="mb-1" (click)="onRegister()">Đăng ký khóa học</a></p>
+              <p><a routerLink="/student/user" class="mb-1" (click)="myuser()">Thông tin cá nhân</a></p>
+            </div>
+          </div>
+      </div>
+      <div class="col-md-9 col-lg-9 ">
+        <div class="panel panel-danger">
+          <div class="panel-heading"><strong>{{isshow}}</strong></div>
+          <div class="panel-body"> <router-outlet></router-outlet></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+
+
+

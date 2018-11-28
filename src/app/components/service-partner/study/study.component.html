@@ -1,0 +1,53 @@
+<div class="custom-container">
+  <ngx-carousel [inputs]="carouselBanner" [moveToSlide]="1" (onMove)="onmoveFn($event)" (afterCarouselViewed)="afterCarouselViewedFn($event)">
+    <ngx-item NgxCarouselItem class="bannerStyle" *ngFor="let item of homeImagesURL | slice:0:2" [ngStyle]="{'background-image': 'url(' + item + ')'}">
+    </ngx-item>
+    <button NgxCarouselPrev></button>
+    <button NgxCarouselNext></button>
+  </ngx-carousel>
+  <div class="banner">
+    <div class="banner-bottom"></div>
+    <h1 class="banner-title"><b>Dịch vụ & Đối tác</b></h1>
+  </div>
+</div>
+
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item">
+      <a routerLink="/trang-chu">Trang chủ</a>
+    </li>
+    <li class="breadcrumb-item active" aria-current="page">
+      <a routerLink="/dich-vu-doi-tac">Dịch vụ - Đối tác</a>
+    </li>
+    <li class="breadcrumb-item active" aria-current="page">Tư vấn du học & việc làm</li>
+  </ol>
+</nav>
+
+<div class="row">
+  <div class="col-md-4 col-lg-3 left-navigation">
+    <ul class="nav nav-tabs d-none d-md-block">
+        <li class="nav-item">
+            <a class="nav-link " id="JCenter-tab" routerLink="/dich-vu-doi-tac/tu-van-du-hoc-va-viec-lam">Tư vấn du học & việc làm</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" id="JCenter-tab" routerLink="/dich-vu-doi-tac/xuat-khau-lao-dong">Xuất khẩu lao động</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" id="JCenter-tab" routerLink="/dich-vu-doi-tac/du-an">Dự án</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" id="JCenter-tab" routerLink="/dich-vu-doi-tac/doi-tac">Đối tác</a>
+        </li>
+    </ul>
+  </div>
+  <div class="col-md-8 col-lg-9">
+    <div class="tab-content">
+      <div class="tab-pane active" id="study" role="tabpanel" aria-labelledby="study-tab">
+        <h4 class="section-title">Tư vấn du học và việc làm</h4>
+        <div class="course-content pt-4">
+          <p>Đang cập nhật...</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

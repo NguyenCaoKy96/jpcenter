@@ -1,0 +1,41 @@
+.card {
+	height: 430px;
+	max-height: 430px !important;
+}
+.card-text {
+    margin-bottom: 10px;
+    color: black;
+}
+.card-title {
+    color: #000;
+    font-size: 24px;
+    margin-bottom: .75rem; 
+}
+a:-webkit-any-link {
+    color: -webkit-link;
+    cursor: pointer;
+    text-decoration: none;
+}
+.thumnail {
+    background-image: url();
+    border: 0.5px solid black;
+}
+.short-content {
+    font-family: "Muli", sans-serif;
+    color: black;
+    padding-left: 2em;
+}
+.thumnail, .short-content {
+    height: 100px;
+    min-height: 400px;
+    max-height: 400px;
+}
+.article-title {
+    font-weight: bold;
+}
+.read-more {
+    color: rgb(188, 0, 45);
+}
+strong {
+    color: rgb(188, 0, 45);
+}

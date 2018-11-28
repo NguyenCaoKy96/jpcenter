@@ -1,0 +1,47 @@
+<div class="custom-container">
+    <h3 title="Liên kết - sự kiện">LIÊN KẾT - SỰ KIỆN</h3>
+    <ngx-carousel [inputs]="carouselBanner" (carouselLoad)="carouselBannerLoad()">
+        <!-- <a href="item.Slug" *ngFor="let tile of homeImagesURL; let i = index;">
+            <ngx-item NgxCarouselItem class="bannerStyle" [ngStyle]="{'background-image': 'url(' + tile + ')'}">
+            </ngx-item>
+        </a> -->
+        <ngx-item NgxCarouselItem class="bannerStyle" *ngFor="let tile of homeImagesURL; let i = index;" [ngStyle]="{'background-image': 'url(' + tile + ')'}">
+            <a href="item.Slug" *ngFor="let tile of homeImagesURL; let i = index;"> </a>
+        </ngx-item>
+        <button NgxCarouselPrev></button>
+        <button NgxCarouselNext></button>
+    </ngx-carousel>
+</div>
+
+<!-- <owl-carousel
+     [options]="{items: 3, dots: false, navigation: false}"
+    
+     [items]="images"
+ 
+     [carouselClasses]="['owl-theme', 'row', 'sliding']">
+     <div class="item" *ngFor="let image of images;let i = index">
+         <div class="thumbnail-image" [ngStyle]="{'background': 'url('abc.jpg')no-repeat scroll center center / 80px 80px'}"></div>
+     </div>
+ </owl-carousel> -->
+
+<!-- <div class="container">
+    <a href="#" title="Liên kết - Sự kiện">
+        <h3 class="modtitle">Liên Kết - Sự Kiện</h3>
+    </a>
+    <div id="owl-lienket-sukien" class="owl-carousel owl-theme owl-loaded owl-drag">
+        <div class="owl-stage-outer">
+            <div class="owl-stage" style="transform: translate3d(-2108px, 0px, 0px); transition: all 0.25s ease 0s; width: 3451px;">
+                <div class="owl-item cloned" style="width: 181.667px; margin-right: 10px;">
+                    <div class="item">
+                        <a href="item.Slug" target="_blank">
+                            <img  *ngFor="let tile of homeImagesURL; let i = index;" [ngStyle]="{'background-image': 'url(' + tile + ')'}">
+                        </a>
+                    </div>
+                    <div class="owl-prev">prev</div>
+                    <div class="owl-next">next</div>
+                </div>
+                <div class="owl-dots disabled"></div>
+            </div>
+        </div>
+    </div>
+</div> -->

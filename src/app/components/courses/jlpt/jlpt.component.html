@@ -1,0 +1,74 @@
+<!-- <div class="container"> -->
+        <div class="custom-container">
+                <ngx-carousel [inputs]="carouselBanner" [moveToSlide]="1" (onMove)="onmoveFn($event)" (afterCarouselViewed)="afterCarouselViewedFn($event)">
+                    <ngx-item NgxCarouselItem class="bannerStyle" *ngFor="let item of homeImagesURL | slice:0:1" [ngStyle]="{'background-image': 'url(' + item + ')'}">
+                    </ngx-item>
+                    <button NgxCarouselPrev></button>
+                    <button NgxCarouselNext></button>
+                </ngx-carousel>
+                <div class="banner">
+                    <div class="banner-bottom"></div>
+                    <h1 class="banner-title"><b>Chương trình đào tạo</b></h1>
+                </div>
+            </div>
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item">
+                        <a routerLink="/trang-chu" [queryParams]="{lang: lang ? 'vi' : 'jp'}">Trang chủ</a>
+                    </li>
+                    <li class="breadcrumb-item">
+                        <a routerLink="/khoa-hoc" [queryParams]="{lang: lang ? 'vi' : 'jp'}">Khóa học</a>
+                    </li>
+                    <li class="breadcrumb-item active" aria-current="page">Các khóa tiếng Nhật JLPT</li>
+                </ol>
+            </nav>
+            <div class="row">
+                <div class="col-md-4 col-lg-3 left-navigation">
+                    <ul class="nav nav-tabs d-none d-md-block"  *ngFor="let item of courseDataItem">
+                        <li class="nav-item">
+                            <a class="nav-link left-item" id="JCenter-tab" [routerLink] = "[item.slug]" [queryParams]="{lang: lang ? 'vi' : 'jp'}">
+                                {{item.name}}
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <div id="left-item" class="col-md-8 col-lg-9">
+                    <h4 class="section-title"> Các khóa tiếng Nhật JLPT </h4>
+                    <div class="row">
+                        <div class="col-md-6" *ngFor="let item of jlptData">
+                            <a class="card course-block card-wrap left-item" (click)="onchangeCourse(item.id, $event)" >
+                                <h5 class="card-title" >{{item.name}}</h5>
+                                <div class="course-description">
+                                {{item.skills}}
+                                    <span class="read-more">Đọc tiếp</span>
+                                </div>
+                                <hr>               
+                            </a>
+                        </div> 
+                    </div>                 
+                </div>
+                <div class="col-md-8 col-lg-9 " *ngIf = "onchangeCourse">
+                    <div class="tab-pane active" id="JLPT" role="tabpanel" aria-labelledby="JLPT-tab">
+                        <h4>{{jlptItemData.name}}</h4>
+                            <p class="content-sub">
+                              {{jlptItemData.skills}}
+                            </p>
+                            <p class="content-sub">
+                                {{jlptItemData.totalTimes}}
+                            </p>
+                            <p class="content-sub">
+                                {{jlptItemData.times}}
+                            </p>
+                            <p class="content-sub">
+                                {{jlptItemData.fees}}
+                            </p>
+                            <br>
+                             {{jlptItemData.tags}}
+                    
+                            <p class="content-sub">
+                              {{jlptItemData.locations}}
+                            </p>                  
+                    </div>
+                </div>
+            </div>
+            

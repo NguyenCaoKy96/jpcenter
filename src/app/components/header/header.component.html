@@ -1,0 +1,112 @@
+<header>
+  <div class="container" id="main-menu">
+    <a [routerLink]="['/trang-chu']" [queryParams]="{lang: lang ? 'vi' : 'jp'}"><img class="logo-main" src="./assets/images/qnu-logo.svg" width="60px" height="60px" alt="Trung tâm Nhật ngữ Đại học Quy Nhơn"></a>
+    <div class="name-center">
+      <p class="name" >
+        <a [routerLink]="['/trang-chu']" [queryParams]="{lang: lang ? 'vi' : 'jp'}">{{LANGUAGE.QNU_NAME}}</a>
+      </p>
+      <p class="sub-name">
+        <a [routerLink]="['/trang-chu']" [queryParams]="{lang: lang ? 'vi' : 'jp'}">{{LANGUAGE.JAPAN_CENTER_NAME}}</a>
+      </p>
+    </div>
+    <div class="container" style="position: relative;" *ngFor='let info of footerData'>
+        <div class="main-hotline">
+            <img class="icon-hotline" src="./../assets/images/phone-icon.png" width="30px" height="30px" alt="">{{LANGUAGE.HOTLINE}}: <p class="name-hotline">{{ info.Hotline }}</p>
+        </div>
+      <div class="main-email">
+        <img class="icon-email" src="./../assets/images/email-icon.png" width="35px" height="35px" alt="">
+      </div>
+      <div class="main-email">
+         <img class="icon-email" src="./../assets/images/email-icon.png" width="35px" height="35px" alt="">
+          {{LANGUAGE.EMAIL}}:<p class="name-email"><a href="https://accounts.google.com">{{ info.Email }}</a></p>
+      </div>
+    </div>
+    <div class="logo">
+      <div class="dropdown">
+        <img class="flag dropbtn"  src="./../assets/images/vietnam-flag.png" width="25px" height="25px" alt="logo-language">
+        <div class="dropdown-content" id="menu-language">
+          <a (click)="changeLanguage(true)"><img src="./../assets/images/vietnam-flag.png" class="language-icon" alt="Tiếng Việt">{{LANGUAGE.LANG_VI}}</a>
+          <a (click)="changeLanguage(false)"><img src="./../assets/images/japan-flag.png" class="language-icon" alt="Tếng Nhật">{{LANGUAGE.LANG_JAPAN}}</a>
+        </div>
+      </div>
+      <div class="dropdown">
+        <a href="#loginModal" role="button"data-toggle="modal">
+          <img id="logo-lgogin" class="flag dropbtn" src="./../assets/images/login-icon.png" width="20px" height="20px">
+        </a>
+      </div>
+      <div id="menu-logout" class="dropdown" alt="logo-login">
+          <h6 id ="login"></h6>
+          <div class="dropdown-content" id="menu-language">
+              <app-logout></app-logout>
+          </div>
+      </div>
+      <div id="loginModal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+          <app-login></app-login>
+      </div>
+    </div>
+    <app-banner></app-banner>
+
+    </div>
+    <nav class="navbar  navbar-expand-lg navbar-light top-navbar" id="nav" data-toggle="sticky-onscroll">
+      <div class="container">
+        <a [routerLink]="['/trang-chu']"> <img  id="logo-hide" src="./assets/images/qnu-logo.svg" width="60px" height="60px" alt="logo"></a>
+          <div></div>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav">
+            <li class="nav-item dropdown">
+              <a id="home-page" class="nav-link" [routerLink]="['/trang-chu']" [queryParams]="{lang: lang ? 'vi' : 'jp'}">{{LANGUAGE.HOME_PAGE}}<span class="caret"></span></a>
+            </li>
+            <li class="nav-item dropdown">
+              <a id="introduction-page" class="nav-link" [routerLink]="['/gioi-thieu']" [queryParams]="{lang: lang ? 'vi' : 'jp'}">{{LANGUAGE.INTRODUCTION_PAGE}}<span class="caret"></span></a>
+              <div class="dropdown-content">
+                <a class="dropdown-item" (click)="changeURL('introduction-page', LANGUAGE.URL_JAPAN_CENTER)">{{LANGUAGE.JAPAN_CENTER}}</a>
+                <a class="dropdown-item" (click)="changeURL('introduction-page', LANGUAGE.URL_QUY_NHON_UNIVERSITY)">{{LANGUAGE.QUY_NHON_UNIVERSITY}}</a>
+                <a class="dropdown-item" (click)="changeURL('introduction-page', LANGUAGE.URL_QUY_NHON_BINH_DINH)">{{LANGUAGE.QUY_NHON_BINH_DINH}}</a>
+                <a class="dropdown-item" (click)="changeURL('introduction-page', LANGUAGE.URL_HUMAN_RESOURCE)">{{LANGUAGE.HUMAN_RESOURCE}}</a>
+                <a class="dropdown-item" (click)="changeURL('introduction-page', LANGUAGE.URL_RESON_TO_CHOOESE_QNU_JAPAN_CENTER)">{{LANGUAGE.RESON_TO_CHOOESE_QNU_JAPAN_CENTER}}</a>
+              </div>
+            </li>
+            <li class="nav-item dropdown">
+              <a id="academic-page" class="nav-link" [routerLink]="['/hoc-vu']" [queryParams]="{lang: lang ? 'vi' : 'jp'}">{{LANGUAGE.ACADEMIC}}<span class="caret"></span></a>
+              <div class="dropdown-content">
+                <a class="dropdown-item" (click)="changeURL('academic-page', '')">{{LANGUAGE.SCHEDULE}}</a>
+                <!-- <a class="dropdown-item" (click)="changeURL('academic-page', '')">{{LANGUAGE.EXAM_SCHEDULE}}</a> -->
+                <a class="dropdown-item" (click)="changeURL('academic-page', '')">{{LANGUAGE.MARK}}</a>
+              </div>
+            </li>
+            <li class="nav-item dropdown">
+              <a id="course-page" class="nav-link" [routerLink]="['/khoa-hoc']" [queryParams]="{lang: lang ? 'vi' : 'jp'}">{{LANGUAGE.COURSE}}<span class="caret"></span></a>
+              <div class="dropdown-content">
+                <a class="dropdown-item" (click)="changeURL('course-page', 'cac-khoa-tieng-nhat-JLPT')">{{LANGUAGE.JLPT_COURSE}}</a>
+                <a class="dropdown-item" (click)="changeURL('course-page', 'tieng-nhat-cho-thieu-nhi')">{{LANGUAGE.CHILDREN_COURSE}}</a>
+                <a class="dropdown-item" (click)="changeURL('course-page', 'cac-khoa-ky-nang-mem')">{{LANGUAGE.SKILL_COURSE}}</a>
+              </div>
+            </li>
+            <li class="nav-item dropdown">
+              <a id="news-and-events" class="nav-link" [routerLink]="['/tin-tuc-su-kien']" [queryParams]="{lang: lang ? 'vi' : 'jp'}">{{LANGUAGE.NEWS_AND_EVENTS}}<span class="caret"></span></a>
+            </li>
+            <li class="nav-item dropdown">
+              <a id="services-and-partner-page" class="nav-link" [routerLink]="['/dich-vu-doi-tac']" [queryParams]="{lang: lang ? 'vi' : 'jp'}">{{LANGUAGE.SERVICE_AND_PARTNER}}<span class="caret"></span></a>
+              <div class="dropdown-content">
+                <a class="dropdown-item" (click)="changeURL('services-and-partner-page', 'tu-van-va-viec-lam')">{{LANGUAGE.APPROAD_STUDY_AND_EMPLOYMENT}}</a>
+                <a class="dropdown-item" (click)="changeURL('services-and-partner-page', 'xuat-khau-lao-dong')">{{LANGUAGE.LABOR_EXPORT}}</a>
+                <a class="dropdown-item" (click)="changeURL('services-and-partner-page', 'du-an')">{{LANGUAGE.PROJECT}}</a>
+                <a class="dropdown-item" (click)="changeURL('services-and-partner-page', 'doi-tac')">{{LANGUAGE.PARTNER}}</a>
+              </div>
+            </li>
+            <li class="nav-item dropdown">
+              <a id="career-oppotunity-page" class="nav-link" [routerLink]="['/co-hoi-nghe-nghiep']" [queryParams]="{lang: lang ? 'vi' : 'jp'}">{{LANGUAGE.CAREER_OPPOTUNITY}}<span class="caret"></span></a>
+              <div class="dropdown-content">
+                <a class="dropdown-item" (click)="changeURL('career-oppotunity-page', 'trung-tam-nhat-ban')">{{LANGUAGE.JAPAN_CENTER_OPPOTUNITY}}</a>
+                <a class="dropdown-item" (click)="changeURL('career-oppotunity-page', 'doanh-nghiep')">{{LANGUAGE.ENTERPRISE}}</a>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <div cdkDrag id="bubble" class="verticle-align" routerLink='/dang-ky-hoc' [queryParams]="{lang: lang ? 'vi' : 'jp'}">{{LANGUAGE.SIGN_UP}}</div>
+</header>

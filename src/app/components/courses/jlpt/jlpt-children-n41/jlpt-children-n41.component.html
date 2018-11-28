@@ -1,0 +1,115 @@
+<div class="custom-container">
+  <ngx-carousel [inputs]="carouselBanner" [moveToSlide]="1" (onMove)="onmoveFn($event)" (afterCarouselViewed)="afterCarouselViewedFn($event)">
+      <ngx-item NgxCarouselItem class="bannerStyle" *ngFor="let item of homeImagesURL | slice:0:1" [ngStyle]="{'background-image': 'url(' + item + ')'}">
+      </ngx-item>
+      <button NgxCarouselPrev></button>
+      <button NgxCarouselNext></button>
+  </ngx-carousel>
+  <div class="banner">
+      <div class="banner-bottom"></div>
+      <h1 class="banner-title"><b>Chương trình đào tạo</b></h1>
+  </div>
+</div>
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item">
+      <a routerLink="/home">Trang chủ</a>
+    </li>
+    <li class="breadcrumb-item active" aria-current="page">
+      <a routerLink="/khoa-hoc">Khóa học</a></li>
+    <li class="breadcrumb-item " aria-current="page">
+      <a routerLink="/khoa-hoc/cac-khoa-tieng-nhat-JLPT">Các khóa tiếng Nhật JLPT</a></li>
+    <li class="breadcrumb-item active" aria-current="page">Khóa JLPT N4.1</li>
+  </ol>
+</nav>
+<hr>
+<div class="row">
+  <div class="col-md-4 col-lg-3 left-navigation">
+    <ul class="nav nav-tabs d-none d-md-block">
+      <li class="nav-item">
+        <a class="nav-link " id="JCenter-tab" routerLink="/khoa-hoc/cac-khoa-tieng-nhat-JLPT">Các khóa
+          tiếng Nhật JLPT</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" id="JCenter-tab" routerLink="/khoa-hoc/tieng-nhat-cho-thieu-nhi">Tiếng Nhật cho
+          thiếu nhi</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" id="JCenter-tab" routerLink="/khoa-hoc/cac-khoa-ky-nang-mem">Các khóa kỹ năng
+          mềm</a>
+      </li>
+    </ul>
+  </div>
+  <div class="col-md-8 col-lg-9 ">
+    <div class="tab-pane active" id="JLPT" role="tabpanel" aria-labelledby="JLPT-tab">
+      <h4 class="section-title">Khóa tiếng Nhật N4.1</h4>
+      <div class="course-content pt-4">
+        <small>Dành cho người đã có chứng chỉ N5 hoặc trình độ tương đương)</small>
+        <div class="title-content  align-items-center">
+          <img src="/assets/images/icon-certificate.png" class="mr-2" alt="icon">
+          <p>Kỹ năng đạt được</p>
+        </div>
+        <p class="content-sub">
+          Có thể đọc hiểu được đoạn văn chủ đề liên quan đến bản thân trong cuộc sống thường ngày mà được viết bằng Hán Tự và từ vựng đơn giản,
+          có thể nghe hiểu được nội dung các đoạn hội thoại tương đối chậm, làm nền tảng kiến thức để học tiếp khóa N4.2 cho kỳ thi năng lực Nhật ngữ JLPT N4.
+        </p>
+        <div class="title-content  align-items-center">
+          <img src="/assets/images/icon-clock.png" class="mr-2" alt="icon">
+          <p>Thời lượng</p>
+        </div>
+        <p class="content-sub">
+          72 giờ
+        </p>
+        <div class="title-content  align-items-center">
+          <img src="/assets/images/icon-calendar.png" class="mr-2" alt="icon">
+          <p>Thời gian</p>
+        </div>
+        <p class="content-sub">
+          14:30 đến 16:30 các ngày thứ 2-4-6 hoặc 3-5-7
+        </p>
+        <div class="title-content  align-items-center">
+          <img src="/assets/images/icon-fee.png" class="mr-2" alt="icon">
+          <p>Học phí</p>
+        </div>
+        <p class="content-sub">
+          1.050.000 đồng/ 72 giờ
+        </p>
+        <br>
+        <span style="font-style: italic">
+                        <p><strong>* Ghi chú:</strong></p>
+                        <ol>
+                            <li>- Mức học phí trên đã được Trường ĐH Quy Nhơn hỗ trợ.</li>
+                            <li>- Trung tâm giảm 5% học phí cho người học đăng ký theo nhóm từ 5 người, giảm thêm 1% cho người tiếp theo; giảm tối đa 10%.</li>
+                        </ol>
+                        
+                </span>
+        <div class="title-content  align-items-center">
+          <img src="/assets/images/icon-map.png" class="mr-2" alt="icon">
+          <p>Địa điểm</p>
+        </div>
+        <p class="content-sub">Trung tâm Ngôn ngữ và Văn hóa Nhật Bản, tầng 1, tòa nhà 4 tầng Trường Đại học Quy Nhơn, 170 An
+          Dương Vương, Quy Nhơn.</p>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="col-md-4 col-lg-3 ">
+  <h4>Khóa học khác</h4>
+  <ul class="nav nav-tabs d-none d-md-block">
+    <li class="nav-item">
+      <a class="nav-link" id="JCenter" routerLink = "/khoa-hoc/cac-khoa-tieng-nhat-JLPT/khoa-hoc-tieng-nhat-n51" ><i class="fa fa-angle-right"></i> Khóa học tiếng Nhật N5.1</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" id="JCenter" routerLink = "/khoa-hoc/cac-khoa-tieng-nhat-JLPTc/khoa-hoc-tieng-nhat-n52"><i class="fa fa-angle-right"></i> Khóa học tiếng Nhật N5.2</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" id="JCenter" routerLink = "/khoa-hoc/cac-khoa-tieng-nhat-JLPT/khoa-hoc-tieng-nhat-n42"><i class="fa fa-angle-right"></i> Khóa học tiếng Nhật N4.2</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" id="JCenter" routerLink = "/khoa-hoc/cac-khoa-tieng-nhat-JLPT/khoa-hoc-tieng-nhat-n31"><i class="fa fa-angle-right"></i> Khóa học tiếng Nhật N3.1</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" id="JCenter" routerLink = "/khoa-hoc/cac-khoa-tieng-nhat-JLPT/khoa-hoc-tieng-nhat-n32"><i class="fa fa-angle-right"></i> Khóa học tiếng Nhật N3.2</a>
+    </li>
+  </ul>
+</div>

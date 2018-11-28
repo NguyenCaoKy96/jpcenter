@@ -1,0 +1,72 @@
+/* .course .course-block {
+    height: initial;
+    padding: 30px 20px;
+    border: 0 #e5e5e5;
+    background-color: #fff;
+    color: #4c4c4c;
+    min-height: 303px;
+}
+.card .course-block .card-wrap{
+    padding: 1em;
+}
+.course .course-block .card-title {
+    line-height: 1.25;
+    color: #000;
+}
+
+.course .course-block .course-description {
+    line-height: 1.71;
+    margin-top: 10px;
+}
+
+.course .course-block:hover {
+    height: initial;
+    padding: 30px 20px;
+    border: 0 #e5e5e5;
+    background-color: #fff;
+    color: #4c4c4c;
+    min-height: 303px;
+}
+
+.course ul>li {
+    display: flex;
+    margin-bottom: 10px;
+    line-height: 1.71;
+}
+
+.course ul>li img {
+    margin-right: 13px;
+    margin-top: 4px;
+}
+a {
+    color: #000;
+    font-weight: 400;
+    text-decoration: none;
+    padding: 10px;
+}
+.breadcrumb-item a {
+    font-weight: 600;
+    color: #000;
+}
+ol li a:hover{
+    color: red;
+}
+ul li{
+    list-style-type: none;
+}
+ul li a{
+    font-weight: 600;
+}
+ul li a:hover{
+    color: red;
+}
+.nav {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+.col-md-8 {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}  */
+small {
+    font-size: 96%;
+    font-weight: 400;
+}

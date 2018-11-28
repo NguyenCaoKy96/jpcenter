@@ -1,0 +1,13 @@
+
+.btn{
+    float: right;
+}
+.btn:hover{
+    background-color: brown;
+}
+.list-group-item {
+    font-size: 14px;
+}
+.container{
+    max-width: 1300px;
+}

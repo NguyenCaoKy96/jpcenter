@@ -1,0 +1,119 @@
+<!-- create slide -->
+<div class="custom-container">
+  <ngx-carousel [inputs]="carouselBanner" [moveToSlide]="1" (onMove)="onmoveFn($event)" (afterCarouselViewed)="afterCarouselViewedFn($event)">
+    <ngx-item NgxCarouselItem class="bannerStyle" *ngFor="let item of homeImagesURL | slice:0:1" [ngStyle]="{'background-image': 'url(' + item + ')'}">
+    </ngx-item>
+    <button NgxCarouselPrev></button>
+    <button NgxCarouselNext></button>
+  </ngx-carousel>
+  <div class="banner">
+    <div class="banner-bottom"></div>
+    <h1 class="banner-title"><b>Tin tức và Sự kiện</b></h1>
+  </div>
+</div>
+<!-- creat breadscrumb -->
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item">
+      <a routerLink = "/trang-chu">Trang chủ</a>
+    </li>
+    <li class="breadcrumb-item ">
+      <a routerLink = "/tin-tuc-su-kien">Tin tức & sự kiện</a>
+    </li>
+    <li class="breadcrumb-item active">
+      Ngài Đại sứ Nhật Bản Umeda Kunio dự khai trương Trung tâm Ngôn ngữ và Văn hóa Nhật Bản
+    </li>
+  </ol>
+</nav>
+<h4 class="section-title">Ngài Đại sứ Nhật Bản Umeda Kunio dự khai trương Trung tâm Ngôn ngữ và Văn hóa Nhật Bản</h4>
+<div class="course-content pt-4 mb-0">
+  <p class="mb-3">
+    <strong>
+    Chiều ngày 27/4/2018, Ngài Umeda Kunio – Đại sứ đặc mệnh toàn quyền Nhật Bản tại Việt Nam đã thăm Trường Đại học Quy Nhơn, kết hợp dự cắt băng khai trương Trung tâm Ngôn ngữ và Văn hóa Nhật Bản. Trung tâm được thành lập hồi đầu năm 2018, hoạt động trong các lĩnh vực: đào tạo, khảo thí tiếng Nhật, giao lưu văn hóa, nghiên cứu khoa học, kết hợp cung cấp các dịch vụ có liên quan như du học, xuất khẩu lao động, xúc tiến du lịch v.v.
+  </strong>
+  </p>
+  <img src="./assets/images/home-slider-2.png" style="height: 303px; width: 750px;" class="img-fluid d-block">
+  <p class="mb-5">
+    “Trường Đại học Quy Nhơn là ngôi trường đầu tiên của Việt Nam cho tôi nhiều ấn tượng nhất trong suy nghĩ của mình. Tôi đã được nghe nhiều điều tốt đẹp về ngôi trường này. Hôm nay, tôi đến thăm, làm việc với lãnh đạo Nhà trường và tham dự cắt băng khai trương Trung tâm Ngôn ngữ và Văn hóa Nhật Bản, tôi có cảm nghĩ giấc mơ của tôi đã thành sự thật. Đại sứ quán Nhật Bản tại Việt Nam sẽ hỗ trợ tốt nhất cho Trung tâm trong việc đào tạo nguồn nhân lực tiếng Nhật và các hoạt động giao lưu văn hóa Nhật Bản,” Ngài Umeda Kunio phát biểu tại lễ khai trương.
+  </p>
+  <img src="./assets/images/news-events-10-2.jpg"  class="img-fluid d-block">
+  <p class="mb-3">
+    Một trong những yếu tố then chốt để thu hút đầu tư từ Nhật Bản chính là nguồn nhân lực có trình độ tiếng Nhật sẵn có tại địa phương. Doanh nghiệp Nhật Bản có dự án đầu tư tại Việt Nam đang gặp khó khăn vì thiếu nguồn nhân lực này. Vì vậy, việc Trường Đại học Quy Nhơn triển khai đào tạo tiếng Nhật, cung cấp nguồn nhân lực đạt chuẩn theo yêu cầu của doanh nghiệp Nhật Bản sẽ tạo điều kiện thuận lợi hơn cho đầu tư FDI từ Nhật Bản. Trung tâm Ngôn ngữ và Văn hóa Nhật Bản được kỳ vọng sẽ nhanh chóng đáp ứng được nhu cầu này.
+  </p>
+  <img src="./assets/images/news-events-10-3.jpg"  class="img-fluid d-block">
+  <p class="mb-3">
+    Nhân dịp này, Ngài Umeda Kunio cũng gửi lời cảm ơn lãnh đạo tỉnh Bình Định, Hội Hữu nghị Nhật - Việt tại Sakai và cá nhân ông Hitoshi Kato về những hỗ trợ tích cực cho Trường Đại học Quy Nhơn nói chung, Trung tâm Ngôn ngữ và Văn hóa Nhật Bản nói riêng.
+  </p>
+  <p class="mb-3">
+    Trung tâm Ngôn ngữ và Văn hóa Nhật Bản chính thức hoạt động vào tháng 5/2018. Trung tâm kêu gọi mọi hình thức hợp tác, hỗ trợ với các đối tác Nhật Bản và Việt Nam.
+  </p>
+  <p class=" mb-3">
+    連絡先：クイニョン大学‐日本語・日本文化センター <br>
+    住所：ビンディン省　クイニョン市　アンズオンヴオン通り170番 <br>
+    Eメール：japancenter@qnu.edu.vn <br>
+    電話番号：(+84) 256 36 36 129 <br>
+    ホームページ：https://japancenter.qnu.edu.vn
+  </p>
+  <p class="mb-3">
+    <strong>梅田邦夫駐ベトナム日本国特命全権大使の <br>
+
+      クイニョン大学‐日本語・日本文化センターオープニングセレモニーへのご出席</strong>
+  </p>
+  <p class="mb-3">
+    2018年4月27日の午後から、梅田邦夫駐ベトナム日本国特命全権大使はクイニョン大学を訪問して頂きました。その時、クイニョン大学・日本語・日本文化センタ―のオープニングセレモニーで、テープカットも参加して頂きました。今年初めに設立された当センターは、日本語教育や、文化交流、科学研究等を実施、日本への留学や実習を希望する人に対し情報収集や情報提供、それに観光促進が出来る施設となることを主な目的としています。
+  </p>
+  <img src="./assets/images/home-slider-2.png" style="height: 303px; width: 750px;" class="img-fluid d-block">
+  <p class="mb-3">
+    梅田大使はクイニョン大学のドゴックミー学長と会談を行いました。会談の席上、梅田大使より「クイニョン大学の事をよく耳に致しますが、全ては良い情報なので、特に良い印象に残っています。今日、クイニョン大学の日本語・日本文化センターオープニングセレモニーで、自分自身がテープカットに参加するのは、夢のようなことで、大変感謝致します。これから、このセンターの発展の為、日本政府としても協力を促進していきたい」御祝辞を頂きました。
+  </p>
+  <img src="./assets/images/news-events-10-2.jpg"  class="img-fluid d-block">
+  <p class="mb-3">
+    多くの日系企業を誘致できるポイントは、現地での日本語が出来る人財の数だと思われます。現在、ビンディン省のみならず、ベトナムの全国で、日本語が出来る人財が不足している現状です。それは、日系企業にベトナムに進出してもらうにあたり、大きな壁となります。その為、これから、クイニョン大学は、ビンディン省の発展、日本からの直接投資を促進する為、日系企業向けの人財を育成する使命を果たさなければなりません。
+  </p>
+  <img src="./assets/images/news-events-10-3.jpg"  class="img-fluid d-block">
+  <p class="mb-3">
+    当センターが出来るのは、全てビンディン省発展諮問委員会と日越堺友好協会のご支援のおかげです。この度に、センターの所長として、心より感謝申し上げます.
+  </p>
+  <p class="mb-3">
+    日本語・日本文化センターは2018年5月から、本格的にスタートします。どうぞ、ご支援とご協力を宜しくお願い申し上げます。
+  </p>
+</div>
+<div class="other-news">
+  <h4 class="section-title">Tin tức & Sự kiện khác</h4>
+  <div class="card-container">
+    <div class="row">
+      <div class="col-md-6 col-lg-3 card-wrap">
+        <a class="card" routerLink="/tin-tuc-su-kien/dinh-huong-nghe-nghiep-va-co-hoi-viec-lam-voi-TMA-solutions">
+                  <img class="card-img-top" src="./assets/images/dinh-huong-nghe-nghiep-va-co-hoi-viec-lam-voi-TMA-solutions.png" alt="Card image cap">
+                  <div class="card-body">
+                      <h5 class="card-title">Định hướng nghề nghiệp và cơ hội việc làm với TMA Solutions</h5>
+                  </div>
+              </a>
+      </div>
+      <div class="col-md-6 col-lg-3 card-wrap">
+        <a class="card" routerLink="/tin-tuc-va-su-kien/truong-dh-quy-nhon-dong-hanh-cung-tinh-binh-dinh-trong-thu-hut-dau-tu-nhat-ban">
+                  <img class="card-img-top" src="./assets/images/dong-hanh-cung-tinh-binh-dinh.png" alt="Card image cap">
+                  <div class="card-body">
+                      <h5 class="card-title">Trường ĐH QN đồng hành cùng tỉnh Bình Định trong thu hút đầu tư Nhật Bản</h5>
+                  </div>
+              </a>
+      </div>
+      <div class="col-md-6 col-lg-3 card-wrap">
+        <a class="card" routerLink="/tin-tuc-va-su-kien/anh-dao-no-vuon-haiku">
+                      <img class="card-img-top" src="./assets/images/hoa anh dao.png" alt="Card image cap">
+                      <div class="card-body">
+                          <h5 class="card-title">Anh đào nở vườn Haiku</h5>
+                      </div>
+                  </a>
+      </div>
+      <div class="col-md-6 col-lg-3 card-wrap">
+        <a class="card" routerLink="/tin-tuc-va-su-kien/xuan-sang-khong-chi-co-hoa-anh-dao">
+                  <img class="card-img-top" src="./assets/images/xuan-sang.png" alt="Card image cap">
+                  <div class="card-body">
+                      <h5 class="card-title">Xuân sang... không chỉ có hoa anh đào</h5>
+                  </div>
+              </a>
+      </div>
+    </div>
+  </div>
+</div>

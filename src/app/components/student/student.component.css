@@ -1,0 +1,35 @@
+.panel{
+    font-family: 'Muli', sans-serif;
+}
+.panel-body a{
+    font-size: 16px;
+    text-decoration: none;
+    color: black;
+    display: block;
+    font-stretch: 100%;
+}
+.panel-body a:hover {
+    color: red;
+
+}
+.panel-heading {
+    height: 40px;
+}
+.panel-heading strong{
+    font-size: 18px;
+}
+
+.panel-body a {
+    background-color: transparent;
+    border-color: transparent;
+    font-weight: 600;
+}
+.panel panel-danger .panel-body a {
+    border: 1px solid transparent;
+    border-top-left-radius: .25rem;
+    border-top-right-radius: .25rem;
+}
+.panel panel-danger .panel-body a:hover {
+    font-weight: 600 !important;
+    color: inherit !important;
+}

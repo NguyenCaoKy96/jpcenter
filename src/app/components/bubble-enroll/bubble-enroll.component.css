@@ -1,0 +1,50 @@
+ .py-3 {
+     background-image: url(/assets/images/hoa-anh-dao.jpg);
+     background-repeat: no-repeat;
+     padding: 10px;
+     margin-top: 20px;
+     margin-bottom: 20px;
+ }
+
+ .btn:not(:disabled):not(.disabled) {
+     cursor: pointer;
+     color: white;
+     background-color: rgb(188, 0, 45);
+ }
+
+
+ .text-center {
+     text-align: center !important;
+     color: rgb(188, 0, 45);
+ }
+
+ .card-body {
+     margin-top: -13px;
+     border: 1px solid white;
+     background-color: white;
+ }
+
+ span.validate {
+     color: #F00;
+     padding-left: 8px;
+     font-style: italic;
+ }
+
+ .btn {
+     background-color: rgb(188, 0, 45);
+     width: 100%;
+ }
+
+ .lable {
+     color: red;
+     font-style: italic;
+ }
+ label{
+  font-weight: bold;
+ }
+ label a{
+     color: red;
+ }
+textarea{
+     max-height: 80px;
+}
