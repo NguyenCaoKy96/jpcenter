@@ -8,7 +8,7 @@
     font-weight: bold;
     padding:5px 18px;
 	text-decoration:none;
-    margin: 2em auto;
+    margin: 3em 4px;
     display: block;
 }
 
@@ -39,8 +39,21 @@
     font-weight: bold;
     margin: 0 0.5em;
 }
-.message-popup {
+.message-popup, .messages-popup {
     display: none;
     margin: 1em auto;
     width: 100%;
 }
+img {
+    width: 15px;
+    height: 15px;
+    margin-top: -4px;
+}
+.btn-danger{
+    float: left;
+    margin-top: 10px;
+}
+.lable {
+     color: red;
+     font-style: italic;
+ }

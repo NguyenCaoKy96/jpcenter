@@ -169,8 +169,13 @@ export class GetDataService {
 	getEnrollListURL() {
 		let enrollListURL = this.serverURL + '/registers';
 		return enrollListURL;
-	}getAcademicsURL(): string {
+	}
+	getAcademicsURL(): string {
 		let academicsURL = this.serverURL + '/academics';
+		return academicsURL;
+	}
+	getAcademicsItemURL(id): string {
+		let academicsURL = this.serverURL + '/academics/' + id;
 		return academicsURL;
 	}
 }

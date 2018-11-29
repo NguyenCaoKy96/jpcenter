@@ -43,7 +43,7 @@
                     <div class="form-group">
                         <label *ngIf="lang === 'vi'">Ghi chú<a>*</a>:</label>
                         <label *ngIf="lang === 'jp'">ノート<a>*</a>:</label>
-                        <textarea class="form-control" id="notes" rows="3" placeholder="Ghi chú..." formControlName="notes" type="text" maxlength="200"></textarea>
+                        <textarea class="form-control" id="notes" rows="3" placeholder="Ghi chú..." formControlName="notes" type="text" maxlength="200" (blur)=onNoteBlur()></textarea>
                     </div>
                     <button [disabled]="frmUser.invalid" class="btn btn" type="submit" name="submit" id="register" *ngIf="lang === 'vi'">Đăng ký</button>
                      <button [disabled]="frmUser.invalid" class="btn btn" type="submit" name="submit" id="register" *ngIf="lang === 'jp'">サインアップ</button>

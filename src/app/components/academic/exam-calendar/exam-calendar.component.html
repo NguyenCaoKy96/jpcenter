@@ -1,3 +1,4 @@
+
 <div class="custom-container">
     <ngx-carousel [inputs]="carouselBanner" [moveToSlide]="1" (onMove)="onmoveFn($event)" (afterCarouselViewed)="afterCarouselViewedFn($event)">
         <ngx-item NgxCarouselItem class="bannerStyle" *ngFor="let item of homeImagesURL | slice:0:1" [ngStyle]="{'background-image': 'url(' + item + ')'}">
@@ -21,52 +22,53 @@
             <a routerLink="/hoc-vu">Học vụ</a>
         </li>
         <li class="breadcrumb-item active">
-            Điểm thi
+            Lịch thi
         </li>
     </ol>
 </nav>
 <div class="row">
     <div class="col-md-4 col-lg-3 left-navigation">
-        <ul class="nav nav-tabs d-none d-md-block">
-            <li class="nav-item">
-                <a class="nav-link " id="JCenter-tab" [queryParams]="{lang: lang ? 'vi' : 'jp'}" routerLink="/hoc-vu/lich-hoc">Lịch học</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link " id="JCenter-tab" [queryParams]="{lang: lang ? 'vi' : 'jp'}" routerLink = "/hoc-vu/lich-thi">Lịch thi</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" id="JCenter-tab" [queryParams]="{lang: lang ? 'vi' : 'jp'}"  routerLink="/hoc-vu/diem-thi">Điểm thi</a>
-            </li>
-        </ul>
-    </div>
+    <ul class="nav nav-tabs d-none d-md-block">
+      <li class="nav-item">
+        <a class="nav-link " id="JCenter-tab" [queryParams]="{lang: lang ? 'vi' : 'jp'}" routerLink = "/hoc-vu/lich-hoc">Lịch học</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link " id="JCenter-tab" [queryParams]="{lang: lang ? 'vi' : 'jp'}" routerLink = "/hoc-vu/lich-thi">Lịch thi</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" id="JCenter-tab" [queryParams]="{lang: lang ? 'vi' : 'jp'}" routerLink = "/hoc-vu/diem-thi">Điểm thi</a>
+      </li>
+    </ul>
+  </div>
     <div class="col-md-8 col-lg-9">
         <div class="tab-content">
             <div class="container">
                 <h1 id="schedule">
-                    <b>Điểm thi</b>
+                	<b>Lịch thi</b>
                 </h1>
                 <div class="detail-schedule">
-                    <table class="table table-hover table-bordered table-striped">
-                        <thead>
+                    <table class="table table-hover table-bordered table-striped " id="lichthi">
+                        <thead >
                             <tr>
+                            	<th scope="col">STT</th>
                                 <th scope="col">TÊN LỚP HỌC</th>
                                 <th scope="col">NGÀY THI</th>
-                                <th scope="col"></th>
+                                <th scope="col">ĐỊA ĐIỂM</th>
+                                <th scope="col">THỜI LƯỢNG</th>
                             </tr>
                         </thead>
                         <tr *ngFor="let item of academics">
-                            <td>{{ item.Tenlop }}</td>
+                            <td>{{item.STT}}</td>
+                            <td >{{ item.Tenlop }}</td>
                             <td>{{ item.ngaythi }} </td>
-                            <!--  <td>
-                                <img src="./../assets/images/downloadred.png" width="15px" height="15px" alt=""> 
-                            </td> -->
-                            <td><a href="">Xem chi tiết</a>
-                            </td>
+                            <td>{{ item.diadiem }}</td>
+                            <td>{{ item.thoiluong }} Phút</td>
                         </tr>
                     </table>
                 </div>
-                <button class="btn btn" type="submit" name="submit" id="register"><a     href="{{link}}">Download</a></button>
+                <input  class="btn btn" type="button" name="submit" id="register" value="Download" onclick="tableExcel('lichthi')">
             </div>
         </div>
     </div>
 </div>
+

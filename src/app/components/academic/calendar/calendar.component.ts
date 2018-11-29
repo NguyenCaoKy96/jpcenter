@@ -32,9 +32,12 @@ export class CalendarComponent implements OnInit {
     homeImagesURL: { [key: number]: string } = [];
     serverURL: any;
     data: any;
+    link;
+    txtArea1;
+    rows: any;
 
-    academicsURL: string;
-    academics:any;
+
+    
 
   constructor(private titleService: Title,
   	private _titleService: Title,
@@ -44,6 +47,17 @@ export class CalendarComponent implements OnInit {
     private _getImageService: GetImagesService) { }
 
   ngOnInit() {
+       //get data download
+     this.openingURL = this._getDataService.getOpeningScheduleURL();
+    this._http.get(this.openingURL).subscribe(data =>{
+      this.openingSchedule = data;
+      console.log(this.openingSchedule );
+      for(var i = 0; i < this.openingSchedule.length; i++){
+        this.link = this.openingSchedule[0].Link;
+        console.log(this.link)
+      }
+      
+    });
   	// Title 
   	this._titleService.setTitle('Điểm thi');
 
@@ -68,6 +82,11 @@ export class CalendarComponent implements OnInit {
         } 
       }
     });
+
+    //
+   
+ 
   }
+
 
 }

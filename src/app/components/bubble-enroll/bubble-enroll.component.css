@@ -33,6 +33,7 @@
  .btn {
      background-color: rgb(188, 0, 45);
      width: 100%;
+     cursor: not-allowed;
  }
 
  .lable {

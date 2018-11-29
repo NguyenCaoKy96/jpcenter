@@ -120,9 +120,11 @@ import { ReactiveFormsModule } from '@angular/forms';
 // Angular Material Tooltips
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatTooltipModule } from '@angular/material/tooltip';
-import { EnrollListPageComponent } from './components/enroll-list-page/enroll-list-page.component';import { AcademicComponent } from './components/academic/academic.component';
+import { EnrollListPageComponent } from './components/enroll-list-page/enroll-list-page.component';
+import { AcademicComponent } from './components/academic/academic.component';
 import { ExamPointComponent } from './components/academic/exam-point/exam-point.component';
 import { CalendarComponent } from './components/academic/calendar/calendar.component';
+import { ExamCalendarComponent } from './components/academic/exam-calendar/exam-calendar.component';
 const routes: Routes = [
   {
     path: 'student',    
@@ -370,18 +372,29 @@ const routes: Routes = [
     path: 'dang-ky-hoc',
     component: BubbleEnrollComponent
   },
+  
   {
     path: 'hoc-vu',
-    component: AcademicComponent
-  },
-   {
-    path: 'hoc-vu/lich-hoc',
-    component: CalendarComponent
-  },
-  
-    {
-    path: 'hoc-vu/diem-thi',
-    component: ExamPointComponent
+    component: AcademicComponent,
+    children:[
+      {
+        path: '',
+        component: CalendarComponent
+      },
+       {
+        path: 'lich-hoc',
+          component: CalendarComponent
+      },
+      {
+        path: 'lich-thi',
+        component: ExamCalendarComponent
+      },
+         
+        {
+        path: 'diem-thi',
+          component: ExamPointComponent
+      },
+    ]
   },
 
 ];
@@ -443,11 +456,13 @@ const childRoutes: Routes = [
     UserComponent,
     EngineerComponent,
     BubbleEnrollComponent,
-ClassManagementComponent,
-    EnrollListPageComponent,AcademicComponent,
+    ClassManagementComponent,
+    EnrollListPageComponent,
+    AcademicComponent,
     ExamPointComponent,
-    CalendarComponent,
-  ],
+    CalendarComponent, 
+    ExamCalendarComponent
+    ],
   imports: [
     CKEditorModule,
     BrowserModule,

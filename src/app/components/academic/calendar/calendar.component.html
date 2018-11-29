@@ -1,4 +1,3 @@
-
 <div class="custom-container">
     <ngx-carousel [inputs]="carouselBanner" [moveToSlide]="1" (onMove)="onmoveFn($event)" (afterCarouselViewed)="afterCarouselViewedFn($event)">
         <ngx-item NgxCarouselItem class="bannerStyle" *ngFor="let item of homeImagesURL | slice:0:1" [ngStyle]="{'background-image': 'url(' + item + ')'}">
@@ -32,6 +31,9 @@
       <li class="nav-item">
         <a class="nav-link " id="JCenter-tab" [queryParams]="{lang: lang ? 'vi' : 'jp'}" routerLink = "/hoc-vu/lich-hoc">Lịch học</a>
       </li>
+       <li class="nav-item">
+        <a class="nav-link " id="JCenter-tab" [queryParams]="{lang: lang ? 'vi' : 'jp'}" routerLink = "/hoc-vu/lich-thi">Lịch thi</a>
+      </li>
       <li class="nav-item">
         <a class="nav-link" id="JCenter-tab" [queryParams]="{lang: lang ? 'vi' : 'jp'}" routerLink = "/hoc-vu/diem-thi">Điểm thi</a>
       </li>
@@ -44,7 +46,7 @@
                 	<b>Lịch học</b>
                 </h1>
                 <div class="detail-schedule">
-                    <table class="table table-hover table-bordered table-striped">
+                    <table class="table table-hover table-bordered table-striped" id="lichthi">
                         <thead>
                             <tr>
                                 <th scope="col">TÊN LỚP HỌC</th>
@@ -63,7 +65,10 @@
                         </tr>
                     </table>
                 </div>
-                <button  class="btn btn" type="submit" name="submit" id="register">Dowload</button>
+                
+                <button class="btn btn" type="submit" name="submit" id="register" >Download </button> 
+                
+                 
             </div>
         </div>
     </div>

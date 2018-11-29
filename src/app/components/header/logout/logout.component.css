@@ -15,3 +15,11 @@
 .modal-body {
     overflow-x: auto;
 }
+.btn-lg {
+    background-color:  white;
+}
+.btn-lg:hover {
+    color: rgb(188, 0, 45) !important;
+    font-weight: bold;
+    background-color: #e1dee3;
+}

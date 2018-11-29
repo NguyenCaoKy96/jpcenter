@@ -28,18 +28,16 @@
           <tbody method="POST">
             <tr *ngFor = "let item of contactedStudentList; let i = index">
               <td scope="row">{{i+1}}</td>
-              <td *ngIf="item">{{item.Fullname}}</td>
-              <td *ngIf="item">{{item.Email}}</td>
-              <td *ngIf="item">{{item.Phone}}</td>
-              <td *ngIf="item">{{item.Course}}</td>       
+              <td id="fullname" *ngIf="item">{{item.Fullname}}</td>
+              <td id="email" *ngIf="item">{{item.Email}}</td>
+              <td id="phone" *ngIf="item">{{item.Phone}}</td>
+              <td id="class" *ngIf="item">{{item.Course}}</td>       
               <td *ngIf="status==='uncontacted'">
               <input type="checkbox" value="value1" (click)="onCheck($event, item)">
               </td>
             </tr>
           </tbody>
         </table>
-        <input type="text" placeholder="ID lớp cần đưa vào..">&nbsp;&nbsp;&nbsp;&nbsp;
-        <button id="submit" type="submit" class="btn btn-danger" >Đưa vào lớp</button>
       </form>
     </div>
   </div>

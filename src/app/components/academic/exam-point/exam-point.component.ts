@@ -15,8 +15,8 @@ import { GetImagesService } from './../../../services/get-image-slider/get-image
   styleUrls: ['./exam-point.component.css']
 })
 export class ExamPointComponent implements OnInit {
-	openingURL: string;
-	openingSchedule: any;
+	academicsURL: string;
+  academics:any;
 
 	carouselBanner: any;
     imageURLs: any;
@@ -27,6 +27,7 @@ export class ExamPointComponent implements OnInit {
     eventURL: any;
     eventData: any;
     Event1;
+    link;
 
 
   constructor(private titleService: Title,
@@ -39,11 +40,19 @@ export class ExamPointComponent implements OnInit {
   ngOnInit() {
   	// Title
   	this._titleService.setTitle('Điểm thi');
+
+     //get data download
+     this.academicsURL = this._getDataService.getAcademicsURL();
+    this._http.get(this.academicsURL).subscribe(data =>{
+      this.academics = data;
+      console.log(this.academics );
+      for(var i = 0; i < this.academics.length; i++){
+        this.link = this.academics[0].Link;
+        console.log(this.link)
+      }
+      
+    });
   	//get data openings
-  	this.openingURL = this._getDataService.getOpeningScheduleURL();
-  	this._http.get(this.openingURL).subscribe(data =>{
-  		this.openingSchedule = data;
-  	});
 
   		// Slide images
     this.carouselBanner = this._getImageService.carouselBanner;
@@ -62,33 +71,15 @@ export class ExamPointComponent implements OnInit {
     });
 
     // dowload data
-    
-
-
-    
-     // $(document).ready(function(){
-       //   $('#dowload').click(function(e){
-       //     this.url = 'http://10.1.0.66:1337/jobs' ;
-       //     $.get(this.url, function(data, status, jqXHR){
-       //       console.log(data);
-       //       var txt ='';
-       //       $(data).find().each(function(i, val){
-       //         console.log($(val).text());
-       //         txt += $(this).text();
-       //       });
-       //     });
-        
-       //     });
-       //   });
       
-    $(document).ready(function(){
-      const Url = 'http://10.1.0.66:1337/jobs';
-      $('#dowload').click(function(){
-        $.get(Url, function(data, status){
-          console.log(data);
-        });
-      });
-    }); 
+    // $(document).ready(function(){
+    //   this.Url = 'http://10.1.0.66:1337/jobs' + this.image.url;
+    //   $('#dowload').click(function(){
+    //     $.get(this.Url, function(data, status){
+    //       console.log(data);
+    //     });
+    //   });
+    // }); 
   }
 
 }

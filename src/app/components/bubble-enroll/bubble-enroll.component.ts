@@ -39,7 +39,6 @@ export class BubbleEnrollComponent implements OnInit {
     this.lang = data.lang;
   });
 
-    // Post data register page
   	$(function($){
   		var validation_holder;
   		$("form#register_form button[name='submit']").click(function(){
@@ -49,6 +48,7 @@ export class BubbleEnrollComponent implements OnInit {
   			var phone = $("#phone").val();
   			var course = $("#course").val();
   			var notes = $("#notes").val();
+        var status = 'Chưa liên hê';
   			if(validation_holder == 1) {
           // if have a field is blank, return false	
 			    return;
@@ -56,9 +56,10 @@ export class BubbleEnrollComponent implements OnInit {
   				$.post('http://10.1.0.66:1337/registers', {
   					Fullname: name,
   					Email: email,
-  					Phone: phone,
+  					Phonee: phone,
   					Course: course,
-  					Notes: notes
+  					Notes: notes,
+            Status: status
   			  }, function(data) {
   				alert("Bạn đã đăng ký thành công..!.");
   				  window.location.reload();
@@ -74,10 +75,14 @@ export class BubbleEnrollComponent implements OnInit {
     let name = $('#name').val($('#name').val().trim());
     return name;
   }
+  onNoteBlur(){
+    let note = $('#notes').val($('#notes').val().trim());
+    return note;
+  }
   
   // Valid form with Regex
   createForm(){
-    this.frmUser = this._formBuilder.group({
+    this.frmUser = this._formBuilder.group ({
   		fullname: ['',[
   			Validators.required, 
         Validators.pattern('^[A-Za-zÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚÝàáâãèéêìíòóôõùúýĂăĐđĨĩŨũƠơƯưẠ-ỹ ]+$')
@@ -88,7 +93,7 @@ export class BubbleEnrollComponent implements OnInit {
   		]],
   		phone: ['',[
   			Validators.required,
-  			Validators.pattern('(0)+([0-9]{9})'),
+  			Validators.pattern('(09|08}07|06|05|04|03|02)+([0-9]{8})'),
       ]],
   		course: ['' ,Validators.required],
   		notes: ['',]

@@ -1,12 +1,15 @@
 import { Component, OnInit} from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormControl } from '@angular/forms';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { RequestOptions, Request, RequestMethod, Headers } from '@angular/http';
 import { GetDataService } from './../../services/get-data/get-data.service';
 import * as ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 import * as $ from 'jquery';
+import axios from 'axios';
 import { News } from './news-frame.class';
 import { Introduces } from './introduces-frame.class';
-
+import { academics } from './academics-frame.class';
 @Component({
     selector: 'app-supporter-page',
     templateUrl: './supporter-page.component.html',
@@ -20,6 +23,9 @@ export class SupporterPageComponent implements OnInit {
     public isDisabled = false;
     public config = { };
 
+    // Form 
+    public frmSuporter: FormGroup;
+
     headerData: any;
     headerSubCategories: any;
     categoriesDropdown: any;
@@ -30,6 +36,10 @@ export class SupporterPageComponent implements OnInit {
     categoriesSlug: any;
     newsURL: string;
     introduceURL: string;
+    academicsURL: string;
+    academics:any;
+    openingSchedule: any;
+    openingURL: string;
 
     // Two way data binding of CKEditor
     public model = {
@@ -39,7 +49,8 @@ export class SupporterPageComponent implements OnInit {
 
     constructor(
         private http: HttpClient,
-        private _getDataService: GetDataService
+        private _getDataService: GetDataService,
+        private _formBuilder : FormBuilder
     ) { }
 
     // Detect value of "categories" dropdown when change its value
@@ -48,6 +59,8 @@ export class SupporterPageComponent implements OnInit {
     ngOnInit() {
         this.newsURL = this._getDataService.getNewsURL();
         this.introduceURL = this._getDataService.getIntroducesURL();
+        this.academicsURL = this._getDataService.getAcademicsURL();
+        this.openingURL = this._getDataService.getOpeningScheduleURL();
         
         this.http.get(this._getDataService.getHeaderURL())
         .subscribe(data => {
@@ -67,7 +80,24 @@ export class SupporterPageComponent implements OnInit {
                 }
             });
         });
+
+      this.createForm();
     }
+    // Valid form with Regex
+  createForm(){
+    this.frmSuporter = this._formBuilder.group ({
+          title: ['',[ 
+              Validators.pattern('^[A-Za-z0-9.,?"":;-ÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚÝàáâãèéêìíòóôõùúýĂăĐđĨĩŨũƠơƯưẠ-ỹ ]+$')
+          ]],
+          title1:['',[ 
+              Validators.pattern('^[A-Za-z0-9.,?"":;-ÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚÝàáâãèéêìíòóôõùúýĂăĐđĨĩŨũƠơƯưẠ-ỹ ]+$')
+          ]],
+          title2:['',[ 
+              Validators.pattern('^[A-Za-z0-9.,?"":;-ÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚÝàáâãèéêìíòóôõùúýĂăĐđĨĩŨũƠơƯưẠ-ỹ ]+$')
+          ]]
+      });
+
+  }
 
     // Handle when have any change in CKEditor contents
     onChange(evt) { }
@@ -95,6 +125,13 @@ export class SupporterPageComponent implements OnInit {
             japanese_contents: this.model.editorDataJp,
             status: "Pending"
         };
+         // An academics article will have all below props, if want to add new props, please add it to 'introduces-frame.class'
+         var academics: academics = {
+            Name: $('#vi-title').val(),
+            Link: $('slug').val(),
+            Contents: this.model.editorDataVi,
+            Status: "Pending"
+        }
 
         // Set Content-Type for POST Request
         var headers = new HttpHeaders().set('Content-Type','application/json');
@@ -116,9 +153,23 @@ export class SupporterPageComponent implements OnInit {
                     }, 3000);
                 });
                 console.log(JSON.stringify(introduce));
-            } 
+                } 
+                    if (this.categoriesDropdown === "Học vụ") {
+                    this.http.post(this.academicsURL, JSON.stringify(academics), {headers:headers}).subscribe(data => {
+                        $('.message-popup').css('display','block');
+                        setTimeout(function() {
+                            $('.message-popup').hide();
+                        }, 3000);
+                    });
+                    console.log(JSON.stringify(introduce));
+                    } 
         } else {
             alert('Vui lòng chọn Danh mục');
         }
+    }
+    
+
+    onSubmitForm(){
+        console.log(this.frmSuporter.value);
     }
 }

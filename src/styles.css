@@ -243,8 +243,8 @@ pagination-controls {
 }
 
 .card-body {
-    flex: 1 1 auto;
-    padding: 1rem !important;
+   /* flex: 1 1 auto;*/
+   /* padding: 1rem !important;*/
 }
 
 /* event */
@@ -387,5 +387,4 @@ thead {
     color: #fff;
     background-color: rgb(188, 0, 45);
     border-color: rgb(188, 0, 45);
-    float: right;
 }
