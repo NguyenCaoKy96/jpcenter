@@ -13,6 +13,9 @@ import { GetImagesService } from './../../../services/get-image-slider/get-image
 
 // Carousel
 import { NgxCarousel, NgxCarouselStore  } from 'ngx-carousel';
+import { default as LANG_VI } from '../../../../lang/lang_vi';
+import { default as LANG_JP } from '../../../../lang/lang_jp';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-jlpt',
@@ -25,8 +28,7 @@ import { NgxCarousel, NgxCarouselStore  } from 'ngx-carousel';
 })
 export class JlptComponent implements OnInit {
 
-  public carouselBanner: NgxCarousel;
-
+  public carouselBanner: NgxCarousel; 
   imageURLs: any;
   homeImages: any[] = [];
   homeImagesURL: { [key: number]: string } = [];
@@ -39,6 +41,7 @@ export class JlptComponent implements OnInit {
   direction = 'left';
   directionToggle = true;
   autoplay = true;
+  public LANGUAGE: any = LANG_VI;
   jlptURL;
   jlptData;
   courseURL;
@@ -51,27 +54,19 @@ export class JlptComponent implements OnInit {
     private titleService: Title,
     private http: HttpClient,
     private _getDataService: GetDataService,
-    private _getImageService: GetImagesService
+    private _getImageService: GetImagesService,
+    private _route: ActivatedRoute,
   ) {
-    //Get courses data
-    this.courseURL = this._getDataService.getHeaderURL();
-    this.http.get(this.courseURL).subscribe(data => {
-      this.course = data;
-        for(var i = 0; i < this.course.length; i++){
-        if(this.course[i].Name === "Khóa học"){
-          this.courseData = this.course[i].Name;
-          this.courseDataItem = this.course[i].categories;    
-        }
-      }
-    }); 
+
      // Get jlpt data
-     this.jlptURL = this._getDataService.getjlptURL();
+     this.jlptURL = this._getDataService.getCourseURL();
      this.http.get(this.jlptURL).subscribe(data => {
        this.jlptData = data;
+     
      });
    }
    onchangeCourse(id, evt?){
-    let jlptItemDataURL = this._getDataService.getjlptItemURL(id);
+    let jlptItemDataURL = this._getDataService.getCourseItemURL(id);
     this.http.get(jlptItemDataURL).subscribe(data => {
       this.jlptItemData = data;
       console.log(this.jlptItemData)     
@@ -83,13 +78,22 @@ export class JlptComponent implements OnInit {
     $('#left-item').hide();
   }
   ngOnInit() {
+     // Change language
+     this._route.queryParams.subscribe(data => {
+      if (data.lang === 'vi') {
+        this.LANGUAGE = LANG_VI;
+      } else {
+        this.LANGUAGE = LANG_JP;
+      }
+    });
+
     this.titleService.setTitle('Khóa học');
 
     this.carouselBanner = this._getImageService.carouselBanner;
 
     this.imageURLs = this._getDataService.getImagesURL();
     this.serverURL = this._getDataService.serverURL;
-    this.data = this._getImageService.getFromServer();
+    this.data = this._getImageService.getImageFromServer();
     this.data.then(res => {
       this.homeImages = res;
       for (var i = 0; i < this.homeImages.length; i++) {
@@ -101,8 +105,6 @@ export class JlptComponent implements OnInit {
       }
     });
   }
-
-  afterCarouselViewedFn(data) { };
 
   onmoveFn(data: NgxCarouselStore) { };
 

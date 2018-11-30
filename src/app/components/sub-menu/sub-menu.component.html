@@ -14,39 +14,39 @@
                     <div class="card-wrap">
                         <div class="block-title-wrap">
                             <img src="./assets/images/flower-icon-1.png" alt="flower icon">
-                            <h5 class="block-title">{{introductonItem}}</h5>
+                            <h5 class="block-title">{{LANGUAGE.INTRODUCTION_PAGE}}</h5>
                         </div>
                         <ul>
                             <li *ngFor="let introduction of introductionData">
                                 <a [routerLink]="[introduction.slug]" [queryParams]="{lang: lang ? 'vi' : 'jp'}">
                                     <i class="fa fa-angle-right" aria-hidden="true"></i>
-                                {{introduction.name}}
+                                    {{introduction.name}}
                                 </a>
                             </li>
-                        </ul>                        
+                        </ul>
                     </div>
                 </div>
                 <div class="col-md-6 col-lg-3">
                     <div class="card-wrap">
                         <div class="block-title-wrap">
                             <img src="./assets/images/flower-icon-1.png" alt="flower icon">
-                            <h5 class="block-title">{{ courseData }}</h5>
+                            <h5 class="block-title">{{LANGUAGE.COURSE}}</h5>
                         </div>
                         <ul>
                             <li *ngFor="let item of courseDataItem">
                                 <a [routerLink]="[item.slug]" [queryParams]="{lang: lang ? 'vi' : 'jp'}">
                                     <i class="fa fa-angle-right" aria-hidden="true"></i>
-                                {{item.name}}
+                                    {{item.name}}
                                 </a>
                             </li>
-                        </ul>                        
+                        </ul>
                     </div>
                 </div>
                 <div class="col-md-6 col-lg-3">
                     <div class="card-wrap">
                         <div class="block-title-wrap">
                             <img src="./assets/images/flower-icon-1.png" alt="flower icon">
-                                <h5 class="block-title">{{servicesItem}}</h5>
+                            <h5 class="block-title">{{LANGUAGE.SERVICE_AND_PARTNER}}</h5>
                         </div>
                         <ul>
                             <li *ngFor="let services of services">
@@ -62,13 +62,13 @@
                     <div class="card-wrap">
                         <div class="block-title-wrap">
                             <img src="./assets/images/flower-icon-1.png" alt="flower icon">
-                            <h5 class="block-title">{{jobsItem}}</h5>
+                            <h5 class="block-title">{{LANGUAGE.CAREER_OPPOTUNITY}}</h5>
                         </div>
                         <ul>
                             <li *ngFor="let jobs of jobs">
                                 <a [routerLink]="[jobs.slug]" [queryParams]="{lang: lang ? 'vi' : 'jp'}">
                                     <i class="fa fa-angle-right" aria-hidden="true"></i>
-                                {{jobs.name}}
+                                    {{jobs.name}}
                                 </a>
                             </li>
                         </ul>
@@ -88,10 +88,10 @@
                             <li *ngFor="let introduction of introductionData">
                                 <a [routerLink]="[introduction.slug]" [queryParams]="{lang: lang ? 'vi' : 'jp'}">
                                     <i class="fa fa-angle-right" aria-hidden="true"></i>
-                                {{introduction.japanese_name}}
+                                    {{introduction.japanese_name}}
                                 </a>
                             </li>
-                        </ul>                        
+                        </ul>
                     </div>
                 </div>
                 <div class="col-md-6 col-lg-3">
@@ -104,17 +104,17 @@
                             <li *ngFor="let introduction of introductionData">
                                 <a [routerLink]="[introduction.slug]" [queryParams]="{lang: lang ? 'vi' : 'jp'}">
                                     <i class="fa fa-angle-right" aria-hidden="true"></i>
-                                {{introduction.japanese_name}}
+                                    {{introduction.japanese_name}}
                                 </a>
                             </li>
-                        </ul>                        
+                        </ul>
                     </div>
                 </div>
                 <div class="col-md-6 col-lg-3">
                     <div class="card-wrap">
                         <div class="block-title-wrap">
                             <img src="./assets/images/flower-icon-1.png" alt="flower icon">
-                                <h5 class="block-title">{{jbservices}}</h5>
+                            <h5 class="block-title">{{jbservices}}</h5>
                         </div>
                         <ul>
                             <li *ngFor="let services of services">
@@ -136,7 +136,7 @@
                             <li *ngFor="let jobs of jobs">
                                 <a [routerLink]="[jobs.slug]" [queryParams]="{lang: lang ? 'vi' : 'jp'}">
                                     <i class="fa fa-angle-right" aria-hidden="true"></i>
-                                {{jobs.japanese_name}}
+                                    {{jobs.japanese_name}}
                                 </a>
                             </li>
                         </ul>
@@ -144,7 +144,7 @@
                 </div>
             </div>
         </div>
-    </div>   
+    </div>
 </body>
 
 </html>

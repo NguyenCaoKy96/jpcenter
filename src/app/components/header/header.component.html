@@ -9,21 +9,20 @@
         <a [routerLink]="['/trang-chu']" [queryParams]="{lang: lang ? 'vi' : 'jp'}">{{LANGUAGE.JAPAN_CENTER_NAME}}</a>
       </p>
     </div>
-    <div class="container" style="position: relative;" *ngFor='let info of footerData'>
+    <div class="container" style="position: relative;">
         <div class="main-hotline">
-            <img class="icon-hotline" src="./../assets/images/phone-icon.png" width="30px" height="30px" alt="">{{LANGUAGE.HOTLINE}}: <p class="name-hotline">{{ info.Hotline }}</p>
+            <img class="icon-hotline" src="./../assets/images/phone-icon.png" width="30px" height="30px" alt="">{{LANGUAGE.HOTLINE}}: <p class="name-hotline" *ngIf="footerData">{{footerData[0].Hotline}}</p>
         </div>
       <div class="main-email">
         <img class="icon-email" src="./../assets/images/email-icon.png" width="35px" height="35px" alt="">
       </div>
       <div class="main-email">
-         <img class="icon-email" src="./../assets/images/email-icon.png" width="35px" height="35px" alt="">
-          {{LANGUAGE.EMAIL}}:<p class="name-email"><a href="https://accounts.google.com">{{ info.Email }}</a></p>
+         <img class="icon-email" src="./../assets/images/email-icon.png" width="35px" height="35px" alt="">{{LANGUAGE.EMAIL}}:<p class="name-email"><a href="https://accounts.google.com" *ngIf="footerData">{{footerData[0].Email}}</a></p>
       </div>
     </div>
     <div class="logo">
       <div class="dropdown">
-        <img class="flag dropbtn"  src="./../assets/images/vietnam-flag.png" width="25px" height="25px" alt="logo-language">
+        <img class="current-language flag dropbtn"  src="./../assets/images/vietnam-flag.png" width="25px" height="25px" alt="logo-language">
         <div class="dropdown-content" id="menu-language">
           <a (click)="changeLanguage(true)"><img src="./../assets/images/vietnam-flag.png" class="language-icon" alt="Tiếng Việt">{{LANGUAGE.LANG_VI}}</a>
           <a (click)="changeLanguage(false)"><img src="./../assets/images/japan-flag.png" class="language-icon" alt="Tếng Nhật">{{LANGUAGE.LANG_JAPAN}}</a>

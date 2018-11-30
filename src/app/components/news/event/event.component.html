@@ -1,48 +1,48 @@
-<div class="events section-padding" >
-    <h3 class="text-center section-lg-title"  *ngIf="lang === 'vi'">TIN TỨC &amp; SỰ KIỆN</h3>
-    <h3 class="text-center section-lg-title"  *ngIf="lang === 'jp'">ニュース＆イベント</h3>
-    <div class="row">
-        <div class="col-md-4 card-wrap">
-            <a routerLink="/gioi-thieu" class="card">
-          <img class="card-img-top" [src]="[eventImage1]" alt="Card img cap">
-          <div class="card-body">
-            <h5 class="card-title" *ngIf="lang === 'vi'">{{nameEvent1}}</h5> 
-            <h5 class="card-title" *ngIf="lang === 'jp'">{{japannameEvent1}}</h5>           
-            <p class="card-text">{{ contenEvent1 }}
-              <span class="read-more" *ngIf="contenEvent1" [innerHTML]="contenEvent1 + '<strong>...Đọc tiếp</strong>'"></span>
-            </p>
-          </div>
-        </a>
+<div class="events section-padding">
+  <h3 class="text-center section-lg-title">{{LANGUAGE.NEWS_AND_EVENTS_UPPER_CASE}}</h3>
+  <div class="row">
+    <div class="col-md-4 card-wrap" >
+      <a routerLink="/gioi-thieu" class="card" >
+        <img class="card-img-top" [src]="[eventImage1]" alt="Card img cap">
+        <div class="card-body"  >
+          <h5 class="card-title" *ngIf="LANGUAGE === LANG_VI">{{nameEvent1}}</h5>
+          <h5 class="card-title" *ngIf="LANGUAGE === LANG_JP">{{japannameEvent1}}</h5>
+          <p class="card-text" *ngIf="contenEvent1">{{contenEvent1.Name}}
+            <span class="read-more" *ngIf="contenEvent1" [innerHTML]="contenEvent1 + LANGUAGE.CONTINUE_READING"></span>
+          }
+          }
+          </p>
         </div>
-        <div class="col-md-4 card-wrap">
-            <a class="card" routerLink="/gioi-thieu" >
-          <img class="card-img-top" [src]="[eventImage2]" alt="Card img cap">
-          <div class="card-body">
-            <h5 class="card-title" *ngIf="lang === 'vi'">{{nameEvent2}}</h5> 
-            <h5 class="card-title" *ngIf="lang === 'jp'">{{japannameEvent2}}</h5>
-            <p class="card-text">
-              <span class="read-more" *ngIf="contenEvent2" [innerHTML]="contenEvent2 + '<strong>...Đọc tiếp</strong>'"></span>
-            </p>
-          </div>
-        </a>
-        </div>
-        <div class="col-md-4 card-wrap">
-            <a class="card" routerLink="/gioi-thieu"  >
-           <img class="card-img-top" [src]="[eventImage3]" alt="Card img cap">
-          <div class="card-body">
-           <h5 class="card-title" *ngIf="lang === 'vi'">{{nameEvent3}}</h5> 
-            <h5 class="card-title" *ngIf="lang === 'jp'">{{japannameEvent3}}</h5>
-            <p class="card-text">
-              <span class="read-more" *ngIf="contenEvent3" [innerHTML]="contenEvent3 + '<strong>...Đọc tiếp</strong>'"></span>
-            </p>
-          </div>
-         </a>
-        </div>
+      </a>
     </div>
-    <div class="detail text-center">
-        <a class="btn btn-outline" routerLink="/tin-tuc-su-kien" *ngIf="lang === 'vi'">Xem tất cả</a>
-        <a class="btn btn-outline" routerLink="/tin-tuc-su-kien" *ngIf="lang === 'jp'">すべて見る</a>
+    <div class="col-md-4 card-wrap">
+      <a class="card" routerLink="/gioi-thieu">
+        <img class="card-img-top" [src]="[eventImage2]" alt="Card img cap">
+        <div class="card-body">
+          <h5 class="card-title" *ngIf="LANGUAGE === LANG_VI">{{nameEvent2}}</h5>
+          <h5 class="card-title" *ngIf="LANGUAGE === LANG_JP">{{japannameEvent2}}</h5>
+          <p class="card-text">
+            <span class="read-more" *ngIf="contenEvent2" [innerHTML]="contenEvent2 + LANGUAGE.CONTINUE_READING"></span>
+          </p>
+        </div>
+      </a>
     </div>
+    <div class="col-md-4 card-wrap">
+      <a class="card" routerLink="/gioi-thieu">
+        <img class="card-img-top" [src]="[eventImage3]" alt="Card img cap">
+        <div class="card-body">
+          <h5 class="card-title" *ngIf="LANGUAGE === LANG_VI">{{nameEvent3}}</h5>
+          <h5 class="card-title" *ngIf="LANGUAGE === LANG_JP">{{japannameEvent3}}</h5>
+          <p class="card-text">
+            <span class="read-more" *ngIf="contenEvent3" [innerHTML]="contenEvent3 + LANGUAGE.CONTINUE_READING"></span>
+          </p>
+        </div>
+      </a>
+    </div>
+  </div>
+  <div class="detail text-center">
+    <a class="btn btn-outline" routerLink="/tin-tuc-su-kien">{{LANGUAGE.VIEW_ALL}}</a>
+  </div>
 </div>
 <!-- <div class="events section-padding" *ngIf="lang === 'jp'">
     <h3 class="text-center section-lg-title">リンク - イベント</h3>

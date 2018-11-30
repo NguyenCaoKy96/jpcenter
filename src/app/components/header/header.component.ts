@@ -48,7 +48,7 @@ export class HeaderComponent implements OnInit {
     private _http: HttpClient,
     private _getDataService: GetDataService,
     private router: Router,
-    private activatedRoute: ActivatedRoute
+    private _activatedRoute: ActivatedRoute
   ) { }
   
   ngOnInit() {
@@ -56,7 +56,7 @@ export class HeaderComponent implements OnInit {
     this.headerURL = this._getDataService.getHeaderURL();
 
     // Footer URL
-    this.footerURL = this._getDataService.getFooterURL();
+    this.footerURL = this._getDataService.getContactURL();
 
     // Make Menu bar attach on browser upper edge
     $(document).ready(function () {
@@ -98,13 +98,10 @@ export class HeaderComponent implements OnInit {
       })
     });
 
-
     //Get Header data
     this._http.get(this.headerURL).subscribe(data => {
       this.data = data;
-      console.log(data);
     });  
-
 
      // Get Footer data
     this._http.get(this.footerURL).subscribe(data => {
@@ -174,7 +171,7 @@ export class HeaderComponent implements OnInit {
   changeURL(parentID: string, path?: string) {
     let parentPathName = $('#' + parentID)[0].pathname;
     if (path) {
-      this.router.navigate([parentPathName, path], {relativeTo: this.activatedRoute, queryParams: { lang: this.lang?'vi':'jp' }});
+      this.router.navigate([parentPathName, path], {relativeTo: this._activatedRoute, queryParams: { lang: this.lang?'vi':'jp' }});
     }
   }
 
@@ -183,8 +180,10 @@ export class HeaderComponent implements OnInit {
     this.lang = language;
     if (this.lang) {
       this.LANGUAGE = LANG_VI;
+      $('.current-language').attr('src', './../assets/images/vietnam-flag.png');
     } else {
       this.LANGUAGE = LANG_JP;
+      $('.current-language').attr('src', './../assets/images/japan-flag.png');
     }
     this.language.emit(language)
     const urlTree = this.router.parseUrl(this.router.url);

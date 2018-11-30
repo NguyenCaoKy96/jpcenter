@@ -1,78 +1,69 @@
 <div class="row search-bar">
     <div class="col-12 col-md-auto search-item">
-        <span
-            class="badge badge-danger"
-            placement="top"
-            ngbTooltip="Chọn Danh mục mà bài viết sẽ được lưu trữ"
-        >Danh mục</span><span class="required">(*)</span>
-        <select class="form-control dropdown" id="categories" [(ngModel)]="categories">
-            <option *ngFor="let item of headerData" [value]="item.Name"> {{item.Name}} </option>
+        <span class="badge badge-danger" placement="top" ngbTooltip="{{LANGUAGE.TIP_CATEGORIES}}">{{LANGUAGE.CATEGORY}}</span><span
+            class="required">(*)</span>
+        <select class="form-control dropdown" id="categories">
+            <option value="{{LANGUAGE.NEWS_AND_EVENTS}}" selected="selected">{{LANGUAGE.NEWS_AND_EVENTS}}</option>
+            <option value="{{LANGUAGE.INTRODUCTION_PAGE}}">{{LANGUAGE.INTRODUCTION_PAGE}}</option>
+            <option value="{{LANGUAGE.ACADEMIC}}">{{LANGUAGE.ACADEMIC}}</option>
+            <option value="{{LANGUAGE.COURSE}}">{{LANGUAGE.COURSE}}</option>
+            <option value="{{LANGUAGE.SERVICE_AND_PARTNER}}">{{LANGUAGE.SERVICE_AND_PARTNER}}</option>
         </select>
     </div>
-    <div class="col-12 col-md-auto search-item" id="b">
+    <!-- <div class="col-12 col-md-auto search-item" id="b">
         <span class="badge badge-danger">Mục</span>
         <select class="form-control dropdown" id="sub-categories" [(ngModel)]="subCategories">
             <option *ngFor="let item of subCategoriesDropDown" [value]="item.name"> {{ item.name }} </option>
         </select>
-    </div>
+    </div> -->
 </div>
 <br>
 <form [formGroup]="frmSuporter" autocomplete="false" novalidate="true" (ngSubmit)="onSubmitForm()">
     <div class="title">
-        <span
-        class="badge badge-danger"
-        placement="top"
-        ngbTooltip="Tiêu đề bài viết"
-    >Tiêu đề Tiếng Việt</span><span class="required">(*)</span>
-        <input type="text" placeholder="Tiêu đề" name="txtTitle" formControlName="title" class="form-control title" id="vi-title" maxlength="255">
-        <span class="lable lable-danger" *ngIf="frmSuporter.controls.title.dirty && frmSuporter.controls.title.errors?.pattern"> Nhập đúng kí tự.</span>
+        <span class="badge badge-danger" placement="top" ngbTooltip="{{LANGUAGE.JAPANESE_TITLE}}">{{LANGUAGE.VIETNAMESE_TITLE}}</span><span
+            class="required">(*)</span>
+        <input type="text" placeholder="{{LANGUAGE.TITLE}}" name="txtTitle" formControlName="title" class="form-control title"
+            id="vi-title" maxlength="255">
+        <span class="lable lable-danger" *ngIf="frmSuporter.controls.title.touched && frmSuporter.controls.title.errors?.required">{{LANGUAGE.MESSAGE_EMPTY_CONTENT}}</span>
+        <span class="lable lable-danger" *ngIf="frmSuporter.controls.title.dirty && frmSuporter.controls.title.errors?.pattern">{{LANGUAGE.MESSAGE_INVALID_CHARACTERS}}</span>
     </div>
     <div class="title">
-        <span
-            class="badge badge-danger"
-            placement="top"
-            ngbTooltip="Tiêu đề bài viết"
-        >Tiêu đề Tiếng Nhật</span><span class="required">(*)</span>
-        <input type="text" placeholder="Tiêu đề" formControlName="title1" class="form-control title" id="jp-title" maxlength="255" >
-        <span class="lable lable-danger" *ngIf="frmSuporter.controls.title1.dirty && frmSuporter.controls.title1.errors?.pattern"> Nhập đúng kí tự.</span>
+        <span class="badge badge-danger" placement="top" ngbTooltip="{{LANGUAGE.JAPANESE_TITLE}}">{{LANGUAGE.JAPANESE_TITLE}}</span><span
+            class="required">(*)</span>
+        <input type="text" placeholder="{{LANGUAGE.TITLE}}" formControlName="title1" class="form-control title" id="jp-title"
+            maxlength="255">
+        <span class="lable lable-danger" *ngIf="frmSuporter.controls.title1.touched && frmSuporter.controls.title1.errors?.required">{{LANGUAGE.MESSAGE_EMPTY_CONTENT}}</span>
+        <span class="lable lable-danger" *ngIf="frmSuporter.controls.title1.dirty && frmSuporter.controls.title1.errors?.pattern">{{LANGUAGE.MESSAGE_INVALID_CHARACTERS}}</span>
     </div>
     <div class="slug">
-        <span
-            class="badge badge-danger"
-            placement="top"
-            ngbTooltip="Đường dẫn đến bài viết"
-        >Đường dẫn</span><span class="required">(*)</span>
-        <input type="text" placeholder="Đường dẫn đến bài viết" formControlName="title2" class="form-control slug" id="news-link" maxlength="255">
-        <span class="lable lable-danger" *ngIf="frmSuporter.controls.title2.dirty && frmSuporter.controls.title2.errors?.pattern"> Nhập đúng kí tự.</span>
+        <span class="badge badge-danger" placement="top" ngbTooltip="{{LANGUAGE.TIP_CONTENT_URL}}">{{LANGUAGE.CONTENT_URL}}</span><span
+            class="required">(*)</span>
+        <input type="text" placeholder="{{LANGUAGE.CONTENT_URL}}" formControlName="title2" class="form-control slug" id="content-link"
+            maxlength="255">
+        <span class="lable lable-danger" *ngIf="frmSuporter.controls.title2.touched && frmSuporter.controls.title2.errors?.required">{{LANGUAGE.MESSAGE_EMPTY_CONTENT}}</span>
+        <span class="lable lable-danger" *ngIf="frmSuporter.controls.title2.dirty && frmSuporter.controls.title2.errors?.pattern">{{LANGUAGE.MESSAGE_INVALID_CHARACTERS}}</span>
     </div>
-</form>
 <div class="content">
-    <span
-        class="badge badge-danger"
-        placement="top"
-        ngbTooltip="Nội dung bài viết trong Tiếng Việt"
-    >Nội dung Tiếng Việt</span>
+    <span class="badge badge-danger" placement="top" ngbTooltip="{{LANGUAGE.TIP_CONTENT_IN_VIETNAMESE}}">{{LANGUAGE.VIETNAMESE_CONTENT}}</span>
     <span class="required">(*)</span>
-    <ckeditor id="ckeditor-vn" [editor]="Editor" [disabled]="isDisabled" (change)="onChange($event)" [(ngModel)]="model.editorDataVi" [config]="config">
+    <ckeditor id="ckeditor-vn" [editor]="Editor" [disabled]="isDisabled" (change)="onChange($event)" [(ngModel)]="model.editorDataVi"
+        [config]="config" formControlName="viContent">
     </ckeditor>
+    <span class="lable lable-danger" *ngIf="frmSuporter.controls.viContent.touched && frmSuporter.controls.viContent.errors?.required">{{LANGUAGE.MESSAGE_EMPTY_CONTENT}}</span>
 </div>
 <div class="content">
-    <span
-            class="badge badge-danger"
-            placement="top"
-            ngbTooltip="Nội dung bài viết trong Tiếng Nhật"
-        >Nội dung Tiếng Nhật</span>
+    <span class="badge badge-danger" placement="top" ngbTooltip="{{LANGUAGE.TIP_CONTENT_IN_JAPANESE}}">{{LANGUAGE.JAPANESE_CONTENT}}</span>
     <span class="required">(*)</span>
-    <ckeditor id="ckeditor-jp" [editor]="Editor" [disabled]="isDisabled" (change)="onChange($event)" [(ngModel)]="model.editorDataJp" [config]="config">
+    <ckeditor id="ckeditor-jp" [editor]="Editor" [disabled]="isDisabled" (change)="onChange($event)" [(ngModel)]="model.editorDataJp"
+        [config]="config" formControlName="jpContent">
     </ckeditor>
+    <span class="lable lable-danger" *ngIf="frmSuporter.controls.jpContent.touched && frmSuporter.controls.jpContent.errors?.required">{{LANGUAGE.MESSAGE_EMPTY_CONTENT}}</span>
 </div>
 <div class="slug">
-    <span
-            class="badge badge-danger"
-            placement="top"
-            ngbTooltip="Để upload link"
-        >Upload Link</span><span class="required">(*)</span>
-    <input type="text" placeholder="" class="form-control slug" id="news-link">
+    <span class="badge badge-danger" placement="top" ngbTooltip="{{LANGUAGE.TIP_URL_TO_FILE}}">{{LANGUAGE.LINK_UPLOAD}}</span>
+    <input type="text" placeholder="{{LANGUAGE.LINK_FILE_EXAMPLE}}" class="form-control slug" formControlName="fileLink" id="file-link">
 </div>
-<button type="submit" class="btn btn-outline-danger" id="submit-article" (click)="submitArticle()">Gửi bài viết</button>
-<button class="btn btn-success message-popup">Đã gửi bài thành công, chờ Quản trị viên phê duyệt!</button>
+<button type="submit" class="btn btn-outline-danger" id="submit-article">{{LANGUAGE.SUBMIT_ARTICLE}}</button>
+<button class="btn btn-success message-popup message-success">{{LANGUAGE.MESSAGE_SUCCESS_SUBMIT}}</button>
+<button class="btn btn-danger message-popup message-fail">{{LANGUAGE.MESSAGE_FAIL_SUBMIT}}</button>
+</form>

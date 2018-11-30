@@ -26,9 +26,9 @@ a:-webkit-any-link {
     padding-left: 2em;
 }
 .thumnail, .short-content {
-    height: 100px;
-    min-height: 400px;
     max-height: 400px;
+    height: 300px;
+    max-width: 600px;
 }
 .article-title {
     font-weight: bold;
@@ -38,4 +38,7 @@ a:-webkit-any-link {
 }
 strong {
     color: rgb(188, 0, 45);
+}
+.thumnail > img {
+    width: 10% !important;
 }

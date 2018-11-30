@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {Title} from '@angular/platform-browser';
+import { Title } from '@angular/platform-browser';
 import { HttpClient } from '@angular/common/http';
 import { GetDataService } from './../../services/get-data/get-data.service';
 import { GetImagesService } from './../../services/get-image-slider/get-images.service';
@@ -16,7 +16,7 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./enroll-list-page.component.css']
 })
 export class EnrollListPageComponent implements OnInit {
-  private enrollListURL: string ;
+  private enrollListURL: string;
   public enrollListData;
   public contactedStudentList: any;
   public LANGUAGE: any;
@@ -31,16 +31,16 @@ export class EnrollListPageComponent implements OnInit {
   ) {
     this.enrollListURL = this._getDataService.getEnrollListURL();
     // search 
-    // $(document).ready(function(){
-    //   $("#myInput").on("keyup", function() {
-    //     var value = $(this).val().toLowerCase();
-    //     $("#myTable tr").filter(function() {
-    //       $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
-    //     });
-    //   });
-    // });
+    $(document).ready(function(){
+      $("#myInput").on("keyup", function() {
+        var value = $(this).val().toLowerCase();
+        $("#myTable tr").filter(function() {
+          $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+        });
+      });
+    });
   }
-  
+
   ngOnInit() {
     // Change language
     this._route.queryParams.subscribe(data => {
@@ -50,7 +50,7 @@ export class EnrollListPageComponent implements OnInit {
         this.LANGUAGE = LANG_VI;
       }
     });
-    this._titleService.setTitle(this.LANGUAGE.ENROLL_LIST);   
+    this._titleService.setTitle(this.LANGUAGE.ENROLL_LIST);
   }
 
   contactedList() {
@@ -58,6 +58,7 @@ export class EnrollListPageComponent implements OnInit {
     this.http.get(this.enrollListURL).subscribe(data => {
       this.enrollListData = data;
       this.contactedStudentList = this.enrollListData.filter((data) => {
+        console.log(data);
         return data.Status === 'Đã liên hệ'
       })
     });
@@ -68,8 +69,10 @@ export class EnrollListPageComponent implements OnInit {
     this.http.get(this.enrollListURL).subscribe(data => {
       this.enrollListData = data;
       this.contactedStudentList = this.enrollListData.filter((data) => {
-        return data.Status === 'Chưa liên hệ'
+        return data.Status === 'Chưa liên hệ';
+        
       })
+      console.log(this.enrollListData)
     });
   }
 

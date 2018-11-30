@@ -36,7 +36,8 @@ export class AcademicComponent implements OnInit {
   homeImagesURL: { [key: number]: string } = [];
   serverURL: any;
   data: any;
-  AcademicsData;
+  AcademicsData ;
+  AcademicsItemData = [] ;
 
   academicsURL: string;
   academics:any;
@@ -52,19 +53,15 @@ export class AcademicComponent implements OnInit {
   	//Get data academic
   	this.academicsURL = this._getDataService.getAcademicsURL();
   	this._http.get(this.academicsURL).subscribe(data =>{
-      this.academics = data;
+      this.academics = data;     
       this.onChangeAcademicsData(this.academics[0].id);
   	}); 
   }
   onChangeAcademicsData(id, evt?) {
     let AcademicsItemURL = this._getDataService.getAcademicsItemURL(id);
     this.http.get(AcademicsItemURL).subscribe(data => {
-      this.AcademicsData = data;
+      this.AcademicsData = data;   
     });
-    $('.left-item').removeClass('active-link');
-    if (evt) {
-      $(evt.target).addClass('active-link');
-    }
   }
   ngOnInit() {
 
@@ -81,7 +78,7 @@ export class AcademicComponent implements OnInit {
     this.carouselBanner = this._getImageService.carouselBanner;
     this.imageURLs = this._getDataService.getImagesURL();
     this.serverURL = this._getDataService.serverURL;
-    this.data = this._getImageService.getFromServer();
+    this.data = this._getImageService.getImageFromServer();
     this.data.then(res => {
       this.homeImages = res;
       for (var i = 0; i < this.homeImages.length; i++) {

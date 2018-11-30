@@ -26,19 +26,18 @@
         <a class="nav-link" id="JCenter-tab" routerLink = "/gioi-thieu/nhan-su-trung-tam">Nhân sự trung tâm</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" id="JCenter-tab" routerLink = "/gioi-thieu/tai-sao-chon-qnu-japan-center">Tại sao chọn QNU Japan Center</a>
+        <a class="nav-link" id="JCenter-tab" routerLink = "/gioi-thieu/tai-sao-chon-qnu-japan-center" style="font-weight: bold">Tại sao chọn QNU Japan Center</a>
       </li>
     </ul>
   </div>
   <div class="col-md-8">
     <div class="tab-content">
       <div class="tab-pane active">
-        <h4 class="section-title">Tại sao chọn QNU Japan Center</h4>
-        <h5>Đang cập nhật ....</h5>
-      </div>
-      <div class="tab-pane" id="QNUniversity" role="tabpanel" aria-labelledby="QNUniversity-tab">
-        <h4 class="section-title"></h4>
-      </div>
+        <h4 class="section-title" *ngIf="introductionsData">
+        {{introductionsData.Name}}
+             </h4>
+        <div class="course-content pt-3" *ngIf="introductionsData" [innerHTML]="introductionsData.Content">
+          </div>
+        </div>
     </div>
-  </div>
 </div>

@@ -17,7 +17,9 @@ export class GetImagesService {
 
   public carouselBanner: NgxCarousel;
 
-  imageURLs: any;
+	imageURLs: any;
+	partnerURLs: any;
+	advertURLs: any;
   public homeImagesURL: { [key: number]: string } = [];
 	serverURL: any;
 
@@ -33,7 +35,9 @@ export class GetImagesService {
     private http: HttpClient,
 		private _getDataService: GetDataService,
   ) {
-	 	this.imageURLs = this._getDataService.getImagesURL();
+		 this.imageURLs = this._getDataService.getImagesURL();
+		 this.partnerURLs = this._getDataService.getPartnerURL();
+		 this.advertURLs = this._getDataService.getAdvertURL();
 	    this.serverURL = this._getDataService.serverURL;
 	    this.carouselBanner = {
 	      grid: {xs: 1, sm: 1, md: 1, lg: 1, all: 0},
@@ -88,9 +92,21 @@ export class GetImagesService {
 	    };
 	}
   
-  // Get data from Images fields
-  async getFromServer() {
+  // Get data from Images API
+  async getImageFromServer() {
       let data = await this.http.get(this.imageURLs).toPromise();
       return data;
-  }
+	}
+	
+	// Get data from Partner API
+  async getPartnerFromServer() {
+		let data = await this.http.get(this.partnerURLs).toPromise();
+		return data;
+	}
+
+	// Get data from Advert API
+	async getAdvertFromServer() {
+		let data = await this.http.get(this.advertURLs).toPromise();
+		return data;
+	}
 }

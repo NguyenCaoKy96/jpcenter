@@ -4,6 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { Http, Response, Headers } from "@angular/http";
 import { Observable, BehaviorSubject, of, throwError } from "rxjs";
 import { map, catchError } from "rxjs/operators";
+import { ActivatedRoute } from '@angular/router';
 
 // Service
 import { GetDataService } from './../../services/get-data/get-data.service';
@@ -12,6 +13,10 @@ import * as $ from 'jquery';
 
 // Carousel
 import { NgxCarousel, NgxCarouselStore  } from 'ngx-carousel';
+
+// Language
+import { default as LANG_VI } from '../../../lang/lang_vi';
+import { default as LANG_JP } from '../../../lang/lang_jp';
 
 @Component({
   selector: 'app-service-partner',
@@ -24,6 +29,7 @@ import { NgxCarousel, NgxCarouselStore  } from 'ngx-carousel';
 })
 
 export class ServicePartnerComponent implements OnInit {
+  public LANGUAGE : any = LANG_VI;
 	serviceType = 'one';
 	public page='one';
 
@@ -46,14 +52,15 @@ export class ServicePartnerComponent implements OnInit {
   servicesItemURL: string;
 
   constructor(
-  	private titleService: Title,
-    private http: HttpClient,
+  	private _titleService: Title,
+    private _http: HttpClient,
     private _getDataService: GetDataService,
-    private _getImageService: GetImagesService
+    private _getImageService: GetImagesService,
+    private _route: ActivatedRoute
   ) { 
     // get data services
     this.getServicesURL = this._getDataService.getServicesURL();
-    this.http.get(this.getServicesURL).subscribe(data => {
+    this._http.get(this.getServicesURL).subscribe(data => {
      this.services = data;
      console.log(this.services)
      this.onChangeServices(this.services[0].id);
@@ -61,12 +68,22 @@ export class ServicePartnerComponent implements OnInit {
   }
 
   ngOnInit() {
-  	this.titleService.setTitle('Dịch vụ & Đối tác');
+    // Change language
+    this._route.queryParams.subscribe(data => {
+      if (data.lang === 'vi') {
+        this.LANGUAGE = LANG_VI;
+      } else {
+        this.LANGUAGE = LANG_JP;
+      }
+    });
 
+    this._titleService.setTitle(this.LANGUAGE.SERVICE_AND_PARTNER);
+    
+    	// Slide images
     this.carouselBanner = this._getImageService.carouselBanner;
     this.imageURLs = this._getDataService.getImagesURL();
     this.serverURL = this._getDataService.serverURL;
-    this.data = this._getImageService.getFromServer();
+    this.data = this._getImageService.getImageFromServer();
     this.data.then(res => {
       this.homeImages = res;
       for (var i = 0; i < this.homeImages.length; i++) {
@@ -79,13 +96,11 @@ export class ServicePartnerComponent implements OnInit {
     });
   }
 
-  afterCarouselViewedFn(data) { };
-
   onmoveFn(data: NgxCarouselStore) { };
 
   onChangeServices(id, evt?){
     let servicesItemURL = this._getDataService.getServicesItemURL(id);
-    this.http.get(servicesItemURL).subscribe(data => {
+    this._http.get(servicesItemURL).subscribe(data => {
       this.servicesItem = data;
     });
     $('.left-item').removeClass('active-link');
@@ -93,5 +108,4 @@ export class ServicePartnerComponent implements OnInit {
       $(evt.target).addClass('active-link');
     }
   }
-  
 }

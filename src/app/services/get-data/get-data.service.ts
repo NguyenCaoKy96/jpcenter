@@ -4,11 +4,20 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class GetDataService {
-
-	public serverURL: string;
-
+	private URL: string;
+	private protocol: string;
+	private serverDomain: string;
+	private port: number;
 	constructor() {
-		this.serverURL = 'http://10.1.0.66:1337';
+		this.protocol = 'http';
+		this.serverDomain = '10.1.0.66';
+		this.port = 1336;
+	}
+
+	// Server URL
+	get serverURL() {
+		this.URL = this.protocol + '://' + this.serverDomain + ':' + this.port;
+		return this.URL;
 	}
 
 	// Header URL
@@ -18,8 +27,8 @@ export class GetDataService {
 	}
 
 	// Footer URL
-	getFooterURL(): string {
-		let footerURL = this.serverURL + '/footers';
+	getContactURL(): string {
+		let footerURL = this.serverURL + '/contacts';
 		return footerURL;
 	}
 
@@ -49,13 +58,13 @@ export class GetDataService {
 
 	// Contents URL
 	getIntroducesURL(): string {
-		let contentsURL = this.serverURL + '/introduces';
+		let contentsURL = this.serverURL + '/contents';
 		return contentsURL;
 	}
 
 	// Content item URL
 	getIntroducesItemURL(id): string {
-		let contentItemURL = this.serverURL + '/introduces/' + id;
+		let contentItemURL = this.serverURL + '/contents/' + id;
 		return contentItemURL;
 	}
 
@@ -64,6 +73,7 @@ export class GetDataService {
 		let eventsURL = this.serverURL + '/events';
 		return eventsURL;
 	}
+
 	// News URL
 	getNewsURL(): string {
 		let newsURL = this.serverURL + '/news';
@@ -71,7 +81,7 @@ export class GetDataService {
 	}
 	// News URL
 	getNewsItemURL(id): string {
-		let newsURL = this.serverURL + '/news' +id;
+		let newsURL = this.serverURL + '/news' + id;
 		return newsURL;
 	}
 
@@ -95,7 +105,7 @@ export class GetDataService {
 
 	// Images URL
 	getImagesURL(): string {
-		let imagesURL = this.serverURL + '/images';
+		let imagesURL = this.serverURL + '/sliders';
 		return imagesURL;
 	}
 
@@ -106,7 +116,7 @@ export class GetDataService {
 	}
 	//Categories
 	getCategoriesURL(): string {
-		let CategoriesURL = this.serverURL + '/Categories';
+		let CategoriesURL = this.serverURL + '/categories';
 		return CategoriesURL;
 	}
 	//Categorie item
@@ -148,20 +158,9 @@ export class GetDataService {
 		let skillURL = this.serverURL + '/skills';
 		return skillURL;
 	}
-	// children URL
-	getschildrenURL() : string {
-		let childrenURL = this.serverURL + '/childrens';
-		return childrenURL;
-	}
-
-	//Partners URL
-	getpartnerURL() : string {
-		let partnerURL = this.serverURL + '/partners';
-		return partnerURL;
-	}
 
 	getclassesItemURL(id) : string {
-		let classItem = this.serverURL + '/classes/' + id;
+		let classItem = this.serverURL + '/students/' + id;
 		return classItem;
 	}
 
@@ -170,12 +169,61 @@ export class GetDataService {
 		let enrollListURL = this.serverURL + '/registers';
 		return enrollListURL;
 	}
+
+	// Get academics
 	getAcademicsURL(): string {
 		let academicsURL = this.serverURL + '/academics';
 		return academicsURL;
 	}
+
+	// Get academics item
 	getAcademicsItemURL(id): string {
 		let academicsURL = this.serverURL + '/academics/' + id;
 		return academicsURL;
+	}
+
+	// Get personel information
+	getpersonnelURL(): string {
+		let personnelURL = this.serverURL + '/personnels';
+		return personnelURL;
+	}
+
+	// Get partner information
+	getPartnerURL(): string {
+		let partnersURL = this.serverURL + '/partners';
+		return partnersURL;
+	}
+
+	// Get partner information
+	getAdvertURL(): string {
+		let advertURL = this.serverURL + '/advertisements';
+		return advertURL;
+	}
+
+	// Get Content
+	getContentURL(): string {
+		let contentURL = this.serverURL + '/contents';
+		return contentURL;
+	}
+
+	// Get Course
+	getCourseURL(): string {
+		let CoursesURL = this.serverURL + '/courses';
+		return CoursesURL;
+	}
+	// Get Course
+	getCourseItemURL(id): string {
+		let CoursesItemURL = this.serverURL + '/courses/'+ id;
+		return CoursesItemURL;
+	}
+	// Get Skill Course
+	getSkillURL(): string {
+		let SkillURL = this.serverURL + '/categories/5bffd84ca929700548a09664';
+		return SkillURL;
+	}
+	// Get children Course
+	getschildrenURL(): string{
+		let childrenURL = this.serverURL + '/categories/5bffd84ca929700548a09664';
+		return childrenURL;
 	}
 }

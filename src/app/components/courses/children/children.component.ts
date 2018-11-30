@@ -13,6 +13,9 @@ import { GetImagesService } from './../../../services/get-image-slider/get-image
 
 // Carousel
 import { NgxCarousel, NgxCarouselStore  } from 'ngx-carousel';
+import { default as LANG_VI } from '../../../../lang/lang_vi';
+import { default as LANG_JP } from '../../../../lang/lang_jp';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-children',
@@ -32,6 +35,7 @@ export class ChildrenComponent implements OnInit {
   homeImagesURL: { [key: number]: string } = [];
   serverURL: any;
   data: any;
+  public LANGUAGE: any = LANG_VI;
 
   // Carousel config
   index = 0;
@@ -40,9 +44,9 @@ export class ChildrenComponent implements OnInit {
   directionToggle = true;
   autoplay = true;
   courseURL;
-  course;
-  courseData;
-  courseDataItem;
+  Contents;
+  childContent;
+  childDataItem;
   childrensURL: string;
   childrensData;
 
@@ -50,24 +54,17 @@ export class ChildrenComponent implements OnInit {
     private titleService: Title,
     private http: HttpClient,
     private _getDataService: GetDataService,
-    private _getImageService: GetImagesService
+    private _getImageService: GetImagesService,
+    private _route: ActivatedRoute,
   ) { 
-     //Get courses data
-     this.courseURL = this._getDataService.getHeaderURL();
-     this.http.get(this.courseURL).subscribe(data => {
-       this.course = data;
-         for(var i = 0; i < this.course.length; i++){
-           if(this.course[i].Name === "Khóa học"){
-             this.courseData = this.course[i].Name;
-             this.courseDataItem = this.course[i].categories;    
-         }
-        }
-     });  
+ 
      // Get jlpt data
      this.childrensURL = this._getDataService.getschildrenURL();
      this.http.get(this.childrensURL).subscribe(data => {
        this.childrensData = data;
-       console.log(this.childrensData)
+        this.childDataItem = this.childrensData.Name;
+        this.Contents = this.childrensData.contents;
+        this.childContent = this.Contents.Content 
      });
   }
 
@@ -78,7 +75,7 @@ export class ChildrenComponent implements OnInit {
 
     this.imageURLs = this._getDataService.getImagesURL();
     this.serverURL = this._getDataService.serverURL;
-    this.data = this._getImageService.getFromServer();
+    this.data = this._getImageService.getImageFromServer();
     this.data.then(res => {
       this.homeImages = res;
       for (var i = 0; i < this.homeImages.length; i++) {
@@ -90,9 +87,7 @@ export class ChildrenComponent implements OnInit {
       }
     });
   }
-
-  afterCarouselViewedFn(data) { };
-
+  
   onmoveFn(data: NgxCarouselStore) { };
 
 }

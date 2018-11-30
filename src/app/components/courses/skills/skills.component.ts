@@ -13,6 +13,10 @@ import { GetImagesService } from './../../../services/get-image-slider/get-image
 
 // Carousel
 import { NgxCarousel, NgxCarouselStore  } from 'ngx-carousel';
+import { default as LANG_VI } from '../../../../lang/lang_vi';
+import { default as LANG_JP } from '../../../../lang/lang_jp';
+import { ActivatedRoute } from '@angular/router';
+
 
 @Component({
   selector: 'app-skills',
@@ -32,6 +36,7 @@ export class SkillsComponent implements OnInit {
   homeImagesURL: { [key: number]: string } = [];
   serverURL: any;
   data: any;
+  public LANGUAGE: any = LANG_VI;
 
   // Carousel config
   index = 0;
@@ -39,10 +44,9 @@ export class SkillsComponent implements OnInit {
   direction = 'left';
   directionToggle = true;
   autoplay = true;
-  courseURL;
-  course;
-  courseData;
-  courseDataItem;
+  childContent;
+  Contents;
+  skillDataItem;
   skillsURL: string;
   skillsData;
 
@@ -50,34 +54,35 @@ export class SkillsComponent implements OnInit {
     private titleService: Title,
     private http: HttpClient,
     private _getDataService: GetDataService,
-    private _getImageService: GetImagesService
-  ) { 
-     //Get courses data
-     this.courseURL = this._getDataService.getHeaderURL();
-     this.http.get(this.courseURL).subscribe(data => {
-       this.course = data;
-         for(var i = 0; i < this.course.length; i++){
-           if(this.course[i].Name === "Khóa học"){
-             this.courseData = this.course[i].Name;
-             this.courseDataItem = this.course[i].categories;    
-         }
-        }
-     });  
+    private _getImageService: GetImagesService,
+    private _route: ActivatedRoute,
+  ) {     
      // Get jlpt data
-     this.skillsURL = this._getDataService.getskillsURL();
+     this.skillsURL = this._getDataService.getSkillURL();
      this.http.get(this.skillsURL).subscribe(data => {
-       this.skillsData = data;
+        this.skillsData = data;
+        this.skillDataItem = this.skillsData.Name;
+        this.Contents = this.skillsData.contents;
+        this.childContent = this.Contents.Content       
      });
   }
 
   ngOnInit() {
+     // Change language
+     this._route.queryParams.subscribe(data => {
+      if (data.lang === 'vi') {
+        this.LANGUAGE = LANG_VI;
+      } else {
+        this.LANGUAGE = LANG_JP;
+      }
+    });
     this.titleService.setTitle('Khóa học');
 
     this.carouselBanner = this._getImageService.carouselBanner;
 
     this.imageURLs = this._getDataService.getImagesURL();
     this.serverURL = this._getDataService.serverURL;
-    this.data = this._getImageService.getFromServer();
+    this.data = this._getImageService.getImageFromServer();
     this.data.then(res => {
       this.homeImages = res;
       for (var i = 0; i < this.homeImages.length; i++) {
@@ -89,8 +94,6 @@ export class SkillsComponent implements OnInit {
       }
     });
   }
-
-  afterCarouselViewedFn(data) { };
 
   onmoveFn(data: NgxCarouselStore) { };
 

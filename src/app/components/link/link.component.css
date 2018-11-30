@@ -1,27 +1,87 @@
 ngx-item {
     height: 100px;
-    /* background-size: 100% 100%; */
+    width: 100px !important;
+    margin: 0 3em;
 }
-/* .ngxcarousel > .ngxcarousel-inner > .ngxcarousel-items > .item {
-    width: 50%;
-} */
-@media only screen and (max-width: 768px) {
+
+ngx-item:hover {
+    cursor: pointer;
+}
+
+@media only screen and (max-width: 1024px) {
     ngx-item {
         height: 79px;
         width: 135px;
+        margin: 0 27px !important;
     }
 }
+
+@media only screen and (max-width: 768px) {
+    ngx-item {
+        height: 79px;     
+        margin: 0 64px !important;
+    }
+}
+
+@media only screen and (max-width: 414px) {
+    ngx-item {
+        height: 79px;
+        width: 135px;
+        margin: 0 46px !important;
+    }
+}
+
+@media only screen and (max-width: 411px) {
+    ngx-item {
+        height: 79px;
+        width: 135px;
+        margin: 0 45px !important;
+    }
+}
+@media only screen and (max-width: 382px) {
+    ngx-item {
+        height: 79px;
+        width: 70px !important;
+        margin: 0 50px !important;
+    }
+}
+
+@media only screen and (max-width: 375px) {
+    ngx-item {
+        height: 79px;
+        width: 135px;
+        margin: 0 50px !important;
+    }
+}
+@media only screen and (max-width: 360px) {
+    ngx-item {
+        height: 79px;
+        width: 135px;
+        margin: 0 48px !important;
+    }
+}
+@media only screen and (max-width: 320px) {
+    ngx-item {
+        height: 79px;
+        width: 135px;
+        margin: 0 38px !important;
+    }
+}
+
 @media (max-width: 767px) {
     .ngxcarousel > .ngxcarousel-inner > .ngxcarousel-items > .item {
         width: 50%;
     }
 }
+
 .custom-container ngx-carousel button[NgxCarouselPrev] {
     visibility: hidden;
   }
+
 .custom-container ngx-carousel button[NgxCarouselNext] {
     visibility: hidden;
   }
+
 .custom-container h3 {
     margin-bottom: -20px;
     color: rgb(189, 12, 12);

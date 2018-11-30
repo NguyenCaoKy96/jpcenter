@@ -99,7 +99,7 @@ export class CoursesComponent implements OnInit {
 
     this.imageURLs = this._getDataService.getImagesURL();
     this.serverURL = this._getDataService.serverURL;
-    this.data = this._getImageService.getFromServer();
+    this.data = this._getImageService.getImageFromServer();
     this.data.then(res => {
       this.homeImages = res;
       for (var i = 0; i < this.homeImages.length; i++) {
@@ -111,8 +111,6 @@ export class CoursesComponent implements OnInit {
       }
     });
   }
-
-  afterCarouselViewedFn(data) { };
 
   onmoveFn(data: NgxCarouselStore) { };
 

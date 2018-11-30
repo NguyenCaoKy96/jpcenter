@@ -11,6 +11,11 @@ import { GetImagesService } from './../../../services/get-image-slider/get-image
 
 // Carousel
 import { NgxCarousel, NgxCarouselStore  } from 'ngx-carousel';
+import { ActivatedRoute } from '@angular/router';
+
+// Language
+import { default as LANG_VI } from '../../../../lang/lang_vi';
+import { default as LANG_JP } from '../../../../lang/lang_jp';
 
 @Component({
   selector: 'app-study',
@@ -23,10 +28,14 @@ import { NgxCarousel, NgxCarouselStore  } from 'ngx-carousel';
 })
 export class StudyComponent implements OnInit {
 
+  public LANGUAGE : any = LANG_VI;
   carouselBanner: any;
   imageURLs: any;
   homeImages: any[] = [];
   homeImagesURL: { [key: number]: string } = [];
+  contentURL: string;
+  contentsData: any;
+  study: any;
   serverURL: any;
   data: any;
 
@@ -38,33 +47,50 @@ export class StudyComponent implements OnInit {
   autoplay = true;
 
   constructor(
-    private titleService: Title,
+    private _titleService: Title,
     private http: HttpClient,
     private _getDataService: GetDataService,
-    private _getImageService: GetImagesService
-  ) { }
+    private _getImageService: GetImagesService,
+    private _route: ActivatedRoute
+  ) {
+    // get data service-partner
+    this.contentURL = this._getDataService.getContentURL();
+    this.http.get(this.contentURL).subscribe(data => {
+     this.contentsData = data;
+     this.study = this.contentsData[7];
+     console.log('du hoc',this.study)
+     //this.onChangeContent(this.contentsData[7].id);
+   });
+   }
 
   ngOnInit() {
-    this.titleService.setTitle('Dịch vụ & Đối tác');
+     // Change language
+   this._route.queryParams.subscribe(data => {
+    if (data.lang === 'vi') {
+      this.LANGUAGE = LANG_VI;
+    } else {
+      this.LANGUAGE = LANG_JP;
+    }
+  });
 
-    this.carouselBanner = this._getImageService.carouselBanner;
-    this.imageURLs = this._getDataService.getImagesURL();
-    this.serverURL = this._getDataService.serverURL;
-    this.data = this._getImageService.getFromServer();
-    this.data.then(res => {
-      this.homeImages = res;
-      for (var i = 0; i < this.homeImages.length; i++) {
-        if (this.homeImages[i].name === "Dịch vụ - Đối tác") {
-          for (var k = 0; k < this.homeImages[i].Images.length; k++) {
-            this.homeImagesURL[k] = this.serverURL + this.homeImages[i].Images[k].url;
-          }
+  this._titleService.setTitle(this.LANGUAGE.SERVICE_AND_PARTNER);
+
+  this.carouselBanner = this._getImageService.carouselBanner;
+  this.imageURLs = this._getDataService.getImagesURL();
+  this.serverURL = this._getDataService.serverURL;
+  this.data = this._getImageService.getImageFromServer();
+  this.data.then(res => {
+    this.homeImages = res;
+    for (var i = 0; i < this.homeImages.length; i++) {
+      if (this.homeImages[i].Name === "Dịch vụ và Đối tác") {
+        for (var k = 0; k < this.homeImages[i].Image.length; k++) {
+          this.homeImagesURL[k] = this.serverURL + this.homeImages[i].Image[k].url;
         }
       }
-    });
+    }
+  });
   }
-
-  afterCarouselViewedFn(data) { };
-
+  
   onmoveFn(data: NgxCarouselStore) { };
 
 }

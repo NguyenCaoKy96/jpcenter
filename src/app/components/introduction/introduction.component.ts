@@ -30,7 +30,6 @@ import * as $ from 'jquery';
 })
 
 export class IntroductionComponent implements OnInit {
-
   TrungtamNhatBan = 'one';
   public page = 'one';
 
@@ -63,7 +62,7 @@ export class IntroductionComponent implements OnInit {
     private _getImageService: GetImagesService,
     private router:Router, 
     private route: ActivatedRoute
-  ) {
+  ) {    
     // get data introduction
      this.introductionURL = this._getDataService.getIntroducesURL();
      this.http.get(this.introductionURL).subscribe(data => {
@@ -89,7 +88,7 @@ export class IntroductionComponent implements OnInit {
 
     this.imageURLs = this._getDataService.getImagesURL();
     this.serverURL = this._getDataService.serverURL;
-    this.data = this._getImageService.getFromServer();
+    this.data = this._getImageService.getImageFromServer();
     this.data.then(res => {
       this.homeImages = res;
       for (var i = 0; i < this.homeImages.length; i++) {
@@ -128,9 +127,6 @@ export class IntroductionComponent implements OnInit {
       $(evt.target).addClass('active-link');
     }
   }
-  
-
-  afterCarouselViewedFn(data) { };
 
   onmoveFn(data: NgxCarouselStore) { };
 

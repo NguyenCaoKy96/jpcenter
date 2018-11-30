@@ -9,6 +9,7 @@ import { GetDataService } from './../../services/get-data/get-data.service';
 // Language
 import { default as LANG_VI } from '../../../lang/lang_vi';
 import { default as LANG_JP } from '../../../lang/lang_jp';
+
 @Component({
   selector: 'app-footer',
   templateUrl: './footer.component.html',
@@ -39,7 +40,7 @@ export class FooterComponent implements OnInit {
         this.LANGUAGE = LANG_JP;
       }
     });
-    this._footerURL = this._getDataService.getFooterURL();
+    this._footerURL = this._getDataService.getContactURL();
 
      //Scroll the mouse and call the scrollFunction
      window.onscroll = () => {
@@ -65,13 +66,12 @@ export class FooterComponent implements OnInit {
       this.footerData = data;
       this.tel = this.footerData[0].Tel;
       this.email = this.footerData[0].Email;
+      this.hotline = this.footerData[0].Hotline;
       this._route.queryParams.subscribe(data => {
         if (data.lang === 'vi') {
           this.address = this.footerData[0].Address;
-          this.hotline = this.footerData[0].Hotline;
         } else {
-          this.address = this.footerData[0].Japanese_address;
-          this.hotline = this.footerData[0].japanese_hotline;
+          this.address = this.footerData[0].Japanese_Address;
         }
       });
     });

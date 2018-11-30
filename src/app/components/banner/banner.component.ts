@@ -15,7 +15,7 @@ import { NgxCarousel, NgxCarouselStore  } from 'ngx-carousel';
   providers: [
     GetDataService,
     GetImagesService
-  ]
+  ] 
 })
 export class BannerComponent implements OnInit {
 
@@ -61,22 +61,20 @@ export class BannerComponent implements OnInit {
 				touch: true
 	    };
   
-      this.imageURLs = this._getDataService.getImagesURL();
+      this.imageURLs = this._getDataService.getAdvertURL();
       this.serverURL = this._getDataService.serverURL;
-      this.data = this._getImageService.getFromServer();
+      this.data = this._getImageService.getAdvertFromServer();
       this.data.then(res => {
         this.homeImages = res;
         for (var i = 0; i < this.homeImages.length; i++) {
-          if (this.homeImages[i].name === "Quảng cáo") {
-            for (var k = 0; k < this.homeImages[i].Images.length; k++) {
-              this.homeImagesURL[k] = this.serverURL + this.homeImages[i].Images[k].url;
-            }
-          }
+          this.homeImagesURL[i] = this.homeImages[i];
+          console.log(this.homeImagesURL[i]);
         }
       });
     }
-  
-    afterCarouselViewedFn(data) { };
-  
+    
+    onClickInAdvertImage(item) {
+      window.open(item.URL);
+    };
     onmoveFn(data: NgxCarouselStore) { };
 }

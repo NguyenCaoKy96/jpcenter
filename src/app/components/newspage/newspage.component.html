@@ -1,5 +1,5 @@
 <div class="custom-container">
-  <ngx-carousel [inputs]="carouselBanner" [moveToSlide]="1" (onMove)="onmoveFn($event)" (afterCarouselViewed)="afterCarouselViewedFn($event)">
+  <ngx-carousel [inputs]="carouselBanner" [moveToSlide]="1" (onMove)="onmoveFn($event)">
     <ngx-item NgxCarouselItem class="bannerStyle" *ngFor="let item of homeImagesURL | slice:0:1" [ngStyle]="{'background-image': 'url(' + item + ')'}">
     </ngx-item>
     <button NgxCarouselPrev></button>
@@ -7,17 +7,17 @@
   </ngx-carousel>
   <div class="banner">
     <div class="banner-bottom"></div>
-    <h1 class="banner-title"><b>Tin tức và Sự kiện</b></h1>
+    <h1 class="banner-title"><b>{{LANGUAGE.NEWS_AND_EVENTS}}</b></h1>
   </div>
 </div>
 <!-- creat breadscrumb -->
 <nav aria-label="breadcrumb">
   <ol class="breadcrumb">
     <li class="breadcrumb-item">
-      <a routerLink="/trang-chu">Trang chủ</a>
+      <a routerLink="/trang-chu">{{LANGUAGE.HOME_PAGE}}</a>
     </li>
     <li class="breadcrumb-item active">
-      <a routerLink="/tin-tuc-su-kien">Tin tức & sự kiện</a>
+      <a routerLink="/tin-tuc-su-kien">{{LANGUAGE.NEWS_AND_EVENTS}}</a>
     </li>
   </ol>
 </nav>
@@ -54,12 +54,12 @@
         </p>
     </div> -->
     <div class="row">
-        <div class="col-sm-7 thumnail">Hình ảnh (thumnail)</div>
+        <div class="col-sm-7 thumnail"></div>
         <div class="col-sm-5 short-content">
             <div class="article-title">
                 <h2 *ngIf="newestArticle">{{ newestArticle.name }}</h2>
             </div>
-            <div class="article-content" *ngIf="shortArticleContent" [innerHTML]="shortArticleContent + '<strong>...Đọc tiếp</strong>'"></div>
+            <div class="article-content" *ngIf="shortArticleContent" [innerHTML]="shortArticleContent + LANGUAGE.CONTINUE_READING"></div>
         </div>
     </div>
 </a>
