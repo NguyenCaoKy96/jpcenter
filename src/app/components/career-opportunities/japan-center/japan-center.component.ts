@@ -40,7 +40,10 @@ export class JapanCenterComponent implements OnInit {
   japanJapanName: any;
   Contents: any;
   serverURL: any;
+  japanContent: any;
+  jaJapanContent: any;
   data: any;
+  lang : string = 'vi';
 
   // Carousel config
   index = 0;
@@ -63,8 +66,9 @@ export class JapanCenterComponent implements OnInit {
        this.japanData = data;
        this.japanName = this.japanData.Name;
        this.japanJapanName = this.japanData.JapaneseName;
-       console.log(this.japanJapanName);
-       this.Contents = this.japanData.contents;     
+       this.Contents = this.japanData.contents; 
+       this.japanContent = this.Contents.Content;
+       this.jaJapanContent = this.Contents.Japanese_Content;   
     });
    }
 
@@ -94,6 +98,10 @@ export class JapanCenterComponent implements OnInit {
           }
         }
       }
+    });
+
+    this._route.queryParams.subscribe(data => {
+      this.lang = data.lang;
     });
   }
 

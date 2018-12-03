@@ -19,7 +19,11 @@ export class GetDataService {
 		this.URL = this.protocol + '://' + this.serverDomain + ':' + this.port;
 		return this.URL;
 	}
-
+// Header URL
+	getLoginURL(): string {
+	let loginURL = this.serverURL + '/auth/local';
+	return loginURL;
+}
 	// Header URL
 	getHeaderURL(): string {
 		let headerURL = this.serverURL + '/headers';
@@ -81,7 +85,7 @@ export class GetDataService {
 	}
 	// News URL
 	getNewsItemURL(id): string {
-		let newsURL = this.serverURL + '/news' + id;
+		let newsURL = this.serverURL + '/news/' + id;
 		return newsURL;
 	}
 

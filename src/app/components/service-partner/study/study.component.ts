@@ -54,7 +54,7 @@ export class StudyComponent implements OnInit {
     private _getImageService: GetImagesService,
     private _route: ActivatedRoute
   ) {
-    // get data Project 
+    // get data Study
     this.studyURL = this._getDataService.getStudyURL();
     this.http.get(this.studyURL).subscribe(data => {
        this.studyData = data;

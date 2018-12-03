@@ -51,6 +51,8 @@ export class JlptComponent implements OnInit {
   courseData;
   courseDataItem;
   jlptItemData;
+  trimmedString;
+  japantrimmedString;
 
   constructor(
     private _titleService: Title,
@@ -63,7 +65,10 @@ export class JlptComponent implements OnInit {
       this.jlptURL = this._getDataService.getCourseURL();
       this.http.get(this.jlptURL).subscribe(data => {
         this.jlptData = data;
-      
+        for(var i = 0; i < this.jlptData.length; i++){
+          this.trimmedString = this.jlptData[i].Skill.substr(0, 200);
+          this.japantrimmedString = this.jlptData[i].JapaneseSkill.substr(0, 200);
+        } 
       });
     }
 
@@ -100,12 +105,12 @@ export class JlptComponent implements OnInit {
 
   onmoveFn(data: NgxCarouselStore) { };
   
-  onchangeCourse(id){
-    let jlptItemDataURL = this._getDataService.getCourseItemURL(id);
-    this.http.get(jlptItemDataURL).subscribe(data => {
-      this.jlptItemData = data;
-      console.log(this.jlptItemData);  
-    });
-    $('#left-item').hide();
-   }
+  // onchangeCourse(id){
+  //   let jlptItemDataURL = this._getDataService.getCourseItemURL(id);
+  //   this.http.get(jlptItemDataURL).subscribe(data => {
+  //     this.jlptItemData = data;
+  //     console.log(this.jlptItemData);  
+  //   });
+  //   $('#left-item').hide();
+  //  }
 }

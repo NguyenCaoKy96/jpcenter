@@ -11,6 +11,17 @@
     margin: 3em 4px;
     display: block;
 }
+.btn a{
+    display:inline-block;
+	font-family: Muli, sans-serif;
+    font-weight: bold;
+	text-decoration:none;
+    display: block;
+    color: #e11f26;
+}
+.btn a:hover{
+    color: whitesmoke;
+}
 .search-bar{
     margin: 2em 0 auto;
 }

@@ -16,7 +16,7 @@
     <li class="breadcrumb-item">
       <a routerLink="/trang-chu" [queryParams]="{lang: lang ? 'jp' : 'vi'}">{{LANGUAGE.HOME_PAGE}}</a>
     </li>
-    <li class="breadcrumb-item active" aria-current="page">
+    <li class="breadcrumb-item" aria-current="page">
       <a routerLink="/dich-vu-doi-tac" [queryParams]="{lang: lang ? 'jp' : 'vi'}">{{LANGUAGE.SERVICE_AND_PARTNER}}</a>
     </li>
     <li class="breadcrumb-item active" aria-current="page">{{LANGUAGE.PROJECT}}</li>
@@ -27,10 +27,10 @@
   <div class="col-md-4 col-lg-3 left-navigation">
     <ul class="nav nav-tabs d-none d-md-block">
       <li class="nav-item">
-        <a class="nav-link " id="JCenter-tab" routerLink="/dich-vu-doi-tac/tu-van-du-hoc-va-viec-lam" [queryParams]="{lang: lang ? 'jp' : 'vi'}">{{LANGUAGE.APPROAD_STUDY_AND_EMPLOYMENT}}</a>
+        <a class="nav-link" id="JCenter-tab" routerLink="/dich-vu-va-doi-tac/tu-van-du-hoc-va-viec-lam" [queryParams]="{lang: lang ? 'jp' : 'vi'}">{{LANGUAGE.APPROAD_STUDY_AND_EMPLOYMENT}}</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" id="JCenter-tab" routerLink="/dich-vu-doi-tac/xuat-khau-lao-dong" [queryParams]="{lang: lang ? 'jp' : 'vi'}">{{LANGUAGE.LABOR_EXPORT}}</a>
+        <a class="nav-link active" id="JCenter-tab" routerLink="/dich-vu-doi-tac/xuat-khau-lao-dong" [queryParams]="{lang: lang ? 'jp' : 'vi'}">{{LANGUAGE.LABOR_EXPORT}}</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" id="JCenter-tab" routerLink="/dich-vu-doi-tac/du-an" [queryParams]="{lang: lang ? 'jp' : 'vi'}">{{LANGUAGE.PROJECT}}</a>
@@ -40,14 +40,24 @@
       </li>
     </ul>
   </div>
-  <div class="col-md-8 col-lg-9">
+  <div class="col-md-8 col-lg-9" *ngIf="lang === 'vi'">
     <div class="tab-content">
       <div class="tab-pane active" id="study" role="tabpanel" aria-labelledby="study-tab">
-        <h4 class="section-title">{{laborName}}</h4>
-        <div class="course-content pt-4" *ngIf="Contents" [innerHTML]="Contents.Content">
-
+        <h4 class="section-title" [innerHTML]="laborName"></h4>
+        <div class="course-content pt-4">
+          <p [innerHTML]="laborContent"></p>
         </div>
       </div>
     </div>
   </div>
+  <div class="col-md-8 col-lg-9" *ngIf="lang === 'jp'">
+      <div class="tab-content">
+        <div class="tab-pane active" id="study" role="tabpanel" aria-labelledby="study-tab">
+          <h4 class="section-title" [innerHTML]="laborJapanName"></h4>
+          <div class="course-content pt-4">
+            <p [innerHTML]="laborJapanContent"></p>
+          </div>
+        </div>
+      </div>
+    </div>
 </div>

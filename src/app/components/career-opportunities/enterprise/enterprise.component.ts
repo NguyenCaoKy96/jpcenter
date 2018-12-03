@@ -41,8 +41,10 @@ export class EnterpriseComponent implements OnInit {
   enterpriseJapanName: any;
   Contents: any;
   enterpriseContent: any;
+  enterpriseJapanContent: any;
   serverURL: any;
   data: any;
+  lang : string = 'vi';
 
   // Carousel config
   index = 0;
@@ -64,9 +66,13 @@ export class EnterpriseComponent implements OnInit {
         this.enterpriseData = data;
         this.Contents = this.enterpriseData.contents;
         this.enterpriseName = this.Contents.Name;
-        this.enterpriseJapanName = this.enterpriseData.contents.Japanese_Name;
-        console.log(this.enterpriseJapanName);
-        //this.enterpriseContent = this.Contents.Content       
+        //console.log(this.enterpriseName);
+        this.enterpriseJapanName = this.Contents.Japanese_Name; 
+        //console.log(this.enterpriseJapanName); 
+        this.enterpriseContent = this.Contents.Content;
+        //console.log(this.enterpriseContent);
+        this.enterpriseJapanContent = this.Contents.Japanese_Content;
+        //console.log(this.enterpriseJapanContent);
      });
   }
 
@@ -95,6 +101,10 @@ export class EnterpriseComponent implements OnInit {
           }
         }
       }
+    });
+    
+    this._route.queryParams.subscribe(data => {
+      this.lang = data.lang;
     });
   }
 

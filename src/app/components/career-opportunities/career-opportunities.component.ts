@@ -13,6 +13,9 @@ import { GetImagesService } from './../../services/get-image-slider/get-images.s
 // Carousel
 import { NgxCarousel, NgxCarouselStore  } from 'ngx-carousel';
 
+// Language
+import { default as LANG_VI } from './../../../lang/lang_vi';
+import { default as LANG_JP } from './../../../lang/lang_jp';
 
 @Component({
   selector: 'app-career-opportunities',
@@ -27,11 +30,16 @@ import { NgxCarousel, NgxCarouselStore  } from 'ngx-carousel';
 export class CareerOpportunitiesComponent implements OnInit {
 
   public carouselConfig: NgxCarousel;
-	
+  public LANGUAGE : any = LANG_VI;
   carouselBanner: any;
   imageURLs: any;
   homeImages: any[] = [];
   homeImagesURL: { [key: number]: string } = [];
+  japanURL: string;
+  japanData: any;
+  japanName: any;
+  japanJapanName: any;
+  Contents: any;
   serverURL: any;
   data: any;
   getjobsURL: string;
@@ -45,23 +53,28 @@ export class CareerOpportunitiesComponent implements OnInit {
   directionToggle = true;
   autoplay = true;
 
+    // Side navigation item
+    apiCategories: string;
+    item: any;
+    itemData: any = [];
+    itemContents: any = {
+      vietnameseContents : '',
+      japaneseContents : ''
+    };
+    slug: any = {
+      vietnameseSlug : '',
+      japaneseSlug : ''
+    };
+
   constructor(
   	private _titleService: Title,
     private http: HttpClient,
     private _getDataService: GetDataService,
     private _getImageService: GetImagesService
-  ) { 
-     // get data jobs
-     this.getjobsURL = this._getDataService.getJobsURL();
-     this.http.get(this.getjobsURL).subscribe(data => {
-      this.jobs = data;
-      //console.log('introduction', data[0].id);
-      this.onChangeJobs(this.jobs[0].id);
-    });
-  }
+  ) { }
 
   ngOnInit() {
-  	this._titleService.setTitle('Cơ hội nghề nghiệp');
+    this._titleService.setTitle(this.LANGUAGE.CAREER_OPPOTUNITY);
 
     this.carouselBanner = this._getImageService.carouselBanner;
     this.imageURLs = this._getDataService.getImagesURL();
@@ -70,11 +83,21 @@ export class CareerOpportunitiesComponent implements OnInit {
     this.data.then(res => {
       this.homeImages = res;
       for (var i = 0; i < this.homeImages.length; i++) {
-        if (this.homeImages[i].name === "Cơ hội nghề nghiệp") {
-          for (var k = 0; k < this.homeImages[i].Images.length; k++) {
-            this.homeImagesURL[k] = this.serverURL + this.homeImages[i].Images[k].url;
+        if (this.homeImages[i].Name === "Cơ hội nghề nghiệp") {
+          for (var k = 0; k < this.homeImages[i].Image.length; k++) {
+            this.homeImagesURL[k] = this.serverURL + this.homeImages[i].Image[k].url;
           }
-        } 
+        }
+      }
+    });
+
+    this.apiCategories = this._getDataService.getCategoriesURL();
+    this.http.get(this.apiCategories).subscribe(data => {
+      this.item = data;
+      for (let i=0; i< this.item.length; i++) {
+        if (this.item[i].Parent && (this.item[i].Parent.Name === this.LANGUAGE.CAREER_OPPOTUNITY || this.item[i].Parent.Japanese_Name === this.LANGUAGE.CAREER_OPPOTUNITY)) {
+          this.itemData.push(this.item[i]);
+        }
       }
     });
   }
@@ -92,4 +115,18 @@ export class CareerOpportunitiesComponent implements OnInit {
     }
   }
 
+  selectItem(item) {
+    let tempContents;
+    let vietnameseSlug; 
+      let itemContentURL = this.apiCategories + '/' + item._id;
+      this.http.get(itemContentURL).subscribe(data => {
+        tempContents = data;
+        this.itemContents.vietnameseContents = tempContents.contents.Content;
+        
+        vietnameseSlug = tempContents.contents.Name;
+        this.slug.vietnameseSlug = vietnameseSlug.toLowerCase().replace(/ /g,'-').replace(/[^\w-]+/g,'');
+        window.location.hash = (this.slug.vietnameseSlug);
+        this.itemContents.japaneseContents = tempContents.contents.Japanese_Content;
+      });
+  }
 }

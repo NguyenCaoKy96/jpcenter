@@ -55,6 +55,7 @@ export class SupporterPageComponent implements OnInit {
     public openingSchedule: any;
     public openingURL: string;
     public LANGUAGE: any = LANG_VI;
+    public courseURL: string;
 
     private _isValid = true;
 
@@ -77,7 +78,7 @@ export class SupporterPageComponent implements OnInit {
                 this.LANGUAGE = LANG_JP;
             }
         });
-
+        this.courseURL = this._getDataService.getCoursesURL()
         this.newsURL = this._getDataService.getNewsURL();
         this.introduceURL = this._getDataService.getIntroducesURL();
         this.academicsURL = this._getDataService.getAcademicsURL();
@@ -191,7 +192,8 @@ export class SupporterPageComponent implements OnInit {
             setTimeout(function () {
                 $('.message-fail').hide();
             }, 3000);
-        } else {
+        }
+        else {
             if (this.categoriesDropdown === this.LANGUAGE.NEWS_AND_EVENTS) {
                 this.http.post(this.newsURL, JSON.stringify(news), { headers: headers }).subscribe(data => {
                     console.log(data);
@@ -201,6 +203,19 @@ export class SupporterPageComponent implements OnInit {
                         $('.message-success').hide();
                     }, 3000);
             }
+            else {
+                if (this.categoriesDropdown === this.LANGUAGE.JAPAN_CENTER) {
+                    this.http.post(this.courseURL, JSON.stringify(news), { headers: headers }).subscribe(data => {
+                        console.log(data);
+                    });
+                    $('.message-success').css('display', 'block');
+                        setTimeout(function () {
+                            $('.message-success').hide();
+                        }, 3000);
+                }
+            }
         }
+       
+        
     }
 }

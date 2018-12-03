@@ -37,8 +37,12 @@ export class LaborComponent implements OnInit {
   laborData: any;
   laborName: any;
   Contents: any;
+  laborJapanName: any;
+  laborContent: any;
+  laborJapanContent: any;
   serverURL: any;
   data: any;
+  lang : string = 'vi';
 
   // Carousel config
   index = 0;
@@ -59,7 +63,10 @@ export class LaborComponent implements OnInit {
     this.http.get(this.laborURL).subscribe(data => {
        this.laborData = data;
        this.laborName = this.laborData.Name;
-       this.Contents = this.laborData.contents;  
+       this.laborJapanName = this.laborData.JapaneseName; 
+       this.Contents = this.laborData.contents; 
+       this.laborContent = this.Contents.Content;
+       this.laborJapanContent =  this.Contents.Japanese_Content;
     });
    }
 
@@ -89,6 +96,10 @@ export class LaborComponent implements OnInit {
           }
         }
       }
+    });
+
+    this._route.queryParams.subscribe(data => {
+      this.lang = data.lang;
     });
   }
 

@@ -22,7 +22,7 @@ import { default as LANG_VI } from '../../../../lang/lang_vi';
    providers: [
     GetDataService,
     GetImagesService
-  ]
+  ]    
 })
 export class NewspageOtherComponent implements OnInit {
   public LANGUAGE : any = LANG_VI;

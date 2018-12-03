@@ -92,7 +92,6 @@ import { NewspageFiveComponent } from './components/newspage/newspage-five/newsp
 import { NewspageSixComponent } from './components/newspage/newspage-six/newspage-six.component';
 import { NewspageSevenComponent } from './components/newspage/newspage-seven/newspage-seven.component';
 import { NewspageEightComponent } from './components/newspage/newspage-eight/newspage-eight.component';
-import { NewspageOtherComponent } from './components/newspage/newspage-other/newspage-other.component';
 import { BannerComponent } from './components/banner/banner.component';
 import { LinkComponent } from './components/link/link.component';
 import { LoginComponent } from './components/header/login/login.component';
@@ -205,8 +204,8 @@ const routes: Routes = [
     component: IntroductionFiveComponent
   },
   {
-         path :'viet-bai',
-        component: SupporterPageComponent
+    path :'viet-bai',
+    component: SupporterPageComponent
   },
   {
       path: '',
@@ -218,26 +217,23 @@ const routes: Routes = [
    },
   {
     path: 'dich-vu-doi-tac',
-    component: StudyComponent,
-    children: [
-      
-      {
-        path: 'tu-van-va-viec-lam',
-        component: StudyComponent
-      },
-      {
-        path: 'xuat-khau-lao-dong',
-        component: LaborComponent
-      },
-      {
-        path: 'du-an',
-        component: ProjectsComponent
-      },
-      {
-        path: 'doi-tac',
-        component: PartnerComponent
-      }
-    ]
+    component: StudyComponent
+  },
+  {
+    path: 'dich-vu-va-doi-tac/tu-van-du-hoc-va-viec-lam',
+    component: StudyComponent
+  },
+  {
+    path: 'dich-vu-doi-tac/xuat-khau-lao-dong',
+    component: LaborComponent
+  },
+  {
+    path: 'dich-vu-doi-tac/du-an',
+    component: ProjectsComponent
+  },
+  {
+    path: 'dich-vu-doi-tac/doi-tac',
+    component: PartnerComponent
   },
   {
     path: 'chuong-trinh-ky-su-cau-noi',
@@ -275,17 +271,15 @@ const routes: Routes = [
   },
    {
     path: 'co-hoi-nghe-nghiep',
-    component: JapanCenterComponent,
-    children: [
-      {
-        path: 'trung-tam-nhat-ban',
-        component: JapanCenterComponent
-      },
-      {
-        path: 'doanh-nghiep',
-        component: EnterpriseComponent
-      }
-    ]
+    component: JapanCenterComponent
+  },
+  {
+    path: 'co-hoi-nghe-nghiep/trung-tam-nhat-ban',
+    component: JapanCenterComponent
+  },
+  {
+    path: 'co-hoi-nghe-nghiep/doanh-nghiep',
+    component: EnterpriseComponent
   },
   {
     path: 'tin-tuc-su-kien/QNU-JAPAN-CENTER-Dang-ky-hoc-vien',
@@ -433,7 +427,6 @@ const childRoutes: Routes = [
     NewspageSixComponent,
     NewspageSevenComponent,
     NewspageEightComponent,
-    NewspageOtherComponent,
     BannerComponent, 
     LinkComponent,
     LoginComponent, 
@@ -449,7 +442,7 @@ const childRoutes: Routes = [
     ExamPointComponent,
     ClassManagementComponent,
     ManagePointComponent,
-    AboutLearnerComponent
+    AboutLearnerComponent,
   ],
   imports: [
     CKEditorModule,
