@@ -48,7 +48,7 @@
     </div>
     <nav class="navbar  navbar-expand-lg navbar-light top-navbar" id="nav" data-toggle="sticky-onscroll">
       <div class="container">
-        <a [routerLink]="['/trang-chu']"> <img  id="logo-hide" src="./assets/images/qnu-logo.svg" width="60px" height="60px" alt="logo"></a>
+        <a [routerLink]="['/trang-chu']" [queryParams]="{lang: lang ? 'vi' : 'jp'}"> <img  id="logo-hide" src="./assets/images/qnu-logo.svg" width="60px" height="60px" alt="logo"></a>
           <div></div>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -79,9 +79,9 @@
             <li class="nav-item dropdown">
               <a id="course-page" class="nav-link" [routerLink]="['/khoa-hoc']" [queryParams]="{lang: lang ? 'vi' : 'jp'}">{{LANGUAGE.COURSE}}<span class="caret"></span></a>
               <div class="dropdown-content">
-                <a class="dropdown-item" (click)="changeURL('course-page', 'cac-khoa-tieng-nhat-JLPT')">{{LANGUAGE.JLPT_COURSE}}</a>
-                <a class="dropdown-item" (click)="changeURL('course-page', 'tieng-nhat-cho-thieu-nhi')">{{LANGUAGE.CHILDREN_COURSE}}</a>
-                <a class="dropdown-item" (click)="changeURL('course-page', 'cac-khoa-ky-nang-mem')">{{LANGUAGE.SKILL_COURSE}}</a>
+                <a class="dropdown-item" [routerLink]="['/khoa-hoc/cac-khoa-tieng-nhat-JLPT']" [queryParams]="{lang: lang ? 'vi' : 'jp'}">{{LANGUAGE.JLPT_COURSE}}</a>
+                <a class="dropdown-item" [routerLink]="['/khoa-hoc/tieng-nhat-cho-thieu-nhi']" [queryParams]="{lang: lang ? 'vi' : 'jp'}">{{LANGUAGE.CHILDREN_COURSE}}</a>
+                <a class="dropdown-item" [routerLink]="['/khoa-hoc/cac-khoa-ky-nang-mem']" [queryParams]="{lang: lang ? 'vi' : 'jp'}">{{LANGUAGE.SKILL_COURSE}}</a>
               </div>
             </li>
             <li class="nav-item dropdown">
@@ -101,6 +101,14 @@
               <div class="dropdown-content">
                 <a class="dropdown-item" (click)="changeURL('career-oppotunity-page', 'trung-tam-nhat-ban')">{{LANGUAGE.JAPAN_CENTER_OPPOTUNITY}}</a>
                 <a class="dropdown-item" (click)="changeURL('career-oppotunity-page', 'doanh-nghiep')">{{LANGUAGE.ENTERPRISE}}</a>
+              </div>
+            </li>
+            <li class="nav-item dropdown">
+              <a id="career-oppotunity-page" class="nav-link" [routerLink]="['/hoc-vien']" [queryParams]="{lang: lang ? 'vi' : 'jp'}">{{LANGUAGE.STUDENT}}<span class="caret"></span></a>
+              <div class="dropdown-content">
+                <a class="dropdown-item" (click)="changeURL('career-oppotunity-page', 'trung-tam-nhat-ban')">{{LANGUAGE.VOCATIONAL_GUIDANCE}}</a>
+                <a class="dropdown-item" (click)="changeURL('career-oppotunity-page', 'doanh-nghiep')">{{LANGUAGE.STUDENT_LIFE}}</a>
+                <a class="dropdown-item" (click)="changeURL('career-oppotunity-page', 'doanh-nghiep')">{{LANGUAGE.ALUMNI}}</a>
               </div>
             </li>
           </ul>

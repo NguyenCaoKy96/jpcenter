@@ -7,17 +7,28 @@ import { Response, Headers } from "@angular/http";
 import { Observable, BehaviorSubject, of, throwError } from "rxjs";
 import { map, catchError } from "rxjs/operators";
 
+// Service
 import { GetDataService } from './../../../services/get-data/get-data.service';
 import { GetImagesService } from './../../../services/get-image-slider/get-images.service';
+
+// Carousel
+import { NgxCarousel, NgxCarouselStore  } from 'ngx-carousel';
+import { ActivatedRoute } from '@angular/router';
+
+// Language
+import { default as LANG_VI } from '../../../../lang/lang_vi';
+import { default as LANG_JP } from '../../../../lang/lang_jp';
+
 @Component({
   selector: 'app-exam-point',
   templateUrl: './exam-point.component.html',
   styleUrls: ['./exam-point.component.css']
 })
 export class ExamPointComponent implements OnInit {
+
+  public LANGUAGE : any = LANG_VI;
 	academicsURL: string;
   academics:any;
-
 	carouselBanner: any;
     imageURLs: any;
     homeImages: any[] = [];
@@ -35,7 +46,9 @@ export class ExamPointComponent implements OnInit {
   	private _http: HttpClient,
     private http: HttpClient,
     private _getDataService: GetDataService,
-    private _getImageService: GetImagesService) { }
+    private _getImageService: GetImagesService,
+    private _route: ActivatedRoute
+    ) { }
 
   ngOnInit() {
   	// Title
@@ -47,14 +60,22 @@ export class ExamPointComponent implements OnInit {
       this.academics = data;
       console.log(this.academics );
       for(var i = 0; i < this.academics.length; i++){
-        this.link = this.academics[0].Link;
+        this.link = this.academics[0].Upload_Link;
         console.log(this.link)
       }
       
     });
   	//get data openings
 
-  		// Slide images
+  	 // Change language
+     this._route.queryParams.subscribe(data => {
+      if (data.lang === 'vi') {
+        this.LANGUAGE = LANG_VI;
+      } else {
+        this.LANGUAGE = LANG_JP;
+      }
+    });
+
     this.carouselBanner = this._getImageService.carouselBanner;
     this.imageURLs = this._getDataService.getImagesURL();
     this.serverURL = this._getDataService.serverURL;
@@ -62,11 +83,11 @@ export class ExamPointComponent implements OnInit {
     this.data.then(res => {
       this.homeImages = res;
       for (var i = 0; i < this.homeImages.length; i++) {
-        if (this.homeImages[i].name === "Cơ hội nghề nghiệp") {
-          for (var k = 0; k < this.homeImages[i].Images.length; k++) {
-            this.homeImagesURL[k] = this.serverURL + this.homeImages[i].Images[k].url;
+        if (this.homeImages[i].Name === "Học vụ") {
+          for (var k = 0; k < this.homeImages[i].Image.length; k++) {
+            this.homeImagesURL[k] = this.serverURL + this.homeImages[i].Image[k].url;
           }
-        } 
+        }
       }
     });
 

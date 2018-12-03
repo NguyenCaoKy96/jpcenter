@@ -56,3 +56,9 @@ li {
     color: red;
     font-weight: bold;
 } */
+image{
+    width:100%;
+}
+.nav-tabs .nav-link:hover,.nav-tabs .nav-link:active {
+    border: none !important;
+}

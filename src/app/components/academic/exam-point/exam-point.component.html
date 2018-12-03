@@ -7,9 +7,7 @@
     </ngx-carousel>
     <div class="banner">
         <div class="banner-bottom"></div>
-        <h1 class="banner-title">
-            <b>Học vụ</b>
-        </h1>
+        <h1 class="banner-title"><b>{{LANGUAGE.ACADEMIC}}</b></h1>
     </div>
 </div>
 <nav aria-label="breadcrumb">
@@ -29,13 +27,16 @@
     <div class="col-md-4 col-lg-3 left-navigation">
         <ul class="nav nav-tabs d-none d-md-block">
             <li class="nav-item">
-                <a class="nav-link " id="JCenter-tab" [queryParams]="{lang: lang ? 'vi' : 'jp'}" routerLink="/hoc-vu/lich-hoc">Lịch học</a>
+                <a class="nav-link " id="JCenter-tab" [queryParams]="{lang: lang ? 'jp' : 'vi'}" routerLink="/hoc-vu/lich-hoc">Lịch
+                    học</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link " id="JCenter-tab" [queryParams]="{lang: lang ? 'vi' : 'jp'}" routerLink = "/hoc-vu/lich-thi">Lịch thi</a>
+                <a class="nav-link " id="JCenter-tab" [queryParams]="{lang: lang ? 'jp' : 'vi'}" routerLink="/hoc-vu/lich-thi">Lịch
+                    thi</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" id="JCenter-tab" [queryParams]="{lang: lang ? 'vi' : 'jp'}"  routerLink="/hoc-vu/diem-thi">Điểm thi</a>
+                <a class="nav-link" id="JCenter-tab" [queryParams]="{lang: lang ? 'jp' : 'vi'}" routerLink="/hoc-vu/diem-thi">Điểm
+                    thi</a>
             </li>
         </ul>
     </div>
@@ -55,8 +56,8 @@
                             </tr>
                         </thead>
                         <tr *ngFor="let item of academics">
-                            <td>{{ item.Tenlop }}</td>
-                            <td>{{ item.ngaythi }} </td>
+                            <td>{{ item.Class_Name }}</td>
+                            <td>{{ item.Exam_Day }} </td>
                             <!--  <td>
                                 <img src="./../assets/images/downloadred.png" width="15px" height="15px" alt=""> 
                             </td> -->
@@ -65,8 +66,8 @@
                         </tr>
                     </table>
                 </div>
-                <button class="btn btn" type="submit" name="submit" id="register"><a     href="{{link}}">Download</a></button>
+                <button class="btn btn" type="submit" name="submit" id="register"><a href="{{link}}">Download</a></button>
             </div>
         </div>
     </div>
-</div>
+</div> 

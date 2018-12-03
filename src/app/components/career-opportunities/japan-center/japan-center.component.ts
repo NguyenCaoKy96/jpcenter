@@ -34,9 +34,11 @@ export class JapanCenterComponent implements OnInit {
   imageURLs: any;
   homeImages: any[] = [];
   homeImagesURL: { [key: number]: string } = [];
-  contentURL: string;
-  contentsData: any;
-  career: any;
+  japanURL: string;
+  japanData: any;
+  japanName: any;
+  japanJapanName: any;
+  Contents: any;
   serverURL: any;
   data: any;
 
@@ -55,14 +57,15 @@ export class JapanCenterComponent implements OnInit {
     private _getImageService: GetImagesService,
     private _route: ActivatedRoute
   ) {
-    // get data career-opportunities
-    this.contentURL = this._getDataService.getContentURL();
-    this.http.get(this.contentURL).subscribe(data => {
-     this.contentsData = data;
-     this.career = this.contentsData[11];
-     console.log('trung tam',this.career)
-     //this.onChangeContent(this.contentsData[11].id);
-   });
+    // get data Japan-Center
+    this.japanURL = this._getDataService.getJapanOpportunityURL();
+    this.http.get(this.japanURL).subscribe(data => {
+       this.japanData = data;
+       this.japanName = this.japanData.Name;
+       this.japanJapanName = this.japanData.JapaneseName;
+       console.log(this.japanJapanName);
+       this.Contents = this.japanData.contents;     
+    });
    }
 
   ngOnInit() {

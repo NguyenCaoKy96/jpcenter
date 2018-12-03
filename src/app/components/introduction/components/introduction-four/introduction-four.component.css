@@ -1,0 +1,40 @@
+img{
+    width:100%;
+}
+.nav-tabs .nav-link:hover,.nav-tabs .nav-link {
+    border: none !important;
+    font-size: 18px;
+    display: block;
+}
+.nav-tabs .nav-link.active{
+    font-weight: 700;
+    color: #495057;
+}
+ {
+    width: 870px;
+    height: 334px;
+    padding-top: 30px;
+    padding-bottom: 30px;
+    padding-right: 50px;
+    padding-left: 50px;
+    border-radius:2.3rem;
+}
+.modal-header{
+	border-bottom: none;
+}
+  .btn-outline {
+    border: 1px solid #e11f26;
+    border-radius: 1em;
+    color: #e11f26;
+    background-color: white;
+    font-weight: bold;
+    font-size: 15px;
+    width: 5em;
+    text-align: center;
+  }
+  .btn-outline:hover, .btn-outline:focus {
+    background-color: #e11f26;
+    color: #fff;
+    box-shadow: none;
+  }
+  

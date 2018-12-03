@@ -1,0 +1,36 @@
+<div class="custom-container">
+  <ngx-carousel [inputs]="carouselBanner" [moveToSlide]="1" (onMove)="onmoveFn($event)">
+    <ngx-item NgxCarouselItem class="bannerStyle" *ngFor="let item of homeImagesURL | slice:0:1" [ngStyle]="{'background-image': 'url(' + item + ')'}">
+    </ngx-item>
+    <button NgxCarouselPrev></button>
+    <button NgxCarouselNext></button>
+  </ngx-carousel>
+  <div class="banner">
+    <div class="banner-bottom"></div>
+    <h1 class="banner-title"><b>{{LANGUAGE.STUDENT}}</b></h1>
+  </div>
+</div>
+
+<!-- creat breadscrumb -->
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item">
+      <a routerLink="/trang-chu">{{LANGUAGE.HOME_PAGE}}</a>
+    </li>
+    <li class="breadcrumb-item">
+      <span>{{LANGUAGE.STUDENT}}</span>
+    </li>
+  </ol>
+</nav>
+
+<div class="main-container">
+  <table class="sive-nav" *ngIf="isVietnamese">
+    <tr *ngFor="let x of itemData; let i = index" (click)="selectItem(x)">{{x.Name}}</tr>
+  </table>
+  <table class="sive-nav" *ngIf="!isVietnamese">
+      <tr *ngFor="let x of itemData; let i = index" (click)="selectItem(x)">{{x.Japanese_Name}}</tr>
+    </table>
+  
+  <div class="main-content" *ngIf="isVietnamese" [innerHTML]="itemContents.vietnameseContents"></div>
+  <div class="main-content" *ngIf="!isVietnamese" [innerHTML]="itemContents.japaneseContents"></div>
+</div>

@@ -11,6 +11,8 @@ import { map, catchError } from "rxjs/operators";
 // Service
 import { GetDataService } from './../../services/get-data/get-data.service';
 import { GetImagesService } from './../../services/get-image-slider/get-images.service';
+import { default as LANG_VI } from '../../../lang/lang_vi';
+import { default as LANG_JP } from '../../../lang/lang_jp';
 
 // Carousel
 import { NgxCarousel, NgxCarouselStore  } from 'ngx-carousel';
@@ -26,14 +28,15 @@ import { NgxCarousel, NgxCarouselStore  } from 'ngx-carousel';
 })
 
 export class CoursesComponent implements OnInit {
-	public carouselBanner: NgxCarousel;
+
+  public carouselBanner: NgxCarousel;
 
   imageURLs: any;
   homeImages: any[] = [];
   homeImagesURL: { [key: number]: string } = [];
   serverURL: any;
   data: any;
-  lang: string = 'vi';
+  public LANGUAGE: any = LANG_VI;
 
   // Carousel config
   index = 0;
@@ -41,12 +44,12 @@ export class CoursesComponent implements OnInit {
   direction = 'left';
   directionToggle = true;
   autoplay = true;
+  jlptURL;
+  jlptData;
   courseURL;
   course;
   courseData;
   courseDataItem;
-  jlptURL: string;
-  jlptData;
   jlptItemData;
 
   constructor(
@@ -54,58 +57,47 @@ export class CoursesComponent implements OnInit {
     private http: HttpClient,
     private _getDataService: GetDataService,
     private _getImageService: GetImagesService,
-    private router:Router, 
-    private route: ActivatedRoute
-  ) { 
-        //change language
-        this.route.queryParams.subscribe(data => {
-          this.lang = data.lang;
-          console.log(this.lang)
-        });
-    //Get courses data
-    this.courseURL = this._getDataService.getHeaderURL();
-    this.http.get(this.courseURL).subscribe(data => {
-      this.course = data;
-        for(var i = 0; i < this.course.length; i++){
-          if(this.course[i].Name === "Khóa học"){
-            this.courseData = this.course[i].Name;
-            this.courseDataItem = this.course[i].categories;           
-        }
-       }
-    });  
-    // Get jlpt data
-    this.jlptURL = this._getDataService.getjlptURL();
+    private _route: ActivatedRoute
+  ) {     
+ // Get jlpt data
+    this.jlptURL = this._getDataService.getCourseURL();
     this.http.get(this.jlptURL).subscribe(data => {
       this.jlptData = data;
-        
+    
     });
-  } 
-  onchangeCourse(id, evt?){
-    let jlptItemDataURL = this._getDataService.getjlptItemURL(id);
+    }
+    onchangeCourse(id, evt?){
+    let jlptItemDataURL = this._getDataService.getCourseItemURL(id);
     this.http.get(jlptItemDataURL).subscribe(data => {
       this.jlptItemData = data;
       console.log(this.jlptItemData);  
     });
-    $('left-item').removeClass('active-link');
-    if (evt) {
-      $(evt.target).addClass('active-link');
-    };
     $('#left-item').hide();
   }
+
   ngOnInit() {
-  	this._titleService.setTitle('Khóa học');
-
+     // Change language
+     this._route.queryParams.subscribe(data => {
+      if (data.lang === 'vi') {
+        this.LANGUAGE = LANG_VI;
+      } else {
+        this.LANGUAGE = LANG_JP;
+      }
+    });
+    
+    this._titleService.setTitle(this.LANGUAGE.EDUCATION_PROGRAM);
+    //console.log(this.LANGUAGE.EDUCATION_PROGRAM);
     this.carouselBanner = this._getImageService.carouselBanner;
-
     this.imageURLs = this._getDataService.getImagesURL();
     this.serverURL = this._getDataService.serverURL;
     this.data = this._getImageService.getImageFromServer();
     this.data.then(res => {
       this.homeImages = res;
       for (var i = 0; i < this.homeImages.length; i++) {
-        if (this.homeImages[i].name === "Khóa học") {
-          for (var k = 0; k < this.homeImages[i].Images.length; k++) {
-            this.homeImagesURL[k] = this.serverURL + this.homeImages[i].Images[k].url;
+        if (this.homeImages[i].Name === "Khóa học") {
+          for (var k = 0; k < this.homeImages[i].Image.length; k++) {
+            this.homeImagesURL[k] = this.serverURL + this.homeImages[i].Image[k].url;
+            console.log(this.homeImagesURL)
           }
         }
       }

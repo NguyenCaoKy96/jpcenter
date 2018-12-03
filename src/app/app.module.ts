@@ -92,6 +92,7 @@ import { NewspageFiveComponent } from './components/newspage/newspage-five/newsp
 import { NewspageSixComponent } from './components/newspage/newspage-six/newspage-six.component';
 import { NewspageSevenComponent } from './components/newspage/newspage-seven/newspage-seven.component';
 import { NewspageEightComponent } from './components/newspage/newspage-eight/newspage-eight.component';
+import { NewspageOtherComponent } from './components/newspage/newspage-other/newspage-other.component';
 import { BannerComponent } from './components/banner/banner.component';
 import { LinkComponent } from './components/link/link.component';
 import { LoginComponent } from './components/header/login/login.component';
@@ -123,6 +124,8 @@ import { ExamPointComponent } from './components/academic/exam-point/exam-point.
 import { CalendarComponent } from './components/academic/calendar/calendar.component';
 import { ExamCalendarComponent } from './components/academic/exam-calendar/exam-calendar.component';
 import { ClassManagementComponent } from './components/class-management/class-management.component';
+import { ManagePointComponent } from './components/manage-point/manage-point.component';
+import { AboutLearnerComponent } from './components/about-learner/about-learner.component';
 const routes: Routes = [
   {
 
@@ -159,54 +162,47 @@ const routes: Routes = [
   },
   {
     path: 'gioi-thieu',
-    component: IntroductionComponent,
-    children: [
-        {
-          path: '',
-          redirectTo: 'gioi-thieu/',
-          pathMatch: 'full'
-        },
-      {
-        path: 'trung-tam-nhat-ban',
-        component: IntroductionOneComponent
-      },
-      {
-        path: 'truong-dai-hoc-quy-nhon',
-          component: IntroductionTwoComponent
-      },
-      {
-        path: 'quy-nhon-binh-dinh',
-          component: IntroductionThreeComponent
-      },
-      {
-        path: 'nhan-su-trung-tam',
-        component: IntroductionFourComponent
-      },
-      {
-        path: 'tai-sao-chon-qnu-japan-center',
-        component: IntroductionFiveComponent
-      },
-      {
-        path: '日本センター',
-        component: IntroductionOneComponent
-      },
-      {
-        path: 'クイニョン大学',
-          component: IntroductionTwoComponent
-      },
-      {
-        path: 'quy-nhon-binh-dinh',
-          component: IntroductionThreeComponent
-      },
-      {
-        path: 'センターのスタッフ',
-        component: IntroductionFourComponent
-      },
-      {
-        path: 'QNUジャパンセンターを選ぶ理由',
-        component: IntroductionFiveComponent
-      }
-    ]
+    component: IntroductionOneComponent
+  },
+  {
+    path: 'gioi-thieu/trung-tam-nhat-ban',
+    component: IntroductionOneComponent
+  },
+  {
+    path: 'gioi-thieu/truong-dai-hoc-quy-nhon',
+      component: IntroductionTwoComponent
+  },
+  {
+    path: 'gioi-thieu/quy-nhon-binh-dinh',
+      component: IntroductionThreeComponent
+  },
+  {
+    path: 'gioi-thieu/nhan-su-trung-tam',
+    component: IntroductionFourComponent
+  },
+  {
+    path: 'gioi-thieu/tai-sao-chon-qnu-japan-center',
+    component: IntroductionFiveComponent
+  },
+  {
+    path: 'gioi-thieu/日本センター',
+    component: IntroductionOneComponent
+  },
+  {
+    path: 'gioi-thieu/クイニョン大学',
+      component: IntroductionTwoComponent
+  },
+  {
+    path: 'gioi-thieu/quy-nhon-binh-dinh',
+      component: IntroductionThreeComponent
+  },
+  {
+    path: 'gioi-thieu/センターのスタッフ',
+    component: IntroductionFourComponent
+  },
+  {
+    path: 'gioi-thieu/QNUジャパンセンターを選ぶ理由',
+    component: IntroductionFiveComponent
   },
   {
          path :'viet-bai',
@@ -222,8 +218,9 @@ const routes: Routes = [
    },
   {
     path: 'dich-vu-doi-tac',
-    component: ServicePartnerComponent,
+    component: StudyComponent,
     children: [
+      
       {
         path: 'tu-van-va-viec-lam',
         component: StudyComponent
@@ -248,22 +245,22 @@ const routes: Routes = [
   },
   {
     path: 'khoa-hoc',
-    component: CoursesComponent,
-    children: [
-      {
-        path: 'cac-khoa-tieng-nhat-JLPT',
-        component: JlptComponent,
-      },
-      {
-        path: 'tieng-nhat-cho-thieu-nhi',
-        component: ChildrenComponent
-      },
-      {
-        path: 'cac-khoa-ky-nang-mem',
-        component: SkillsComponent
-      }
-    ]
+    component: JlptComponent,
   },
+
+  {
+    path: 'khoa-hoc/cac-khoa-tieng-nhat-JLPT',
+    component: JlptComponent,
+  },
+  {
+    path: 'khoa-hoc/tieng-nhat-cho-thieu-nhi',
+    component: ChildrenComponent
+  },
+  {
+    path: 'khoa-hoc/cac-khoa-ky-nang-mem',
+    component: SkillsComponent
+  }, 
+ 
   {
     path: 'tai-sao-chon-QNU-Japan-Center',
     component: WhyChooseJpcenterComponent
@@ -278,7 +275,7 @@ const routes: Routes = [
   },
    {
     path: 'co-hoi-nghe-nghiep',
-    component: CareerOpportunitiesComponent,
+    component: JapanCenterComponent,
     children: [
       {
         path: 'trung-tam-nhat-ban',
@@ -305,6 +302,10 @@ const routes: Routes = [
   {
     path: 'tin-tuc-su-kien/ngai-dai-su-nhat-ban-umeda-kunio-du-khai-truong',
     component: NewspageFourComponent
+  },
+  {
+    path: 'tin-tuc-va-su-kien/dinh-huong-nghe-nghiep-va-co-hoi-viec-lam-voi-TMA-solutions',
+    component: NewspageTwoComponent
   },
   {
   path: 'tin-tuc-va-su-kien/hieu-truong-dh-quy-nhon-tham-du-hoi-nghi-xuc-tien-dau-tu-binh-dinh-tai-nhat-ban',
@@ -371,6 +372,14 @@ const routes: Routes = [
       },
     ]
   },
+  {
+    path: 'quan-ly-diem',
+    component: ManagePointComponent
+  },
+  {
+    path: 'hoc-vien',
+    component: AboutLearnerComponent
+  },
 
 ];
 
@@ -424,6 +433,7 @@ const childRoutes: Routes = [
     NewspageSixComponent,
     NewspageSevenComponent,
     NewspageEightComponent,
+    NewspageOtherComponent,
     BannerComponent, 
     LinkComponent,
     LoginComponent, 
@@ -437,7 +447,9 @@ const childRoutes: Routes = [
     CalendarComponent,
     ExamCalendarComponent,
     ExamPointComponent,
-    ClassManagementComponent
+    ClassManagementComponent,
+    ManagePointComponent,
+    AboutLearnerComponent
   ],
   imports: [
     CKEditorModule,

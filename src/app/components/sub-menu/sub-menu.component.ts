@@ -104,13 +104,6 @@ export class SubMenuComponent implements OnInit {
       }
     });
 
-    this._titleService.setTitle(this.LANGUAGE.INTRODUCTION_PAGE);
-    this._titleService.setTitle(this.LANGUAGE.JAPAN_CENTER);
-
-    this._titleService.setTitle(this.LANGUAGE.COURSE);
-    this._titleService.setTitle(this.LANGUAGE.SERVICE_AND_PARTNER);
-    this._titleService.setTitle(this.LANGUAGE.CAREER_OPPOTUNITY);
-
     this._route.queryParams.subscribe(data => {
       this.lang = data.lang;
     });

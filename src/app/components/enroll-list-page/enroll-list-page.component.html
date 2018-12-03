@@ -2,18 +2,15 @@
   <div class="col-md-4 col-lg-3">
     <ul class="nav nav-tabs d-none d-md-block">
       <li class="nav-item">
-        <a class="nav-link left-item" id="JCenter-tab" (click)="contactedList()">{{LANGUAGE.CONTACTED_LIST}}</a>
+          <a class="nav-link left-item" id="JCenter-tab" (click)="uncontactedList()">{{LANGUAGE.UN_CONTACTED_LIST}}</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link left-item" id="JCenter-tab" (click)="uncontactedList()">{{LANGUAGE.UN_CONTACTED_LIST}}</a>
+        <a class="nav-link left-item" id="JCenter-tab" (click)="contactedList()">{{LANGUAGE.CONTACTED_LIST}}</a>
       </li>
     </ul>
   </div>
   <div class="col-md-8 col-lg-9">
-    <div>
-      <form action="" method="POST">
-        <h4>{{LANGUAGE.SEARCH}}</h4>
-        <input type="text" id="myInput" placeholder="{{LANGUAGE.SEARCH}}" title="Type in a name">
+      <form id="myform">       
         <table id="myTable" class="table left-navigation">
           <thead>
             <tr>
@@ -25,20 +22,24 @@
               <th *ngIf="status==='uncontacted'">{{LANGUAGE.STATUS}}</th>
             </tr>
           </thead>
-          <tbody method="POST">
-            <tr *ngFor="let item of enrollListData; let i = index">
+          <tbody>
+            <tr *ngFor="let item of EnrollListData; let i = index">
               <td scope="row">{{i+1}}</td>
-              <td id="fullname" *ngIf="item">{{item.Fullname}}</td>
-              <td id="email" *ngIf="item">{{item.Email}}</td>
-              <td id="phone" *ngIf="item">{{item.Phone}}</td>
-              <td id="class" *ngIf="item">{{item.Course}}</td>
+              <td *ngIf = "item" [innerHTML] = "item.Fullname"></td>
+              <td *ngIf = "item">{{item.Email}}</td>
+              <td *ngIf = "item">{{item.Phone}}</td>
+              <td *ngIf = "item">{{item.Class}}</td>
               <td *ngIf="status==='uncontacted'">
-                <input type="checkbox" value="value1" (click)="onCheck($event, item)">
+                <input type="checkbox" value="value1" (click)="onCheck(item)">
+              </td>
+              <td>
+                <button id="button" name="button" type="submit" class="btn btn-danger"(click)="onSubmit()">Đưa vào lớp</button>
               </td>
             </tr>
           </tbody>
         </table>
+        <input type="text" id="myInput" placeholder="{{LANGUAGE.SEARCH}}" title="Type in a name"> &nbsp;
+        <span><button id="button" name="button" type="submit" class="btn btn-danger"(click)="onSubmit(item)">Đưa vào lớp</button></span> 
       </form>
-    </div>
   </div>
 </div>

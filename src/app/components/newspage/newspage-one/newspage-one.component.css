@@ -1,0 +1,10 @@
+.other-news .card-img-top{
+	min-height: 180px;
+}
+a{
+	color: #007bff;
+	text-decoration: none;
+}
+a:hover{
+	color: #dc3545;
+}

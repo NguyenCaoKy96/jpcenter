@@ -25,6 +25,7 @@ export class ClassManagementComponent implements OnInit {
   IDstudents: any = [];
   currentClassList: any;
   public LANGUAGE : any = LANG_VI;
+  public LANGUAGES: any ;
 
   constructor(
     private _titleService: Title,
@@ -38,6 +39,7 @@ export class ClassManagementComponent implements OnInit {
       this.classData = data;
       console.log(this.classData)
     });
+
   }
 
   // Get list of student in current class
@@ -59,8 +61,12 @@ export class ClassManagementComponent implements OnInit {
       if (data.lang === 'vi') {
         this.LANGUAGE = LANG_VI;
       } else {
-        this.LANGUAGE = LANG_JP;
+        this.LANGUAGES = LANG_JP;
       }
     });
+    $('.left-item').removeClass('active');
+    if ($('.left-item')) {
+      $($('.left-item').target).addClass('active');
+    }
   }
 }

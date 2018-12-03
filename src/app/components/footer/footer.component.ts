@@ -41,10 +41,10 @@ export class FooterComponent implements OnInit {
       }
     });
     this._footerURL = this._getDataService.getContactURL();
-
      //Scroll the mouse and call the scrollFunction
      window.onscroll = () => {
-      scrollFunction()
+      $('#backToTop').attr('title', this.LANGUAGE.BACK_TO_TOP);
+      scrollFunction();
     };
 
      function scrollFunction() {

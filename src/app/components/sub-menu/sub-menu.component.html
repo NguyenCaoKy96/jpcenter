@@ -17,10 +17,29 @@
                             <h5 class="block-title">{{LANGUAGE.INTRODUCTION_PAGE}}</h5>
                         </div>
                         <ul>
-                            <li *ngFor="let introduction of introductionData">
-                                <a [routerLink]="[introduction.slug]" [queryParams]="{lang: lang ? 'vi' : 'jp'}">
-                                    <i class="fa fa-angle-right" aria-hidden="true"></i>
-                                    {{introduction.name}}
+                            <li>
+                                <a routerLink="/gioi-thieu/trung-tam-nhat-ban">
+                                    <i class="fa fa-angle-right" aria-hidden="true"></i>{{LANGUAGE.JAPAN_CENTER}}
+                                </a>
+                            </li>
+                            <li>
+                                <a routerLink="/gioi-thieu/truong-dai-hoc-quy-nhon">
+                                    <i class="fa fa-angle-right" aria-hidden="true"></i>{{LANGUAGE.QUY_NHON_UNIVERSITY}}
+                                </a>
+                            </li>
+                            <li>
+                                <a routerLink="/gioi-thieu/quy-nhon-binh-dinh">
+                                    <i class="fa fa-angle-right" aria-hidden="true"></i>{{LANGUAGE.QUY_NHON_BINH_DINH}}
+                                </a>
+                            </li>
+                            <li>
+                                <a routerLink="/gioi-thieu/nhan-su-trung-tam">
+                                    <i class="fa fa-angle-right" aria-hidden="true"></i>{{LANGUAGE.HUMAN_RESOURCE}}
+                                </a>
+                            </li>
+                            <li>
+                                <a routerLink="/gioi-thieu/tai-sao-chon-qnu-japan-center">
+                                    <i class="fa fa-angle-right" aria-hidden="true"></i>{{LANGUAGE.RESON_TO_CHOOESE_QNU_JAPAN_CENTER}}
                                 </a>
                             </li>
                         </ul>
@@ -33,10 +52,19 @@
                             <h5 class="block-title">{{LANGUAGE.COURSE}}</h5>
                         </div>
                         <ul>
-                            <li *ngFor="let item of courseDataItem">
-                                <a [routerLink]="[item.slug]" [queryParams]="{lang: lang ? 'vi' : 'jp'}">
-                                    <i class="fa fa-angle-right" aria-hidden="true"></i>
-                                    {{item.name}}
+                            <li>
+                                <a routerLink="/khoa-hoc/cac-khoa-tieng-nhat-JLPT">
+                                    <i class="fa fa-angle-right" aria-hidden="true"></i>{{LANGUAGE.JLPT_COURSE}}
+                                </a>
+                            </li>
+                            <li>
+                                <a routerLink="/khoa-hoc/tieng-nhat-cho-thieu-nhi">
+                                    <i class="fa fa-angle-right" aria-hidden="true"></i>{{LANGUAGE.CHILDREN_COURSE}}
+                                </a>
+                            </li>
+                            <li>
+                                <a routerLink="/khoa-hoc/cac-khoa-ky-nang-mem">
+                                    <i class="fa fa-angle-right" aria-hidden="true"></i>{{LANGUAGE.SKILL_COURSE}}
                                 </a>
                             </li>
                         </ul>
@@ -49,10 +77,24 @@
                             <h5 class="block-title">{{LANGUAGE.SERVICE_AND_PARTNER}}</h5>
                         </div>
                         <ul>
-                            <li *ngFor="let services of services">
-                                <a [routerLink]="[services.slug]" [queryParams]="{lang: lang ? 'vi' : 'jp'}">
-                                    <i class="fa fa-angle-right" aria-hidden="true"></i>
-                                    {{services.name}}
+                            <li>
+                                <a routerLink="/dich-vu-doi-tac/tu-van-va-viec-lam">
+                                    <i class="fa fa-angle-right" aria-hidden="true"></i>{{LANGUAGE.APPROAD_STUDY_AND_EMPLOYMENT}}
+                                </a>
+                            </li>
+                            <li>
+                                <a routerLink="/dich-vu-doi-tac/xuat-khau-lao-dong">
+                                    <i class="fa fa-angle-right" aria-hidden="true"></i>{{LANGUAGE.LABOR_EXPORT}}
+                                </a>
+                            </li>
+                            <li>
+                                <a routerLink="/dich-vu-doi-tac/du-an">
+                                    <i class="fa fa-angle-right" aria-hidden="true"></i>{{LANGUAGE.PROJECT}}
+                                </a>
+                            </li>
+                            <li>
+                                <a routerLink="/dich-vu-doi-tac/doi-tac">
+                                    <i class="fa fa-angle-right" aria-hidden="true"></i>{{LANGUAGE.PARTNER}}
                                 </a>
                             </li>
                         </ul>
@@ -65,10 +107,14 @@
                             <h5 class="block-title">{{LANGUAGE.CAREER_OPPOTUNITY}}</h5>
                         </div>
                         <ul>
-                            <li *ngFor="let jobs of jobs">
-                                <a [routerLink]="[jobs.slug]" [queryParams]="{lang: lang ? 'vi' : 'jp'}">
-                                    <i class="fa fa-angle-right" aria-hidden="true"></i>
-                                    {{jobs.name}}
+                            <li>
+                                <a routerLink="/co-hoi-nghe-nghiep/trung-tam-nhat-ban">
+                                    <i class="fa fa-angle-right" aria-hidden="true"></i>{{LANGUAGE.JAPAN_CENTER_OPPOTUNITY}}
+                                </a>
+                            </li>
+                            <li>
+                                <a routerLink="/co-hoi-nghe-nghiep/doanh-nghiep">
+                                    <i class="fa fa-angle-right" aria-hidden="true"></i>{{LANGUAGE.ENTERPRISE}}
                                 </a>
                             </li>
                         </ul>
@@ -82,13 +128,32 @@
                     <div class="card-wrap">
                         <div class="block-title-wrap">
                             <img src="./assets/images/flower-icon-1.png" alt="flower icon">
-                            <h5 class="block-title">{{jpintroduction}}</h5>
+                            <h5 class="block-title">{{LANGUAGE.INTRODUCTION_PAGE}}</h5>
                         </div>
                         <ul>
-                            <li *ngFor="let introduction of introductionData">
-                                <a [routerLink]="[introduction.slug]" [queryParams]="{lang: lang ? 'vi' : 'jp'}">
-                                    <i class="fa fa-angle-right" aria-hidden="true"></i>
-                                    {{introduction.japanese_name}}
+                            <li>
+                                <a routerLink="/gioi-thieu/trung-tam-nhat-ban">
+                                    <i class="fa fa-angle-right" aria-hidden="true"></i>{{LANGUAGE.JAPAN_CENTER}}
+                                </a>
+                            </li>
+                            <li>
+                                <a routerLink="/gioi-thieu/dai-hoc-quy-nhon">
+                                    <i class="fa fa-angle-right" aria-hidden="true"></i>{{LANGUAGE.QUY_NHON_UNIVERSITY}}
+                                </a>
+                            </li>
+                            <li>
+                                <a routerLink="/gioi-thieu/quy-nhon-binh-dinh">
+                                    <i class="fa fa-angle-right" aria-hidden="true"></i>{{LANGUAGE.QUY_NHON_BINH_DINH}}
+                                </a>
+                            </li>
+                            <li>
+                                <a routerLink="/gioi-thieu/nhan-su-trung-tam">
+                                    <i class="fa fa-angle-right" aria-hidden="true"></i>{{LANGUAGE.HUMAN_RESOURCE}}
+                                </a>
+                            </li>
+                            <li>
+                                <a routerLink="/gioi-thieu/tai-sao-chon-qnu-japan-center">
+                                    <i class="fa fa-angle-right" aria-hidden="true"></i>{{LANGUAGE.RESON_TO_CHOOESE_QNU_JAPAN_CENTER}}
                                 </a>
                             </li>
                         </ul>
@@ -98,13 +163,22 @@
                     <div class="card-wrap">
                         <div class="block-title-wrap">
                             <img src="./assets/images/flower-icon-1.png" alt="flower icon">
-                            <h5 class="block-title">{{jpcourse}}</h5>
+                            <h5 class="block-title">{{LANGUAGE.COURSE}}</h5>
                         </div>
                         <ul>
-                            <li *ngFor="let introduction of introductionData">
-                                <a [routerLink]="[introduction.slug]" [queryParams]="{lang: lang ? 'vi' : 'jp'}">
-                                    <i class="fa fa-angle-right" aria-hidden="true"></i>
-                                    {{introduction.japanese_name}}
+                            <li>
+                                <a routerLink="/khoa-hoc/cac-khoa-tieng-nhat-JLPT">
+                                    <i class="fa fa-angle-right" aria-hidden="true"></i>{{LANGUAGE.JLPT_COURSE}}
+                                </a>
+                            </li>
+                            <li>
+                                <a routerLink="/khoa-hoc/tieng-nhat-cho-thieu-nhi">
+                                    <i class="fa fa-angle-right" aria-hidden="true"></i>{{LANGUAGE.CHILDREN_COURSE}}
+                                </a>
+                            </li>
+                            <li>
+                                <a routerLink="/khoa-hoc/cac-khoa-ky-nang-mem">
+                                    <i class="fa fa-angle-right" aria-hidden="true"></i>{{LANGUAGE.SKILL_COURSE}}
                                 </a>
                             </li>
                         </ul>
@@ -114,13 +188,27 @@
                     <div class="card-wrap">
                         <div class="block-title-wrap">
                             <img src="./assets/images/flower-icon-1.png" alt="flower icon">
-                            <h5 class="block-title">{{jbservices}}</h5>
+                            <h5 class="block-title">{{LANGUAGE.SERVICE_AND_PARTNER}}</h5>
                         </div>
                         <ul>
-                            <li *ngFor="let services of services">
-                                <a [routerLink]="[services.slug]" [queryParams]="{lang: lang ? 'vi' : 'jp'}">
-                                    <i class="fa fa-angle-right" aria-hidden="true"></i>
-                                    {{services.japanses_name}}
+                            <li>
+                                <a routerLink="/dich-vu-doi-tac/tu-van-va-viec-lam">
+                                    <i class="fa fa-angle-right" aria-hidden="true"></i>{{LANGUAGE.APPROAD_STUDY_AND_EMPLOYMENT}}
+                                </a>
+                            </li>
+                            <li>
+                                <a routerLink="/dich-vu-doi-tac/xuat-khau-lao-dong">
+                                    <i class="fa fa-angle-right" aria-hidden="true"></i>{{LANGUAGE.LABOR_EXPORT}}
+                                </a>
+                            </li>
+                            <li>
+                                <a routerLink="/dich-vu-doi-tac/du-an">
+                                    <i class="fa fa-angle-right" aria-hidden="true"></i>{{LANGUAGE.PROJECT}}
+                                </a>
+                            </li>
+                            <li>
+                                <a routerLink="/dich-vu-doi-tac/doi-tac">
+                                    <i class="fa fa-angle-right" aria-hidden="true"></i>{{LANGUAGE.PARTNER}}
                                 </a>
                             </li>
                         </ul>
@@ -130,13 +218,17 @@
                     <div class="card-wrap">
                         <div class="block-title-wrap">
                             <img src="./assets/images/flower-icon-1.png" alt="flower icon">
-                            <h5 class="block-title">{{jpjobs}}</h5>
+                            <h5 class="block-title">{{LANGUAGE.CAREER_OPPOTUNITY}}</h5>
                         </div>
                         <ul>
-                            <li *ngFor="let jobs of jobs">
-                                <a [routerLink]="[jobs.slug]" [queryParams]="{lang: lang ? 'vi' : 'jp'}">
-                                    <i class="fa fa-angle-right" aria-hidden="true"></i>
-                                    {{jobs.japanese_name}}
+                            <li>
+                                <a routerLink="/co-hoi-nghe-nghiep/trung-tam-nhat-ban">
+                                    <i class="fa fa-angle-right" aria-hidden="true"></i>{{LANGUAGE.JAPAN_CENTER_OPPOTUNITY}}
+                                </a>
+                            </li>
+                            <li>
+                                <a routerLink="/co-hoi-nghe-nghiep/doanh-nghiep">
+                                    <i class="fa fa-angle-right" aria-hidden="true"></i>{{LANGUAGE.ENTERPRISE}}
                                 </a>
                             </li>
                         </ul>

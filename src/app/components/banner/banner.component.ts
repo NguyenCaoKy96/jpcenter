@@ -68,7 +68,7 @@ export class BannerComponent implements OnInit {
         this.homeImages = res;
         for (var i = 0; i < this.homeImages.length; i++) {
           this.homeImagesURL[i] = this.homeImages[i];
-          console.log(this.homeImagesURL[i]);
+          //console.log(this.homeImagesURL[i]);
         }
       });
     }

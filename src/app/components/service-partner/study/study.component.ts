@@ -33,9 +33,10 @@ export class StudyComponent implements OnInit {
   imageURLs: any;
   homeImages: any[] = [];
   homeImagesURL: { [key: number]: string } = [];
-  contentURL: string;
-  contentsData: any;
-  study: any;
+  studyURL: string;
+  studyData: any;
+  studyName: any;
+  Contents: any;
   serverURL: any;
   data: any;
 
@@ -53,14 +54,13 @@ export class StudyComponent implements OnInit {
     private _getImageService: GetImagesService,
     private _route: ActivatedRoute
   ) {
-    // get data service-partner
-    this.contentURL = this._getDataService.getContentURL();
-    this.http.get(this.contentURL).subscribe(data => {
-     this.contentsData = data;
-     this.study = this.contentsData[7];
-     console.log('du hoc',this.study)
-     //this.onChangeContent(this.contentsData[7].id);
-   });
+    // get data Project 
+    this.studyURL = this._getDataService.getStudyURL();
+    this.http.get(this.studyURL).subscribe(data => {
+       this.studyData = data;
+       this.studyName = this.studyData.Name;
+       this.Contents = this.studyData.contents;  
+    });
    }
 
   ngOnInit() {

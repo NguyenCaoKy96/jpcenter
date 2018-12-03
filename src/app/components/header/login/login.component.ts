@@ -32,7 +32,7 @@ export class LoginComponent implements OnInit {
     this.identifier = $('#uname1').val();
     this.password = $('#pwd1').val();
     axios
-    .post('http://10.1.0.66:1337/auth/local',
+    .post('http://10.1.0.66:1339/auth/local',
     {
         identifier: this.identifier,
         password: this.password
@@ -46,7 +46,7 @@ export class LoginComponent implements OnInit {
         
         if(length < 30){
           localStorage.setItem("firstChar", this.user.username);
-          window.open('http://10.1.0.66:1337/admin/')
+          window.open('http://10.1.0.66:1339/admin/')
           window.location.reload(true);  
         }
       }           

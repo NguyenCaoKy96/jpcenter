@@ -9,6 +9,7 @@ import { map, catchError } from "rxjs/operators";
 
 import { GetDataService } from './../../../services/get-data/get-data.service';
 import { GetImagesService } from './../../../services/get-image-slider/get-images.service';
+import { default as LANG_VI } from '../../../../lang/lang_vi';
 
 // Carousel
 import { NgxCarousel, NgxCarouselStore  } from 'ngx-carousel';
@@ -40,18 +41,30 @@ export class NewspageTwoComponent implements OnInit {
   direction = 'left';
   directionToggle = true;
   autoplay = true;
+  LANGUAGE: any = LANG_VI;
+  newspageURL;
+  newspageData;
 
-  constructor( private titleService: Title,
+  constructor( private _titleService: Title,
     private http: HttpClient,
     private _getDataService: GetDataService,
-    private _getImageService: GetImagesService) { }
+    private _getImageService: GetImagesService)
+
+     {  
+       // getdata
+         this.newspageURL = this._getDataService.getNewsURL();
+         this.http.get(this.newspageURL).subscribe(data => {
+         this.newspageData = data;
+         this.newspageData = this.newspageData[0];
+    });
+     }
 
   ngOnInit() {
   	 // Pagin
     for (let i = 1; i <= 100; i++) {
       this.collection.push(`item ${i}`);
     }
-    this.titleService.setTitle('Tin tức & sự kiện');
+    this._titleService.setTitle(this.LANGUAGE.NEWS_AND_EVENTS);
 
     this.carouselBanner = this._getImageService.carouselBanner;
     this.imageURLs = this._getDataService.getImagesURL();
@@ -60,9 +73,9 @@ export class NewspageTwoComponent implements OnInit {
     this.data.then(res => {
       this.homeImages = res;
       for (var i = 0; i < this.homeImages.length; i++) {
-        if (this.homeImages[i].name === "Tin tức - Sự kiện") {
-          for (var k = 0; k < this.homeImages[i].Images.length; k++) {
-            this.homeImagesURL[k] = this.serverURL + this.homeImages[i].Images[k].url;
+        if (this.homeImages[i].Name === this.LANGUAGE.NEWS_AND_EVENTS) {
+          for (var k = 0; k < this.homeImages[i].Image.length; k++) {
+            this.homeImagesURL[k] = this.serverURL + this.homeImages[i].Image[k].url;
           }
         }
       }

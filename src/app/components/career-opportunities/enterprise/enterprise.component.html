@@ -13,30 +13,30 @@
 <nav aria-label="breadcrumb">
   <ol class="breadcrumb">
     <li class="breadcrumb-item">
-      <a routerLink="/trang-chu">Trang chủ</a>
-    </li>
+      <a routerLink="/trang-chu" [queryParams]="{lang: lang ? 'jp' : 'vi'}">{{LANGUAGE.HOME_PAGE}}</a>
+    </li> 
     <li class="breadcrumb-item ">
-     <a routerLink="/co-hoi-nghe-nghiep/doanh-nghiep">Cơ hội nghề nghiệp</a> 
+     <a routerLink="/co-hoi-nghe-nghiep/doanh-nghiep" [queryParams]="{lang: lang ? 'jp' : 'vi'}">{{LANGUAGE.CAREER_OPPOTUNITY}}</a> 
     </li>
-    <li class="breadcrumb-item active" aria-current="page">Doanh nghiệp</li>
+    <li class="breadcrumb-item active" aria-current="page">{{LANGUAGE.ENTERPRISE}}</li>
   </ol>
 </nav>
 <div class="row">
   <div class="col-md-4 col-lg-3 left-navigation">
     <ul class="nav nav-tabs d-none d-md-block">
       <li class="nav-item">
-        <a class="nav-link " id="JCenter-tab" routerLink="/co-hoi-nghe-nghiep/trung-tam-nhat-ban">Trung tâm Nhật Bản</a>
+        <a class="nav-link "id="JCenter-tab" routerLink="/co-hoi-nghe-nghiep/trung-tam-nhat-ban" [queryParams]="{lang: lang ? 'jp' : 'vi'} ">{{LANGUAGE.JAPAN_CENTER}}</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" id="JCenter-tab" routerLink="/co-hoi-nghe-nghiep/doanh-nghiep">Doanh nghiệp</a>
+        <a class="nav-link" id="JCenter-tab" routerLink="/co-hoi-nghe-nghiep/doanh-nghiep" [queryParams]="{lang: lang ? 'jp' : 'vi'}">{{LANGUAGE.ENTERPRISE}}</a>
       </li>
     </ul>
   </div>
   <div class="col-md-8">
     <div class="tab-content">
       <div class="tab-pane active">
-        <h4 class="section-title" *ngIf="career">{{career.Name}}</h4>
-        <div class="course-content pt-3" *ngIf="career" [innerHTML]="career.Content">
+        <h4 class="section-title">{{enterpriseName}}</h4>
+        <div class="course-content pt-3" *ngIf="Contents" [innerHTML]="Contents.Content">
         </div>
       </div>
     </div>

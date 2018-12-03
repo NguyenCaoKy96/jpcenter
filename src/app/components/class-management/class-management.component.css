@@ -1,0 +1,9 @@
+ul li a{
+    font-weight: 600;
+    color: #000;
+    text-align: center;
+}
+ul li a:hover{
+    font-weight: 600;
+    color: red;
+}

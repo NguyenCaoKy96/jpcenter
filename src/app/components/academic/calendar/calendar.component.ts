@@ -11,7 +11,13 @@ import { GetDataService } from './../../../services/get-data/get-data.service';
 import { GetImagesService } from './../../../services/get-image-slider/get-images.service';
 
 // Carousel
-import { NgxCarousel, NgxCarouselStore  } from 'ngx-carousel';
+import { NgxCarousel, NgxCarouselStore } from 'ngx-carousel';
+import { ActivatedRoute } from '@angular/router';
+
+// Language
+import { default as LANG_VI } from '../../../../lang/lang_vi';
+import { default as LANG_JP } from '../../../../lang/lang_jp';
+
 
 @Component({
   selector: 'app-calendar',
@@ -23,51 +29,60 @@ import { NgxCarousel, NgxCarouselStore  } from 'ngx-carousel';
   ]
 })
 export class CalendarComponent implements OnInit {
-	openingSchedule: any;
-	openingURL: string;
 
-	carouselBanner: any;
-    imageURLs: any;
-    homeImages: any[] = [];
-    homeImagesURL: { [key: number]: string } = [];
-    serverURL: any;
-    data: any;
-    link;
-    txtArea1;
-    rows: any;
+  public LANGUAGE : any = LANG_VI;
+  openingSchedule: any;
+  openingURL: string;
+  carouselBanner: any;
+  imageURLs: any;
+  homeImages: any[] = [];
+  homeImagesURL: { [key: number]: string } = [];
+  serverURL: any;
+  data: any;
+  link;
+  txtArea1;
+  rows: any;
 
-
-    
-
-  constructor(private titleService: Title,
-  	private _titleService: Title,
-  	private _http: HttpClient,
+  constructor(
+    private titleService: Title,
+    private _titleService: Title,
+    private _http: HttpClient,
     private http: HttpClient,
     private _getDataService: GetDataService,
-    private _getImageService: GetImagesService) { }
+    private _getImageService: GetImagesService,
+    private _route: ActivatedRoute
+    ) { }
 
   ngOnInit() {
-       //get data download
-     this.openingURL = this._getDataService.getOpeningScheduleURL();
-    this._http.get(this.openingURL).subscribe(data =>{
+
+    //get data download
+    this.openingURL = this._getDataService.getOpeningScheduleURL();
+    this._http.get(this.openingURL).subscribe(data => {
       this.openingSchedule = data;
-      console.log(this.openingSchedule );
-      for(var i = 0; i < this.openingSchedule.length; i++){
+      console.log(this.openingSchedule);
+      for (var i = 0; i < this.openingSchedule.length; i++) {
         this.link = this.openingSchedule[0].Link;
         console.log(this.link)
       }
-      
-    });
-  	// Title 
-  	this._titleService.setTitle('Điểm thi');
 
-  	//get data openings
-  	this.openingURL = this._getDataService.getOpeningScheduleURL();
+    });
+    // Title 
+    this._titleService.setTitle('Điểm thi');
+
+//get data openings
+  	this.openingURL = this._getDataService.getCoursesURL();
   	this._http.get(this.openingURL).subscribe(data =>{
   		this.openingSchedule = data;
   	});
+    // Change language
+    this._route.queryParams.subscribe(data => {
+      if (data.lang === 'vi') {
+        this.LANGUAGE = LANG_VI;
+      } else {
+        this.LANGUAGE = LANG_JP;
+      }
+    });
 
-  	// Slide images
     this.carouselBanner = this._getImageService.carouselBanner;
     this.imageURLs = this._getDataService.getImagesURL();
     this.serverURL = this._getDataService.serverURL;
@@ -75,18 +90,12 @@ export class CalendarComponent implements OnInit {
     this.data.then(res => {
       this.homeImages = res;
       for (var i = 0; i < this.homeImages.length; i++) {
-        if (this.homeImages[i].name === "Cơ hội nghề nghiệp") {
-          for (var k = 0; k < this.homeImages[i].Images.length; k++) {
-            this.homeImagesURL[k] = this.serverURL + this.homeImages[i].Images[k].url;
+        if (this.homeImages[i].Name === "Học vụ") {
+          for (var k = 0; k < this.homeImages[i].Image.length; k++) {
+            this.homeImagesURL[k] = this.serverURL + this.homeImages[i].Image[k].url;
           }
-        } 
+        }
       }
-    });
-
-    //
-   
- 
+    })
   }
-
-
 }

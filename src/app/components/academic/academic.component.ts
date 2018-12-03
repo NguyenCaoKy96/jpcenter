@@ -82,7 +82,7 @@ export class AcademicComponent implements OnInit {
     this.data.then(res => {
       this.homeImages = res;
       for (var i = 0; i < this.homeImages.length; i++) {
-        if (this.homeImages[i].name === "Cơ hội nghề nghiệp") {
+        if (this.homeImages[i].name === "Học vụ") {
           for (var k = 0; k < this.homeImages[i].Images.length; k++) {
             this.homeImagesURL[k] = this.serverURL + this.homeImages[i].Images[k].url;
           }

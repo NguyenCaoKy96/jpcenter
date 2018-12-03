@@ -33,9 +33,10 @@ export class LaborComponent implements OnInit {
   imageURLs: any;
   homeImages: any[] = [];
   homeImagesURL: { [key: number]: string } = [];
-  contentURL: string;
-  contentsData: any;
-  labor: any;
+  laborURL: string;
+  laborData: any;
+  laborName: any;
+  Contents: any;
   serverURL: any;
   data: any;
 
@@ -53,14 +54,13 @@ export class LaborComponent implements OnInit {
     private _getImageService: GetImagesService,
     private _route: ActivatedRoute
   ) {
-    // get data service-partner
-    this.contentURL = this._getDataService.getContentURL();
-    this.http.get(this.contentURL).subscribe(data => {
-     this.contentsData = data;
-     this.labor = this.contentsData[8];
-     console.log('lao dong',this.labor)
-     //this.onChangeContent(this.contentsData[8].id);
-   });
+    // get data Labor
+    this.laborURL = this._getDataService.getLaborURL();
+    this.http.get(this.laborURL).subscribe(data => {
+       this.laborData = data;
+       this.laborName = this.laborData.Name;
+       this.Contents = this.laborData.contents;  
+    });
    }
 
   ngOnInit() {

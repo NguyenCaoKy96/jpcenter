@@ -32,6 +32,7 @@ export class ServicePartnerComponent implements OnInit {
   public LANGUAGE : any = LANG_VI;
 	serviceType = 'one';
 	public page='one';
+  public content=[{"ggg":"<figure class=\"image\"><img src=\"https://36013.cdn.cke-cs.com/cuwJ4DhybS2TdOeOxsmr/images/33df3b394f5ee7be98319ed45e440fe735a92e244a2bf5d9_download.jpg\" srcset=\"https://36013.cdn.cke-cs.com/cuwJ4DhybS2TdOeOxsmr/images/33df3b394f5ee7be98319ed45e440fe735a92e244a2bf5d9_download.jpg/w_125 125w, https://36013.cdn.cke-cs.com/cuwJ4DhybS2TdOeOxsmr/images/33df3b394f5ee7be98319ed45e440fe735a92e244a2bf5d9_download.jpg/w_205 205w, https://36013.cdn.cke-cs.com/cuwJ4DhybS2TdOeOxsmr/images/33df3b394f5ee7be98319ed45e440fe735a92e244a2bf5d9_download.jpg/w_285 285w\" sizes=\"100vw\" width=\"285\"></figure><p>&nbsp;</p><p>LỆ Yêu CU Anh quá trời ơi&nbsp;</p><p><strong>LỆ yêu cu anh quá trời ơi</strong></p><ul><li>Lệ yêu cu anh quá trời ơi&nbsp;</li></ul>","_id":"5bfcf5290874480c983a0f70","createdAt":"2018-11-27T07:41:29.266Z","updatedAt":"2018-11-27T08:35:55.727Z","__v":0,"id":"5bfcf5290874480c983a0f70"}];
 
   carouselBanner: any;
   imageURLs: any;

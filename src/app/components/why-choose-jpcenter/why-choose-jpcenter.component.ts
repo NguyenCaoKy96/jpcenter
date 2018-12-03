@@ -5,7 +5,7 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './why-choose-jpcenter.component.html',
   styleUrls: ['./why-choose-jpcenter.component.css']
 })
-export class WhyChooseJpcenterComponent implements OnInit {
+export class WhyChooseJpcenterComponent implements OnInit {z
 
   constructor() { }
 

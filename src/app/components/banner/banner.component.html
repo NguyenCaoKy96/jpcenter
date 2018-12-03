@@ -8,7 +8,7 @@
             (click)="onClickInAdvertImage(homeImagesURL[i])"
             NgxCarouselItem
             *ngFor="let tile of homeImagesURL; let i = index;"
-            [ngStyle]="{'background-image': 'url(' + serverURL + tile.Image[i].url + ')'}"
+            [ngStyle]="{'background-image': 'url(' + serverURL + tile.Image.url + ')'}"
         >
         </ngx-item>
         <button NgxCarouselPrev></button>

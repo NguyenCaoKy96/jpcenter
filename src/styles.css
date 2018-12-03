@@ -31,7 +31,7 @@ ngx-carousel {
     font-size: 30px;
     font-weight: bold;
     font-family: "Lemonada", sans-serif;
-    bottom: 1.7em;
+    bottom: 55px;
 }
 
 @media only screen and (max-width: 768px) {
@@ -116,14 +116,16 @@ ngx-carousel {
     content: ">";
 }
 
-.breadcrumb-item a {
-    color: #000 !important;
-    font-weight: 600;
-}
-
 .breadcrumb-item a:hover {
-    color: red !important;
+    color: red;
     text-decoration: none;
+}
+.breadcrumb-item.active{
+    cursor:text !important;
+    color:#6c757d !important;
+}
+.breadcrumb-item.active a {
+    color: #6c757d !important;;
 }
 
 ul, li {
@@ -145,15 +147,21 @@ a, a:visited {
 a:hover {
     color: #dc3545;
     text-decoration: none;
+
 }
 
 .nav-tabs {
-    padding: 20px 5px;
+    padding: 10px 5px;
     background-color: white;
     margin-bottom: 30px;
     display: block;
     font-size: 15px;
 }
+/*.nav-tabs.nav-link {
+    border-top-left-radius: .25rem;
+    border-top-right-radius: .25rem;
+    border:none;
+}*/
 
 .left-navigation .nav-link {
     font-size: 18px;
@@ -168,7 +176,7 @@ a:hover {
     font-weight: 600;
 }
 
-.nav-link.nav-link:hover {
+.nav-link:hover {
     color: #dc3545;
 }
 
@@ -230,9 +238,9 @@ pagination-controls {
 
 .card-title {
     color: #000;
-    font-size: 24px;
+    font-size: 18px;
     margin-bottom: .75rem;
-    margin-left: 20px;
+    margin-left: -1px;
 }
 
 .card-body {
@@ -276,8 +284,10 @@ pagination-controls {
     margin-left: 20px;
 }
 .title-content p {
-    margin-left: 40px;
+    margin-left: 2px;
     margin-top: -41px;
+    font-size: 17px;
+    font-weight: bold;
 }
 .content-sub{
     margin-left: 20px;
@@ -377,4 +387,17 @@ thead {
     color: #fff;
     background-color: rgb(188, 0, 45);
     border-color: rgb(188, 0, 45);
+}
+.breadcumb-item.active{
+    cursor:text;
+    color:#6c757d !important;
+}
+.nav-tabs .nav-link:hover,.nav-tabs .nav-link {
+    border: none !important;
+    font-size: 18px;
+    display: block;
+}
+.nav-tabs .nav-link.active{
+    font-weight: 700;
+    color: #495057;
 }

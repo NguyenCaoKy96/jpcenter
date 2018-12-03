@@ -30,7 +30,8 @@ export class SupporterPageComponent implements OnInit {
         cloudServices: {
             tokenUrl: 'https://35921.cke-cs.com/token/dev/M3oF3XeTQf4XeRCcLaIxJtYOZXe2Hk3fmAxTmKtdMssXjFl1mfpl2nmRnzXw',
             uploadUrl: 'https://35921.cke-cs.com/easyimage/upload/'
-        }
+        },
+        disallowedContent : 'img{width,height}'
     };
     public model = {
         editorDataVi: '',

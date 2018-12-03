@@ -9,9 +9,14 @@ import { map, catchError } from "rxjs/operators";
 
 import { GetDataService } from './../../../services/get-data/get-data.service';
 import { GetImagesService } from './../../../services/get-image-slider/get-images.service';
+import { ActivatedRoute } from '@angular/router';
 
 // Carousel
 import { NgxCarousel, NgxCarouselStore  } from 'ngx-carousel';
+
+// Language
+import { default as LANG_VI } from '../../../../lang/lang_vi';
+import { default as LANG_JP } from '../../../../lang/lang_jp';
 
 @Component({
   selector: 'app-exam-calendar',
@@ -23,13 +28,14 @@ import { NgxCarousel, NgxCarouselStore  } from 'ngx-carousel';
   ]
 })
 export class ExamCalendarComponent implements OnInit {
+
   carouselBanner: any;
   imageURLs: any;
   homeImages: any[] = [];
   homeImagesURL: { [key: number]: string } = [];
   serverURL: any;
   data: any;
-
+  public LANGUAGE : any = LANG_VI;
   academicsURL: string;
     academics:any;
 
@@ -38,7 +44,9 @@ export class ExamCalendarComponent implements OnInit {
   	private _http: HttpClient,
     private http: HttpClient,
     private _getDataService: GetDataService,
-    private _getImageService: GetImagesService) { }
+    private _getImageService: GetImagesService,
+    private _route: ActivatedRoute
+    ) { }
 
   ngOnInit() {
   		this.academicsURL = this._getDataService.getAcademicsURL();
@@ -46,7 +54,16 @@ export class ExamCalendarComponent implements OnInit {
   		this.academics = data;
   	});
 
-  	// Slide images
+  	
+  	 // Change language
+     this._route.queryParams.subscribe(data => {
+      if (data.lang === 'vi') {
+        this.LANGUAGE = LANG_VI;
+      } else {
+        this.LANGUAGE = LANG_JP;
+      }
+    });
+
     this.carouselBanner = this._getImageService.carouselBanner;
     this.imageURLs = this._getDataService.getImagesURL();
     this.serverURL = this._getDataService.serverURL;
@@ -54,13 +71,14 @@ export class ExamCalendarComponent implements OnInit {
     this.data.then(res => {
       this.homeImages = res;
       for (var i = 0; i < this.homeImages.length; i++) {
-        if (this.homeImages[i].name === "Cơ hội nghề nghiệp") {
-          for (var k = 0; k < this.homeImages[i].Images.length; k++) {
-            this.homeImagesURL[k] = this.serverURL + this.homeImages[i].Images[k].url;
+        if (this.homeImages[i].Name === "Học vụ") {
+          for (var k = 0; k < this.homeImages[i].Image.length; k++) {
+            this.homeImagesURL[k] = this.serverURL + this.homeImages[i].Image[k].url;
           }
-        } 
+        }
       }
     });
+
     var tableToExcel = (function() {
   var uri = 'data:application/vnd.ms-excel;base64,'
     , template = '<html xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:x="urn:schemas-microsoft-com:office:excel" xmlns="http://www.w3.org/TR/REC-html40"><head><!--[if gte mso 9]><xml><x:ExcelWorkbook><x:ExcelWorksheets><x:ExcelWorksheet><x:Name>{worksheet}</x:Name><x:WorksheetOptions><x:DisplayGridlines/></x:WorksheetOptions></x:ExcelWorksheet></x:ExcelWorksheets></x:ExcelWorkbook></xml><![endif]--></head><body><table>{table}</table></body></html>'

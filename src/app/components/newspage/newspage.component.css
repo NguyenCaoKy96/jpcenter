@@ -42,3 +42,31 @@ strong {
 .thumnail > img {
     width: 10% !important;
 }
+.card-body {
+    -webkit-box-flex: 1;
+    -ms-flex: 1 1 auto;
+    flex: 1 1 auto;
+    padding: 1.25rem;
+}
+.post-highlight{
+    height: 325px;
+    border: solid 1px #e5e5e5;
+}
+.breadcrumb-item a:hover {
+   color:inherit;
+}
+.breadcumb-item.active{
+    color:#6c757d !important;
+}
+.breadcumb-item.acive:hover{
+    cursor:text;
+}
+a, a:visited {
+    color: black;
+    text-decoration: none;
+}
+
+a:hover {
+    color:inherit;
+    text-decoration: none;
+}

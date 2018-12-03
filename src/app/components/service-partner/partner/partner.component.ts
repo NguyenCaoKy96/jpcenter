@@ -33,9 +33,10 @@ export class PartnerComponent implements OnInit {
   imageURLs: any;
   homeImages: any[] = [];
   homeImagesURL: { [key: number]: string } = [];
-  contentURL: string;
-  contentsData: any;
-  partner: any;
+  partnerURL: string;
+  partnerData: any;
+  partnerName: any;
+  Contents: any;
   serverURL: any;
   data: any;
 
@@ -54,14 +55,13 @@ export class PartnerComponent implements OnInit {
     private _getImageService: GetImagesService,
     private _route: ActivatedRoute
   ) { 
-     // get data service-partner
-     this.contentURL = this._getDataService.getContentURL();
-     this.http.get(this.contentURL).subscribe(data => {
-      this.contentsData = data;
-      this.partner = this.contentsData[10];
-      console.log('doi tac',this.partner)
-      //this.onChangeContent(this.contentsData[10].id);
-    });
+     // get data Partner
+     this.partnerURL = this._getDataService.getPartnerServiceURL();
+     this.http.get(this.partnerURL).subscribe(data => {
+        this.partnerData = data;
+        this.partnerName = this.partnerData.Name;
+        this.Contents = this.partnerData.contents;  
+     });
   }
 
   ngOnInit() {

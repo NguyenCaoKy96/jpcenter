@@ -36,6 +36,7 @@ export class SkillsComponent implements OnInit {
   homeImagesURL: { [key: number]: string } = [];
   serverURL: any;
   data: any;
+  lang: string = 'vi';
   public LANGUAGE: any = LANG_VI;
 
   // Carousel config
@@ -49,9 +50,12 @@ export class SkillsComponent implements OnInit {
   skillDataItem;
   skillsURL: string;
   skillsData;
+  japanchildDataItem;
+  japanContents;
+  japanchildContent
 
   constructor(
-    private titleService: Title,
+    private _titleService: Title,
     private http: HttpClient,
     private _getDataService: GetDataService,
     private _getImageService: GetImagesService,
@@ -63,7 +67,11 @@ export class SkillsComponent implements OnInit {
         this.skillsData = data;
         this.skillDataItem = this.skillsData.Name;
         this.Contents = this.skillsData.contents;
-        this.childContent = this.Contents.Content       
+        this.childContent = this.Contents.Content;
+        this.japanchildDataItem = this.skillsData.Japanese_Name;
+        this.japanContents = this.skillsData.contents;
+        this.japanchildContent = this.japanContents.Japanese_Content ;
+        console.log(this.japanchildDataItem)        
      });
   }
 
@@ -76,22 +84,26 @@ export class SkillsComponent implements OnInit {
         this.LANGUAGE = LANG_JP;
       }
     });
-    this.titleService.setTitle('Khóa học');
+    
+    this._titleService.setTitle(this.LANGUAGE.SKILL_COURSE);
+    //console.log(this.LANGUAGE.EDUCATION_PROGRAM);
 
     this.carouselBanner = this._getImageService.carouselBanner;
-
     this.imageURLs = this._getDataService.getImagesURL();
     this.serverURL = this._getDataService.serverURL;
     this.data = this._getImageService.getImageFromServer();
     this.data.then(res => {
       this.homeImages = res;
       for (var i = 0; i < this.homeImages.length; i++) {
-        if (this.homeImages[i].name === "Khóa học") {
-          for (var k = 0; k < this.homeImages[i].Images.length; k++) {
-            this.homeImagesURL[k] = this.serverURL + this.homeImages[i].Images[k].url;
+        if (this.homeImages[i].Name === "Khóa học") {
+          for (var k = 0; k < this.homeImages[i].Image.length; k++) {
+            this.homeImagesURL[k] = this.serverURL + this.homeImages[i].Image[k].url;
           }
         }
       }
+    });
+    this._route.queryParams.subscribe(data => {
+      this.lang = data.lang;
     });
   }
 

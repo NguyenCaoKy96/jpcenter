@@ -1,0 +1,12 @@
+img{
+    width:100%;
+}
+.nav-tabs .nav-link:hover,.nav-tabs .nav-link {
+    border: none !important;
+    font-size: 18px;
+    display: block;
+}
+.nav-tabs .nav-link.active{
+	font-weight: 700;
+	color: #495057;
+}

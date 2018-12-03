@@ -53,17 +53,20 @@ export class NewspageComponent implements OnInit {
 
   // Public newspage card\
   shortNewspageContent: string;
-  newspageContent: any;
-  newspageData;
-  newspageURL: string;
-  Newspage1;
-  nameNewspage1;
-  newspageImage1;
-  japannameNewspage1;
-  contenNewspage1;
+  newsPageContent: any;
+  newsPageData;
+  newsPageURL: string;
 
   figure: any;
   img: any;
+  imagePageData:any;
+  newsName:any;
+  newsLocation:any;
+  newSlug:string;
+
+  newHeaderData: any;
+  imageHeaderData: string;
+  newsPageItems:any = [];
 
   constructor(
     private _titleService: Title,
@@ -73,15 +76,24 @@ export class NewspageComponent implements OnInit {
     private _route: ActivatedRoute
   ) {
       //get data newspage for card
-      this.newspageURL = this._getDataService.getNewsURL();
-      this._http.get(this.newspageURL).subscribe(data =>{
-      this.newspageData = data;
-      this.Newspage1 = this.newspageData[1];
-      this.nameNewspage1 = this.Newspage1.name;
-      this.japannameNewspage1 = this.Newspage1.japanese_name;
-      // this.contenNewspage1 = this.Newspage1.contents;
-      this.newspageImage1 = this.serverURL + this.Newspage1.image.url;
-    });
+      this.newsPageURL = this._getDataService.getNewsURL();
+      this._http.get(this.newsPageURL).subscribe(data =>{
+        this.newsPageData = data;
+        console.log('newpage',this.newsPageData[1].Content);
+
+        this.newHeaderData = this.newsPageData[0];
+        this.imageHeaderData = this.serverURL + this.newHeaderData.Thumbnai.url;
+        console.log('newHeaderData',this.newHeaderData);
+
+        for(let i = 0; i < this.newsPageData.length; i++){
+          if(i > 0){
+           this.newsPageItems.push(this.newsPageData[i]);
+
+           //cut content to short content (from 0 to 130)
+           // this.newsPageItems[i-1].Object = this.newsPageData[i].Content.replace(/^(.{130}[^\s]*).*/, "$1");
+          }
+        }
+      });
    }
 
   ngOnInit() {
@@ -108,7 +120,7 @@ export class NewspageComponent implements OnInit {
     this.data.then(res => {
       this.homeImages = res;
       for (var i = 0; i < this.homeImages.length; i++) {
-        if (this.homeImages[i].Name === "Tin tức và Sự kiện") {
+        if (this.homeImages[i].Name === this.LANGUAGE.NEWS_AND_EVENTS) {
           for (var k = 0; k < this.homeImages[i].Image.length; k++) {
             this.homeImagesURL[k] = this.serverURL + this.homeImages[i].Image[k].url;
           }
@@ -150,5 +162,5 @@ export class NewspageComponent implements OnInit {
         }
       }
     });
-  }
+  } 
 }

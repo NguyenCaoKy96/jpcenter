@@ -1,4 +1,5 @@
 <a routerLink ="/trang-chu" role="button" class="btn btn-lg logout-btn" data-toggle="modal" (click)="logout()">Đăng Xuất</a>
-<a routerLink="/viet-bai" role="button" [queryParams]="{lang: lang ? 'vi' : 'jp'}" class="btn btn-lg" data-toggle="modal">Viết bài mới</a>
-<a routerLink="/quan-ly-lop-hoc" [queryParams]="{lang: lang ? 'vi' : 'jp'}" role="button" class="btn btn-lg" data-toggle="modal">Quản lý lớp học</a>
-<a routerLink="/danh-sach-dang-ky" [queryParams]="{lang: lang ? 'vi' : 'jp'}" role="button" class="btn btn-lg" data-toggle="modal">Danh sách đăng ký</a>
+<a routerLink="/viet-bai" role="button" [queryParams]="{lang: 'vi'}" class="btn btn-lg" data-toggle="modal">Viết bài mới</a>
+<a routerLink="/quan-ly-lop-hoc" [queryParams]="{lang: 'vi' }" role="button" class="btn btn-lg" data-toggle="modal">Quản lý lớp học</a>
+<a routerLink="/danh-sach-dang-ky" [queryParams]="{lang: 'vi' }" role="button" class="btn btn-lg" data-toggle="modal">Danh sách đăng ký</a>
+<a routerLink="/quan-ly-diem" [queryParams]="{lang: 'vi' }" role="button" class="btn btn-lg" data-toggle="modal">Quản lý điểm</a>

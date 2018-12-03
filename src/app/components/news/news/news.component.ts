@@ -2,68 +2,128 @@ import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { ActivatedRoute } from '@angular/router';
 import * as $ from 'jquery';
+
+// Service
 import { GetDataService } from './../../../services/get-data/get-data.service';
+import { GetImagesService } from './../../../services/get-image-slider/get-images.service';
 
 @Component({
   selector: 'app-news',
   templateUrl: './news.component.html',
   styleUrls: ['./news.component.css'],
-  providers: [GetDataService]
+  providers: [
+    GetDataService,
+    GetImagesService
+  ]
 })
 
 export class NewsComponent implements OnInit {
+
   lang: string;
-  newsURL: string;
-  newsData;
-  news;
-  nameNews;
-  japannameNews;
-  newsImage;
-  news1;
-  nameNews1;
-  japannameNews1;
-  newsImage1;
-  news2;
-  nameNews2;
-  japannameNews2;
-  newsImage2;
-  news3;
-  nameNews3;
-  japannameNews3;
-  newsImage3;
+
+  newWhyQnuURL: string;
+  newWhyQnuData: any;
+  newWhyQnuName: any;
+  newWhyQnuJapanName: any;
+  imageWhyQnu: any;
+  linkWhyQNU: any;
+
+  newProjectURL: string;
+  newProjectData: any;
+  newProjectName: any;
+  newProjectJapanName: any;
+  imageProject: any;
+  linkProject: any;
+
+  newJobURL: string;
+  newJobData: any;
+  newJobName: any;
+  newJobJapanName: any;
+  imageJob: any;
+  linkJob: any;
+
+  newIntroducURL: string;
+  newIntroData: any;
+  newIntroName: any;
+  newIntroJapanName: any;
+  imageIntro: any;
+  linkIntro: any;
+
+  carouselBanner: any;
+  imageURLs: any;
+  sliderImages: any[] = [];
+  sliderImagesURL: { [key: number]: string } = [];
+  data: any;
   serverURL: string;
 
   constructor(
     private _http: HttpClient,
     private _getDataService: GetDataService,
+    private _getImageService: GetImagesService,
     private _route: ActivatedRoute
-  ) { }
-
-  ngOnInit() {
+  ) {
     this.serverURL = this._getDataService.serverURL;
 
-    // Get data introduction
-    this.newsURL = this._getDataService.getNewsURL();
-    this._http.get(this.newsURL).subscribe(data => {
-      this.newsData = data;
-      this.news = this.newsData[0];
-      this.nameNews = this.news.name;
-      this.japannameNews = this.news.japanese_name;
-      this.newsImage = this.serverURL + this.news.image.url;
-      this.news1 = this.newsData[1];
-      this.nameNews1 = this.news1.name;
-      this.japannameNews1 = this.news1.japanese_name;
-      this.newsImage1 = this.serverURL + this.news1.image.url;
-      this.news2 = this.newsData[2];
-      this.nameNews2 = this.news2.name;
-      this.japannameNews2 = this.news2.japanese_name;
-      this.newsImage2 = this.serverURL + this.news2.image.url;
-      this.news3 = this.newsData[3];
-      this.nameNews3 = this.news3.name;
-      this.japannameNews3 = this.news3.japanese_name;
-      this.newsImage3 = this.serverURL + this.news3.image.url;
+    // Get news Why QNU
+    this.newWhyQnuURL = this._getDataService.getNewWhyQnuURL();
+    this._http.get(this.newWhyQnuURL).subscribe(data => {
+       this.newWhyQnuData = data;
+       this.newWhyQnuName = this.newWhyQnuData.Name;
+       this.newWhyQnuJapanName = this.newWhyQnuData.Japanese_Name;
+       this.imageWhyQnu = this.serverURL + this.newWhyQnuData.Image.url;
+       this.linkWhyQNU = this.newWhyQnuData.Slug;
     });
-    
+
+    // Get news Project
+    this.newProjectURL = this._getDataService.getNewProjectURL();
+    this._http.get(this.newProjectURL).subscribe(data => {
+       this.newProjectData = data;
+       this.newProjectName = this.newProjectData.Name;
+       this.newProjectJapanName = this.newProjectData.Japanese_Name;
+       this.imageProject = this.serverURL + this.newProjectData.Image.url;
+       this.linkProject = this.newProjectData.Slug;
+    });
+
+    // Get news Introduction
+    this.newIntroducURL = this._getDataService.getNewIntroducURL();
+    this._http.get(this.newIntroducURL).subscribe(data => {
+       this.newIntroData = data;
+       this.newIntroName = this.newIntroData.Name;
+       this.newIntroJapanName = this.newIntroData.Japanese_Name;
+       this.imageIntro = this.serverURL + this.newIntroData.Image.url;
+       this.linkIntro = this.newIntroData.Slug;
+    });
+
+    // Get news Job opportunities
+    this.newJobURL = this._getDataService.getNewJobURL();
+    this._http.get(this.newJobURL).subscribe(data => {
+       this.newJobData = data;
+       this.newJobName = this.newJobData.Name;
+       this.newJobJapanName = this.newJobData.Japanese_Name;
+       this.imageJob = this.serverURL + this.newJobData.Image.url;
+       this.linkJob = this.newJobData.Slug;
+    });
+
+    // Get Image news
+    this.carouselBanner = this._getImageService.carouselBanner;
+    this.imageURLs = this._getDataService.getImagesURL();
+    this.serverURL = this._getDataService.serverURL;
+    this.data = this._getImageService.getImageFromServer();
+    this.data.then(res => {
+      this.sliderImages = res;
+      for (var i = 0; i < this.sliderImages.length; i++) {
+        if (this.sliderImages[i].Name === "Home_Image") {
+          for (var k = 0; k < this.sliderImages[i].Image.length; k++) {
+            this.sliderImagesURL[k] = this.serverURL + this.sliderImages[i].Image[k].url;
+            // console.log( this.sliderImagesURL[k]);
+          }
+        }
+      }
+    });
+   }
+
+  ngOnInit() {
+     
     this._route.queryParams.subscribe(data => {
       this.lang = data.lang;
     });

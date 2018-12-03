@@ -194,7 +194,7 @@ export class GetDataService {
 		return partnersURL;
 	}
 
-	// Get partner information
+	// Get advert information
 	getAdvertURL(): string {
 		let advertURL = this.serverURL + '/advertisements';
 		return advertURL;
@@ -204,6 +204,42 @@ export class GetDataService {
 	getContentURL(): string {
 		let contentURL = this.serverURL + '/contents';
 		return contentURL;
+	}
+
+	// Get Enterprise
+	getEnterpriseURL(): string {
+		let enterpriseURL = this.serverURL + '/categories/5bffd8b8a929700548a0967b';
+		return enterpriseURL;
+	}
+
+	// Get Japan_Center_Opportunities
+	getJapanOpportunityURL(): string {
+		let japanOpportunityURL = this.serverURL + '/categories/5bffd8aba929700548a0967a';
+		return japanOpportunityURL;
+	}
+
+	// Get Labor 
+	getLaborURL(): string {
+		let laborURL = this.serverURL + '/categories/5bffd872a929700548a09677';
+		return laborURL;
+	}
+
+	// Get Partner
+	getPartnerServiceURL(): string {
+		let partnerServiceURL = this.serverURL + '/categories/5c0125bb5d3d34177327e4c5';
+		return partnerServiceURL;
+	}
+
+	// Get Project 
+	getProjectURL(): string {
+		let projectURL = this.serverURL + '/categories/5bffd881a929700548a09678';
+		return projectURL;
+	}
+
+	// Get Study_Service 
+	getStudyURL(): string {
+		let studyURL = this.serverURL + '/categories/5bffd860a929700548a09665';
+		return studyURL;
 	}
 
 	// Get Course
@@ -222,8 +258,57 @@ export class GetDataService {
 		return SkillURL;
 	}
 	// Get children Course
-	getschildrenURL(): string{
-		let childrenURL = this.serverURL + '/categories/5bffd84ca929700548a09664';
+	getschildrenURL(): string {
+		let childrenURL = this.serverURL + '/categories/5bffd838a929700548a09663';
 		return childrenURL;
+	}
+
+	// Get new Why QNU of home page
+	getNewWhyQnuURL(): string {
+		let newWhyQnuURL = this.serverURL + '/categories/5bffd812a929700548a0965e';
+		return newWhyQnuURL;
+	}
+
+	// Get new Project of home page
+	getNewProjectURL(): string {
+	let newProjectURL = this.serverURL + '/categories/5c0117f05d3d34177327e4bd';
+	return newProjectURL;
+	}
+
+	// Get new introduction of home page
+	getNewIntroducURL(): string {
+		let newJobIntroducURL = this.serverURL + '/categories/5bffd7c2a929700548a09652';
+		return newJobIntroducURL;
+	}
+
+	// Get new Job opportunities of home page
+	getNewJobURL(): string {
+		let newJobURL = this.serverURL + '/categories/5c01189a5d3d34177327e4c0';
+		return newJobURL;
+	}
+// Get new QNU Japan Center of home page
+	getNewQnuJapanURL(): string {
+		let newQnuJapanURL = this.serverURL + '/news/5bffdf8dfb17a7056f156f38';
+		return newQnuJapanURL;
+	}
+
+	// Get new Doll Samurai of home page
+	getNewDollURL(): string {
+		let newDollURL = this.serverURL + '/news/5bffe0394646750581b175ca';
+		return newDollURL;
+	}
+
+	// Get new The Ambassador of Japan of homne page
+	getNewAmbassURL(): string {
+		let newAmbassURL = this.serverURL + '/news/5bffe1134646750581b175cb';
+		return newAmbassURL;
+	}// get new Mark
+	getMarkURL(): string {
+		let newMarkURL = this.serverURL + '/marks';
+		return newMarkURL;
+	}	
+    getOrientationURL(): string {
+		let orientationURL= this.serverURL + '/news/5bffdf68fb17a7056f156f37';
+		return orientationURL;
 	}
 }

@@ -40,6 +40,7 @@ export class SlideComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    
     this.carouselBanner = this._getImageService.carouselBanner;
     this.imageURLs = this._getDataService.getImagesURL();
     this.serverURL = this._getDataService.serverURL;

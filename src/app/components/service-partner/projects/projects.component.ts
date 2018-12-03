@@ -33,9 +33,10 @@ export class ProjectsComponent implements OnInit {
   imageURLs: any;
   homeImages: any[] = [];
   homeImagesURL: { [key: number]: string } = [];
-  contentURL: string;
-  contentsData: any;
-  project: any;
+  projectURL: string;
+  projectData: any;
+  projectName: any;
+  Contents: any;
   serverURL: any;
   data: any;
 
@@ -54,14 +55,13 @@ export class ProjectsComponent implements OnInit {
     private _getImageService: GetImagesService,
     private _route: ActivatedRoute
   ) { 
-     // get data service-partner
-     this.contentURL = this._getDataService.getContentURL();
-     this.http.get(this.contentURL).subscribe(data => {
-      this.contentsData = data;
-      this.project = this.contentsData[9];
-      console.log('du an',this.project)
-      //this.onChangeContent(this.contentsData[9].id);
-    });
+     // get data Project 
+     this.projectURL = this._getDataService.getProjectURL();
+     this.http.get(this.projectURL).subscribe(data => {
+        this.projectData = data;
+        this.projectName = this.projectData.Name;
+        this.Contents = this.projectData.contents;  
+     });
   }
 
   ngOnInit() {

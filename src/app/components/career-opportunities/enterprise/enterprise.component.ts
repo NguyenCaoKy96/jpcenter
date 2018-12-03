@@ -35,9 +35,12 @@ export class EnterpriseComponent implements OnInit {
   imageURLs: any;
   homeImages: any[] = [];
   homeImagesURL: { [key: number]: string } = [];
-  contentURL: string;
-  contentsData: any;
-  career: any;
+  enterpriseURL: string;
+  enterpriseData: any;
+  enterpriseName: any;
+  enterpriseJapanName: any;
+  Contents: any;
+  enterpriseContent: any;
   serverURL: any;
   data: any;
 
@@ -55,14 +58,16 @@ export class EnterpriseComponent implements OnInit {
     private _getImageService: GetImagesService,
     private _route: ActivatedRoute
   ) { 
-     // get data career-opportunities
-     this.contentURL = this._getDataService.getContentURL();
-     this.http.get(this.contentURL).subscribe(data => {
-      this.contentsData = data;
-      this.career = this.contentsData[12];
-      console.log('doanh nghiep',this.career)
-      //this.onChangeContent(this.contentsData[12].id);
-    });
+     // get data enterprise
+     this.enterpriseURL = this._getDataService.getEnterpriseURL();
+     this.http.get(this.enterpriseURL).subscribe(data => {
+        this.enterpriseData = data;
+        this.Contents = this.enterpriseData.contents;
+        this.enterpriseName = this.Contents.Name;
+        this.enterpriseJapanName = this.enterpriseData.contents.Japanese_Name;
+        console.log(this.enterpriseJapanName);
+        //this.enterpriseContent = this.Contents.Content       
+     });
   }
 
   ngOnInit() {

@@ -4,6 +4,7 @@ import { GetDataService } from './../../../services/get-data/get-data.service';
 import { ScrollTopService } from './../../../services/scroll-top/scroll-top.service';
 import { GetImagesService } from './../../../services/get-image-slider/get-images.service';
 import { ActivatedRoute } from '@angular/router';
+import * as $ from 'jquery';
 
 import { default as LANG_VI } from '../../../../lang/lang_vi';
 import { default as LANG_JP } from '../../../../lang/lang_jp';
@@ -24,26 +25,45 @@ export class EventComponent implements OnInit {
   public LANGUAGE: any = LANG_VI;
 
   // Event variable
-  eventsArticle: any;
-  shortArticleContent: string;
 
-  eventData;
-  eventURL: string;
-  Event1;
-  Event2;
-  Event3;
-  nameEvent1;
-  nameEvent2;
-  nameEvent3;
-  eventImage1;
-  eventImage2;
-  eventImage3;
-  japannameEvent1;
-  japannameEvent2;
-  japannameEvent3;
-  contenEvent1;
-  contenEvent2;
-  contenEvent3;
+  newQnuJapanURL: string;
+  newQnuJapanData: any;
+  newQnuName: any;
+  newQnuJapanName: any;
+  newQnuObject: any;
+  newQnuJapanObject: any;
+  newQnuContent: any;
+  newQnuContentJapan: any;
+  imageQnuJapan: any;
+  linkQnuJapan: any;
+
+  newDollURL: string;
+  newDollData: any;
+  newDollName: any;
+  newDollJapanName: any;
+  newDollObject: any;
+  newDollJapanObject: any;
+  newDollContent: any;
+  newDollContentJapan: any;
+  imageDollJapan: any;
+  linkDollJapan: any;
+
+  newAmbassURL: string;
+  newAmbassData: any;
+  newAmbassName: any;
+  newAmbassJapanName: any;
+  newAmbassObject: any;
+  newAmbassJapanObject: any;
+  newAmbassContent: any;
+  newAmbassContentJapan: any;
+  imageAmbassJapan: any;
+  linkAmbassJapan: any;
+  trimmedString: string;
+  trimmedStringJapan: string;
+  trimmedString2: string;
+   trimmedStringJapan2: string;
+  trimmedString3: string;
+   trimmedStringJapan3: string;
 
   constructor(
     private _scrollTop: ScrollTopService,
@@ -66,30 +86,52 @@ export class EventComponent implements OnInit {
     });
 
       
-    // Get Events from Events API
-      this.eventURL = this._getDataService.getNewsURL();
-      this.http.get(this.eventURL).subscribe(data => {
-      this.eventData = data;
-      this.Event1 = this.eventData[1];
-      this.nameEvent1 = this.Event1.Name;
-      console.log(this.nameEvent1);
+ // Get new QNU Japan Center
+      this.newQnuJapanURL = this._getDataService.getNewQnuJapanURL();
+      this.http.get(this.newQnuJapanURL).subscribe(data => {
+      this.newQnuJapanData = data;
+      this.newQnuName = this.newQnuJapanData.Name;
+      this.newQnuJapanName = this.newQnuJapanData.Japanese_Name;
+      this.newQnuObject = this.newQnuJapanData.Object;
+      this.newQnuJapanObject = this.newQnuJapanData.Japanese_Object;
+      this.newQnuContent = this.newQnuJapanData.Content;
+      this.newQnuContentJapan = this.newQnuJapanData.Japanese_Content;
+      this.imageQnuJapan = this.serverURL + this.newQnuJapanData.Thumbnai.url;
+      this.linkQnuJapan = this.newQnuJapanData.Slug;
+      this.trimmedString = this.newQnuContent.substr(0, 400);
+      this.trimmedStringJapan = this.newQnuContentJapan.substr(0, 200);
+    });
+ // Get new Doll Samurai
+      this.newDollURL = this._getDataService.getNewDollURL();
+      this.http.get(this.newDollURL).subscribe(data => {
+      this.newDollData = data;
+      this.newDollName = this.newDollData.Name;
+      this.newDollJapanName = this.newDollData.Japanese_Name;
+      this.newDollObject = this.newDollData.Object;
+      this.newDollJapanObject = this.newDollData.Japanese_Object;
+      this.newDollContent = this.newDollData.Content;
+      this.newDollContentJapan = this.newDollData.Japanese_Content;
+      this.imageDollJapan = this.serverURL + this.newDollData.Thumbnai.url;
+      this.linkDollJapan = this.newDollData.Slug;
+      this.trimmedString2 = this.newDollContent.substr(0, 400);
+      this.trimmedStringJapan2 = this.newDollContentJapan.substr(0, 200);
 
-      this.japannameEvent1 = this.Event1.japanese_Name;
-      this.contenEvent1 = this.Event1.Content;
-      this.eventImage1 = this.serverURL + this.Event1.Image.url;
-      console.log(this.nameEvent1);
-
-      this.Event2 = this.eventData[2];
-      this.nameEvent2 = this.Event2.Name;
-      this.japannameEvent2 = this.Event2.japanese_Name;
-      // this.contenEvent1 = this.Event1.contents;
-      this.eventImage2 = this.serverURL + this.Event2.Image.url;
-
-      this.Event3 = this.eventData[3];
-      this.nameEvent3 = this.Event3.Name;
-      this.japannameEvent3 = this.Event3.japanese_Name;
-      // this.contenEvent1 = this.Event1.contents;
-      this.eventImage3 = this.serverURL + this.Event3.Image.url;
+    });
+ 
+      // Get new The Ambassador of Japan
+      this.newAmbassURL = this._getDataService.getNewAmbassURL();
+      this.http.get(this.newAmbassURL).subscribe(data => { 
+      this.newAmbassData = data;
+      this.newAmbassName = this.newAmbassData.Name;
+      this.newAmbassJapanName = this.newAmbassData.Japanese_Name;
+      this.newAmbassObject = this.newAmbassData.Object;
+      this.newAmbassJapanObject = this.newAmbassData.Japanese_Object;
+      this.newAmbassContent = this.newAmbassData.Content;
+      this.newAmbassContentJapan = this.newAmbassData.Japanese_Content;
+      this.imageAmbassJapan = this.serverURL + this.newAmbassData.Thumbnai.url;
+      this.linkAmbassJapan = this.newAmbassData.Slug;
+      this.trimmedString3 =  this.newAmbassContent.substr(0, 400);
+      this.trimmedStringJapan3 = this.newAmbassContentJapan.substr(0, 200);
     });
     
     this._scrollTop.setScrollTop();
@@ -97,33 +139,8 @@ export class EventComponent implements OnInit {
       this.lang = data.lang;
     });
 
-
+    
   }
 
-  // Get short content of events
-  getEventShort() {
-    var tempNewestArticleIndex: number;
-    var eventData: any;
-    var tempShortContent: string;
-    var maxShortContentLength: number = 50;
-    var isPublished: boolean = false;
-    this.eventURL = this._getDataService.getNewsURL();
-    this.http.get(this.eventURL).subscribe(data => {
-      this.eventData = data;
-      console.log(eventData[eventData.length - 2]);
-      this.eventsArticle = eventData[eventData.length - 1];
-      for (var i = eventData.length - 1; i >= 0; i--) {
-        if (this.eventsArticle.status === "Published") {
-          isPublished = true;
-          tempShortContent = this.eventsArticle.contents;
-          this.contenEvent1 = tempShortContent.substr(0, maxShortContentLength);
-          this.contenEvent1 = this.contenEvent1.substr(0, Math.min(this.contenEvent1.length, this.contenEvent1.lastIndexOf(" ")));
-          break;
-        } else {
-          isPublished = false;
-          this.eventsArticle = eventData[eventData.length - i];
-        }
-      }
-    });
-  }
+  
 }

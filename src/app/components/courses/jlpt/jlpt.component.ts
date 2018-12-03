@@ -28,12 +28,15 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class JlptComponent implements OnInit {
 
-  public carouselBanner: NgxCarousel; 
+  public carouselBanner: NgxCarousel;
+
   imageURLs: any;
   homeImages: any[] = [];
   homeImagesURL: { [key: number]: string } = [];
   serverURL: any;
   data: any;
+  lang: string='vi'
+  public LANGUAGE: any = LANG_VI;
 
   // Carousel config
   index = 0;
@@ -41,42 +44,29 @@ export class JlptComponent implements OnInit {
   direction = 'left';
   directionToggle = true;
   autoplay = true;
-  public LANGUAGE: any = LANG_VI;
   jlptURL;
   jlptData;
   courseURL;
   course;
   courseData;
   courseDataItem;
-  jlptItemData
+  jlptItemData;
 
   constructor(
-    private titleService: Title,
+    private _titleService: Title,
     private http: HttpClient,
     private _getDataService: GetDataService,
     private _getImageService: GetImagesService,
     private _route: ActivatedRoute,
-  ) {
+  ) {     
+      // Get jlpt data
+      this.jlptURL = this._getDataService.getCourseURL();
+      this.http.get(this.jlptURL).subscribe(data => {
+        this.jlptData = data;
+      
+      });
+    }
 
-     // Get jlpt data
-     this.jlptURL = this._getDataService.getCourseURL();
-     this.http.get(this.jlptURL).subscribe(data => {
-       this.jlptData = data;
-     
-     });
-   }
-   onchangeCourse(id, evt?){
-    let jlptItemDataURL = this._getDataService.getCourseItemURL(id);
-    this.http.get(jlptItemDataURL).subscribe(data => {
-      this.jlptItemData = data;
-      console.log(this.jlptItemData)     
-    });
-    $('left-item').removeClass('active-link');
-    if (evt) {
-      $(evt.target).addClass('active-link');
-    };
-    $('#left-item').hide();
-  }
   ngOnInit() {
      // Change language
      this._route.queryParams.subscribe(data => {
@@ -85,27 +75,37 @@ export class JlptComponent implements OnInit {
       } else {
         this.LANGUAGE = LANG_JP;
       }
-    });
-
-    this.titleService.setTitle('Khóa học');
+    }); 
+    this._titleService.setTitle(this.LANGUAGE.JLPT_COURSE);
+    //console.log(this.LANGUAGE.EDUCATION_PROGRAM);
 
     this.carouselBanner = this._getImageService.carouselBanner;
-
     this.imageURLs = this._getDataService.getImagesURL();
     this.serverURL = this._getDataService.serverURL;
     this.data = this._getImageService.getImageFromServer();
     this.data.then(res => {
       this.homeImages = res;
       for (var i = 0; i < this.homeImages.length; i++) {
-        if (this.homeImages[i].name === "Khóa học") {
-          for (var k = 0; k < this.homeImages[i].Images.length; k++) {
-            this.homeImagesURL[k] = this.serverURL + this.homeImages[i].Images[k].url;
+        if (this.homeImages[i].Name === "Khóa học") {
+          for (var k = 0; k < this.homeImages[i].Image.length; k++) {
+            this.homeImagesURL[k] = this.serverURL + this.homeImages[i].Image[k].url;
           }
         }
       }
     });
+    this._route.queryParams.subscribe(data => {
+      this.lang = data.lang;
+    });
   }
 
   onmoveFn(data: NgxCarouselStore) { };
-
+  
+  onchangeCourse(id){
+    let jlptItemDataURL = this._getDataService.getCourseItemURL(id);
+    this.http.get(jlptItemDataURL).subscribe(data => {
+      this.jlptItemData = data;
+      console.log(this.jlptItemData);  
+    });
+    $('#left-item').hide();
+   }
 }
