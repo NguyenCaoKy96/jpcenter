@@ -1,16 +1,16 @@
 <div class="events section-padding">
   <h3 class="text-center section-lg-title">{{LANGUAGE.NEWS_AND_EVENTS_UPPER_CASE}}</h3>
   <div class="row">
-    <div class="col-md-4 card-wrap">
+    <div class="col-md-4 card-wrap"> 
       <a class="card" [routerLink]="[linkQnuJapan]">
         <img class="card-img-top" [src]="[imageQnuJapan]">
         <div class="card-body">
-          
-          <p class="card-text"  *ngIf="lang === 'vi'" [innerHTML]="trimmedString"><span class="read-more"  [innerHTML]="LANGUAGE.CONTINUE_READING"  > </span></p>  
-        
-          <p class="card-text"  *ngIf="lang === 'jp'" [innerHTML]="trimmedStringJapan"> </p>
+          <p *ngIf="lang === 'vi'" [innerHTML]="newQnuName" style="font-size: 24px; color: black; font-weight: 600"></p>
+          <p *ngIf="lang === 'jp'" [innerHTML]="newQnuJapanName" style="font-size: 24px; color: black; font-weight: 600"></p>
+
+          <p class="card-text"  *ngIf="lang === 'vi'" [innerHTML]="newQnuObject"><span class="read-more"  [innerHTML]="LANGUAGE.CONTINUE_READING"  > </span></p>  
+          <p class="card-text"  *ngIf="lang === 'jp'" [innerHTML]="newQnuJapanObject"> </p>
           <span class="read-more"  [innerHTML]="LANGUAGE.CONTINUE_READING"></span>
- 
         </div>
       </a>
     </div>
@@ -18,10 +18,11 @@
       <a class="card" [routerLink]="[linkDollJapan]">
         <img class="card-img-top" [src]="[imageDollJapan]">
         <div class="card-body">
-          
-          <p class="card-text"  *ngIf="lang === 'vi'" [innerHTML]="trimmedString2"><span class="read-more"  [innerHTML]="LANGUAGE.CONTINUE_READING"  > </span></p>  
-        
-          <p class="card-text"  *ngIf="lang === 'jp'" [innerHTML]="trimmedStringJapan2"> </p>
+            <p *ngIf="lang === 'vi'" [innerHTML]="newDollName" style="font-size: 24px; color: black; font-weight: 600"></p>
+            <p *ngIf="lang === 'jp'" [innerHTML]="newDollJapanName" style="font-size: 24px; color: black; font-weight: 600"></p>
+
+          <p class="card-text"  *ngIf="lang === 'vi'" [innerHTML]="newDollObject"><span class="read-more"  [innerHTML]="LANGUAGE.CONTINUE_READING"  > </span></p>  
+          <p class="card-text"  *ngIf="lang === 'jp'" [innerHTML]="newDollJapanObject"> </p>
           <span class="read-more"  [innerHTML]="LANGUAGE.CONTINUE_READING"></span>
         </div>
       </a>
@@ -30,10 +31,11 @@
       <a class="card" [routerLink]="[linkAmbassJapan]" >
         <img class="card-img-top" [src]="[imageAmbassJapan]" alt="Card img cap">
         <div class="card-body">
-         
-          <p class="card-text"  *ngIf="lang === 'vi'" [innerHTML]="trimmedString3"><span class="read-more"  [innerHTML]="LANGUAGE.CONTINUE_READING"  > </span></p>  
-        
-          <p class="card-text"  *ngIf="lang === 'jp'" [innerHTML]="trimmedStringJapan3"> </p>
+            <p *ngIf="lang === 'vi'" [innerHTML]="newAmbassName" style="font-size: 24px; color: black; font-weight: 600"></p>
+            <p *ngIf="lang === 'jp'" [innerHTML]="newAmbassJapanName" style="font-size: 24px; color: black; font-weight: 600"></p>
+            
+          <p class="card-text"  *ngIf="lang === 'vi'" [innerHTML]="newAmbassObject"><span class="read-more"  [innerHTML]="LANGUAGE.CONTINUE_READING"  > </span></p>  
+          <p class="card-text"  *ngIf="lang === 'jp'" [innerHTML]="newAmbassJapanObject"> </p>
           <span class="read-more"  [innerHTML]="LANGUAGE.CONTINUE_READING"></span>
         </div>
       </a>

@@ -77,6 +77,11 @@ export class GetDataService {
 		let eventsURL = this.serverURL + '/events';
 		return eventsURL;
 	}
+	// Events item URL
+	getEventsItemURL(id): string {
+		let eventsURL = this.serverURL + '/events/' + id ;
+		return eventsURL;
+	}
 
 	// News URL
 	getNewsURL(): string {
@@ -292,19 +297,19 @@ export class GetDataService {
 	}
 // Get new QNU Japan Center of home page
 	getNewQnuJapanURL(): string {
-		let newQnuJapanURL = this.serverURL + '/news/5bffdf8dfb17a7056f156f38';
+		let newQnuJapanURL = this.serverURL + '/news/5c06363d1d16be73a7d5dd3f';
 		return newQnuJapanURL;
 	}
 
 	// Get new Doll Samurai of home page
 	getNewDollURL(): string {
-		let newDollURL = this.serverURL + '/news/5bffe0394646750581b175ca';
+		let newDollURL = this.serverURL + '/news/5c0635e31d16be73a7d5dd3b';
 		return newDollURL;
 	}
 
 	// Get new The Ambassador of Japan of homne page
 	getNewAmbassURL(): string {
-		let newAmbassURL = this.serverURL + '/news/5bffe1134646750581b175cb';
+		let newAmbassURL = this.serverURL + '/news/5c0634b01d16be73a7d5dd38';
 		return newAmbassURL;
 	}// get new Mark
 	getMarkURL(): string {

@@ -27,19 +27,19 @@
             <li class="nav-item">
                 <a class="nav-link  active" id="JCenter-tab" routerLink="/khoa-hoc/cac-khoa-tieng-nhat-JLPT"
                     [queryParams]="{lang: lang ? 'vi' : 'jp'}">
-                    Các khóa tiếng Nhật JLPT
+                    {{LANGUAGE.JLPT_COURSE}}
                 </a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" id="JCenter-tab" routerLink="/khoa-hoc/tieng-nhat-cho-thieu-nhi"
                  [queryParams]="{lang: lang ? 'vi' : 'jp'}">
-                 Tiếng Nhật cho Thiếu Nhi  
+                 {{LANGUAGE.CHILDREN_COURSE}} 
                 </a>
             </li>
             <li class="nav-item">
                 <a class="nav-link " id="JCenter-tab" routerLink="/khoa-hoc/cac-khoa-ky-nang-mem"
                     [queryParams]="{lang: lang ? 'vi' : 'jp'}">
-                Các khóa kỹ năng mềm
+                    {{LANGUAGE.SKILL_COURSE}}
                 </a>
             </li>
         </ul>

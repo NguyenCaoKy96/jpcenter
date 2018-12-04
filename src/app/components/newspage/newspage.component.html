@@ -22,39 +22,41 @@
   </ol>
 </nav>
 <!-- creat content -->
-<a class="row mr-0 ml-0 post-highlight" [routerLink]="[eventsFirst.Slug]">
-    <div class="col-lg-5 pl-0 pr-0">
-        <img [src]="[imageEvent]" class="img-fluid d-block" alt="news-main" />
-    </div>
-    <div class="col-lg-5 card-body card-wrap">
-        <h5 class="card-title">{{eventsFirst.Name}}
-        </h5>
-        <div class="card-info">
-            <p class="card-text">
-                <i class="fa fa-clock-o mr-2" aria-hidden="true"></i>
-                <span>{{eventsFirst.Time}}</span>
-            </p>
-            <p class="card-text">
-                <i class="fa fa-map-marker mr-2"></i>
-                <span>{{eventsFirst.Location}}</span>
-            </p>
+<div id="acticrle" class="container">
+    <a class="row mr-0 ml-0 post-highlight">
+        <div class="col-lg-5 pl-0 pr-0">
+            <img [src]="[imageEvent]" class="img-fluid d-block" alt="news-main" />
         </div>
-        <p class="card-text">
-            <span>
-                <i class="fa fa-user-o mr-2"></i>
-            </span> {{eventsFirst.Object}}
-            <span class="read-more">
-                {{LANGUAGE.CONTINUE_READING}}
-            </span>
-        </p>
-    </div> 
-</a>
+        <div class="col-lg-5 card-body card-wrap">
+            <h5 class="card-title">{{eventsFirst.Name}}
+            </h5>
+            <div class="card-info">
+                <p class="card-text">
+                    <i class="fa fa-clock-o mr-2" aria-hidden="true"></i>
+                    <span>{{eventsFirst.Time}}</span>
+                </p>
+                <p class="card-text">
+                    <i class="fa fa-map-marker mr-2"></i>
+                    <span>{{eventsFirst.Location}}</span>
+                </p>
+            </div>
+            <p class="card-text">
+                <span>
+                    <i class="fa fa-user-o mr-2"></i>
+                </span> {{eventsFirst.Object}}
+                <span class="read-more">
+                    {{LANGUAGE.CONTINUE_READING}}
+                </span>
+            </p>
+        </div> 
+    </a>
+</div>
 <br> 
-<div class="card-container pb-5">
+<div id="acticrle" class="card-container pb-5">
   <div class="row">
         <div class="col-md-6 col-lg-4 card-wrap" *ngFor="let item of newData; let itemIndex = index;">
         <a class="card">
-                <img class="card-img-top" [src]="[imageNew]" alt="Card img cap">
+                <img class="card-img-top" [src]="[newArrImage[itemIndex]]" alt="Card img cap">
                 <div class="card-body">
                     <h5 class="card-title">
                         {{item.Name}}
@@ -66,12 +68,50 @@
                 </div>
             </a>
         </div>
-  </div>
+    </div> 
 </div>
+<!-- <div class="container">
+    <h4 class="section-title">{{eventsFirst.Name}}</h4>
+    <div class="row">      
+        <div class="title-content d-flex align-items-center">
+            <img src="./assets/images/icon-clock.png" class="m-0 mr-3" alt="icon">
+            <p>{{LANGUAGE.TIME}}</p>
+        </div>
+        <div>
+            <p class="mb-4" [innerHTML]="eventsFirst.Time">
+            </p>
+        </div>       
+        <div class="title-content d-flex align-items-center">
+            <img src="./assets/images/icon-map.png" class="m-0 mr-3" alt="icon">
+            <p>{{LANGUAGE.LOCATION}}</p>
+        </div>
+        <div>
+            <p class="mb-4" [innerHTML]="eventsFirst.Location">
+            </p>
+        </div>
+        
+        <div class="title-content d-flex align-items-center">
+            <img src="./assets/images/icon-user.png" class="m-0 mr-3" alt="icon">
+            <p>{{LANGUAGE.OBJECT}}</p>
+        </div>
+        <div>
+            <p class="mb-4" [innerHTML]="eventsFirst.Object">
+            </p>
+        </div>      
+        <div class="title-content d-flex align-items-center">
+            <img src="./assets/images/icon-script.png" class="m-0 mr-3" alt="icon">
+            <p>{{LANGUAGE.PROGRAM}}</p>
+        </div>
+         <div>
+            <p class="mb-4" [innerHTML]="eventsFirst.Program">
+            </p>
+        </div>      
+    </div>
+</div>--> 
 <!-- create Pagination -->
-<div class="pagination">
+<!-- <div class="pagination">
   <ul>
     <li *ngFor="let item of collection | paginate: { itemsPerPage: 10, currentPage: p }"></li>
   </ul>
   <pagination-controls (pageChange)="p = $event"></pagination-controls>
-</div>
+</div> -->

@@ -257,7 +257,7 @@ pagination-controls {
 
 /* Letter */
 .section-title {
-    font-size: 20px;
+    font-size: 24px;
     font-weight: 800;
     padding: 28px 50px;
     background: url(/assets/images/flower-icon-1.png) no-repeat;
@@ -400,4 +400,13 @@ thead {
 .nav-tabs .nav-link.active{
     font-weight: 700;
     color: #495057;
+}
+
+.modal-content {
+    border-radius: 10px !important;
+}
+@media (min-width: 992px){
+    .modal-lg {
+        max-width: 940px !important;
+    }
 }

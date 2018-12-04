@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,ViewEncapsulation } from '@angular/core';
+import {DomSanitizer, SafeHtml} from '@angular/platform-browser';
 import { Title } from '@angular/platform-browser';
 import * as $ from 'jquery';
 
@@ -22,8 +23,9 @@ import { default as LANG_JP } from '../../../lang/lang_jp';
   styleUrls: ['./newspage.component.css'],
   providers: [
     GetDataService,
-    GetImagesService
-  ]
+    GetImagesService,   
+  ],
+  encapsulation: ViewEncapsulation.None
 })
 
 export class NewspageComponent implements OnInit {
@@ -33,6 +35,7 @@ export class NewspageComponent implements OnInit {
   collection: any[] = [];  
 	page = 'one';
 
+  public introData: SafeHtml;
   carouselBanner: any;
   imageURLs: any;
   homeImages: any[] = [];
@@ -71,7 +74,12 @@ export class NewspageComponent implements OnInit {
   evnetsData;
   eventsFirst = [];
   imageEvent;
-  arrImage:any [] = [];
+  arrImage:any[] = [];
+  newArrImage: any[]= [];
+  //.........
+  newItemData;
+  //.........
+  eventItemData;
 
   newHeaderData: any;
   imageHeaderData: string;
@@ -82,19 +90,25 @@ export class NewspageComponent implements OnInit {
     private _http: HttpClient,
     private _getDataService: GetDataService,
     private _getImageService: GetImagesService,
-    private _route: ActivatedRoute
+    private _route: ActivatedRoute,
+    private santized: DomSanitizer
   ) {
+      // get data introduction
+      // this.introData = this.santized.bypassSecurityTrustHtml(this.newData.Content);
       //get data newspage for card
       this.newURL = this._getDataService.getNewsURL();
       this._http.get(this.newURL).subscribe(data =>{
         this.newData = data;
         for(var k = 0; k < this.newData.length; k++){
-          this.imageNew = this.newData[k].Thumbnai;
-          for(var i = 0; i < this.newData[k].Thumbnai.length; i++){
-            this.arrImage[i] = this.serverURL + this.newData[k].Thumbnai[i].url;          
-          }  
-          console.log(this.imageNew);        
-        }     
+          this.imageNew = this.newData[k].Thumbnail;
+          console.log(this.newData[k].Thumbnail);
+          this.arrImage[k] = this.serverURL + this.imageNew.url;
+          console.log(this.arrImage);        
+        }   
+        for (let i = 0; i < this.arrImage.length; i++) {
+          this.newArrImage[i] = this.arrImage[i]
+        }       
+        //console.log(this.newArrImage)  
      });
 
        //get data event for card
@@ -103,11 +117,31 @@ export class NewspageComponent implements OnInit {
          this.evnetsData = data;
          for(var i = 0; i < this.evnetsData.length; i++){
          this.eventsFirst = this.evnetsData[0];
-         this.imageEvent = this.serverURL + this.evnetsData[0].Thumbnai.url;      
+         this.imageEvent = this.serverURL + this.evnetsData[0].Thumbnail.url;      
          }       
        });
    }
-
+   // display acticrle news
+  //  OnNews(id){
+  //   let jlptItemDataURL = this._getDataService.getNewsItemURL(id);
+  //   this._http.get(jlptItemDataURL).subscribe(data => {
+  //     this.newItemData = data;
+  //     console.log(this.newItemData);  
+  //   });
+  //   $('#acticrle').hide();
+  //  }
+  //display acticrle events
+   OnEvents(){
+    this.evnetsURL = this._getDataService.getEventsURL();
+    this._http.get(this.evnetsURL).subscribe(data =>{
+      this.evnetsData = data;
+      for(var i = 0; i < this.evnetsData.length; i++){
+      this.eventsFirst = this.evnetsData[0];
+      this.imageEvent = this.serverURL + this.evnetsData[0].Thumbnail.url;      
+      }       
+    });
+    $('#acticrle').hide();
+  }
   ngOnInit() {
     // Change language
     this._route.queryParams.subscribe(data => {
