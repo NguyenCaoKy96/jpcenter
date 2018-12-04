@@ -38,6 +38,8 @@ export class ExamPointComponent implements OnInit {
     eventURL: any;
     eventData: any;
     Event1;
+    markURL: any;
+    markData;
     link;
 
 
@@ -54,17 +56,27 @@ export class ExamPointComponent implements OnInit {
   	// Title
   	this._titleService.setTitle('Điểm thi');
 
-     //get data download
-     this.academicsURL = this._getDataService.getAcademicsURL();
-    this._http.get(this.academicsURL).subscribe(data =>{
-      this.academics = data;
-      console.log(this.academics );
-      for(var i = 0; i < this.academics.length; i++){
-        this.link = this.academics[0].Upload_Link;
-        console.log(this.link)
-      }
-      
+    //get data Mark
+    this.markURL = this._getDataService.getMarkURL();
+    this.http.get(this.markURL).subscribe(data =>{
+    this.markData = data;
+    for (var i = 0; i < this.markData.length; i++) {
+      this.link = this.markData[1].Link;
+      console.log(this.link);
+    }
     });
+
+     //get data download
+    //  this.academicsURL = this._getDataService.getAcademicsURL();
+    // this._http.get(this.academicsURL).subscribe(data =>{
+    //   this.academics = data;
+    //   console.log(this.academics );
+    //   for(var i = 0; i < this.academics.length; i++){
+    //     this.link = this.academics[0].Upload_Link;
+    //     console.log(this.link)
+    //   }
+      
+    // });
   	//get data openings
 
   	 // Change language
@@ -91,16 +103,7 @@ export class ExamPointComponent implements OnInit {
       }
     });
 
-    // dowload data
-      
-    // $(document).ready(function(){
-    //   this.Url = 'http://10.1.0.66:1337/jobs' + this.image.url;
-    //   $('#dowload').click(function(){
-    //     $.get(this.Url, function(data, status){
-    //       console.log(data);
-    //     });
-    //   });
-    // }); 
+    
   }
 
 }

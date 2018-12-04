@@ -37,7 +37,11 @@ export class ExamCalendarComponent implements OnInit {
   data: any;
   public LANGUAGE : any = LANG_VI;
   academicsURL: string;
-    academics:any;
+  academics:any;
+  newQnuJapanURL: string;
+  newQnuJapanData: any;
+   imageQnuJapan: any;
+  sliderImagesURL: { [key: number]: string } = [];
 
   constructor(private titleService: Title,
   	private _titleService: Title,
@@ -49,10 +53,38 @@ export class ExamCalendarComponent implements OnInit {
     ) { }
 
   ngOnInit() {
-  		this.academicsURL = this._getDataService.getAcademicsURL();
-  	    this._http.get(this.academicsURL).subscribe(data =>{
-  		this.academics = data;
-  	});
+      // get data academics
+  	// 	this.academicsURL = this._getDataService.getAcademicsURL();
+  	//     this._http.get(this.academicsURL).subscribe(data =>{
+  	// 	this.academics = data;
+  	// });
+   //      //get data images
+   //      this.carouselBanner = this._getImageService.carouselBanner;
+   // this.newQnuJapanURL = this._getDataService.getEventsURL();
+   //  this.serverURL = this._getDataService.serverURL;
+   //  this.data = this._getImageService.getImageFromServer();
+   //   this.data.then(res =>{
+   //     this.imageQnuJapan = res;
+   //       for (var i = 0; i < this.imageQnuJapan.length; i++) {
+   //      if (this.imageQnuJapan[i].name === "Trần Minh Chương") {
+   //        for (var k = 0; k < this.imageQnuJapan[i].Image.length; k++) {
+   //          this.sliderImagesURL[k] = 'http://10.1.0.66:1336' + this.imageQnuJapan[i].Image[k].url;
+   //          console.log( this.sliderImagesURL[k]);
+   //        }
+   //      }
+   //    }
+   //  });
+
+    
+
+        this.newQnuJapanURL = this._getDataService.getEventsURL();
+        this._http.get(this.newQnuJapanURL).subscribe(data =>{
+          this.newQnuJapanData = data;
+          for (var i = 0; i < this.newQnuJapanData.length; i++) {
+             this.sliderImagesURL ='http://10.1.0.66:1336' + this.newQnuJapanData[i].Thumbnai.url;
+            console.log(this.sliderImagesURL);
+              }
+        });
 
   	
   	 // Change language
@@ -92,16 +124,5 @@ export class ExamCalendarComponent implements OnInit {
 })()
    
   }
-  // onClick(){
-  //      // Download Exel file
-  //   $(document).ready(function(){
-  //     $('#lichthi').DataTable({
-  //       dom: 'Bfrtip', 
-  //       buttons: [
-  //         'excelHtml5',
-  //       ]
-  //     });
-  //   });
-  //   }
-
+  
 }

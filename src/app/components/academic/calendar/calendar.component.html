@@ -47,10 +47,10 @@
                     <table class="table table-hover table-bordered table-striped" id="lichthi">
                         <thead>
                             <tr>
-                                <th scope="col">TÊN LỚP HỌC</th>
-                                <th scope="col">LỊCH HỌC</th>
-                                <th scope="col">THỜI GIAN HỌC</th>
-                                <th scope="col">NGÀY KHAI GIẢNG</th>
+                                <th scope="col">{{LANGUAGE.NAME_CLASS}}</th>
+                                <th scope="col">{{LANGUAGE.SCHEDULE_TIME}}</th>
+                                <th scope="col">{{LANGUAGE.LEARN_TIME}}</th>
+                                <th scope="col">{{LANGUAGE.LEARNOPENING}}</th>
                             </tr>
                         </thead>
                         <tr *ngFor="let item of openingSchedule">
@@ -61,8 +61,7 @@
                         </tr>
                     </table>
                 </div>
-                
-                <button class="btn btn" type="submit" name="submit" id="register" >Download </button> 
+                <button class="btn btn" type="submit" name="submit"  ><a href="  {{imageQnuJapan}}" >{{LANGUAGE.DOWNLOAD}}</a></button>
                 
                  
             </div>

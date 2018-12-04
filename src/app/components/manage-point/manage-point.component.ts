@@ -27,6 +27,18 @@ export class ManagePointComponent implements OnInit {
           this.LANGUAGE = LANG_JP;
         }
       });
+       //search 
+    $(document).ready(function(){
+      $('select').on('change', function(){
+        // alert(this.value[1]);
+        var value = $(this).val().toLowerCase();
+       $("#IdTable tr").filter(function() {
+         $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+        });
+       console.log(value);
+      });
+    });
+
      }
 
   ngOnInit() {
@@ -34,6 +46,7 @@ export class ManagePointComponent implements OnInit {
   	this.markURL = this._getDataService.getMarkURL();
   	this.http.get(this.markURL).subscribe(data =>{
   	this.markData = data;
+    console.log(data);
   	});
 
     //get data manage-point

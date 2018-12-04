@@ -46,22 +46,27 @@
                 <div class="detail-schedule">
                     <table class="table table-hover table-bordered table-striped " id="lichthi">
                         <thead >
-                            <tr>
-                            	<th scope="col">ĐỢT THI</th>
-                                <th scope="col">LỚP</th>
-                                <th scope="col">HẠN ĐĂNG KÝ</th>
-                                <th scope="col">NGÀY THI</th>
+                            <tr>	
+                                <th scope="col">{{LANGUAGE.NAME_CLASS}}</th>
+                                <th scope="col">{{LANGUAGE.REGISTRATIONS_DEADLINE}}</th>
+                                <th scope="col">{{LANGUAGE.EXAM_DATE}}</th>
+                                <th scope="col">{{LANGUAGE.LEVEL}}</th>
                             </tr>
                         </thead>
-                        <tr *ngFor="let item of academics">
-                            <td>{{item.Examinations}}</td>
+                        <tr *ngFor="let item of academics"> 
                             <td >{{ item.Class_Name }}</td>
                             <td>{{ item.Deadline_Time }} </td>
                             <td>{{ item.Exam_Day }}</td>
+                            <td>{{item.Examinations}}</td>
                         </tr>
                     </table>
                 </div>
-                <input  class="btn btn" type="button" name="submit" id="register" value="Download" onclick="tableExcel('lichthi')">
+               <!--  <ngx-carousel [inputs]="carouselBanner" [moveToSlide]="1" (onMove)="onmoveFn($event)">
+                    <ngx-item NgxCarouselItem class="bannerStyle card" *ngFor="let item of sliderImagesURL | slice:0:1" [ngStyle]="{'background-image': 'url(' + item + ')'}">
+                </ngx-item>
+                </ngx-carousel> -->
+                <button class="btn btn" type="submit" name="submit"><a href="{{sliderImagesURL}}">{{LANGUAGE.DOWNLOAD}}</a></button>
+            
             </div>
         </div>
     </div>

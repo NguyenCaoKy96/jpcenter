@@ -42,6 +42,11 @@ export class CalendarComponent implements OnInit {
   link;
   txtArea1;
   rows: any;
+  newQnuJapanURL: string;
+  newQnuJapanData:any;
+  imageQnuJapan: { [key: number]: string } = [];
+
+
 
   constructor(
     private titleService: Title,
@@ -54,6 +59,39 @@ export class CalendarComponent implements OnInit {
     ) { }
 
   ngOnInit() {
+    // post data upload file
+    //  $(function ($) {
+    //   var validation_holder;
+    //   $("form#uploadForm button[name='submit']").click(function () {
+    //     var validation_holder = 0;
+    //     var fileup = $('#file').val();
+    //      var name = $('#name').val();
+        
+    //     if (validation_holder == 1) {
+          
+    //       return;
+    //     } else {
+    //       $.post('http://10.1.0.66:1336/sliders', {
+    //         Image: fileup,
+    //         Name: name,
+    //       }, function (data) {
+    //         console.log(Image);
+    //         alert("Bạn đã đăng ký thành công..!.");
+    //         window.location.reload();
+    //       });
+    //     }
+    //   });
+    // });
+      //get data images
+        this.newQnuJapanURL = this._getDataService.getEventsURL();
+        this._http.get(this.newQnuJapanURL).subscribe(data =>{
+          this.newQnuJapanData = data;
+          for (var i = 0; i < this.newQnuJapanData.length; ++i) {
+             this.imageQnuJapan ='http://10.1.0.66:1336' + this.newQnuJapanData[i].Thumbnai.url;
+            console.log(this.imageQnuJapan);
+            
+              }
+        });
 
     //get data download
     this.openingURL = this._getDataService.getOpeningScheduleURL();

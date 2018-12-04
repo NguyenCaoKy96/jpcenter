@@ -50,23 +50,22 @@
                     <table class="table table-hover table-bordered table-striped">
                         <thead>
                             <tr>
-                                <th scope="col">TÊN LỚP HỌC</th>
-                                <th scope="col">NGÀY THI</th>
-                                <th scope="col"></th>
+                                <th>{{LANGUAGE.LEVEL}}</th>
+                                <th>{{LANGUAGE.EXAM_DATE}}</th>
+                                <th>{{LANGUAGE.NOTES}}</th>
+                                <th></th>
+
                             </tr>
                         </thead>
-                        <tr *ngFor="let item of academics">
-                            <td>{{ item.Class_Name }}</td>
-                            <td>{{ item.Exam_Day }} </td>
-                            <!--  <td>
-                                <img src="./../assets/images/downloadred.png" width="15px" height="15px" alt=""> 
-                            </td> -->
-                            <td><a href="">Xem chi tiết</a>
-                            </td>
+                        <tr *ngFor="let item of markData">
+                            <td>{{ item.Level }}</td>
+                            <td>{{ item.Date }} </td>
+                            <td>{{ item.Notes }} </td>
+                            <td><a href="{{link}}">Xem chi tiết</a></td>     
                         </tr>
                     </table>
                 </div>
-                <button class="btn btn" type="submit" name="submit" id="register"><a href="{{link}}">Download</a></button>
+               <!--  <button class="btn btn" type="submit" name="submit" id="register"><a href="">{{LANGUAGE.DOWNLOAD}}</a></button> -->
             </div>
         </div>
     </div>
