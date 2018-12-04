@@ -160,8 +160,8 @@ export class SupporterPageComponent implements OnInit {
             Name: this.frmSuporter.value.title,
             Slug: this.frmSuporter.value.title2,
             Content: this.model.editorDataVi,
-            JapaneseName: this.frmSuporter.value.title1,
-            JapaneseContent: this.model.editorDataJp,
+            Japanese_Name: this.frmSuporter.value.title1,
+            Japanese_Content: this.model.editorDataJp,
             Time: '',
             Location: '',
             Object: '',
@@ -174,7 +174,7 @@ export class SupporterPageComponent implements OnInit {
             categories: {
                 "Name": '',
                 "Slug": '',
-                "JapaneseName": '',
+                "Japanese_Name": '',
                 "Image": '',
                 "courses": '',
                 "news": '',
@@ -183,8 +183,8 @@ export class SupporterPageComponent implements OnInit {
         };
 
         // Check whether content is invalid or epmty
-        if (news.Name === '' || news.JapaneseName === '' 
-            || news.Content === '' || news.JapaneseContent === '' 
+        if (news.Name === '' || news.Japanese_Name === '' 
+            || news.Content === '' || news.Japanese_Content === '' 
             || news.Slug === '' || !this.categoriesDropdown
             || this._isValid === false
         ) {

@@ -106,7 +106,7 @@ export class IntroductionFourComponent implements OnInit {
   }
 
   open(content) {
-    this.modalService.open(content);
+    this.modalService.open(content, { size: 'lg', centered: true, windowClass : "personModal" });
   }
 
 

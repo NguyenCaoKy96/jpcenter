@@ -7,18 +7,18 @@ export class News {
     "Object": any;
     "Program": any;
     "Content": any;
-    "JapaneseName": string;
+    "Japanese_Name": string;
     "JapaneseTime": string;
     "JapaneseLocation": any;
     "JapaneseObject": any;
     "JapaneseProgram": any;
-    "JapaneseContent": any;
+    "Japanese_Content": any;
     "File": any;
     "Status": string;
     "categories": {
         "Name": string;
         "Slug": string;
-        "JapaneseName": string;
+        "Japanese_Name": string;
         "Image": any;
         "courses": any;
         "news": any;

@@ -105,12 +105,12 @@ export class JlptComponent implements OnInit {
 
   onmoveFn(data: NgxCarouselStore) { };
   
-  // onchangeCourse(id){
-  //   let jlptItemDataURL = this._getDataService.getCourseItemURL(id);
-  //   this.http.get(jlptItemDataURL).subscribe(data => {
-  //     this.jlptItemData = data;
-  //     console.log(this.jlptItemData);  
-  //   });
-  //   $('#left-item').hide();
-  //  }
+  onchangeCourse(id){
+    let jlptItemDataURL = this._getDataService.getCourseItemURL(id);
+    this.http.get(jlptItemDataURL).subscribe(data => {
+      this.jlptItemData = data;
+      console.log(this.jlptItemData);  
+    });
+    $('#left-item').hide();
+   }
 }

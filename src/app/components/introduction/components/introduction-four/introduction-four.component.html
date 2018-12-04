@@ -52,53 +52,52 @@
         </div>
 
         <div class="tab-content text-center">
+            <div class="personnel-wrap">
             <div class="card-title" style="text-align: left;">{{LANGUAGE. EXECUTIVE_BOARD}}</div>
-            <div class=" d-inline-block" *ngFor="let person of PersonnelData; let personIndex = index;">
-               <div class="col-md-12 text-center" (click)="onChangePerson(person, content)" *ngIf="personIndex == 0">
-                  <img class="img-fluid" src="{{serverURL}}{{person.Image.url}}" alt="Personnel image">
-                  <div class="personnel-name">{{person.Name}}</div>
-                  <p class="position">{{person.Position}}</p>
-              </div>
-            </div>
-
-            <div class="card-title" style="text-align: left;">{{LANGUAGE.TEACHING_STAFF}}</div>
-            <div class="d-inline-block" *ngFor="let person of PersonnelData; let personIndex = index;">
-                <div class="col-md-12 text-center" *ngIf="personIndex != 0" (click)="onChangePerson(person, content)">
+              <div class=" d-inline-block" *ngFor="let person of PersonnelData; let personIndex = index;">
+                 <div class="col-md-12 text-center person" (click)="onChangePerson(person, content)" *ngIf="personIndex == 0">
                     <img class="img-fluid" src="{{serverURL}}{{person.Image.url}}" alt="Personnel image">
                     <div class="personnel-name">{{person.Name}}</div>
                     <p class="position">{{person.Position}}</p>
                 </div>
               </div>
+
+              <div class="card-title" style="text-align: left;">{{LANGUAGE.TEACHING_STAFF}}</div>
+              <div class="d-inline-block" *ngFor="let person of PersonnelData; let personIndex = index;">
+                  <div class="col-md-12 text-center person" *ngIf="personIndex != 0" (click)="onChangePerson(person, content)">
+                      <img class="img-fluid" src="{{serverURL}}{{person.Image.url}}" alt="Personnel image">
+                      <div class="personnel-name">{{person.Name}}</div>
+                      <p class="position">{{person.Position}}</p>
+                  </div>
+              </div>
+            </div>
         </div>
     </div>
 </div>
 
 <ng-template #content let-c="close" let-d="dismiss">
-  <div class="modal-header">
-    <h4 class="modal-title" id="modal-basic-title">{{personDetail.Name}}</h4>
-    <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
-      <span aria-hidden="true">&times;</span>
-    </button>
-  </div>
-  <div class="modal-body" *ngIf="personDetail">
-      <div class="top-intro text-center">
-          <div class="profile d-inline-block">
-              <img src="{{personDetail.imageUrl}}" alt="profile image">
-          </div>
-          
-      </div>
-      <div class="description" [innerHTML]="personDetail.Information">
-          
-      </div>
-      <div class="text-center">
+  <div class="modal-body">
+    <!--<button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="d('Cross click')" data-dismiss="-al">
+        <span aria-hidden="true">×</span>
+    </button>-->
+    <div class="top-intro">
+        <div class="profile">
+            <img src="{{personDetail.imageUrl}}" alt="profile image">
+        </div>
+        <div class="personInfo">
+            <h4>{{personDetail.Name}}</h4>
+            <p *ngIf="personDetail.Position == 'Giám đốc'">{{personDetail.Position}}</p>
+        </div>
+    </div>
+    <div class="description">
+        <p [innerHTML]="personDetail.Information">
+        </p>
+    </div>
+    <div class="text-center">
           <a (click)="d('Cross click')" class="btn btn-outline" data-dismiss="-al" aria-label="Close">Đóng</a>
-      </div>
-  </div>
-  <!-- <div class="modal-footer">
-    <button type="button" class="btn btn-outline-dark" (click)="c('Save click')">Save</button>
-  </div> -->
+    </div>
+</div>
 </ng-template>
 
 <button id="btnModal" class="btn btn-lg btn-outline-primary" (click)="open(content)" hidden="true">Launch demo modal</button>
-
 

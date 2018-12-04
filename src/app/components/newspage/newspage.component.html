@@ -22,81 +22,50 @@
   </ol>
 </nav>
 <!-- creat content -->
-<a class="row mr-0 ml-0 post-highlight" routerLink="{{newHeaderData.Slug}}">
-         <div class="col-lg-5 pl-0 pr-0">
-            <img [src]="[imageHeaderData]" class="img-fluid d-block" alt="news-main" />
-        </div>
-        <div class="col-lg-5 card-body card-wrap">
-            <h5 class="card-title">{{newHeaderData.Name}}
-            </h5>
-            <div class="card-info">
-                <p class="card-text">
-                    <i class="fa fa-clock-o mr-2" aria-hidden="true"></i>
-                    <span>{{newHeaderData.Time}}</span>
-                </p>
-                <p class="card-text">
-                    <i class="fa fa-map-marker mr-2"></i>
-                    <span>{{newHeaderData.Location}}</span>
-                </p>
-            </div>
-            <p class="card-text">
-                <span>
-                    <i class="fa fa-user-o mr-2"></i>
-                </span> {{newHeaderData.Object}}
-                <span class="read-more">
-                  {{LANGUAGE.CONTINUE_READING}}
-                </span>
-            </p>
-        </div> 
-  
-    <!--<div class="row">
-        <div class="col-sm-7 thumnail"></div>
-        <div class="col-sm-5 short-content">
-            <div class="article-title">
-                <h2 *ngIf="newestArticle">{{ newestArticle.Name }}</h2>
-            </div>
-            <div class="article-content" *ngIf="shortArticleContent" [innerHTML]="shortArticleContent + LANGUAGE.CONTINUE_READING"></div>
-        </div>
-    </div>-->
-</a>
-<br>
-<!-- page 1 -->
-<div class="card-container pb-5" *ngIf="p==1">
-  <div class="row">
-    <div class="col-md-6 col-lg-4 card-wrap" *ngFor="let item of newsPageItems; let itemIndex = index;">
-      <a routerLink="{{item.Slug}}" class="card">
-            <img class="card-img-top" src="{{serverURL}}{{item.Thumbnai.url}}" alt="Card img cap">
-            <div class="card-body">
-                <h5 class="card-title">
-                    {{item.Name}}
-                </h5>
-                <p class="card-text">
-                    <span [innerHTML]="item.Object"></span>
-                    <span class="read-more"> {{LANGUAGE.CONTINUE_READING}}</span>
-                </p>
-            </div>
-        </a>
+<a class="row mr-0 ml-0 post-highlight" [routerLink]="[eventsFirst.Slug]">
+    <div class="col-lg-5 pl-0 pr-0">
+        <img [src]="[imageEvent]" class="img-fluid d-block" alt="news-main" />
     </div>
-    
-  </div>
-</div>
-<!-- page 2 -->
-<div class="card-container pb-5" *ngIf="p ==2">
+    <div class="col-lg-5 card-body card-wrap">
+        <h5 class="card-title">{{eventsFirst.Name}}
+        </h5>
+        <div class="card-info">
+            <p class="card-text">
+                <i class="fa fa-clock-o mr-2" aria-hidden="true"></i>
+                <span>{{eventsFirst.Time}}</span>
+            </p>
+            <p class="card-text">
+                <i class="fa fa-map-marker mr-2"></i>
+                <span>{{eventsFirst.Location}}</span>
+            </p>
+        </div>
+        <p class="card-text">
+            <span>
+                <i class="fa fa-user-o mr-2"></i>
+            </span> {{eventsFirst.Object}}
+            <span class="read-more">
+                {{LANGUAGE.CONTINUE_READING}}
+            </span>
+        </p>
+    </div> 
+</a>
+<br> 
+<div class="card-container pb-5">
   <div class="row">
-    <div class="col-md-6 col-lg-4 card-wrap">
-      <a class="card" routerLink="/tin-tuc-va-su-kien/xuan-sang-khong-chi-co-hoa-anh-dao">
-                <img class="card-img-top" src="./assets/images/event7.png" alt="Card image cap">
+        <div class="col-md-6 col-lg-4 card-wrap" *ngFor="let item of newData; let itemIndex = index;">
+        <a class="card">
+                <img class="card-img-top" [src]="[imageNew]" alt="Card img cap">
                 <div class="card-body">
-                    <h5 class="card-title">Xuân sang... không chỉ có hoa anh đào</h5>
-                    <h6 class="card-subtitle text-muted mt-3 mb-3">15/09/2017</h6>
-                    <p class="card-text">Mùa xuân sang có hoa anh đào (Lời một bài hát) Ấy là loài hoa không chỉ là
-                        tín hiệu thẩm mĩ của mùa xuân mà còn là
-                        biểu tượng của một vùng...
-                        <span class="read-more">Đọc tiếp</span>
+                    <h5 class="card-title">
+                        {{item.Name}}
+                    </h5>
+                    <p class="card-text">
+                        <span [innerHTML]="item.Object"></span>
+                        <span class="read-more"> {{LANGUAGE.CONTINUE_READING}}</span>
                     </p>
                 </div>
             </a>
-    </div>
+        </div>
   </div>
 </div>
 <!-- create Pagination -->

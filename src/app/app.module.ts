@@ -84,14 +84,6 @@ import { RouterModule, Router, Routes, NavigationEnd } from '@angular/router';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 // News Component
-import { NewspageOneComponent } from './components/newspage/newspage-one/newspage-one.component';
-import { NewspageTwoComponent } from './components/newspage/newspage-two/newspage-two.component';
-import { NewspageThreeComponent } from './components/newspage/newspage-three/newspage-three.component';
-import { NewspageFourComponent } from './components/newspage/newspage-four/newspage-four.component';
-import { NewspageFiveComponent } from './components/newspage/newspage-five/newspage-five.component';
-import { NewspageSixComponent } from './components/newspage/newspage-six/newspage-six.component';
-import { NewspageSevenComponent } from './components/newspage/newspage-seven/newspage-seven.component';
-import { NewspageEightComponent } from './components/newspage/newspage-eight/newspage-eight.component';
 import { BannerComponent } from './components/banner/banner.component';
 import { LinkComponent } from './components/link/link.component';
 import { LoginComponent } from './components/header/login/login.component';
@@ -281,42 +273,42 @@ const routes: Routes = [
     path: 'co-hoi-nghe-nghiep/doanh-nghiep',
     component: EnterpriseComponent
   },
-  {
-    path: 'tin-tuc-su-kien/QNU-JAPAN-CENTER-Dang-ky-hoc-vien',
-    component: NewspageOneComponent
-  },
-  {
-    path: 'tin-tuc-su-kien/dinh-huong-nghe-nghiep-va-co-hoi-viec-lam-voi-TMA-solutions',
-    component: NewspageTwoComponent
-  },
-  {
-    path: 'tin-tuc-su-kien/bup-be-thang-nam-samurai',
-    component: NewspageThreeComponent
-  },
-  {
-    path: 'tin-tuc-su-kien/ngai-dai-su-nhat-ban-umeda-kunio-du-khai-truong',
-    component: NewspageFourComponent
-  },
-  {
-    path: 'tin-tuc-va-su-kien/dinh-huong-nghe-nghiep-va-co-hoi-viec-lam-voi-TMA-solutions',
-    component: NewspageTwoComponent
-  },
-  {
-  path: 'tin-tuc-va-su-kien/hieu-truong-dh-quy-nhon-tham-du-hoi-nghi-xuc-tien-dau-tu-binh-dinh-tai-nhat-ban',
-    component: NewspageFiveComponent
-  },
-  {
-    path: 'tin-tuc-va-su-kien/truong-dh-quy-nhon-dong-hanh-cung-tinh-binh-dinh-trong-thu-hut-dau-tu-nhat-ban',
-    component: NewspageSixComponent
-  },
-  {
-    path: 'tin-tuc-va-su-kien/anh-dao-no-vuon-haiku',
-    component: NewspageSevenComponent
-  },
-   {
-    path: 'tin-tuc-va-su-kien/xuan-sang-khong-chi-co-hoa-anh-dao',
-    component: NewspageEightComponent
-  },
+  // {
+  //   path: 'tin-tuc-su-kien/QNU-JAPAN-CENTER-Dang-ky-hoc-vien',
+  //   component: NewspageOneComponent
+  // },
+  // {
+  //   path: 'tin-tuc-su-kien/dinh-huong-nghe-nghiep-va-co-hoi-viec-lam-voi-TMA-solutions',
+  //   component: NewspageTwoComponent
+  // },
+  // {
+  //   path: 'tin-tuc-su-kien/bup-be-thang-nam-samurai',
+  //   component: NewspageThreeComponent
+  // },
+  // {
+  //   path: 'tin-tuc-su-kien/ngai-dai-su-nhat-ban-umeda-kunio-du-khai-truong',
+  //   component: NewspageFourComponent
+  // },
+  // {
+  //   path: 'tin-tuc-va-su-kien/dinh-huong-nghe-nghiep-va-co-hoi-viec-lam-voi-TMA-solutions',
+  //   component: NewspageTwoComponent
+  // },
+  // {
+  // path: 'tin-tuc-va-su-kien/hieu-truong-dh-quy-nhon-tham-du-hoi-nghi-xuc-tien-dau-tu-binh-dinh-tai-nhat-ban',
+  //   component: NewspageFiveComponent
+  // },
+  // {
+  //   path: 'tin-tuc-va-su-kien/truong-dh-quy-nhon-dong-hanh-cung-tinh-binh-dinh-trong-thu-hut-dau-tu-nhat-ban',
+  //   component: NewspageSixComponent
+  // },
+  // {
+  //   path: 'tin-tuc-va-su-kien/anh-dao-no-vuon-haiku',
+  //   component: NewspageSevenComponent
+  // },
+  //  {
+  //   path: 'tin-tuc-va-su-kien/xuan-sang-khong-chi-co-hoa-anh-dao',
+  //   component: NewspageEightComponent
+  // },
   {
     path: 'login',
     component: LoginComponent
@@ -419,14 +411,6 @@ const childRoutes: Routes = [
     LaborComponent,
     ProjectsComponent,
     PartnerComponent,
-    NewspageOneComponent,
-    NewspageTwoComponent,
-	  NewspageThreeComponent,
-    NewspageFourComponent,
-    NewspageFiveComponent,
-    NewspageSixComponent,
-    NewspageSevenComponent,
-    NewspageEightComponent,
     BannerComponent, 
     LinkComponent,
     LoginComponent, 

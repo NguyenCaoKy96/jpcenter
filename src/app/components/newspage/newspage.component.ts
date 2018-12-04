@@ -63,10 +63,19 @@ export class NewspageComponent implements OnInit {
   newsName:any;
   newsLocation:any;
   newSlug:string;
+  //...........
+  newURL;
+  newData;
+  imageNew;
+  evnetsURL;
+  evnetsData;
+  eventsFirst = [];
+  imageEvent;
+  arrImage:any [] = [];
 
   newHeaderData: any;
   imageHeaderData: string;
-  newsPageItems:any = [];
+  newsPageItems:any[] = [];
 
   constructor(
     private _titleService: Title,
@@ -76,24 +85,27 @@ export class NewspageComponent implements OnInit {
     private _route: ActivatedRoute
   ) {
       //get data newspage for card
-      this.newsPageURL = this._getDataService.getNewsURL();
-      this._http.get(this.newsPageURL).subscribe(data =>{
-        this.newsPageData = data;
-        console.log('newpage',this.newsPageData[1].Content);
+      this.newURL = this._getDataService.getNewsURL();
+      this._http.get(this.newURL).subscribe(data =>{
+        this.newData = data;
+        for(var k = 0; k < this.newData.length; k++){
+          this.imageNew = this.newData[k].Thumbnai;
+          for(var i = 0; i < this.newData[k].Thumbnai.length; i++){
+            this.arrImage[i] = this.serverURL + this.newData[k].Thumbnai[i].url;          
+          }  
+          console.log(this.imageNew);        
+        }     
+     });
 
-        this.newHeaderData = this.newsPageData[0];
-        this.imageHeaderData = this.serverURL + this.newHeaderData.Thumbnai.url;
-        console.log('newHeaderData',this.newHeaderData);
-
-        for(let i = 0; i < this.newsPageData.length; i++){
-          if(i > 0){
-           this.newsPageItems.push(this.newsPageData[i]);
-
-           //cut content to short content (from 0 to 130)
-           // this.newsPageItems[i-1].Object = this.newsPageData[i].Content.replace(/^(.{130}[^\s]*).*/, "$1");
-          }
-        }
-      });
+       //get data event for card
+       this.evnetsURL = this._getDataService.getEventsURL();
+       this._http.get(this.evnetsURL).subscribe(data =>{
+         this.evnetsData = data;
+         for(var i = 0; i < this.evnetsData.length; i++){
+         this.eventsFirst = this.evnetsData[0];
+         this.imageEvent = this.serverURL + this.evnetsData[0].Thumbnai.url;      
+         }       
+       });
    }
 
   ngOnInit() {
@@ -128,39 +140,39 @@ export class NewspageComponent implements OnInit {
       }
     });
 
-    this.getNewestArticle();
+    //this.getNewestArticle();
   }
 
   onmoveFn(data: NgxCarouselStore) { };
 
   // Get newest article
-  getNewestArticle() {
-    var tempArticle: any;
-    var tempNewestArticleIndex: number;
-    var longContent: string;
-    var maxShortContentLength: number = 200;
-    var isPublished: boolean = false;
+  // getNewestArticle() {
+  //   var tempArticle: any;
+  //   var tempNewestArticleIndex: number;
+  //   var longContent: string;
+  //   var maxShortContentLength: number = 200;
+  //   var isPublished: boolean = false;
 
-    this.newsURL = this._getDataService.getNewsURL();
-    this._http.get(this.newsURL).subscribe(data => {
-      tempArticle = data;
-      this.newestArticle = tempArticle[tempArticle.length - 1];
-      for (var i = tempArticle.length - 1; i>=0; i--) {
-        if(this.newestArticle.Status === "Published") {
-          isPublished = true;
-          longContent = this.newestArticle.Content;
-          this.shortArticleContent = longContent.substr(0, maxShortContentLength);
-          this.shortArticleContent = this.shortArticleContent.substr(0, Math.min(this.shortArticleContent.length, this.shortArticleContent.lastIndexOf(" ")));
-          this.figure = $(longContent).find('img:first').prevObject[1];
-          var a = $(this.figure).clone();
-          $('figure', a).remove();
-          $('.thumnail').append(a.html());
-          break;
-        } else {
-          isPublished = false;
-          this.newestArticle = tempArticle[tempArticle.length - i];
-        }
-      }
-    });
-  } 
+  //   this.newsURL = this._getDataService.getNewsURL();
+  //   this._http.get(this.newsURL).subscribe(data => {
+  //     tempArticle = data;
+  //     this.newestArticle = tempArticle[tempArticle.length - 1];
+  //     for (var i = tempArticle.length - 1; i>=0; i--) {
+  //       if(this.newestArticle.Status === "Published") {
+  //         isPublished = true;
+  //         longContent = this.newestArticle.Content;
+  //         this.shortArticleContent = longContent.substr(0, maxShortContentLength);
+  //         this.shortArticleContent = this.shortArticleContent.substr(0, Math.min(this.shortArticleContent.length, this.shortArticleContent.lastIndexOf(" ")));
+  //         this.figure = $(longContent).find('img:first').prevObject[1];
+  //         var a = $(this.figure).clone();
+  //         $('figure', a).remove();
+  //         $('.thumnail').append(a.html());
+  //         break;
+  //       } else {
+  //         isPublished = false;
+  //         this.newestArticle = tempArticle[tempArticle.length - i];
+  //       }
+  //     }
+  //   });
+  //} 
 }

@@ -1,6 +1,4 @@
-img{
-    width:100%;
-}
+
 .nav-tabs .nav-link:hover,.nav-tabs .nav-link {
     border: none !important;
     font-size: 18px;
@@ -10,31 +8,80 @@ img{
     font-weight: 700;
     color: #495057;
 }
- {
-    width: 870px;
-    height: 334px;
-    padding-top: 30px;
-    padding-bottom: 30px;
-    padding-right: 50px;
-    padding-left: 50px;
-    border-radius:2.3rem;
+.modal-body{
+  position: fixed; /*Cho menu cố định 1 vị trí với top và left*/
+  top: 0; /*Nằm trên cùng*/
+  left: 0; /*Nằm sát bên trái*/
 }
-.modal-header{
-	border-bottom: none;
+.modal-body .top-intro {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
 }
-  .btn-outline {
+.top-intro img{
+    width: 140px;
+}
+.personInfo{
+    padding: 10px;
+}
+.modal-body .top-intro h4 {
+    font-size: 36px;
+    font-weight: bold;
+}
+.modal-body .top-intro p {
+    font-size: 24px;
+}
+.modal-body .description > p {
+    line-height: 1.71;
+    margin-bottom: 25px;
+    font-size: 14px;
+}
+.modal-body {
+    padding: 30px 50px;
+}
+.modal-body button.close > span {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background: #808080;
+    color: #fff;
+    display: block;
+    line-height: 1;
+    text-align: center;
+    font-size: 20px;
+}
+.btn-outline {
     border: 1px solid #e11f26;
-    border-radius: 1em;
-    color: #e11f26;
+    border-radius: 17px;
+    color: #e11f26 !important;
     background-color: white;
     font-weight: bold;
-    font-size: 15px;
-    width: 5em;
-    text-align: center;
-  }
-  .btn-outline:hover, .btn-outline:focus {
+    font-size: 18px;
+}
+.modal-body .btn-outline {
+    padding: 2px 26px;
+}
+.btn-outline:hover {
+    color: white !important;
     background-color: #e11f26;
-    color: #fff;
-    box-shadow: none;
-  }
-  
+}
+.person:hover {
+    color: #e11f26;
+}
+.personnel-name {
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+}
+.card-title {
+    font-weight: 600;
+}
+.card-title {
+    font-size: 24px;
+}
+.personnel-wrap {
+    margin-top: 30px;
+    margin-bottom: 60px;
+    padding: 20px 30px;
+    border: solid 1px #e5e5e5;
+}
