@@ -42,6 +42,6 @@
     </div>
   </div>
   <div class="detail text-center">
-    <a class="btn btn-outline" routerLink="/tin-tuc-su-kien">{{LANGUAGE.VIEW_ALL}}</a>
+    <a class="btn btn-outline" [routerLink]="['/tin-tuc-su-kien']" [queryParams]="{lang: lang == 'vi' ? 'vi' : 'jp'}">{{LANGUAGE.VIEW_ALL}}</a>
   </div>
 </div>

@@ -70,9 +70,11 @@ export class NewspageComponent implements OnInit {
   newURL;
   newData;
   NewsData;
+  IsNewsData;
+  SubFirstData;
   imageNew;
-  evnetsURL;
-  evnetsData;
+  eventsURL;
+  eventsData;
   eventsFirst = [];
   imageEvent;
   arrImage:any[] = [];
@@ -96,28 +98,26 @@ export class NewspageComponent implements OnInit {
     private _route: ActivatedRoute,
     private santized: DomSanitizer
   ) { 
-      // hide article
-      $('#new-article').hide();
-      // get data introduction
-      // this.introData = this.santized.bypassSecurityTrustHtml(this.newData.Content);
+
       //get data newspage for card
       this.newURL = this._getDataService.getNewsURL();
       this._http.get(this.newURL).subscribe(data =>{
         this.newData = data;
-        this.NewsData = this.newData.slice().reverse() 
-        for(var k = 0; k < this.NewsData.length; k++){
-          this.imageNew = this.NewsData[k].Thumbnail;
+        this.NewsData = this.newData.slice().reverse()
+        this.IsNewsData = this.NewsData.slice(1, this.NewsData.length) 
+        for(var k = 0; k < this.IsNewsData.length; k++){
+          this.imageNew = this.IsNewsData[k].Thumbnail;
           this.arrImage[k] = this.serverURL + this.imageNew.url;     
-        } 
+        }
      });
 
-       //get data event for card
-       this.evnetsURL = this._getDataService.getNewsURL();
-       this._http.get(this.evnetsURL).subscribe(data =>{
-         this.evnetsData = data;
-         for(var i = 0; i < this.evnetsData.length; i++){
-         this.eventsFirst = this.evnetsData[this.evnetsData.length -1];
-         this.ImageEvent = this.serverURL + this.evnetsData[this.evnetsData.length -1].Thumbnail.url;      
+       //First card
+       this.eventsURL = this._getDataService.getNewsURL();
+       this._http.get(this.eventsURL).subscribe(data =>{
+         this.eventsData = data;
+         for(var i = 0; i < this.eventsData.length; i++){
+         this.eventsFirst = this.eventsData[this.eventsData.length -1];
+         this.ImageEvent = this.serverURL + this.eventsData[this.eventsData.length -1].Thumbnail.url;      
          }       
        });
 
@@ -127,25 +127,19 @@ export class NewspageComponent implements OnInit {
     let jlptItemDataURL = this._getDataService.getNewsItemURL(id);
     this._http.get(jlptItemDataURL).subscribe(data => {
       this.newItemData = data;
-      for(var i = 0; i < this.newItemData.length; i++){
-        this.EventsFirst = this.newItemData[0];
-        //this.imageEvent = this.serverURL + this.evnetsData[0].Thumbnail.url;   
-        console.log(this.EventsFirst)   
-        } 
       console.log(this.newItemData);  
     });
     $('#acticrle').hide();
     $('#articleNews').show();
    }
-  //display acticrle events
-  OnChangeEvents(){
-    this.evnetsURL = this._getDataService.getEventsURL();
-    this._http.get(this.evnetsURL).subscribe(data =>{
-      this.evnetsData = data;
-      for(var i = 0; i < this.evnetsData.length; i++){
-      this.EventsFirst = this.evnetsData[0];
-      //this.imageEvent = this.serverURL + this.evnetsData[0].Thumbnail.url;   
-      console.log(this.EventsFirst)   
+  //display first acticrle 
+  OnChangeActicrles(){
+    this.eventsURL = this._getDataService.getNewsURL();
+    this._http.get(this.eventsURL).subscribe(data =>{
+      this.eventsData = data;
+      for(var i = 0; i < this.eventsData.length; i++){
+      this.EventsFirst = this.eventsData[this.eventsData.length -1];
+      //this.imageEvent = this.serverURL + this.evnetsData[0].Thumbnail.url;     
       }       
     });
     $('#article').hide();

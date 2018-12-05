@@ -1,12 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import {Title} from '@angular/platform-browser';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { GetDataService } from './../../services/get-data/get-data.service';
 
 // Language
 import { default as LANG_VI } from './../../../lang/lang_vi';
 import { default as LANG_JP } from './../../../lang/lang_jp';
+import * as $ from 'jquery';
 
 
 @Component({
@@ -70,7 +71,8 @@ export class SubMenuComponent implements OnInit {
     private _titleService: Title,
     private http: HttpClient,
     private _getDataService: GetDataService,
-    private _route: ActivatedRoute
+    private _route: ActivatedRoute,
+    private router: Router
   ) {
     // Get data introduction
     this.apiCategories = this._getDataService.getCategoriesURL();
@@ -125,6 +127,7 @@ export class SubMenuComponent implements OnInit {
   }
 
   selectIntro(intro) {
+    this.router.navigate(['/','gioi-thieu'], {relativeTo: this._route, queryParams: { lang: this.lang == 'vi' ?'vi':'jp' }});
     let tempContents; 
     let vietnameseSlug; 
       let itemContentURL = this.apiCategories + '/' + intro._id;
@@ -142,6 +145,7 @@ export class SubMenuComponent implements OnInit {
   }
 
   selectService(service) {
+    this.router.navigate(['/','dich-vu-doi-tac'], {relativeTo: this._route, queryParams: { lang: this.lang == 'vi' ?'vi':'jp' }});
     let tempContents; 
     let vietnameseSlug; 
       let itemContentURL = this.apiCategories + '/' + service._id;
@@ -158,6 +162,7 @@ export class SubMenuComponent implements OnInit {
   }
 
   selectCareer(career) {
+    this.router.navigate(['/','co-hoi-nghe-nghiep'], {relativeTo: this._route, queryParams: { lang: this.lang == 'vi' ?'vi':'jp' }});
     let tempContents; 
     let vietnameseSlug; 
       let itemContentURL = this.apiCategories + '/' + career._id;

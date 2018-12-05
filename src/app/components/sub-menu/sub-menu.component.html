@@ -24,7 +24,7 @@
                                 </li>
                                 <li class="nav-item" *ngIf="!isVietnamese">
                                     <a class="nav-link " id="JCenter-tab" *ngFor="let x of introData; let i = index"
-                                        (click)="selectItem(x)"><i class="fa fa-angle-right" aria-hidden="true"></i>{{x.Japanese_Name}}</a>
+                                        (click)="selectIntro(x)"><i class="fa fa-angle-right" aria-hidden="true"></i>{{x.Japanese_Name}}</a>
                                 </li>
                             </ul>
                         </div>
@@ -37,17 +37,17 @@
                             </div>
                             <ul>
                                 <li>
-                                    <a routerLink="/khoa-hoc/cac-khoa-tieng-nhat-JLPT" [queryParams]="{lang: lang ? 'vi' : 'jp'}">
+                                    <a routerLink="/khoa-hoc/cac-khoa-tieng-nhat-JLPT" [queryParams]="{lang: lang == 'vi' ? 'vi' : 'jp'}">
                                         <i class="fa fa-angle-right" aria-hidden="true"></i>{{LANGUAGE.JLPT_COURSE}}
                                     </a>
                                 </li>
                                 <li>
-                                    <a routerLink="/khoa-hoc/tieng-nhat-cho-thieu-nhi" [queryParams]="{lang: lang ? 'vi' : 'jp'}">
+                                    <a routerLink="/khoa-hoc/tieng-nhat-cho-thieu-nhi" [queryParams]="{lang: lang == 'vi' ? 'vi' : 'jp'}">
                                         <i class="fa fa-angle-right" aria-hidden="true"></i>{{LANGUAGE.CHILDREN_COURSE}}
                                     </a>
                                 </li>
                                 <li>
-                                    <a routerLink="/khoa-hoc/cac-khoa-ky-nang-mem" [queryParams]="{lang: lang ? 'vi' : 'jp'}">
+                                    <a routerLink="/khoa-hoc/cac-khoa-ky-nang-mem" [queryParams]="{lang: lang == 'vi' ? 'vi' : 'jp'}">
                                         <i class="fa fa-angle-right" aria-hidden="true"></i>{{LANGUAGE.SKILL_COURSE}}
                                     </a>
                                 </li>

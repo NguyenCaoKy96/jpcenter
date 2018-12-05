@@ -117,7 +117,7 @@ ngx-carousel {
 }
 
 .breadcrumb-item a:hover {
-    color: red;
+    color: red !important;
     text-decoration: none;
 }
 .breadcrumb-item.active{
@@ -390,10 +390,6 @@ thead {
     color: #fff;
     background-color: rgb(188, 0, 45);
     border-color: rgb(188, 0, 45);
-}
-.breadcumb-item.active{
-    cursor:text;
-    color:#6c757d !important;
 }
 .nav-tabs .nav-link:hover,.nav-tabs .nav-link {
     border: none !important;
