@@ -96,7 +96,6 @@ import { LearnRegisterComponent } from './components/learn-register/learn-regist
 import {NgxPaginationModule } from 'ngx-pagination';
 
 
-import { EngineerComponent } from './components/news/news/engineer/engineer/engineer.component';
 import { OwlModule } from 'ngx-owl-carousel';
 import { NgxCarouselModule } from 'ngx-carousel';
 // Hammer.js lib
@@ -118,6 +117,7 @@ import { ExamCalendarComponent } from './components/academic/exam-calendar/exam-
 import { ClassManagementComponent } from './components/class-management/class-management.component';
 import { ManagePointComponent } from './components/manage-point/manage-point.component';
 import { AboutLearnerComponent } from './components/about-learner/about-learner.component';
+
 const routes: Routes = [
   {
 
@@ -179,6 +179,10 @@ const routes: Routes = [
     component: ServicePartnerComponent,
     children:
     [
+       {
+        path: '',
+        component: StudyComponent
+      },
       {
         path: 'tu-van-du-hoc-va-viec-lam',
         component: StudyComponent
@@ -196,10 +200,6 @@ const routes: Routes = [
         component: PartnerComponent
       },
     ]
-  },
-  {
-    path: 'chuong-trinh-ky-su-cau-noi',
-    component: EngineerComponent,
   },
   {
     path: 'khoa-hoc',
@@ -231,7 +231,7 @@ const routes: Routes = [
     path: 'tin-tuc-su-kien',
     component: NewspageComponent
   },
-   {
+  {
     path: 'co-hoi-nghe-nghiep',
     component: CareerOpportunitiesComponent,
     children:
@@ -246,42 +246,7 @@ const routes: Routes = [
       }
     ]
   },
-  // {
-  //   path: 'tin-tuc-su-kien/QNU-JAPAN-CENTER-Dang-ky-hoc-vien',
-  //   component: NewspageOneComponent
-  // },
-  // {
-  //   path: 'tin-tuc-su-kien/dinh-huong-nghe-nghiep-va-co-hoi-viec-lam-voi-TMA-solutions',
-  //   component: NewspageTwoComponent
-  // },
-  // {
-  //   path: 'tin-tuc-su-kien/bup-be-thang-nam-samurai',
-  //   component: NewspageThreeComponent
-  // },
-  // {
-  //   path: 'tin-tuc-su-kien/ngai-dai-su-nhat-ban-umeda-kunio-du-khai-truong',
-  //   component: NewspageFourComponent
-  // },
-  // {
-  //   path: 'tin-tuc-va-su-kien/dinh-huong-nghe-nghiep-va-co-hoi-viec-lam-voi-TMA-solutions',
-  //   component: NewspageTwoComponent
-  // },
-  // {
-  // path: 'tin-tuc-va-su-kien/hieu-truong-dh-quy-nhon-tham-du-hoi-nghi-xuc-tien-dau-tu-binh-dinh-tai-nhat-ban',
-  //   component: NewspageFiveComponent
-  // },
-  // {
-  //   path: 'tin-tuc-va-su-kien/truong-dh-quy-nhon-dong-hanh-cung-tinh-binh-dinh-trong-thu-hut-dau-tu-nhat-ban',
-  //   component: NewspageSixComponent
-  // },
-  // {
-  //   path: 'tin-tuc-va-su-kien/anh-dao-no-vuon-haiku',
-  //   component: NewspageSevenComponent
-  // },
-  //  {
-  //   path: 'tin-tuc-va-su-kien/xuan-sang-khong-chi-co-hoa-anh-dao',
-  //   component: NewspageEightComponent
-  // },
+  
   {
     path: 'login',
     component: LoginComponent
@@ -339,7 +304,7 @@ const routes: Routes = [
     path: 'hoc-vien',
     component: AboutLearnerComponent
   },
-
+ 
 ];
 
 const childRoutes: Routes = [
@@ -390,7 +355,6 @@ const childRoutes: Routes = [
     LogoutComponent,
     LearnRegisterComponent, 
     UserComponent,
-    EngineerComponent,
     BubbleEnrollComponent,
     EnrollListPageComponent,
     AcademicComponent,

@@ -26,3 +26,6 @@ tr {
     max-height: 70px;
     padding: 1em;
 }
+#JCenter-tab:hover{
+    color: rgb(188, 0, 45) ;
+}

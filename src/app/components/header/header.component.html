@@ -71,9 +71,9 @@
             <li class="nav-item dropdown">
               <a id="academic-page" class="nav-link" [routerLink]="['/hoc-vu']" [queryParams]="{lang: lang ? 'vi' : 'jp'}">{{LANGUAGE.ACADEMIC}}<span class="caret"></span></a>
               <div class="dropdown-content">
-                <a class="dropdown-item" (click)="changeURL('academic-page', 'lich-hoc')">{{LANGUAGE.SCHEDULE}}</a>
-                <a class="dropdown-item" (click)="changeURL('academic-page', 'lich-thi')">{{LANGUAGE.EXAM_SCHEDULE}}</a>
-                <a class="dropdown-item" (click)="changeURL('academic-page', 'diem-thi')">{{LANGUAGE.MARK}}</a>
+                <a class="dropdown-item" [routerLink]="['/hoc-vu/lich-hoc']" [queryParams]="{lang: lang ? 'vi' : 'jp'}">{{LANGUAGE.SCHEDULE}}</a>
+                <a class="dropdown-item" [routerLink]="['/hoc-vu/lich-thi']" [queryParams]="{lang: lang ? 'vi' : 'jp'}">{{LANGUAGE.EXAM_SCHEDULE}}</a>
+                <a class="dropdown-item" [routerLink]="['/hoc-vu/diem-thi']" [queryParams]="{lang: lang ? 'vi' : 'jp'}">{{LANGUAGE.MARK}}</a>
               </div>
             </li>
             <li class="nav-item dropdown">

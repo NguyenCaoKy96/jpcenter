@@ -13,35 +13,35 @@
 <nav aria-label="breadcrumb">
     <ol class="breadcrumb">
         <li class="breadcrumb-item">
-            <a routerLink="/trang-chu">Trang chủ</a>
+            <a routerLink = "/trang-chu" [queryParams]="{lang: lang ? 'jp' : 'vi'}">{{LANGUAGE.HOME_PAGE}}</a>
         </li>
         <li class="breadcrumb-item ">
-            <a routerLink="/hoc-vu">Học vụ</a>
+            <a routerLink="/hoc-vu" [queryParams]="{lang: lang ? 'jp' : 'vi'}">{{LANGUAGE.ACADEMIC}}</a>
         </li>
         <li class="breadcrumb-item active">
-            Lịch học
+            {{LANGUAGE.SCHEDULE}}
         </li>
     </ol>
 </nav>
 <div class="row">
     <div class="col-md-4 col-lg-3 left-navigation">
-    <ul class="nav nav-tabs d-none d-md-block">
-      <li class="nav-item">
-        <a class="nav-link " id="JCenter-tab" [queryParams]="{lang: lang ? 'jp' : 'vi'}" routerLink = "/hoc-vu/lich-hoc">Lịch học</a>
-      </li>
-       <li class="nav-item">
-        <a class="nav-link " id="JCenter-tab" [queryParams]="{lang: lang ? 'jp' : 'vi'}" routerLink = "/hoc-vu/lich-thi">Lịch thi</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" id="JCenter-tab" [queryParams]="{lang: lang ? 'jp' : 'vi'}" routerLink = "/hoc-vu/diem-thi">Điểm thi</a>
-      </li>
-    </ul>
-  </div>
+        <ul class="nav nav-tabs d-none d-md-block">
+            <li class="nav-item">
+                <a class="nav-link " id="JCenter-tab"  routerLink="/hoc-vu/lich-hoc" [queryParams]="{lang: lang ? 'jp' : 'vi'}">{{LANGUAGE.SCHEDULE}}</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link " id="JCenter-tab"  routerLink="/hoc-vu/lich-thi" [queryParams]="{lang: lang ? 'jp' : 'vi'}">{{LANGUAGE.EXAM_SCHEDULE}}</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" id="JCenter-tab" routerLink="/hoc-vu/diem-thi" [queryParams]="{lang: lang ? 'jp' : 'vi'}"> {{LANGUAGE.MARK}}</a>
+            </li>
+        </ul>
+    </div>
     <div class="col-md-8 col-lg-9">
         <div class="tab-content">
             <div class="container">
                 <h1 id="schedule">
-                	<b>Lịch học</b>
+                    <b>{{LANGUAGE.SCHEDULE}}</b>
                 </h1>
                 <div class="detail-schedule">
                     <table class="table table-hover table-bordered table-striped" id="lichthi">
@@ -61,11 +61,8 @@
                         </tr>
                     </table>
                 </div>
-                <button class="btn btn" type="submit" name="submit"  ><a href="{{imageQnuJapan[0]}}" >{{LANGUAGE.DOWNLOAD}}</a></button>
-                
-                 
+                <button class="btn btn" type="submit" name="submit"><a href="{{imageQnuJapan[0]}}" >{{LANGUAGE.DOWNLOAD}}</a></button>
             </div>
         </div>
     </div>
 </div>
-

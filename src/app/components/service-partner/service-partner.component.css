@@ -1,0 +1,15 @@
+img{
+    width:100% !important;
+    float: none;
+    display: block;
+    margin: 0 auto;
+}
+.nav-tabs .nav-link:hover,.nav-tabs .nav-link {
+    border: none !important;
+    font-size: 18px;
+    display: block;
+}
+.nav-tabs .nav-link.active{
+	font-weight: 700;
+	color: #495057 !important;
+}

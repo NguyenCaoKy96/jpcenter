@@ -14,100 +14,58 @@
 <nav aria-label="breadcrumb">
   <ol class="breadcrumb">
     <li class="breadcrumb-item">
-      <a routerLink="/trang-chu">{{LANGUAGE.HOME_PAGE}}</a>
+      <a routerLink="/trang-chu" [queryParams]="{lang: lang ? 'jp' : 'vi'}">{{LANGUAGE.HOME_PAGE}}</a>
     </li>
     <li class="breadcrumb-item active">
-      <a routerLink="/tin-tuc-su-kien">{{LANGUAGE.NEWS_AND_EVENTS}}</a>
+      <a routerLink="/tin-tuc-su-kien" [queryParams]="{lang: lang ? 'jp' : 'vi'}">{{LANGUAGE.NEWS_AND_EVENTS}}</a>
     </li>
   </ol>
 </nav>
-<!-- creat content -->
-<div id="acticrle" class="container">
-    <a class="row mr-0 ml-0 post-highlight">
-        <div class="col-lg-5 pl-0 pr-0">
-            <img [src]="[imageEvent]" class="img-fluid d-block" alt="news-main" />
+<!-- article Events -->
+<div id="article" class="container">
+    <a class="row mr-0 ml-0 post-highlight" (click) = "OnChangeEvents()">
+        <div class="col-lg-5 pl-0 pr-0" >
+            <img [src]="[ImageEvent]" class="img-fluid d-block" alt="news-main"/>
         </div>
         <div class="col-lg-5 card-body card-wrap">
-            <h5 class="card-title">{{eventsFirst.Name}}
+            <h5 class="card-title" [innerHTML]="eventsFirst.Name">
             </h5>
-            <div class="card-info">
-                <p class="card-text">
-                    <i class="fa fa-clock-o mr-2" aria-hidden="true"></i>
-                    <span>{{eventsFirst.Time}}</span>
-                </p>
-                <p class="card-text">
-                    <i class="fa fa-map-marker mr-2"></i>
-                    <span>{{eventsFirst.Location}}</span>
-                </p>
-            </div>
             <p class="card-text">
-                <span>
-                    <i class="fa fa-user-o mr-2"></i>
-                </span> {{eventsFirst.Object}}
-                <span class="read-more">
-                    {{LANGUAGE.CONTINUE_READING}}
-                </span>
+                <span [innerHTML]="eventsFirst.Object"></span>
+                <span class="read-more"> {{LANGUAGE.CONTINUE_READING}}</span>
             </p>
         </div> 
     </a>
+    <!-- display card news -->
+    <div class="card-container pb-5">
+        <div class="row">
+            <div class="col-md-6 col-lg-4 card-wrap" *ngFor="let item of NewsData; let itemIndex = index;">
+            <a class="card" (click) = "OnChangeNews(item.id)">
+                    <img class="card-img-top" [src]="[arrImage[itemIndex]]" alt="Card img cap">
+                    <div class="card-body">
+                        <h5 class="card-title">
+                            {{item.Name}}
+                        </h5>
+                        <p class="card-text">
+                            <span [innerHTML]="item.Object"></span>
+                            <span class="read-more"> {{LANGUAGE.CONTINUE_READING}}</span>
+                        </p>
+                    </div>
+                </a>
+            </div>
+        </div> 
+    </div>
+</div>
+    <!-- display article -->
+<div id="#new-article" class="container">
+    <div class="course-content pt-4 mb-0">
+        <h4>{{EventsFirst.Name}}</h4>       
+        <p class="mb-4" [innerHTML]="EventsFirst.Program"></p>           
+    </div>
 </div>
 <br> 
-<div id="acticrle" class="card-container pb-5">
-  <div class="row">
-        <div class="col-md-6 col-lg-4 card-wrap" *ngFor="let item of newData; let itemIndex = index;">
-        <a class="card">
-                <img class="card-img-top" [src]="[newArrImage[itemIndex]]" alt="Card img cap">
-                <div class="card-body">
-                    <h5 class="card-title">
-                        {{item.Name}}
-                    </h5>
-                    <p class="card-text">
-                        <span [innerHTML]="item.Object"></span>
-                        <span class="read-more"> {{LANGUAGE.CONTINUE_READING}}</span>
-                    </p>
-                </div>
-            </a>
-        </div>
-    </div> 
-</div>
-<!-- <div class="container">
-    <h4 class="section-title">{{eventsFirst.Name}}</h4>
-    <div class="row">      
-        <div class="title-content d-flex align-items-center">
-            <img src="./assets/images/icon-clock.png" class="m-0 mr-3" alt="icon">
-            <p>{{LANGUAGE.TIME}}</p>
-        </div>
-        <div>
-            <p class="mb-4" [innerHTML]="eventsFirst.Time">
-            </p>
-        </div>       
-        <div class="title-content d-flex align-items-center">
-            <img src="./assets/images/icon-map.png" class="m-0 mr-3" alt="icon">
-            <p>{{LANGUAGE.LOCATION}}</p>
-        </div>
-        <div>
-            <p class="mb-4" [innerHTML]="eventsFirst.Location">
-            </p>
-        </div>
-        
-        <div class="title-content d-flex align-items-center">
-            <img src="./assets/images/icon-user.png" class="m-0 mr-3" alt="icon">
-            <p>{{LANGUAGE.OBJECT}}</p>
-        </div>
-        <div>
-            <p class="mb-4" [innerHTML]="eventsFirst.Object">
-            </p>
-        </div>      
-        <div class="title-content d-flex align-items-center">
-            <img src="./assets/images/icon-script.png" class="m-0 mr-3" alt="icon">
-            <p>{{LANGUAGE.PROGRAM}}</p>
-        </div>
-         <div>
-            <p class="mb-4" [innerHTML]="eventsFirst.Program">
-            </p>
-        </div>      
-    </div>
-</div>--> 
+
+
 <!-- create Pagination -->
 <!-- <div class="pagination">
   <ul>

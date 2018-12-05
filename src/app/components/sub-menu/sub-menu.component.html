@@ -8,230 +8,87 @@
 
 <body>
     <div class="container">
-        <div class="program" *ngIf="lang === 'vi'">
-            <div class="row">
-                <div class="col-md-6 col-lg-3">
-                    <div class="card-wrap">
-                        <div class="block-title-wrap">
-                            <img src="./assets/images/flower-icon-1.png" alt="flower icon">
-                            <h5 class="block-title">{{LANGUAGE.INTRODUCTION_PAGE}}</h5>
+        <div class="container">
+            <div class="program">
+                <div class="row">
+                    <div class="col-md-6 col-lg-3">
+                        <div class="card-wrap">
+                            <div class="block-title-wrap">
+                                <img src="./assets/images/flower-icon-1.png" alt="flower icon">
+                                <h5 class="block-title">{{LANGUAGE.INTRODUCTION_PAGE}}</h5>
+                            </div>
+                            <ul>
+                                <li class="nav-item" *ngIf="isVietnamese">
+                                    <a class="nav-link " id="JCenter-tab" *ngFor="let x of introData; let i = index"
+                                        (click)="selectIntro(x)"><i class="fa fa-angle-right" aria-hidden="true"></i>{{x.Name}}</a>
+                                </li>
+                                <li class="nav-item" *ngIf="!isVietnamese">
+                                    <a class="nav-link " id="JCenter-tab" *ngFor="let x of introData; let i = index"
+                                        (click)="selectItem(x)"><i class="fa fa-angle-right" aria-hidden="true"></i>{{x.Japanese_Name}}</a>
+                                </li>
+                            </ul>
                         </div>
-                        <ul>
-                            <li>
-                                <a routerLink="/gioi-thieu/trung-tam-nhat-ban">
-                                    <i class="fa fa-angle-right" aria-hidden="true"></i>{{LANGUAGE.JAPAN_CENTER}}
-                                </a>
-                            </li>
-                            <li>
-                                <a routerLink="/gioi-thieu/truong-dai-hoc-quy-nhon">
-                                    <i class="fa fa-angle-right" aria-hidden="true"></i>{{LANGUAGE.QUY_NHON_UNIVERSITY}}
-                                </a>
-                            </li>
-                            <li>
-                                <a routerLink="/gioi-thieu/quy-nhon-binh-dinh">
-                                    <i class="fa fa-angle-right" aria-hidden="true"></i>{{LANGUAGE.QUY_NHON_BINH_DINH}}
-                                </a>
-                            </li>
-                            <li>
-                                <a routerLink="/gioi-thieu/nhan-su-trung-tam">
-                                    <i class="fa fa-angle-right" aria-hidden="true"></i>{{LANGUAGE.HUMAN_RESOURCE}}
-                                </a>
-                            </li>
-                            <li>
-                                <a routerLink="/gioi-thieu/tai-sao-chon-qnu-japan-center">
-                                    <i class="fa fa-angle-right" aria-hidden="true"></i>{{LANGUAGE.RESON_TO_CHOOESE_QNU_JAPAN_CENTER}}
-                                </a>
-                            </li>
-                        </ul>
                     </div>
-                </div>
-                <div class="col-md-6 col-lg-3">
-                    <div class="card-wrap">
-                        <div class="block-title-wrap">
-                            <img src="./assets/images/flower-icon-1.png" alt="flower icon">
-                            <h5 class="block-title">{{LANGUAGE.COURSE}}</h5>
+                    <div class="col-md-6 col-lg-3">
+                        <div class="card-wrap">
+                            <div class="block-title-wrap">
+                                <img src="./assets/images/flower-icon-1.png" alt="flower icon">
+                                <h5 class="block-title">{{LANGUAGE.COURSE}}</h5>
+                            </div>
+                            <ul>
+                                <li>
+                                    <a routerLink="/khoa-hoc/cac-khoa-tieng-nhat-JLPT" [queryParams]="{lang: lang ? 'vi' : 'jp'}">
+                                        <i class="fa fa-angle-right" aria-hidden="true"></i>{{LANGUAGE.JLPT_COURSE}}
+                                    </a>
+                                </li>
+                                <li>
+                                    <a routerLink="/khoa-hoc/tieng-nhat-cho-thieu-nhi" [queryParams]="{lang: lang ? 'vi' : 'jp'}">
+                                        <i class="fa fa-angle-right" aria-hidden="true"></i>{{LANGUAGE.CHILDREN_COURSE}}
+                                    </a>
+                                </li>
+                                <li>
+                                    <a routerLink="/khoa-hoc/cac-khoa-ky-nang-mem" [queryParams]="{lang: lang ? 'vi' : 'jp'}">
+                                        <i class="fa fa-angle-right" aria-hidden="true"></i>{{LANGUAGE.SKILL_COURSE}}
+                                    </a>
+                                </li>
+                            </ul>
                         </div>
-                        <ul>
-                            <li>
-                                <a routerLink="/khoa-hoc/cac-khoa-tieng-nhat-JLPT">
-                                    <i class="fa fa-angle-right" aria-hidden="true"></i>{{LANGUAGE.JLPT_COURSE}}
-                                </a>
-                            </li>
-                            <li>
-                                <a routerLink="/khoa-hoc/tieng-nhat-cho-thieu-nhi">
-                                    <i class="fa fa-angle-right" aria-hidden="true"></i>{{LANGUAGE.CHILDREN_COURSE}}
-                                </a>
-                            </li>
-                            <li>
-                                <a routerLink="/khoa-hoc/cac-khoa-ky-nang-mem">
-                                    <i class="fa fa-angle-right" aria-hidden="true"></i>{{LANGUAGE.SKILL_COURSE}}
-                                </a>
-                            </li>
-                        </ul>
                     </div>
-                </div>
-                <div class="col-md-6 col-lg-3">
-                    <div class="card-wrap">
-                        <div class="block-title-wrap">
-                            <img src="./assets/images/flower-icon-1.png" alt="flower icon">
-                            <h5 class="block-title">{{LANGUAGE.SERVICE_AND_PARTNER}}</h5>
+                    <div class="col-md-6 col-lg-3">
+                        <div class="card-wrap">
+                            <div class="block-title-wrap">
+                                <img src="./assets/images/flower-icon-1.png" alt="flower icon">
+                                <h5 class="block-title">{{LANGUAGE.SERVICE_AND_PARTNER}}</h5>
+                            </div>
+                            <ul>
+                                <li class="nav-item" *ngIf="isVietnamese">
+                                    <a class="nav-link" id="JCenter-tab" *ngFor="let x of serviceData; let i = index"
+                                        (click)="selectService(x)"><i class="fa fa-angle-right" aria-hidden="true"></i>{{x.Name}}</a>
+                                </li>
+                                <li class="nav-item" *ngIf="!isVietnamese">
+                                    <a class="nav-link" id="JCenter-tab" *ngFor="let x of serviceData; let i = index"
+                                        (click)="selectService(x)"><i class="fa fa-angle-right" aria-hidden="true"></i>{{x.Japanese_Name}}</a>
+                                </li>
+                            </ul>
                         </div>
-                        <ul>
-                            <li>
-                                <a routerLink="/dich-vu-doi-tac/tu-van-va-viec-lam">
-                                    <i class="fa fa-angle-right" aria-hidden="true"></i>{{LANGUAGE.APPROAD_STUDY_AND_EMPLOYMENT}}
-                                </a>
-                            </li>
-                            <li>
-                                <a routerLink="/dich-vu-doi-tac/xuat-khau-lao-dong">
-                                    <i class="fa fa-angle-right" aria-hidden="true"></i>{{LANGUAGE.LABOR_EXPORT}}
-                                </a>
-                            </li>
-                            <li>
-                                <a routerLink="/dich-vu-doi-tac/du-an">
-                                    <i class="fa fa-angle-right" aria-hidden="true"></i>{{LANGUAGE.PROJECT}}
-                                </a>
-                            </li>
-                            <li>
-                                <a routerLink="/dich-vu-doi-tac/doi-tac">
-                                    <i class="fa fa-angle-right" aria-hidden="true"></i>{{LANGUAGE.PARTNER}}
-                                </a>
-                            </li>
-                        </ul>
                     </div>
-                </div>
-                <div class="col-md-6 col-lg-3">
-                    <div class="card-wrap">
-                        <div class="block-title-wrap">
-                            <img src="./assets/images/flower-icon-1.png" alt="flower icon">
-                            <h5 class="block-title">{{LANGUAGE.CAREER_OPPOTUNITY}}</h5>
+                    <div class="col-md-6 col-lg-3">
+                        <div class="card-wrap">
+                            <div class="block-title-wrap">
+                                <img src="./assets/images/flower-icon-1.png" alt="flower icon">
+                                <h5 class="block-title">{{LANGUAGE.CAREER_OPPOTUNITY}}</h5>
+                            </div>
+                            <ul>
+                                <li class="nav-item" *ngIf="isVietnamese">
+                                    <a class="nav-link" id="JCenter-tab" *ngFor="let x of careerData; let i = index"
+                                        (click)="selectCareer(x)"><i class="fa fa-angle-right" aria-hidden="true"></i>{{x.Name}}</a>
+                                </li>
+                                <li class="nav-item" *ngIf="!isVietnamese">
+                                    <a class="nav-link " id="JCenter-tab" *ngFor="let x of careerData ; let i = index"
+                                        (click)="selectCareer(x)"><i class="fa fa-angle-right" aria-hidden="true"></i>{{x.Japanese_Name}}</a>
+                                </li>
+                            </ul>
                         </div>
-                        <ul>
-                            <li>
-                                <a routerLink="/co-hoi-nghe-nghiep/trung-tam-nhat-ban">
-                                    <i class="fa fa-angle-right" aria-hidden="true"></i>{{LANGUAGE.JAPAN_CENTER_OPPOTUNITY}}
-                                </a>
-                            </li>
-                            <li>
-                                <a routerLink="/co-hoi-nghe-nghiep/doanh-nghiep">
-                                    <i class="fa fa-angle-right" aria-hidden="true"></i>{{LANGUAGE.ENTERPRISE}}
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="program" *ngIf="lang === 'jp'">
-            <div class="row">
-                <div class="col-md-6 col-lg-3">
-                    <div class="card-wrap">
-                        <div class="block-title-wrap">
-                            <img src="./assets/images/flower-icon-1.png" alt="flower icon">
-                            <h5 class="block-title">{{LANGUAGE.INTRODUCTION_PAGE}}</h5>
-                        </div>
-                        <ul>
-                            <li>
-                                <a routerLink="/gioi-thieu/trung-tam-nhat-ban">
-                                    <i class="fa fa-angle-right" aria-hidden="true"></i>{{LANGUAGE.JAPAN_CENTER}}
-                                </a>
-                            </li>
-                            <li>
-                                <a routerLink="/gioi-thieu/dai-hoc-quy-nhon">
-                                    <i class="fa fa-angle-right" aria-hidden="true"></i>{{LANGUAGE.QUY_NHON_UNIVERSITY}}
-                                </a>
-                            </li>
-                            <li>
-                                <a routerLink="/gioi-thieu/quy-nhon-binh-dinh">
-                                    <i class="fa fa-angle-right" aria-hidden="true"></i>{{LANGUAGE.QUY_NHON_BINH_DINH}}
-                                </a>
-                            </li>
-                            <li>
-                                <a routerLink="/gioi-thieu/nhan-su-trung-tam">
-                                    <i class="fa fa-angle-right" aria-hidden="true"></i>{{LANGUAGE.HUMAN_RESOURCE}}
-                                </a>
-                            </li>
-                            <li>
-                                <a routerLink="/gioi-thieu/tai-sao-chon-qnu-japan-center">
-                                    <i class="fa fa-angle-right" aria-hidden="true"></i>{{LANGUAGE.RESON_TO_CHOOESE_QNU_JAPAN_CENTER}}
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-3">
-                    <div class="card-wrap">
-                        <div class="block-title-wrap">
-                            <img src="./assets/images/flower-icon-1.png" alt="flower icon">
-                            <h5 class="block-title">{{LANGUAGE.COURSE}}</h5>
-                        </div>
-                        <ul>
-                            <li>
-                                <a routerLink="/khoa-hoc/cac-khoa-tieng-nhat-JLPT">
-                                    <i class="fa fa-angle-right" aria-hidden="true"></i>{{LANGUAGE.JLPT_COURSE}}
-                                </a>
-                            </li>
-                            <li>
-                                <a routerLink="/khoa-hoc/tieng-nhat-cho-thieu-nhi">
-                                    <i class="fa fa-angle-right" aria-hidden="true"></i>{{LANGUAGE.CHILDREN_COURSE}}
-                                </a>
-                            </li>
-                            <li>
-                                <a routerLink="/khoa-hoc/cac-khoa-ky-nang-mem">
-                                    <i class="fa fa-angle-right" aria-hidden="true"></i>{{LANGUAGE.SKILL_COURSE}}
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-3">
-                    <div class="card-wrap">
-                        <div class="block-title-wrap">
-                            <img src="./assets/images/flower-icon-1.png" alt="flower icon">
-                            <h5 class="block-title">{{LANGUAGE.SERVICE_AND_PARTNER}}</h5>
-                        </div>
-                        <ul>
-                            <li>
-                                <a routerLink="/dich-vu-doi-tac/tu-van-va-viec-lam">
-                                    <i class="fa fa-angle-right" aria-hidden="true"></i>{{LANGUAGE.APPROAD_STUDY_AND_EMPLOYMENT}}
-                                </a>
-                            </li>
-                            <li>
-                                <a routerLink="/dich-vu-doi-tac/xuat-khau-lao-dong">
-                                    <i class="fa fa-angle-right" aria-hidden="true"></i>{{LANGUAGE.LABOR_EXPORT}}
-                                </a>
-                            </li>
-                            <li>
-                                <a routerLink="/dich-vu-doi-tac/du-an">
-                                    <i class="fa fa-angle-right" aria-hidden="true"></i>{{LANGUAGE.PROJECT}}
-                                </a>
-                            </li>
-                            <li>
-                                <a routerLink="/dich-vu-doi-tac/doi-tac">
-                                    <i class="fa fa-angle-right" aria-hidden="true"></i>{{LANGUAGE.PARTNER}}
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-3">
-                    <div class="card-wrap">
-                        <div class="block-title-wrap">
-                            <img src="./assets/images/flower-icon-1.png" alt="flower icon">
-                            <h5 class="block-title">{{LANGUAGE.CAREER_OPPOTUNITY}}</h5>
-                        </div>
-                        <ul>
-                            <li>
-                                <a routerLink="/co-hoi-nghe-nghiep/trung-tam-nhat-ban">
-                                    <i class="fa fa-angle-right" aria-hidden="true"></i>{{LANGUAGE.JAPAN_CENTER_OPPOTUNITY}}
-                                </a>
-                            </li>
-                            <li>
-                                <a routerLink="/co-hoi-nghe-nghiep/doanh-nghiep">
-                                    <i class="fa fa-angle-right" aria-hidden="true"></i>{{LANGUAGE.ENTERPRISE}}
-                                </a>
-                            </li>
-                        </ul>
                     </div>
                 </div>
             </div>

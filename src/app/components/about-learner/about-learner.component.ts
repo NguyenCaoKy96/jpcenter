@@ -111,10 +111,12 @@ export class AboutLearnerComponent implements OnInit {
       this._http.get(itemContentURL).subscribe(data => {
         tempContents = data;
         this.itemContents.vietnameseContents = tempContents.contents.Content;
+        this.itemContents.vietnameseName =  tempContents.contents.Name;
         vietnameseSlug = tempContents.contents.Name;
         this.slug.vietnameseSlug = vietnameseSlug.toLowerCase().replace(/ /g,'-').replace(/[^\w-]+/g,'');
         window.location.hash = (this.slug.vietnameseSlug);
         this.itemContents.japaneseContents = tempContents.contents.Japanese_Content;
+        this.itemContents.japaneseName = tempContents.contents.Japanese_Name;
       });
   }
 }

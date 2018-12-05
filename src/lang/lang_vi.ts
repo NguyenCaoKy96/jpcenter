@@ -135,6 +135,7 @@ const LANG_VI  = {
      URL_QUY_NHON_BINH_DINH : 'quy-nhon-binh-dinh',
      URL_HUMAN_RESOURCE : 'nhan-su-trung-tam',
      URL_RESON_TO_CHOOESE_QNU_JAPAN_CENTER : 'tai-sao-chon-qnu-japan-center',
+     VIEW_DETAILS: 'Xem chi tiết',
 
 
 };

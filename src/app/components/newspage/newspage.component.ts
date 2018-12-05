@@ -69,6 +69,7 @@ export class NewspageComponent implements OnInit {
   //...........
   newURL;
   newData;
+  NewsData;
   imageNew;
   evnetsURL;
   evnetsData;
@@ -80,7 +81,9 @@ export class NewspageComponent implements OnInit {
   newItemData;
   //.........
   eventItemData;
+  ImageEvent;
 
+  EventsFirst: any;
   newHeaderData: any;
   imageHeaderData: string;
   newsPageItems:any[] = [];
@@ -92,55 +95,61 @@ export class NewspageComponent implements OnInit {
     private _getImageService: GetImagesService,
     private _route: ActivatedRoute,
     private santized: DomSanitizer
-  ) {
+  ) { 
+      // hide article
+      $('#new-article').hide();
       // get data introduction
       // this.introData = this.santized.bypassSecurityTrustHtml(this.newData.Content);
       //get data newspage for card
       this.newURL = this._getDataService.getNewsURL();
       this._http.get(this.newURL).subscribe(data =>{
         this.newData = data;
-        for(var k = 0; k < this.newData.length; k++){
-          this.imageNew = this.newData[k].Thumbnail;
-          console.log(this.newData[k].Thumbnail);
-          this.arrImage[k] = this.serverURL + this.imageNew.url;
-          console.log(this.arrImage);        
-        }   
-        for (let i = 0; i < this.arrImage.length; i++) {
-          this.newArrImage[i] = this.arrImage[i]
-        }       
-        //console.log(this.newArrImage)  
+        this.NewsData = this.newData.slice().reverse() 
+        for(var k = 0; k < this.NewsData.length; k++){
+          this.imageNew = this.NewsData[k].Thumbnail;
+          this.arrImage[k] = this.serverURL + this.imageNew.url;     
+        } 
      });
 
        //get data event for card
-       this.evnetsURL = this._getDataService.getEventsURL();
+       this.evnetsURL = this._getDataService.getNewsURL();
        this._http.get(this.evnetsURL).subscribe(data =>{
          this.evnetsData = data;
          for(var i = 0; i < this.evnetsData.length; i++){
-         this.eventsFirst = this.evnetsData[0];
-         this.imageEvent = this.serverURL + this.evnetsData[0].Thumbnail.url;      
+         this.eventsFirst = this.evnetsData[this.evnetsData.length -1];
+         this.ImageEvent = this.serverURL + this.evnetsData[this.evnetsData.length -1].Thumbnail.url;      
          }       
        });
+
    }
    // display acticrle news
-  //  OnNews(id){
-  //   let jlptItemDataURL = this._getDataService.getNewsItemURL(id);
-  //   this._http.get(jlptItemDataURL).subscribe(data => {
-  //     this.newItemData = data;
-  //     console.log(this.newItemData);  
-  //   });
-  //   $('#acticrle').hide();
-  //  }
+   OnChangeNews(id){
+    let jlptItemDataURL = this._getDataService.getNewsItemURL(id);
+    this._http.get(jlptItemDataURL).subscribe(data => {
+      this.newItemData = data;
+      for(var i = 0; i < this.newItemData.length; i++){
+        this.EventsFirst = this.newItemData[0];
+        //this.imageEvent = this.serverURL + this.evnetsData[0].Thumbnail.url;   
+        console.log(this.EventsFirst)   
+        } 
+      console.log(this.newItemData);  
+    });
+    $('#acticrle').hide();
+    $('#articleNews').show();
+   }
   //display acticrle events
-   OnEvents(){
+  OnChangeEvents(){
     this.evnetsURL = this._getDataService.getEventsURL();
     this._http.get(this.evnetsURL).subscribe(data =>{
       this.evnetsData = data;
       for(var i = 0; i < this.evnetsData.length; i++){
-      this.eventsFirst = this.evnetsData[0];
-      this.imageEvent = this.serverURL + this.evnetsData[0].Thumbnail.url;      
+      this.EventsFirst = this.evnetsData[0];
+      //this.imageEvent = this.serverURL + this.evnetsData[0].Thumbnail.url;   
+      console.log(this.EventsFirst)   
       }       
     });
-    $('#acticrle').hide();
+    $('#article').hide();
+    $('#new-article').show();
   }
   ngOnInit() {
     // Change language
@@ -175,6 +184,7 @@ export class NewspageComponent implements OnInit {
     });
 
     //this.getNewestArticle();
+    
   }
 
   onmoveFn(data: NgxCarouselStore) { };

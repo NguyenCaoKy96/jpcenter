@@ -41,6 +41,7 @@ export class ExamPointComponent implements OnInit {
     markURL: any;
     markData;
     link;
+    public isVietnamese: boolean = true;
 
 
   constructor(private titleService: Title,
@@ -54,7 +55,10 @@ export class ExamPointComponent implements OnInit {
 
   ngOnInit() {
   	// Title
-  	this._titleService.setTitle('Điểm thi');
+  	this._titleService.setTitle('Học vụ');
+    
+
+     
 
     //get data Mark
     this.markURL = this._getDataService.getMarkURL();
@@ -66,24 +70,15 @@ export class ExamPointComponent implements OnInit {
     }
     });
 
-     //get data download
-    //  this.academicsURL = this._getDataService.getAcademicsURL();
-    // this._http.get(this.academicsURL).subscribe(data =>{
-    //   this.academics = data;
-    //   console.log(this.academics );
-    //   for(var i = 0; i < this.academics.length; i++){
-    //     this.link = this.academics[0].Upload_Link;
-    //     console.log(this.link)
-    //   }
-      
-    // });
-  	//get data openings
+    
 
   	 // Change language
      this._route.queryParams.subscribe(data => {
       if (data.lang === 'vi') {
+        this.isVietnamese = true;
         this.LANGUAGE = LANG_VI;
       } else {
+        this.isVietnamese = false;
         this.LANGUAGE = LANG_JP;
       }
     });
@@ -105,5 +100,5 @@ export class ExamPointComponent implements OnInit {
 
     
   }
-
+  
 }

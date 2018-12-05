@@ -53,6 +53,7 @@ export class JlptComponent implements OnInit {
   jlptItemData;
   trimmedString;
   japantrimmedString;
+  EDUCATION_PROGRAM = 'Chương trình đào tạo';
 
   constructor(
     private _titleService: Title,

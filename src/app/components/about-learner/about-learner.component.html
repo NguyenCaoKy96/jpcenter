@@ -23,14 +23,65 @@
   </ol>
 </nav>
 
-<div class="main-container">
-  <table class="sive-nav" *ngIf="isVietnamese">
-    <tr *ngFor="let x of itemData; let i = index" (click)="selectItem(x)">{{x.Name}}</tr>
-  </table>
-  <table class="sive-nav" *ngIf="!isVietnamese">
-      <tr *ngFor="let x of itemData; let i = index" (click)="selectItem(x)">{{x.Japanese_Name}}</tr>
-    </table>
-  
-  <div class="main-content" *ngIf="isVietnamese" [innerHTML]="itemContents.vietnameseContents"></div>
-  <div class="main-content" *ngIf="!isVietnamese" [innerHTML]="itemContents.japaneseContents"></div>
+<!-- <div class="row">
+  <div class="col-md-4 col-lg-4 ">
+    <ul class="nav nav-tabs d-none d-md-block">
+      <li class="nav-item">
+        <a class="nav-link" id="JCenter-tab" routerLink = "/hoc-vien/huong-nghiep" [queryParams]="{lang: lang ? 'jp' : 'vi'}">{{LANGUAGE.VOCATIONAL_GUIDANCE}}</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" id="JCenter-tab" routerLink = "/hoc-vien/doi-song" [queryParams]="{lang: lang ? 'jp' : 'vi'}">{{LANGUAGE.STUDENT_LIFE}}</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" id="JCenter-tab" routerLink = "/hoc-vien/cuu-hoc-vien" [queryParams]="{lang: lang ? 'jp' : 'vi'}">{{LANGUAGE.ALUMNI}}</a>
+      </li>
+    </ul>
+  </div>
 </div>
+
+<div class="col-md-8 col-lg-9" *ngIf="lang === 'vi'">
+  <div class="tab-content">
+    <div class="tab-pane active" id="study" role="tabpanel" aria-labelledby="study-tab">
+      <h4 class="section-title" [innerHTML]="laborName"></h4>
+      <div class="course-content pt-4">
+        <p [innerHTML]="laborContent"></p>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="col-md-8 col-lg-9" *ngIf="lang === 'jp'">
+    <div class="tab-content">
+      <div class="tab-pane active" id="study" role="tabpanel" aria-labelledby="study-tab">
+        <h4 class="section-title" [innerHTML]="laborJapanName"></h4>
+        <div class="course-content pt-4">
+          <p [innerHTML]="laborJapanContent"></p>
+        </div>
+      </div>
+    </div>
+  </div> -->
+
+ 
+  <div class="row">
+    <div class="col-md-4 col-lg-4 ">
+      <ul class="nav nav-tabs d-none d-md-block" *ngIf = "isVietnamese">
+        <li class="nav-item" *ngFor = "let item of itemData">
+          <a class="nav-link" id="JCenter-tab" (click)="selectItem(item)">{{item.Name}}</a>
+        </li>
+      </ul>
+      <ul class="nav nav-tabs d-none d-md-block" *ngIf = "!isVietnamese">
+        <li class="nav-item" *ngFor = "let item of itemData">
+          <a class="nav-link" id="JCenter-tab" (click)="selectItem(item)">{{item.Japanese_Name}}</a>
+        </li>
+      </ul>
+    </div>
+    <div class="col-md-8">
+      <div class="tab-content">
+          <div class="tab-pane active">
+              <h4 class="section-title" *ngIf="!isVietnamese" [innerHTML]="itemContents.japaneseName"></h4>
+              <h4 class="section-title" *ngIf="isVietnamese" [innerHTML]="itemContents.vietnameseName"></h4>
+              <div class="course-content pt-3" *ngIf="!isVietnamese" [innerHTML]="itemContents.japaneseContents"></div>
+              <div class="course-content pt-3" *ngIf="isVietnamese" [innerHTML]="itemContents.vietnameseContents"></div>
+          </div>
+      </div>
+  </div>
+  </div>

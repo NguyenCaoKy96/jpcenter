@@ -1,12 +1,12 @@
 .container {
     margin: -25px 0;
 }
-button a{
-	color: white;
-}
 button a:hover{
 	text-decoration: none;
 }
 .btn{
 	float: right;
+}
+td a:hover{
+	color: red;
 }

@@ -111,7 +111,18 @@ const LANG_JP = {
      URL_QUY_NHON_UNIVERSITY : 'クイニョン大学',
      URL_QUY_NHON_BINH_DINH : 'quy-nhon-binh-dinh',
      URL_HUMAN_RESOURCE : 'センターのスタッフ',
-     URL_RESON_TO_CHOOESE_QNU_JAPAN_CENTER : 'QNUジャパンセンターを選ぶ理由'
+     URL_RESON_TO_CHOOESE_QNU_JAPAN_CENTER : 'QNUジャパンセンターを選ぶ理由',
+     NAME_CLASS:'クラス名',
+     SCHEDULE_TIME:'スケジュール',
+     LEARN_TIME:'勉強時間',
+     LEARNOPENING:'開始日',
+     REGISTRATIONS_DEADLINE: '登録締め切り',
+     EXAM_DATE:'試験日',
+     LEVEL:'レベル',
+     VIEW_DETAILS:'詳細を表示する',
+
+
+
 }
 
 export default LANG_JP;

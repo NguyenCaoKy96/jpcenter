@@ -7,18 +7,18 @@
     </ngx-carousel>
     <div class="banner">
         <div class="banner-bottom"></div>
-        <h1 class="banner-title" ><b>{{LANGUAGE.EDUCATION_PROGRAM}}</b></h1>
+        <h1 class="banner-title" ><b>{{EDUCATION_PROGRAM}}</b></h1>
     </div>
 </div>
 <nav aria-label="breadcrumb">
     <ol class="breadcrumb">
       <li class="breadcrumb-item">
-        <a routerLink="/trang-chu" [queryParams]="{lang: lang ? 'vi' : 'jp'}">{{LANGUAGE.HOME_PAGE}}</a>
+        <a routerLink="/trang-chu" [queryParams]="{lang: lang ? 'vi' : 'jp'}">Trang chủ</a>
       </li>
       <li class="breadcrumb-item">
-        <a routerLink="/khoa-hoc" [queryParams]="{lang: lang ? 'vi' : 'jp'}">{{LANGUAGE.COURSE}}</a>
+        <a routerLink="/khoa-hoc" [queryParams]="{lang: lang ? 'vi' : 'jp'}">Khóa học</a>
       </li>
-      <li class="breadcrumb-item active" aria-current="page">{{LANGUAGE.JLPT_COURSE}}</li>
+      <li class="breadcrumb-item active" aria-current="page">Các khóa tiếng Nhật JLPT</li>
     </ol>
   </nav>
 <div class="row">
@@ -44,35 +44,39 @@
             </li>
         </ul>
     </div>
+    <!-- card VN -->
     <div id="left-item" class="col-md-8 col-lg-9">
         <div class="row" *ngIf="lang === 'vi'">
             <div class="col-md-6" *ngFor="let item of jlptData">
-                <a class="card course-block card-wrap left-item" (click)="onchangeCourse(item.id)">
+                <div class="card course-block card-wrap left-item" (click)="onchangeCourse(item.id)">
                     <h5 class="card-title" [innerHTML] = "item.Name"></h5>
                     <p class="course-description" [innerHTML] = "trimmedString"></p>
                     <span class="read-more">{{LANGUAGE.CONTINUE_READING }}</span>  
-                    <hr>
+                    <hr>                  
+                    <i aria-hidden="true" class="fa fa-clock-o mr-2"></i>
                     <p class="content-sub"  [innerHTML] = "item.TotalTime"></p>
                     <p class="content-sub"  [innerHTML] = "item.Time"></p>
-                    <p class="content-sub" [innerHTML] = "item.Fee"></p>
-                </a>
+                </div>
             </div>
         </div>
-        <div class="row" *ngIf="lang === 'jp'">>
-            <div class="col-md-5" *ngFor="let item of jlptData">
-                <a class="card course-block card-wrap left-item" (click)="onchangeCourse(item.id)">
-                    <h5 class="card-title" [innerHTML] = "item.JapaneseName"></h5>
-                    <p class="course-description" [innerHTML] = "japantrimmedString"></p>
-                    <span class="read-more">{{LANGUAGE.CONTINUE_READING }}</span>  
-                    <hr>
-                    <p class="content-sub"  [innerHTML] = "item.JapaneseTotalTime"></p>
-                    <p class="content-sub"  [innerHTML] = "item.JapaneseTime"></p>
-                    <p class="content-sub" [innerHTML] = "item.JapaneseFee"></p>
-                </a>
+        
+    <!-- card japanese -->
+    <div class="row" *ngIf="lang === 'jp'">
+        <div class="col-md-5" *ngFor="let item of jlptData">
+            <div class="card course-block card-wrap left-item" (click)="onchangeCourse(item.id)">
+                <h5 class="card-title" [innerHTML] = "item.JapaneseName"></h5>
+                <p class="course-description" [innerHTML] = "japantrimmedString"></p>
+                <span class="read-more">{{LANGUAGE.CONTINUE_READING }}</span>  
+                <hr>
+                <p class="content-sub"  [innerHTML] = "item.JapaneseTotalTime"></p>
+                <p class="content-sub"  [innerHTML] = "item.JapaneseTime"></p>
+                <p class="content-sub" [innerHTML] = "item.JapaneseFee"></p>
             </div>
         </div>
     </div>
-    <div class="col-md-8 col-lg-9 " *ngIf="onchangeCourse && lang === 'vi'">
+    </div>
+        <!-- VN article -->
+    <div class="col-md-8 col-lg-9 " *ngIf="lang === 'vi'">
         <div class="tab-pane active" id="JLPT" role="tabpanel" aria-labelledby="JLPT-tab">
             <h4 [innerHTML] = "jlptItemData.Name"></h4>
             <p class="content-sub" [innerHTML] = "jlptItemData.Skill">
@@ -88,7 +92,8 @@
             </p>
         </div>
     </div>
-    <div class="col-md-8 col-lg-9 " *ngIf="onchangeCourse && lang === 'jp'">
+        <!-- japanese article -->
+    <div class="col-md-8 col-lg-9 " *ngIf="lang === 'jp'">
         <div class="tab-pane active" id="JLPT" role="tabpanel" aria-labelledby="JLPT-tab">
             <h4 [innerHTML] = "jlptItemData.JapaneseName"></h4>
             <p class="content-sub" [innerHTML] = "jlptItemData.JapaneseSkill">

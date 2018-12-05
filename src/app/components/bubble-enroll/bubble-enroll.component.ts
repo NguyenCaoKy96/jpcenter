@@ -39,7 +39,7 @@ export class BubbleEnrollComponent implements OnInit {
     });
   }
   ngOnInit() {
-  
+
     // Get language
     this._route.queryParams.subscribe(data => {
       if (data.lang === 'vi') {
@@ -92,7 +92,6 @@ export class BubbleEnrollComponent implements OnInit {
   }
 
 
-
   // Valid form with Regex
   createForm() {
     this.frmUser = this._formBuilder.group({
@@ -112,7 +111,6 @@ export class BubbleEnrollComponent implements OnInit {
       notes: ['',]
     });
   }
-
 
   /*
   *  Handler when submit form
