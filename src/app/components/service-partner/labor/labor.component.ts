@@ -36,10 +36,10 @@ export class LaborComponent implements OnInit {
   laborURL: string;
   laborData: any;
   laborName: any;
-  Contents: any;
   laborJapanName: any;
   laborContent: any;
   laborJapanContent: any;
+  Contents: any;
   serverURL: any;
   data: any;
   lang : string = 'vi';
@@ -63,12 +63,12 @@ export class LaborComponent implements OnInit {
     this.http.get(this.laborURL).subscribe(data => {
        this.laborData = data;
        this.laborName = this.laborData.Name;
-       this.laborJapanName = this.laborData.JapaneseName; 
-       this.Contents = this.laborData.contents; 
+       this.laborJapanName = this.laborData.JapaneseName;
+       this.Contents = this.laborData.contents;
        this.laborContent = this.Contents.Content;
-       this.laborJapanContent =  this.Contents.Japanese_Content;
+       this.laborJapanContent = this.Contents.Japanese_Content;    
     });
-   }
+   } 
 
   ngOnInit() {
    

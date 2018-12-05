@@ -98,7 +98,7 @@ export class EventComponent implements OnInit {
       this.newQnuContentJapan = this.newQnuJapanData.Japanese_Content;
       this.imageQnuJapan = this.serverURL + this.newQnuJapanData.Thumbnail.url;
       this.linkQnuJapan = this.newQnuJapanData.Slug;
-      this.trimmedString = this.newQnuContent.substr(0, 400);
+      this.trimmedString = this.newQnuContent.substr(0, 300);
       this.trimmedStringJapan = this.newQnuContentJapan.substr(0, 200);
     });
  // Get new Doll Samurai
@@ -113,7 +113,7 @@ export class EventComponent implements OnInit {
       this.newDollContentJapan = this.newDollData.Japanese_Content;
       this.imageDollJapan = this.serverURL + this.newDollData.Thumbnail.url;
       this.linkDollJapan = this.newDollData.Slug;
-      this.trimmedString2 = this.newDollContent.substr(0, 400);
+      this.trimmedString2 = this.newDollContent.substr(0, 300);
       this.trimmedStringJapan2 = this.newDollContentJapan.substr(0, 200);
 
     });
@@ -130,7 +130,7 @@ export class EventComponent implements OnInit {
       this.newAmbassContentJapan = this.newAmbassData.Japanese_Content;
       this.imageAmbassJapan = this.serverURL + this.newAmbassData.Thumbnail.url;
       this.linkAmbassJapan = this.newAmbassData.Slug;
-      this.trimmedString3 =  this.newAmbassContent.substr(0, 400);
+      this.trimmedString3 =  this.newAmbassContent.substr(0, 300);
       this.trimmedStringJapan3 = this.newAmbassContentJapan.substr(0, 200);
     });
     

@@ -98,6 +98,7 @@ const LANG_VI  = {
      ENROLL_LIST : 'Danh sách đăng ký',
      CONTACTED_LIST : 'Đã liên hệ',
      UN_CONTACTED_LIST : 'Chưa liên hệ',
+     NOTE: 'Ghi chú',
      SEARCH : 'Tìm kiếm',
      ID : 'ID',
      CONNECT : 'LIÊN KẾT',

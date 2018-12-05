@@ -29,17 +29,24 @@ import { default as LANG_JP } from '../../../lang/lang_jp';
 })
 
 export class ServicePartnerComponent implements OnInit {
+  
+  public carouselConfig: NgxCarousel;
   public LANGUAGE : any = LANG_VI;
-	serviceType = 'one';
-	public page='one';
-  public content=[{"ggg":"<figure class=\"image\"><img src=\"https://36013.cdn.cke-cs.com/cuwJ4DhybS2TdOeOxsmr/images/33df3b394f5ee7be98319ed45e440fe735a92e244a2bf5d9_download.jpg\" srcset=\"https://36013.cdn.cke-cs.com/cuwJ4DhybS2TdOeOxsmr/images/33df3b394f5ee7be98319ed45e440fe735a92e244a2bf5d9_download.jpg/w_125 125w, https://36013.cdn.cke-cs.com/cuwJ4DhybS2TdOeOxsmr/images/33df3b394f5ee7be98319ed45e440fe735a92e244a2bf5d9_download.jpg/w_205 205w, https://36013.cdn.cke-cs.com/cuwJ4DhybS2TdOeOxsmr/images/33df3b394f5ee7be98319ed45e440fe735a92e244a2bf5d9_download.jpg/w_285 285w\" sizes=\"100vw\" width=\"285\"></figure><p>&nbsp;</p><p>LỆ Yêu CU Anh quá trời ơi&nbsp;</p><p><strong>LỆ yêu cu anh quá trời ơi</strong></p><ul><li>Lệ yêu cu anh quá trời ơi&nbsp;</li></ul>","_id":"5bfcf5290874480c983a0f70","createdAt":"2018-11-27T07:41:29.266Z","updatedAt":"2018-11-27T08:35:55.727Z","__v":0,"id":"5bfcf5290874480c983a0f70"}];
-
+  public isVietnamese: boolean = true;
   carouselBanner: any;
   imageURLs: any;
   homeImages: any[] = [];
   homeImagesURL: { [key: number]: string } = [];
+  japanURL: string;
+  japanData: any;
+  japanName: any;
+  japanJapanName: any;
+  Contents: any;
   serverURL: any;
   data: any;
+  getjobsURL: string;
+  jobs;
+  jobsItem;
 
   // Carousel config
   index = 0;
@@ -47,40 +54,44 @@ export class ServicePartnerComponent implements OnInit {
   direction = 'left';
   directionToggle = true;
   autoplay = true;
-  getServicesURL : string;
-  services;
-  servicesItem;
-  servicesItemURL: string;
+
+    // Side navigation item
+    apiCategories: string;
+    item: any;
+    itemData: any = [];
+    itemContents: any = {
+      vietnameseName: '',
+      japaneseName: '',
+      vietnameseContents : '',
+      japaneseContents : ''
+    };
+    slug: any = {
+      vietnameseSlug : '',
+      japaneseSlug : ''
+    };
 
   constructor(
   	private _titleService: Title,
-    private _http: HttpClient,
+    private http: HttpClient,
+    private _route: ActivatedRoute,
     private _getDataService: GetDataService,
-    private _getImageService: GetImagesService,
-    private _route: ActivatedRoute
-  ) { 
-    // get data services
-    this.getServicesURL = this._getDataService.getServicesURL();
-    this._http.get(this.getServicesURL).subscribe(data => {
-     this.services = data;
-     console.log(this.services)
-     this.onChangeServices(this.services[0].id);
-   });
-  }
+    private _getImageService: GetImagesService
+  ) { }
 
   ngOnInit() {
-    // Change language
+
     this._route.queryParams.subscribe(data => {
       if (data.lang === 'vi') {
+        this.isVietnamese = true;
         this.LANGUAGE = LANG_VI;
       } else {
+        this.isVietnamese = false;
         this.LANGUAGE = LANG_JP;
       }
     });
 
-    this._titleService.setTitle(this.LANGUAGE.SERVICE_AND_PARTNER);
-    
-    	// Slide images
+    this._titleService.setTitle(this.LANGUAGE.CAREER_OPPOTUNITY);
+
     this.carouselBanner = this._getImageService.carouselBanner;
     this.imageURLs = this._getDataService.getImagesURL();
     this.serverURL = this._getDataService.serverURL;
@@ -88,25 +99,54 @@ export class ServicePartnerComponent implements OnInit {
     this.data.then(res => {
       this.homeImages = res;
       for (var i = 0; i < this.homeImages.length; i++) {
-        if (this.homeImages[i].name === "Dịch vụ - Đối tác") {
-          for (var k = 0; k < this.homeImages[i].Images.length; k++) {
-            this.homeImagesURL[k] = this.serverURL + this.homeImages[i].Images[k].url;
+        if (this.homeImages[i].Name === "Dịch vụ và Đối tác") {
+          for (var k = 0; k < this.homeImages[i].Image.length; k++) {
+            this.homeImagesURL[k] = this.serverURL + this.homeImages[i].Image[k].url;
           }
+        }
+      }
+    });
+
+    this.apiCategories = this._getDataService.getCategoriesURL();
+    this.http.get(this.apiCategories).subscribe(data => {
+      this.item = data;
+      for (let i=0; i< this.item.length; i++) {
+        if (this.item[i].Parent && (this.item[i].Parent.Name === this.LANGUAGE.SERVICE_AND_PARTNER || this.item[i].Parent.Japanese_Name === this.LANGUAGE.SERVICE_AND_PARTNER)) {
+          this.itemData.push(this.item[i]);
         }
       }
     });
   }
 
   onmoveFn(data: NgxCarouselStore) { };
-
-  onChangeServices(id, evt?){
-    let servicesItemURL = this._getDataService.getServicesItemURL(id);
-    this._http.get(servicesItemURL).subscribe(data => {
-      this.servicesItem = data;
+  
+  onChangeJobs(id, evt?) {
+    let jobsItemURL = this._getDataService.getJobsItemURL(id);
+    this.http.get(jobsItemURL).subscribe(data => {
+      this.jobsItem = data;
     });
     $('.left-item').removeClass('active-link');
     if (evt) {
       $(evt.target).addClass('active-link');
     }
+  }
+
+  selectItem(item) {
+    let tempContents;
+    let vietnameseSlug; 
+      let itemContentURL = this.apiCategories + '/' + item._id;
+      this.http.get(itemContentURL).subscribe(data => {
+        tempContents = data;
+        this.itemContents.vietnameseContents = tempContents.contents.Content;
+        console.log(this.itemContents.vietnameseContents);
+        this.itemContents.vietnameseName =  tempContents.contents.Name;
+        console.log(this.itemContents.vietnameseName);
+        vietnameseSlug = tempContents.contents.Name;
+        this.slug.vietnameseSlug = vietnameseSlug.toLowerCase().replace(/ /g,'-').replace(/[^\w-]+/g,'');
+        window.location.hash = (this.slug.vietnameseSlug);
+        this.itemContents.japaneseContents = tempContents.contents.Japanese_Content;
+        console.log(this.itemContents.japaneseContents);
+        this.itemContents.japaneseName =  tempContents.contents.Japanese_Name;
+      });
   }
 }

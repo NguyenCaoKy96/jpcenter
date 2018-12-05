@@ -36,9 +36,13 @@ export class StudyComponent implements OnInit {
   studyURL: string;
   studyData: any;
   studyName: any;
+  studyJapanName: any;
+  studyContent: any;
+  studyJapanContent: any;
   Contents: any;
   serverURL: any;
   data: any;
+  lang : string = 'vi';
 
   // Carousel config
   index = 0;
@@ -59,7 +63,10 @@ export class StudyComponent implements OnInit {
     this.http.get(this.studyURL).subscribe(data => {
        this.studyData = data;
        this.studyName = this.studyData.Name;
+       this.studyJapanName = this.studyData.JapaneseName;
        this.Contents = this.studyData.contents;  
+       this.studyContent = this.Contents.Content;
+       this.studyJapanContent = this.Contents.Japanese_Content;
     });
    }
 
@@ -88,6 +95,10 @@ export class StudyComponent implements OnInit {
         }
       }
     }
+  });
+
+  this._route.queryParams.subscribe(data => {
+    this.lang = data.lang;
   });
   }
   

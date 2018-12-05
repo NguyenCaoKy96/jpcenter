@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Title } from '@angular/platform-browser';
+import { Title,DomSanitizer,SafeUrl } from '@angular/platform-browser';
 import * as $ from 'jquery';
 
 import { HttpClient } from '@angular/common/http';
@@ -39,13 +39,11 @@ export class CalendarComponent implements OnInit {
   homeImagesURL: { [key: number]: string } = [];
   serverURL: any;
   data: any;
-  link;
   txtArea1;
-  rows: any;
   newQnuJapanURL: string;
   newQnuJapanData:any;
-  imageQnuJapan: { [key: number]: string } = [];
-
+  imageQnuJapan: any[]=[];
+  downloadImage: SafeUrl;
 
 
   constructor(
@@ -55,63 +53,31 @@ export class CalendarComponent implements OnInit {
     private http: HttpClient,
     private _getDataService: GetDataService,
     private _getImageService: GetImagesService,
-    private _route: ActivatedRoute
-    ) { }
+    private _route: ActivatedRoute,
+    private santized: DomSanitizer
+    ) { } 
 
   ngOnInit() {
-    // post data upload file
-    //  $(function ($) {
-    //   var validation_holder;
-    //   $("form#uploadForm button[name='submit']").click(function () {
-    //     var validation_holder = 0;
-    //     var fileup = $('#file').val();
-    //      var name = $('#name').val();
-        
-    //     if (validation_holder == 1) {
-          
-    //       return;
-    //     } else {
-    //       $.post('http://10.1.0.66:1336/sliders', {
-    //         Image: fileup,
-    //         Name: name,
-    //       }, function (data) {
-    //         console.log(Image);
-    //         alert("Bạn đã đăng ký thành công..!.");
-    //         window.location.reload();
-    //       });
-    //     }
-    //   });
-    // });
+       // Title 
+        this._titleService.setTitle('Điểm thi');
+   
       //get data images
-        this.newQnuJapanURL = this._getDataService.getEventsURL();
+        this.newQnuJapanURL = this._getDataService.getCoursesURL();
         this._http.get(this.newQnuJapanURL).subscribe(data =>{
-          this.newQnuJapanData = data;
-          for (var i = 0; i < this.newQnuJapanData.length; ++i) {
-             this.imageQnuJapan ='http://10.1.0.66:1336' + this.newQnuJapanData[i].Thumbnai.url;
-            console.log(this.imageQnuJapan);
-            
-              }
+        this.newQnuJapanData = data;
+            for (var i = 0; i < this.newQnuJapanData[0].File_Upload.length; i++) {
+             this.imageQnuJapan.push('http://10.1.0.66:1336' + this.newQnuJapanData[0].File_Upload[i].url);
+              // this.downloadImage = this.santized.bypassSecurityTrustUrl('http://10.1.0.66:1336' + this.newQnuJapanData[i].File_Upload.url);
+              console.log(this.imageQnuJapan);
+             }
         });
 
-    //get data download
-    this.openingURL = this._getDataService.getOpeningScheduleURL();
-    this._http.get(this.openingURL).subscribe(data => {
-      this.openingSchedule = data;
-      console.log(this.openingSchedule);
-      for (var i = 0; i < this.openingSchedule.length; i++) {
-        this.link = this.openingSchedule[0].Link;
-        console.log(this.link)
-      }
-
-    });
-    // Title 
-    this._titleService.setTitle('Điểm thi');
-
-//get data openings
+    //get data schedule
   	this.openingURL = this._getDataService.getCoursesURL();
   	this._http.get(this.openingURL).subscribe(data =>{
   		this.openingSchedule = data;
   	});
+
     // Change language
     this._route.queryParams.subscribe(data => {
       if (data.lang === 'vi') {
@@ -121,6 +87,7 @@ export class CalendarComponent implements OnInit {
       }
     });
 
+    //
     this.carouselBanner = this._getImageService.carouselBanner;
     this.imageURLs = this._getDataService.getImagesURL();
     this.serverURL = this._getDataService.serverURL;

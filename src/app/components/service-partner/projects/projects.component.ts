@@ -36,9 +36,13 @@ export class ProjectsComponent implements OnInit {
   projectURL: string;
   projectData: any;
   projectName: any;
+  projectJapanName: any;
+  projectContent: any;
+  projectJapanContent: any;
   Contents: any;
   serverURL: any;
   data: any;
+  lang : string = 'vi';
 
   // Carousel config
   index = 0;
@@ -60,7 +64,10 @@ export class ProjectsComponent implements OnInit {
      this.http.get(this.projectURL).subscribe(data => {
         this.projectData = data;
         this.projectName = this.projectData.Name;
-        this.Contents = this.projectData.contents;  
+        this.projectJapanName = this.projectData.JapaneseName;
+        this.Contents = this.projectData.contents; 
+        this.projectContent = this.Contents.Content;
+        this.projectJapanContent = this.Contents.Japanese_Content;
      });
   }
 
@@ -89,6 +96,10 @@ export class ProjectsComponent implements OnInit {
         }
       }
     }
+  });
+
+  this._route.queryParams.subscribe(data => {
+    this.lang = data.lang;
   });
   }
 

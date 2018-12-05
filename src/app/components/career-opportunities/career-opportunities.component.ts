@@ -5,6 +5,7 @@ import { Http, Response, Headers } from "@angular/http";
 import { Observable, BehaviorSubject, of, throwError } from "rxjs";
 import { map, catchError } from "rxjs/operators";
 import * as $ from 'jquery';
+import { ActivatedRoute, Router } from '@angular/router';
 
 // Service
 import { GetDataService } from './../../services/get-data/get-data.service';
@@ -31,6 +32,7 @@ export class CareerOpportunitiesComponent implements OnInit {
 
   public carouselConfig: NgxCarousel;
   public LANGUAGE : any = LANG_VI;
+  public isVietnamese: boolean = true;
   carouselBanner: any;
   imageURLs: any;
   homeImages: any[] = [];
@@ -58,6 +60,8 @@ export class CareerOpportunitiesComponent implements OnInit {
     item: any;
     itemData: any = [];
     itemContents: any = {
+      vietnameseName: '',
+      japaneseName: '',
       vietnameseContents : '',
       japaneseContents : ''
     };
@@ -69,11 +73,23 @@ export class CareerOpportunitiesComponent implements OnInit {
   constructor(
   	private _titleService: Title,
     private http: HttpClient,
+    private _route: ActivatedRoute,
     private _getDataService: GetDataService,
     private _getImageService: GetImagesService
   ) { }
 
   ngOnInit() {
+
+    this._route.queryParams.subscribe(data => {
+      if (data.lang === 'vi') {
+        this.isVietnamese = true;
+        this.LANGUAGE = LANG_VI;
+      } else {
+        this.isVietnamese = false;
+        this.LANGUAGE = LANG_JP;
+      }
+    });
+
     this._titleService.setTitle(this.LANGUAGE.CAREER_OPPOTUNITY);
 
     this.carouselBanner = this._getImageService.carouselBanner;
@@ -122,11 +138,16 @@ export class CareerOpportunitiesComponent implements OnInit {
       this.http.get(itemContentURL).subscribe(data => {
         tempContents = data;
         this.itemContents.vietnameseContents = tempContents.contents.Content;
-        
+        //console.log(this.itemContents.vietnameseContents);
+        this.itemContents.vietnameseName =  tempContents.contents.Name;
+        //console.log(this.itemContents.vietnameseName);
         vietnameseSlug = tempContents.contents.Name;
         this.slug.vietnameseSlug = vietnameseSlug.toLowerCase().replace(/ /g,'-').replace(/[^\w-]+/g,'');
         window.location.hash = (this.slug.vietnameseSlug);
         this.itemContents.japaneseContents = tempContents.contents.Japanese_Content;
+        //console.log(this.itemContents.japaneseContents);
+        this.itemContents.japaneseName =  tempContents.contents.Japanese_Name;
       });
   }
 }
+ 

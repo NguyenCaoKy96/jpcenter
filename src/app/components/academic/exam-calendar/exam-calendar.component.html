@@ -55,9 +55,9 @@
                         </thead>
                         <tr *ngFor="let item of academics"> 
                             <td >{{ item.Class_Name }}</td>
-                            <td>{{ item.Deadline_Time }} </td>
-                            <td>{{ item.Exam_Day }}</td>
-                            <td>{{item.Examinations}}</td>
+                            <td>{{ item.Dead_Line }} </td>
+                            <td>{{ item.Exam_Date }}</td>
+                            <td>{{item.Level}}</td>
                         </tr>
                     </table>
                 </div>
@@ -65,7 +65,7 @@
                     <ngx-item NgxCarouselItem class="bannerStyle card" *ngFor="let item of sliderImagesURL | slice:0:1" [ngStyle]="{'background-image': 'url(' + item + ')'}">
                 </ngx-item>
                 </ngx-carousel> -->
-                <button class="btn btn" type="submit" name="submit"><a href="{{sliderImagesURL}}">{{LANGUAGE.DOWNLOAD}}</a></button>
+                <button class="btn btn" type="submit" name="submit"><a href="{{sliderImagesURL[0]}}">{{LANGUAGE.DOWNLOAD}}</a></button>
             
             </div>
         </div>

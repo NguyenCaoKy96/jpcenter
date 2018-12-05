@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input,  ViewEncapsulation} from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Response } from "@angular/http";
 import { Observable, BehaviorSubject, of, throwError } from "rxjs";
@@ -12,13 +12,14 @@ import { GetImagesService } from './../../services/get-image-slider/get-images.s
 import { NgxCarousel, NgxCarouselStore } from 'ngx-carousel';
 
 // Title
-import { Title } from '@angular/platform-browser';
+import { Title, DomSanitizer, SafeHtml } from '@angular/platform-browser';
 
 import { Router, ActivatedRoute, NavigationEnd } from '@angular/router';
 
 //import { $ } from 'protractor';
 import * as $ from 'jquery';
-
+import { default as LANG_VI } from '../../../lang/lang_vi';
+import { NgbModalConfig, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 @Component({
   selector: 'app-introduction',
   templateUrl: './introduction.component.html',
@@ -26,53 +27,77 @@ import * as $ from 'jquery';
   providers: [
     GetDataService,
     GetImagesService
-  ]
+  ],
+  encapsulation: ViewEncapsulation.None
 })
 
 export class IntroductionComponent implements OnInit {
+
+   sliderImages: any[] = [];
+  sliderImagesURL: { [key: number]: string } = [];
+  public LANGUAGE : any = LANG_VI;
   TrungtamNhatBan = 'one';
   public page = 'one';
-
   carouselBanner: any;
   imageURLs: any;
   homeImages: any[] = [];
   homeImagesURL: { [key: number]: string } = [];
   serverURL: any;
   data: any;
-
+ public introData: SafeHtml;
   // Carousel config
   index = 0;
   infinite = true;
   direction = 'left';
   directionToggle = true;
   autoplay = true;
-  introductionsData;
+  categoriesData:any;
+  introductionsData0;
   introductionItemData;
   introductionURL: string;
   isLoading: boolean = true;
   headerURL: string;
   headerData: any;
-  introduction: any;
+  introduction: any=[];
   lang: string ;
-
+  menuLeftData:any=[];
+  introductionsDataActive:any;
+  personnelData:any;
+  personDetail:any;
+  results=[];
   constructor(
     private _titleService: Title,
     private http: HttpClient,
     private _getDataService: GetDataService,
     private _getImageService: GetImagesService,
     private router:Router, 
-    private route: ActivatedRoute
-  ) {    
+    private route: ActivatedRoute,
+    config: NgbModalConfig,
+    private modalService: NgbModal,
+    private santized: DomSanitizer
+  ) 
+  {    
     // get data introduction
-     this.introductionURL = this._getDataService.getIntroducesURL();
-     this.http.get(this.introductionURL).subscribe(data => {
-      this.introductionsData = data;
-      console.log(this.introductionsData)
-      //console.log('introduction', data[0].id);
-      this.onChangeIntroduction(this.introductionsData[0].id);
+    let categoriesURL = this._getDataService.getCategoriesURL();
+    this.http.get(categoriesURL).subscribe(data => {
+      this.categoriesData = data;
+      console.log('All categories',this.categoriesData);
+
+      for(var i=0; i<this.categoriesData.length; i++) {
+        if(this.categoriesData[i].Parent && (this.categoriesData[i].Parent.Name === this.LANGUAGE.INTRODUCTION_PAGE  || this.categoriesData[i].Parent.Japanese_Name === this.LANGUAGE.INTRODUCTION_PAGE )) {
+          
+          if(this.introductionsDataActive == undefined){
+            this.introductionsDataActive = this.categoriesData[i];
+          }
+
+          this.menuLeftData.push(this.categoriesData[i]);
+          console.log('categories',this.categoriesData[i]);
+        }
+      }
+
     });
-   
   }  
+
   ngOnInit() {
     // Get language
     this.route.queryParams.subscribe(data => {
@@ -86,15 +111,16 @@ export class IntroductionComponent implements OnInit {
     //Get Images data
     this.carouselBanner = this._getImageService.carouselBanner;
 
+     this.carouselBanner = this._getImageService.carouselBanner;
     this.imageURLs = this._getDataService.getImagesURL();
     this.serverURL = this._getDataService.serverURL;
     this.data = this._getImageService.getImageFromServer();
     this.data.then(res => {
-      this.homeImages = res;
-      for (var i = 0; i < this.homeImages.length; i++) {
-        if (this.homeImages[i].name === "Giới thiệu") {
-          for (var k = 0; k < this.homeImages[i].Images.length; k++) {
-            this.homeImagesURL[k] = this.serverURL + this.homeImages[i].Images[k].url;
+      this.sliderImages = res;
+      for (var i = 0; i < this.sliderImages.length; i++) {
+        if (this.sliderImages[i].Name === "Giới thiệu") {
+          for (var k = 0; k < this.sliderImages[i].Image.length; k++) {
+            this.sliderImagesURL[k] = this.serverURL + this.sliderImages[i].Image[k].url;
           }
         }
       }
@@ -115,17 +141,29 @@ export class IntroductionComponent implements OnInit {
     
   }
 
-  onChangeIntroduction(id, evt?) {
-    let introductionItemURL = this._getDataService.getIntroducesItemURL(id);
-    this.http.get(introductionItemURL).subscribe(data => {
-      this.introductionItemData = data;
-      //console.log('gioi thieu', data);
-      this.isLoading = false;
-    });
-    $('.left-item').removeClass('active-link');
-    if (evt) {
-      $(evt.target).addClass('active-link');
-    }
+  onChangeIntroduction(item) {
+    this.introductionsDataActive = item;
+     if(this.introductionsDataActive.Slug == '/gioi-thieu/nhan-su-trung-tam'){
+       let personnelURL = this._getDataService.getpersonnelURL();
+       this.http.get(personnelURL).subscribe(data=>{
+         this.personnelData = data;
+         console.log('personal',this.personnelData);
+       })
+     }
+  }
+
+
+  onChangePerson(person, content){
+    this.personDetail = person;
+    this.personDetail.imageUrl = this.serverURL + person.Image.url;
+    //open popup here
+    $("#btnModal").click();
+    console.log('person', this.personDetail);
+   
+  }
+
+  open(content) {
+    this.modalService.open(content, { size: 'lg', centered: true, windowClass : "personModal" });
   }
 
   onmoveFn(data: NgxCarouselStore) { };

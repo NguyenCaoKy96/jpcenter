@@ -323,8 +323,11 @@ input[type="color"]:focus,
 .bootstrap-select .dropdown-toggle:focus {
     outline: none !important;
 }
-input.ng-invalid.ng-touched{
+input.ng-invalid.ng-touched {
     border: 1px solid rgb(188, 0, 45) ;
+}
+select.ng-invalid.ng-touched{
+     border: 1px solid rgb(188, 0, 45) ;
 }
 
 /* Academics */

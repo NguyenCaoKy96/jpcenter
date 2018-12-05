@@ -32,19 +32,14 @@ export class BubbleEnrollComponent implements OnInit {
     private _formBuilder: FormBuilder
   ) {
     // Get data register page
-    this.registerURL = this._getDataService.getCoursesURL();
+    this.registerURL = this._getDataService.getClassesURL();
     this.http.get(this.registerURL).subscribe(data => {
       this.registerData = data;
       console.log(data);
     });
   }
   ngOnInit() {
-    
-    $('#register').click(function(){
-      var requestData = {
-        Fullname: $('#name').val($('#name').val().trim())
-      }
-    });
+  
     // Get language
     this._route.queryParams.subscribe(data => {
       if (data.lang === 'vi') {
@@ -71,7 +66,7 @@ export class BubbleEnrollComponent implements OnInit {
             Fullname: name,
             Email: email,
             Phone: phone,
-            Course: course,
+            Class: course,
             Notes: notes,
           }, function (data) {
             alert("Bạn đã đăng ký thành công..!.");
@@ -87,21 +82,23 @@ export class BubbleEnrollComponent implements OnInit {
   }
 
   // Trim space at the start and end position of name string
-  // onNameBlur() {
-  //   let name = $('#name').val($('#name').val().trim());
-  //   return name;
-  // }
+  onNameBlur() {
+    let name = $('#name').val($('#name').val().trim());
+    return name;
+  }
   onNoteBlur() {
     let note = $('#notes').val($('#notes').val().trim());
     return note;
   }
+
+
 
   // Valid form with Regex
   createForm() {
     this.frmUser = this._formBuilder.group({
       fullname: ['', [
         Validators.required,
-        Validators.pattern('^[A-Za-zÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚÝàáâãèéêìíòóôõùúýĂăĐđĨĩŨũƠơƯưẠ-ỹ ]+$')
+        Validators.pattern('^[A-Za-zÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚÝàáâãèéêìíòóôõùúýĂăĐđĨĩŨũƠơƯưẠ-ỹ ]+$'),
       ]],
       email: ['', [
         Validators.required,
@@ -121,6 +118,6 @@ export class BubbleEnrollComponent implements OnInit {
   *  Handler when submit form
   */
   onSubmitForm() {
-    console.log(this.frmUser.value);
+    console.log(this.frmUser);
   }
 }

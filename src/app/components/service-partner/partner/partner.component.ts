@@ -36,9 +36,13 @@ export class PartnerComponent implements OnInit {
   partnerURL: string;
   partnerData: any;
   partnerName: any;
+  partnerJapanName: any;
+  partnerContent: any;
+  partnerJapanContent: any;
   Contents: any;
   serverURL: any;
   data: any;
+  lang : string = 'vi';
 
   // Carousel config
   index = 0;
@@ -60,7 +64,10 @@ export class PartnerComponent implements OnInit {
      this.http.get(this.partnerURL).subscribe(data => {
         this.partnerData = data;
         this.partnerName = this.partnerData.Name;
-        this.Contents = this.partnerData.contents;  
+        this.partnerJapanName = this.partnerData.Japanese_Name;
+        this.Contents = this.partnerData.contents; 
+        this.partnerContent = this.Contents.Content;
+        this.partnerJapanContent = this.Contents.Japanese_Content;
      });
   }
 
@@ -89,6 +96,10 @@ export class PartnerComponent implements OnInit {
           }
         }
       }
+    });
+
+    this._route.queryParams.subscribe(data => {
+      this.lang = data.lang;
     });
   }
 

@@ -40,8 +40,8 @@ export class ExamCalendarComponent implements OnInit {
   academics:any;
   newQnuJapanURL: string;
   newQnuJapanData: any;
-   imageQnuJapan: any;
-  sliderImagesURL: { [key: number]: string } = [];
+  imageQnuJapan: any[] = [];
+  sliderImagesURL: any[] = [];
 
   constructor(private titleService: Title,
   	private _titleService: Title,
@@ -49,40 +49,23 @@ export class ExamCalendarComponent implements OnInit {
     private http: HttpClient,
     private _getDataService: GetDataService,
     private _getImageService: GetImagesService,
-    private _route: ActivatedRoute
+    private _route: ActivatedRoute 
     ) { }
 
   ngOnInit() {
       // get data academics
-  	// 	this.academicsURL = this._getDataService.getAcademicsURL();
-  	//     this._http.get(this.academicsURL).subscribe(data =>{
-  	// 	this.academics = data;
-  	// });
-   //      //get data images
-   //      this.carouselBanner = this._getImageService.carouselBanner;
-   // this.newQnuJapanURL = this._getDataService.getEventsURL();
-   //  this.serverURL = this._getDataService.serverURL;
-   //  this.data = this._getImageService.getImageFromServer();
-   //   this.data.then(res =>{
-   //     this.imageQnuJapan = res;
-   //       for (var i = 0; i < this.imageQnuJapan.length; i++) {
-   //      if (this.imageQnuJapan[i].name === "Trần Minh Chương") {
-   //        for (var k = 0; k < this.imageQnuJapan[i].Image.length; k++) {
-   //          this.sliderImagesURL[k] = 'http://10.1.0.66:1336' + this.imageQnuJapan[i].Image[k].url;
-   //          console.log( this.sliderImagesURL[k]);
-   //        }
-   //      }
-   //    }
-   //  });
-
-    
-
-        this.newQnuJapanURL = this._getDataService.getEventsURL();
+  		this.academicsURL = this._getDataService.getAcademicsURL();
+  	    this._http.get(this.academicsURL).subscribe(data =>{
+  		this.academics = data;
+  	  });
+   
+         //get data images
+        this.newQnuJapanURL = this._getDataService.getAcademicsURL();
         this._http.get(this.newQnuJapanURL).subscribe(data =>{
           this.newQnuJapanData = data;
-          for (var i = 0; i < this.newQnuJapanData.length; i++) {
-             this.sliderImagesURL ='http://10.1.0.66:1336' + this.newQnuJapanData[i].Thumbnai.url;
-            console.log(this.sliderImagesURL);
+          for (var i = 0; i < this.newQnuJapanData[0].File_Upload.length; i++) {
+               this.sliderImagesURL.push('http://10.1.0.66:1336' + this.newQnuJapanData[0].File_Upload[i].url) ;
+            console.log(this.sliderImagesURL); 
               }
         });
 
@@ -111,17 +94,17 @@ export class ExamCalendarComponent implements OnInit {
       }
     });
 
-    var tableToExcel = (function() {
-  var uri = 'data:application/vnd.ms-excel;base64,'
-    , template = '<html xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:x="urn:schemas-microsoft-com:office:excel" xmlns="http://www.w3.org/TR/REC-html40"><head><!--[if gte mso 9]><xml><x:ExcelWorkbook><x:ExcelWorksheets><x:ExcelWorksheet><x:Name>{worksheet}</x:Name><x:WorksheetOptions><x:DisplayGridlines/></x:WorksheetOptions></x:ExcelWorksheet></x:ExcelWorksheets></x:ExcelWorkbook></xml><![endif]--></head><body><table>{table}</table></body></html>'
-    , base64 = function(s) { return window.btoa(unescape(encodeURIComponent(s))) }
-    , format = function(s, c) { return s.replace(/{(\w+)}/g, function(m, p) { return c[p]; }) }
-  return function(table, name) {
-    if (!table.nodeType) table = document.getElementById(table)
-    var ctx = {worksheet: name || 'Worksheet', table: table.innerHTML}
-    window.location.href = uri + base64(format(template, ctx))
-  }
-})()
+//     var tableToExcel = (function() {
+//   var uri = 'data:application/vnd.ms-excel;base64,'
+//     , template = '<html xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:x="urn:schemas-microsoft-com:office:excel" xmlns="http://www.w3.org/TR/REC-html40"><head><!--[if gte mso 9]><xml><x:ExcelWorkbook><x:ExcelWorksheets><x:ExcelWorksheet><x:Name>{worksheet}</x:Name><x:WorksheetOptions><x:DisplayGridlines/></x:WorksheetOptions></x:ExcelWorksheet></x:ExcelWorksheets></x:ExcelWorkbook></xml><![endif]--></head><body><table>{table}</table></body></html>'
+//     , base64 = function(s) { return window.btoa(unescape(encodeURIComponent(s))) }
+//     , format = function(s, c) { return s.replace(/{(\w+)}/g, function(m, p) { return c[p]; }) }
+//   return function(table, name) {
+//     if (!table.nodeType) table = document.getElementById(table)
+//     var ctx = {worksheet: name || 'Worksheet', table: table.innerHTML}
+//     window.location.href = uri + base64(format(template, ctx))
+//   }
+// })()
    
   }
   

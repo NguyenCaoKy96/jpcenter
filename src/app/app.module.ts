@@ -84,6 +84,7 @@ import { RouterModule, Router, Routes, NavigationEnd } from '@angular/router';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 // News Component
+
 import { BannerComponent } from './components/banner/banner.component';
 import { LinkComponent } from './components/link/link.component';
 import { LoginComponent } from './components/header/login/login.component';
@@ -153,48 +154,14 @@ const routes: Routes = [
   },
   {
     path: 'gioi-thieu',
-    component: IntroductionOneComponent
+    component: IntroductionComponent
   },
-  {
-    path: 'gioi-thieu/trung-tam-nhat-ban',
-    component: IntroductionOneComponent
-  },
-  {
-    path: 'gioi-thieu/truong-dai-hoc-quy-nhon',
-      component: IntroductionTwoComponent
-  },
-  {
-    path: 'gioi-thieu/quy-nhon-binh-dinh',
-      component: IntroductionThreeComponent
-  },
-  {
-    path: 'gioi-thieu/nhan-su-trung-tam',
-    component: IntroductionFourComponent
-  },
-  {
-    path: 'gioi-thieu/tai-sao-chon-qnu-japan-center',
-    component: IntroductionFiveComponent
-  },
+
   {
     path: 'gioi-thieu/日本センター',
     component: IntroductionOneComponent
   },
-  {
-    path: 'gioi-thieu/クイニョン大学',
-      component: IntroductionTwoComponent
-  },
-  {
-    path: 'gioi-thieu/quy-nhon-binh-dinh',
-      component: IntroductionThreeComponent
-  },
-  {
-    path: 'gioi-thieu/センターのスタッフ',
-    component: IntroductionFourComponent
-  },
-  {
-    path: 'gioi-thieu/QNUジャパンセンターを選ぶ理由',
-    component: IntroductionFiveComponent
-  },
+  
   {
     path :'viet-bai',
     component: SupporterPageComponent

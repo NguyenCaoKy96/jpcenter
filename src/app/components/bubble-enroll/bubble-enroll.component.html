@@ -10,35 +10,45 @@
                     <div class="form-group has-error">
                         <label for="">{{LANGUAGE.FULL_NAME}}<a>*</a>:</label>
                         <input class="form-control input-lg" id="name" placeholder="{{LANGUAGE.FULL_NAME}}" name="txtFullname"
-                            type="text" formControlName="fullname" autofocus maxlength="100" >
-                        <span class="lable lable-danger" *ngIf="frmUser.controls.fullname.dirty && frmUser.controls.fullname.errors?.required">
-                            {{LANGUAGE.MESSAGE_EMPTY_NAME}}
-                        </span>
-                        <span class="lable lable-danger" *ngIf="frmUser.controls.fullname.dirty && frmUser.controls.fullname.errors?.pattern">
+                            type="text" formControlName="fullname"  maxlength="100" autofocus>
+                        <span class="lable lable-danger" *ngIf="frmUser.controls.fullname.invalid && frmUser.controls.fullname.touched">
+                            <!-- {{LANGUAGE.MESSAGE_EMPTY_NAME}} -->
                             {{LANGUAGE.MESSAGE_INVALID_NAME}}
                         </span>
+                        <!-- <span class="lable lable-danger" *ngIf="frmUser.controls.fullname.dirty && frmUser.controls.fullname.errors.required">
+                            {{LANGUAGE.MESSAGE_INVALID_NAME}}
+                        </span> -->
+                        <!-- <span class="lable lable-danger" *ngIf="frmUser.controls.fullname.dirty && frmUser.controls.fullname.errors?.pattern">
+                            {{LANGUAGE.MESSAGE_INVALID_NAME}}
+                        </span> -->
                         <span class="val_fname"></span>
                     </div>
                     <div class="form-group has-success">
                         <label for="">{{LANGUAGE.EMAIL}}<a>*</a>:</label>
                         <input class="form-control input-lg" placeholder="{{LANGUAGE.EMAIL}}" id="email" name="txtEmail" type="email"
                             formControlName="email" maxlength="255">
-                        <span class="lable lable-danger" *ngIf="frmUser.controls.email.dirty && frmUser.controls.email.errors?.required">
+                       <!--  <span class="lable lable-danger" *ngIf="frmUser.controls.email.dirty && frmUser.controls.email.errors?.required">
                             {{LANGUAGE.MESSAGE_EMPTY_EMAIL}}
-                        </span>
-                        <span class="lable lable-danger" *ngIf="frmUser.controls.email.dirty && frmUser.controls.email.errors?.pattern">
+                        </span> -->
+                         <span class="lable lable-danger" *ngIf="frmUser.controls.email.invalid && frmUser.controls.email.touched">
                             {{LANGUAGE.MESSAGE_INVALID_EMAIL}}
                         </span>
+                       <!--  <span class="lable lable-danger" *ngIf="frmUser.controls.email.dirty && frmUser.controls.email.errors?.pattern">
+                            {{LANGUAGE.MESSAGE_INVALID_EMAIL}}
+                        </span> -->
                         <span class="val_email"></span>
                     </div>
                     <div class="form-group has-success">
                         <label for="">{{LANGUAGE.PHONE_NUMBER}}<a>*</a>:</label>
                         <input class="form-control input-lg" placeholder="{{LANGUAGE.PHONE_NUMBER}}" id="phone" name="txtPhone"
                             type="tel" formControlName="phone" maxlength="10">
-                        <span class="lable lable-danger" *ngIf="frmUser.controls.phone.dirty && frmUser.controls.phone.errors?.required">
+                        <!-- <span class="lable lable-danger" *ngIf="frmUser.controls.phone.dirty && frmUser.controls.phone.errors?.required">
                             {{LANGUAGE.MESSAGE_EMPTY_PHONE_NUMBER}}
-                        </span>
-                        <span class="lable lable-danger" *ngIf="frmUser.controls.phone.dirty && frmUser.controls.phone.errors?.pattern">
+                        </span> -->
+                       <!--  <span class="lable lable-danger" *ngIf="frmUser.controls.phone.dirty && frmUser.controls.phone.errors?.pattern">
+                            {{LANGUAGE.MESSAGE_INVALID_PHONE_NUMBER}}
+                        </span> -->
+                         <span class="lable lable-danger" *ngIf="frmUser.controls.phone.invalid && frmUser.controls.phone.touched">
                             {{LANGUAGE.MESSAGE_INVALID_PHONE_NUMBER}}
                         </span>
                         <span class="val_phone"></span>
@@ -47,16 +57,19 @@
                         <label for="">{{LANGUAGE.COURSE}}<a>*</a>:</label>
                         <select class="form-control" id="course" formControlName="course">
                             <option selecterd=""></option>
-                            <option selecterd="" *ngFor="let register of registerData">{{register.Name}} </option>
+                            <option selecterd="" *ngFor="let register of registerData">{{register.Class}} </option>
                         </select>
-                        <span class="lable lable-danger" *ngIf="frmUser.controls.course.dirty && frmUser.controls.course.errors?.required">
+                       <!--  <span class="lable lable-danger" *ngIf="frmUser.controls.course.dirty && frmUser.controls.course.errors?.required">
+                            {{LANGUAGE.MESSAGE_EMPTY_COURSE}}
+                        </span> -->
+                         <span class="lable lable-danger" *ngIf="frmUser.controls.course.invalid && frmUser.controls.course.touched">
                             {{LANGUAGE.MESSAGE_EMPTY_COURSE}}
                         </span>
                         <span class="val_course"></span>
                     </div>
                     <div class="form-group">
-                        <label>{{ LANGUAGE.NOTES}}<a>*</a>:</label>
-                        <textarea class="form-control" id="notes" rows="3" placeholder="{{LANGUAGE.NOTES}}" formControlName="notes"
+                        <label>{{ LANGUAGE.NOTE}}:</label>
+                        <textarea class="form-control" id="notes" rows="3" placeholder="{{LANGUAGE.NOTE}}" formControlName="notes"
                             type="text" maxlength="200" (blur)=onNoteBlur()></textarea>
                     </div>
                     <button [disabled]="frmUser.invalid" class="btn btn" type="submit" name="submit" id="register">{{LANGUAGE.SIGN_UP}}</button>

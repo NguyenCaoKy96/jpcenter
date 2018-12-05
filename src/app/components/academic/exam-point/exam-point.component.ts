@@ -61,7 +61,7 @@ export class ExamPointComponent implements OnInit {
     this.http.get(this.markURL).subscribe(data =>{
     this.markData = data;
     for (var i = 0; i < this.markData.length; i++) {
-      this.link = this.markData[1].Link;
+      this.link = this.markData[i].Link;
       console.log(this.link);
     }
     });
