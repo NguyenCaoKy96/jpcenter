@@ -109,63 +109,6 @@ export class HeaderComponent implements OnInit {
     }); 
          
 
-    // $('#bubble').offset({top: 250})
-
-    // var isMoving = false;
-    // var isdragging = false;
-    // var currentPos;
-    // var afterPos;
-
-
-    // $('#bubble').mousedown(function(){
-    //   isdragging = false;
-    //   currentPos = $('#bubble').offset().left + $('#bubble').offset().top;
-    // });
-    // $('#bubble').mousemove(function(){
-    //   isdragging = true;
-    //   $(this).css("transition", "all 0s");
-    // });
-    // $('#bubble').mouseup(function(e){
-    //   e.preventDefault();
-    //   var swidth = $( window ).width();
-    //   var sheight = $( window ).height();
-      
-    //   if(isdragging){
-    //     if($('#bubble').offset().left > (swidth/2)){
-    //       $('#bubble').offset({left: swidth - $('#bubble').width()}).css("transition", "all 0.4s");
-    //     }else{
-    //       $('#bubble').offset({left: 0}).css("transition", "all 0.4s");
-    //     }
-    //   }
-    //   afterPos = $('#bubble').offset().left + $('#bubble').offset().top;
-    // });
-
-
-    // $(window).scroll(function (event) {
-    //     var scroll = $(window).scrollTop();
-    //     if (scroll === $('#bubble').offset().top) {
-    //       console.log(scroll);
-    //       $('#bubble').offset({top: 0});
-    //     }
-    // });
-
-    // $(window).resize(function(){
-    //     $('#bubble').offset({left: 0}).css("transition", "all 0.4s");
-    // });
-
-    // $('#bubble').click(() => {
-    //   if (afterPos === currentPos) {  
-    //     this.router.navigate(['/dang-ky-hoc']);  
-    //   }
-    // });
-
-    // $('.write').click(() => {
-    //   if (afterPos === currentPos) {  
-    //     this.router.navigate(['/viet-bai']);  
-    //   }
-    // });
-
-    // $('#bubble').removeClass('verticle-align');
   }
 
   changeURL(parentID: string, path?: string) {

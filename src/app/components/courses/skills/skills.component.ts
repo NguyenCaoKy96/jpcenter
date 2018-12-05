@@ -36,7 +36,7 @@ export class SkillsComponent implements OnInit {
   homeImagesURL: { [key: number]: string } = [];
   serverURL: any;
   data: any;
-  lang: string = 'vi';
+  lang: string ;
   public LANGUAGE: any = LANG_VI;
 
   // Carousel config
@@ -52,7 +52,8 @@ export class SkillsComponent implements OnInit {
   skillsData;
   japanchildDataItem;
   japanContents;
-  japanchildContent
+  japanchildContent;
+
 
   constructor(
     private _titleService: Title,
@@ -79,8 +80,10 @@ export class SkillsComponent implements OnInit {
      // Change language
      this._route.queryParams.subscribe(data => {
       if (data.lang === 'vi') {
+        this.lang = 'vi';
         this.LANGUAGE = LANG_VI;
       } else {
+        this.lang='jp';
         this.LANGUAGE = LANG_JP;
       }
     });

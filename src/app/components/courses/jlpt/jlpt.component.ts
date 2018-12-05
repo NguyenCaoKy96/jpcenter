@@ -35,7 +35,7 @@ export class JlptComponent implements OnInit {
   homeImagesURL: { [key: number]: string } = [];
   serverURL: any;
   data: any;
-  lang: string='vi'
+  lang: string;
   public LANGUAGE: any = LANG_VI;
 
   // Carousel config
@@ -77,8 +77,10 @@ export class JlptComponent implements OnInit {
      // Change language
      this._route.queryParams.subscribe(data => {
       if (data.lang === 'vi') {
+        this.lang ='vi';
         this.LANGUAGE = LANG_VI;
       } else {
+        this.lang='jp';
         this.LANGUAGE = LANG_JP;
       }
     }); 
@@ -106,12 +108,12 @@ export class JlptComponent implements OnInit {
 
   onmoveFn(data: NgxCarouselStore) { };
   
-  onchangeCourse(id){
-    let jlptItemDataURL = this._getDataService.getCourseItemURL(id);
-    this.http.get(jlptItemDataURL).subscribe(data => {
-      this.jlptItemData = data;
-      console.log(this.jlptItemData);  
-    });
-    $('#left-item').hide();
-   }
+  // onchangeCourse(id){
+  //   let jlptItemDataURL = this._getDataService.getCourseItemURL(id);
+  //   this.http.get(jlptItemDataURL).subscribe(data => {
+  //     this.jlptItemData = data;
+  //     console.log(this.jlptItemData);  
+  //   });
+  //   $('#left-item').hide();
+  //  }
 }

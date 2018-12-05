@@ -98,28 +98,35 @@ export class NewspageComponent implements OnInit {
     private _route: ActivatedRoute,
     private santized: DomSanitizer
   ) { 
+    // Change language
+    this._route.queryParams.subscribe(data => {
+      if (data.lang === 'vi') {
+        this.LANGUAGE = LANG_VI;
+      } else {
+        this.LANGUAGE = LANG_JP;
+      }
+    });
+    //get data newspage for card
+    this.newURL = this._getDataService.getNewsURL();
+    this._http.get(this.newURL).subscribe(data =>{
+      this.newData = data;
+      this.NewsData = this.newData.slice().reverse()
+      this.IsNewsData = this.NewsData.slice(1, this.NewsData.length) 
+      for(var k = 0; k < this.IsNewsData.length; k++){
+        this.imageNew = this.IsNewsData[k].Thumbnail;
+        this.arrImage[k] = this.serverURL + this.imageNew.url;     
+      }
+    });
 
-      //get data newspage for card
-      this.newURL = this._getDataService.getNewsURL();
-      this._http.get(this.newURL).subscribe(data =>{
-        this.newData = data;
-        this.NewsData = this.newData.slice().reverse()
-        this.IsNewsData = this.NewsData.slice(1, this.NewsData.length) 
-        for(var k = 0; k < this.IsNewsData.length; k++){
-          this.imageNew = this.IsNewsData[k].Thumbnail;
-          this.arrImage[k] = this.serverURL + this.imageNew.url;     
-        }
-     });
-
-       //First card
-       this.eventsURL = this._getDataService.getNewsURL();
-       this._http.get(this.eventsURL).subscribe(data =>{
-         this.eventsData = data;
-         for(var i = 0; i < this.eventsData.length; i++){
-         this.eventsFirst = this.eventsData[this.eventsData.length -1];
-         this.ImageEvent = this.serverURL + this.eventsData[this.eventsData.length -1].Thumbnail.url;      
-         }       
-       });
+    //First card
+    this.eventsURL = this._getDataService.getNewsURL();
+    this._http.get(this.eventsURL).subscribe(data =>{
+      this.eventsData = data;
+      for(var i = 0; i < this.eventsData.length; i++){
+      this.eventsFirst = this.eventsData[this.eventsData.length -1];
+      this.ImageEvent = this.serverURL + this.eventsData[this.eventsData.length -1].Thumbnail.url;      
+      }       
+    });
 
    }
    // display acticrle news
@@ -129,8 +136,7 @@ export class NewspageComponent implements OnInit {
       this.newItemData = data;
       console.log(this.newItemData);  
     });
-    $('#acticrle').hide();
-    $('#articleNews').show();
+    $('#FirstNews').hide();
    }
   //display first acticrle 
   OnChangeActicrles(){
@@ -146,15 +152,6 @@ export class NewspageComponent implements OnInit {
     $('#new-article').show();
   }
   ngOnInit() {
-    // Change language
-    this._route.queryParams.subscribe(data => {
-      if (data.lang === 'vi') {
-        this.LANGUAGE = LANG_VI;
-      } else {
-        this.LANGUAGE = LANG_JP;
-      }
-    });
-
     // Pagin
     for (let i = 1; i <= 100; i++) {
       this.collection.push(`item ${i}`);

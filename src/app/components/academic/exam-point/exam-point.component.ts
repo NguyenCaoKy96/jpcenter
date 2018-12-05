@@ -42,6 +42,8 @@ export class ExamPointComponent implements OnInit {
     markData;
     link;
     public isVietnamese: boolean = true;
+    lang: string;
+
 
 
   constructor(private titleService: Title,
@@ -55,7 +57,7 @@ export class ExamPointComponent implements OnInit {
 
   ngOnInit() {
   	// Title
-  	this._titleService.setTitle('Học vụ');
+  	// this._titleService.setTitle('Học vụ');
     
 
      
@@ -75,9 +77,11 @@ export class ExamPointComponent implements OnInit {
   	 // Change language
      this._route.queryParams.subscribe(data => {
       if (data.lang === 'vi') {
+        this.lang ='vi';
         this.isVietnamese = true;
         this.LANGUAGE = LANG_VI;
       } else {
+        this.lang ='jp';
         this.isVietnamese = false;
         this.LANGUAGE = LANG_JP;
       }

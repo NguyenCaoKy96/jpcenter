@@ -45,6 +45,7 @@ export class CalendarComponent implements OnInit {
   imageQnuJapan: any[]=[];
   public isVietnamese: boolean = true;
   downloadImage: SafeUrl;
+  lang: string;
 
 
   constructor(
@@ -60,16 +61,17 @@ export class CalendarComponent implements OnInit {
 
   ngOnInit() {
        // Title 
-        this._titleService.setTitle('Học vụ');
+        // this._titleService.setTitle('Học vụ');
       
-
-
          // Change language
      this._route.queryParams.subscribe(data => {
       if (data.lang === 'vi') {
+        this.lang = 'vi';
         this.isVietnamese = true;
         this.LANGUAGE = LANG_VI;
+        console.log(this.LANGUAGE);
       } else {
+        this.lang = 'jp';
         this.isVietnamese = false;
         this.LANGUAGE = LANG_JP;
       }
@@ -92,15 +94,7 @@ export class CalendarComponent implements OnInit {
   		this.openingSchedule = data;
   	});
 
-    // Change language
-    this._route.queryParams.subscribe(data => {
-      if (data.lang === 'vi') {
-        this.LANGUAGE = LANG_VI;
-      } else {
-        this.LANGUAGE = LANG_JP;
-      }
-    });
-
+ 
     //
     this.carouselBanner = this._getImageService.carouselBanner;
     this.imageURLs = this._getDataService.getImagesURL();

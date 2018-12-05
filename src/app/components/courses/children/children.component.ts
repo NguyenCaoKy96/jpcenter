@@ -52,7 +52,7 @@ export class ChildrenComponent implements OnInit {
   japanContents;
   japanchildDataItem;
   japanchildContent;
-  lang : string = 'vi';
+  lang : string ;
   constructor(
     private _titleService: Title,
     private http: HttpClient,
@@ -77,8 +77,10 @@ export class ChildrenComponent implements OnInit {
   ngOnInit() {
     this._route.queryParams.subscribe(data => {
       if (data.lang === 'vi') {
+        this.lang='vi';
         this.LANGUAGE = LANG_VI;
       } else {
+        this.lang='jp';
         this.LANGUAGE = LANG_JP;
       }
     });

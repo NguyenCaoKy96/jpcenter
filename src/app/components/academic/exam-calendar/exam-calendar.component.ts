@@ -43,6 +43,7 @@ export class ExamCalendarComponent implements OnInit {
   imageQnuJapan: any[] = [];
   sliderImagesURL: any[] = [];
   public isVietnamese: boolean = true;
+  lang: string;
 
   constructor(private titleService: Title,
   	private _titleService: Title,
@@ -55,15 +56,17 @@ export class ExamCalendarComponent implements OnInit {
 
   ngOnInit() {
     // title
-    this._titleService.setTitle('Học vụ');
+    // this._titleService.setTitle('Học vụ');
    
 
      // Change language
     this._route.queryParams.subscribe(data => {
       if (data.lang === 'vi') {
+        this.lang ='vi';
         this.isVietnamese = true;
         this.LANGUAGE = LANG_VI;
       } else {
+        this.lang = 'jp';
         this.isVietnamese = false;
         this.LANGUAGE = LANG_JP;
       }

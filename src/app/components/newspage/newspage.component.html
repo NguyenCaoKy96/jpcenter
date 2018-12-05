@@ -23,19 +23,26 @@
 </nav>
 <!-- article Events -->
 <div id="article" class="container">
-    <a class="row mr-0 ml-0 post-highlight" (click) = "OnChangeActicrles()">
-        <div class="col-lg-5 pl-0 pr-0" >
-            <img [src]="[ImageEvent]" class="img-fluid d-block" alt="news-main"/>
-        </div>
-        <div class="col-lg-5 card-body card-wrap">
-            <h5 class="card-title" [innerHTML]="eventsFirst.Name">
-            </h5>
-            <p class="card-text">
-                <span [innerHTML]="eventsFirst.Object"></span>
-                <span class="read-more"> {{LANGUAGE.CONTINUE_READING}}</span>
+    <div id="FirstNews" class="row">
+        <a class="row mr-0 ml-0 post-highlight" (click) = "OnChangeActicrles()">
+            <div class="col-lg-7" >
+                <img [src]="[ImageEvent]" class="card-img-top" alt="news-main"/>
+            </div>
+            <div class="col-lg-5 card-body card-wrap">
+                <h5 class="card-title" [innerHTML]="eventsFirst.Name">
+                </h5>
+                <p class="card-text">
+                    <span [innerHTML]="eventsFirst.Object"></span>
+                    <span class="read-more"> {{LANGUAGE.CONTINUE_READING}}</span>
+                </p>
+            </div> 
+        </a>
+    </div>
+    <!-- display article for news body -->
+        <div id="articleNews" *ngIf = "OnChangeNews && newItemData != undifile" >
+            <p [innerHTML]="newItemData.Content">
             </p>
-        </div> 
-    </a>
+        </div>
     <!-- display card news -->
     <div class="card-container pb-5">
         <div class="row">
@@ -56,14 +63,13 @@
         </div> 
     </div>
 </div>
-    <!-- display article -->
-<div id="#new-article" class="container">
-    <div class="course-content pt-4 mb-0">
-        <h4>{{EventsFirst.Name}}</h4>       
-        <p class="mb-4" [innerHTML]="EventsFirst.Program"></p>           
+    <!-- display First article -->
+    <div id="new-article" class="container"  *ngIf = " EventsFirst != undifile">
+        <div class="course-content pt-4 mb-0">
+            <h4>{{EventsFirst.Name}}</h4>       
+            <p class="mb-4" [innerHTML]="EventsFirst.Content"></p>           
+        </div>
     </div>
-</div>
-<br> 
 
 
 <!-- create Pagination -->

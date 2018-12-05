@@ -13,10 +13,10 @@
 <nav aria-label="breadcrumb">
   <ol class="breadcrumb">
     <li class="breadcrumb-item">
-      <a routerLink="/trang-chu" [queryParams]="{lang: lang ? 'vi' : 'jp'}">{{LANGUAGE.HOME_PAGE}}</a>
+      <a routerLink="/trang-chu" [queryParams]="{lang: lang === 'jp' ? 'jp' : 'vi'}">{{LANGUAGE.HOME_PAGE}}</a>
     </li>
     <li class="breadcrumb-item">
-      <a routerLink="/khoa-hoc" [queryParams]="{lang: lang ? 'vi' : 'jp'}">{{LANGUAGE.COURSE}}</a>
+      <a routerLink="/khoa-hoc" [queryParams]="{lang: lang === 'jp' ? 'jp' : 'vi'}">{{LANGUAGE.COURSE}}</a>
     </li>
     <li class="breadcrumb-item active" aria-current="page">{{LANGUAGE.CHILDREN_COURSE}}</li>
   </ol>
@@ -26,23 +26,23 @@
   <div class="col-md-4 col-lg-3 left-navigation">
     <ul class="nav nav-tabs d-none d-md-block">
       <li class="nav-item">
-        <a class="nav-link" id="JCenter-tab" routerLink="/khoa-hoc/cac-khoa-tieng-nhat-JLPT" [queryParams]="{lang: lang ? 'vi' : 'jp'}">
+        <a class="nav-link" id="JCenter-tab" routerLink="/khoa-hoc/cac-khoa-tieng-nhat-JLPT" [queryParams]="{lang: lang === 'jp' ? 'jp' : 'vi'}">
           {{LANGUAGE.JLPT_COURSE}}
         </a>
       </li>
       <li class="nav-item">
-        <a class="nav-link  active" id="JCenter-tab" routerLink="/khoa-hoc/tieng-nhat-cho-thieu-nhi" [queryParams]="{lang: lang ? 'vi' : 'jp'}">
+        <a class="nav-link  active" id="JCenter-tab" routerLink="/khoa-hoc/tieng-nhat-cho-thieu-nhi" [queryParams]="{lang: lang === 'jp' ? 'jp' : 'vi'}">
           {{LANGUAGE.CHILDREN_COURSE}}
         </a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" id="JCenter-tab" routerLink="/khoa-hoc/cac-khoa-ky-nang-mem" [queryParams]="{lang: lang ? 'vi' : 'jp'}">
+        <a class="nav-link" id="JCenter-tab" routerLink="/khoa-hoc/cac-khoa-ky-nang-mem" [queryParams]="{lang: lang === 'jp' ? 'jp' : 'vi'}">
           {{LANGUAGE.SKILL_COURSE}}
         </a>
       </li>
     </ul>
   </div>
-  <div class="col-md-8 col-lg-9 "*ngIf="lang === 'vi'" >
+  <div class="col-md-8 col-lg-9" *ngIf="lang === 'vi'" >
     <h5 class="section-title"[innerHTML] = "childDataItem"></h5>
     <h5 [innerHTML] = "childContent"></h5>
   </div>

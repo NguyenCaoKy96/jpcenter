@@ -13,6 +13,11 @@ import { GetImagesService } from './../../services/get-image-slider/get-images.s
 // Carousel
 import { NgxCarousel, NgxCarouselStore  } from 'ngx-carousel';
 
+// Language
+import { default as LANG_VI } from '../../../lang/lang_vi';
+import { default as LANG_JP } from '../../../lang/lang_jp';
+import { ActivatedRoute } from '@angular/router';
+
 @Component({
   selector: 'app-academic',
   templateUrl: './academic.component.html',
@@ -27,7 +32,7 @@ export class AcademicComponent implements OnInit {
 	openingURL: string;
 
 	p: number = 1;
-  	collection: any[] = [];  
+  collection: any[] = [];  
 	page = 'one';
 
   carouselBanner: any;
@@ -41,6 +46,10 @@ export class AcademicComponent implements OnInit {
 
   academicsURL: string;
   academics:any;
+  lang: string;
+  public isVietnamese: boolean = true;
+  public LANGUAGE : any = LANG_VI;
+
   
 
   constructor(private titleService: Title,
@@ -48,7 +57,8 @@ export class AcademicComponent implements OnInit {
   	private _http: HttpClient,
     private http: HttpClient,
     private _getDataService: GetDataService,
-    private _getImageService: GetImagesService) { 
+    private _getImageService: GetImagesService,
+    private _route: ActivatedRoute) { 
 
   	//Get data academic
   	this.academicsURL = this._getDataService.getAcademicsURL();
@@ -67,6 +77,20 @@ export class AcademicComponent implements OnInit {
 
   	// Title 
   	this._titleService.setTitle('Học vụ');
+    // this._titleService.setTitle('教育');
+
+    // Change language
+     this._route.queryParams.subscribe(data => {
+      if (data.lang === 'vi') {
+        this.lang ='vi';
+        this.isVietnamese = true;
+        this.LANGUAGE = LANG_VI;
+      } else {
+        this.lang ='jp';
+        this.isVietnamese = false;
+        this.LANGUAGE = LANG_JP;
+      }
+    });
 
   	//get data openings
   	this.openingURL = this._getDataService.getOpeningScheduleURL();
