@@ -44,6 +44,7 @@ export class ServicePartnerComponent implements OnInit {
   Contents: any;
   serverURL: any;
   data: any;
+  newsFirst: any;
   getjobsURL: string;
   jobs;
   jobsItem;
@@ -69,6 +70,7 @@ export class ServicePartnerComponent implements OnInit {
       vietnameseSlug : '',
       japaneseSlug : ''
     };
+    ServiceDataActive:any;
 
   constructor(
   	private _titleService: Title,
@@ -80,6 +82,7 @@ export class ServicePartnerComponent implements OnInit {
 
   ngOnInit() {
 
+    this.apiCategories = this._getDataService.getCategoriesURL();
     this._route.queryParams.subscribe(data => {
       if (data.lang === 'vi') {
         this.isVietnamese = true;
@@ -88,9 +91,16 @@ export class ServicePartnerComponent implements OnInit {
         this.isVietnamese = false;
         this.LANGUAGE = LANG_JP;
       }
+      if (data.id !== undefined){
+        this.selectItem(data.id);
+      }
+
+      if (data.idSecond !== undefined){
+        this.selectItem(data.idSecond);
+      }
     });
 
-    this._titleService.setTitle(this.LANGUAGE.CAREER_OPPOTUNITY);
+    this._titleService.setTitle(this.LANGUAGE.SERVICE_AND_PARTNER);
 
     this.carouselBanner = this._getImageService.carouselBanner;
     this.imageURLs = this._getDataService.getImagesURL();
@@ -112,8 +122,19 @@ export class ServicePartnerComponent implements OnInit {
       this.item = data;
       for (let i=0; i< this.item.length; i++) {
         if (this.item[i].Parent && (this.item[i].Parent.Name === this.LANGUAGE.SERVICE_AND_PARTNER || this.item[i].Parent.Japanese_Name === this.LANGUAGE.SERVICE_AND_PARTNER)) {
+          if(this.ServiceDataActive == undefined){
+            this.ServiceDataActive = this.item[i];
+            console.log('le',this.item[i]);
+          }
           this.itemData.push(this.item[i]);
+          console.log(this.itemData);
         }
+      }
+      if (this.itemData !== undefined){
+        this.itemContents.japaneseContents = this.itemData[0].contents.Japanese_Content;
+        this.itemContents.japaneseName =  this.itemData[0].contents.Japanese_Name;
+        this.itemContents.vietnameseContents = this.itemData[0].contents.Content;
+        this.itemContents.vietnameseName =  this.itemData[0].contents.Name;
       }
     });
   }
@@ -131,22 +152,21 @@ export class ServicePartnerComponent implements OnInit {
     }
   }
 
-  selectItem(item) {
-    let tempContents;
+  selectItem(id) {
+    this.ServiceDataActive = item;
+    console.log('item', item);
+    /*let tempContents;
     let vietnameseSlug; 
-      let itemContentURL = this.apiCategories + '/' + item._id;
+      let itemContentURL = this.apiCategories + '/' + id;
       this.http.get(itemContentURL).subscribe(data => {
         tempContents = data;
         this.itemContents.vietnameseContents = tempContents.contents.Content;
-        console.log(this.itemContents.vietnameseContents);
         this.itemContents.vietnameseName =  tempContents.contents.Name;
-        console.log(this.itemContents.vietnameseName);
         vietnameseSlug = tempContents.contents.Name;
         this.slug.vietnameseSlug = vietnameseSlug.toLowerCase().replace(/ /g,'-').replace(/[^\w-]+/g,'');
         window.location.hash = (this.slug.vietnameseSlug);
         this.itemContents.japaneseContents = tempContents.contents.Japanese_Content;
-        console.log(this.itemContents.japaneseContents);
         this.itemContents.japaneseName =  tempContents.contents.Japanese_Name;
-      });
+      });*/
   }
 }

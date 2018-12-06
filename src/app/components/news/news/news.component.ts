@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import * as $ from 'jquery';
 
 // Service
@@ -26,28 +26,24 @@ export class NewsComponent implements OnInit {
   newWhyQnuName: any;
   newWhyQnuJapanName: any;
   imageWhyQnu: any;
-  linkWhyQNU: any;
 
   newProjectURL: string;
   newProjectData: any;
   newProjectName: any;
   newProjectJapanName: any;
   imageProject: any;
-  linkProject: any;
 
   newJobURL: string;
   newJobData: any;
   newJobName: any;
   newJobJapanName: any;
   imageJob: any;
-  linkJob: any;
 
   newIntroducURL: string;
   newIntroData: any;
   newIntroName: any;
   newIntroJapanName: any;
   imageIntro: any;
-  linkIntro: any;
 
   carouselBanner: any;
   imageURLs: any;
@@ -60,7 +56,8 @@ export class NewsComponent implements OnInit {
     private _http: HttpClient,
     private _getDataService: GetDataService,
     private _getImageService: GetImagesService,
-    private _route: ActivatedRoute
+    private _route: ActivatedRoute,
+    private router: Router
   ) {
     this.serverURL = this._getDataService.serverURL;
 
@@ -71,7 +68,6 @@ export class NewsComponent implements OnInit {
        this.newWhyQnuName = this.newWhyQnuData.Name;
        this.newWhyQnuJapanName = this.newWhyQnuData.Japanese_Name;
        this.imageWhyQnu = this.serverURL + this.newWhyQnuData.Image.url;
-       this.linkWhyQNU = this.newWhyQnuData.Slug;
     });
 
     // Get news Project
@@ -81,7 +77,6 @@ export class NewsComponent implements OnInit {
        this.newProjectName = this.newProjectData.Name;
        this.newProjectJapanName = this.newProjectData.Japanese_Name;
        this.imageProject = this.serverURL + this.newProjectData.Image.url;
-       this.linkProject = this.newProjectData.Slug;
     });
 
     // Get news Introduction
@@ -91,7 +86,6 @@ export class NewsComponent implements OnInit {
        this.newIntroName = this.newIntroData.Name;
        this.newIntroJapanName = this.newIntroData.Japanese_Name;
        this.imageIntro = this.serverURL + this.newIntroData.Image.url;
-       this.linkIntro = this.newIntroData.Slug;
     });
 
     // Get news Job opportunities
@@ -101,7 +95,6 @@ export class NewsComponent implements OnInit {
        this.newJobName = this.newJobData.Name;
        this.newJobJapanName = this.newJobData.Japanese_Name;
        this.imageJob = this.serverURL + this.newJobData.Image.url;
-       this.linkJob = this.newJobData.Slug;
     });
 
     // Get Image news
@@ -127,5 +120,21 @@ export class NewsComponent implements OnInit {
     this._route.queryParams.subscribe(data => {
       this.lang = data.lang;
     });
+  }
+
+  OnNewsFrist(newsFirst) {
+    this.router.navigate(['/','gioi-thieu'], {relativeTo: this._route, queryParams: { lang: this.lang == 'vi' ?'vi':'jp', idFirst: newsFirst._id}});
+  }
+
+  OnNewsSecond(newsSecond) {
+    this.router.navigate(['/','dich-vu-doi-tac'], {relativeTo: this._route, queryParams: { lang: this.lang == 'vi' ?'vi':'jp', idSecond: newsSecond._id}});
+  }
+
+  OnNewsThrid(newsThrid) {
+    this.router.navigate(['/','gioi-thieu'], {relativeTo: this._route, queryParams: { lang: this.lang == 'vi' ?'vi':'jp', idThrid: newsThrid._id}});
+  }
+
+  OnNewsFour(newsFour) {
+    this.router.navigate(['/','co-hoi-nghe-nghiep'], {relativeTo: this._route, queryParams: { lang: this.lang == 'vi' ?'vi':'jp', idFour: newsFour._id}});
   }
 }

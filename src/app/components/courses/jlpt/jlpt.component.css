@@ -19,3 +19,13 @@ img{
 	font-weight: 700;
 	color: #495057;
 }
+.card-title {
+    margin-top: 10px;
+    margin-left: 20px;
+}
+.fa {
+    margin-left: 20px;
+}
+/*.card{
+    height: 330px;
+}*/

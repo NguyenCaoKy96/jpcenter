@@ -15,13 +15,11 @@ import axios from 'axios';
 
 // Service
 import { GetDataService } from './../../services/get-data/get-data.service';
-import { checkAndUpdateBinding } from '@angular/core/src/render3/instructions';
-
-import { ActivatedRoute, Router } from '@angular/router';
+import { checkAndUpdateBinding } from '@angular/core/src/render3/instructions'
 
 import { default as LANG_VI } from '../../../lang/lang_vi';
 import { default as LANG_JP } from '../../../lang/lang_jp';
-
+import { Router, ActivatedRoute, NavigationEnd } from '@angular/router';
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
@@ -39,6 +37,15 @@ export class HeaderComponent implements OnInit {
   public phone: string;
   public notes: any;
   public LANGUAGE: any = LANG_VI;
+  public isVietnamese : boolean;
+  menuLeftData:any=[];
+  categoriesData:any;
+  introductionsDataActive:any;
+  public apiCategories: string;
+  public item:any;
+  public itemData: any = [];
+  public itemData1: any=[];
+  public isVietnamese: boolean;
 
   @Output('isChangeLanguage') language = new EventEmitter<boolean>();
 
@@ -48,13 +55,49 @@ export class HeaderComponent implements OnInit {
     private _http: HttpClient,
     private _getDataService: GetDataService,
     private router: Router,
-    private _activatedRoute: ActivatedRoute
-  ) { }
+    private _activatedRoute: ActivatedRoute,
+    private http: HttpClient,
+
+
+  ) { 
+    // get data introduction
+    let categoriesURL = this._getDataService.getCategoriesURL();
+    this._http.get(categoriesURL).subscribe(data => {
+      this.categoriesData = data;
+      // console.log('All categories',this.categoriesData);
+
+      for(var i=0; i<this.categoriesData.length; i++) {
+        if(this.categoriesData[i].Parent && (this.categoriesData[i].Parent.Name === this.LANGUAGE.INTRODUCTION_PAGE  || this.categoriesData[i].Parent.Japanese_Name === this.LANGUAGE.INTRODUCTION_PAGE )) {
+          
+          if(this.introductionsDataActive == undefined){
+            this.introductionsDataActive = this.categoriesData[i];
+            console.log('le',this.categoriesData[i]);
+          }
+          
+          this.menuLeftData.push(this.categoriesData[i]);
+          console.log('categories',this.categoriesData[i]);
+        }
+      }
+
+    });}
   
   ngOnInit() {
-    // Header URL
-    this.headerURL = this._getDataService.getHeaderURL();
+    this._activatedRoute.queryParams.subscribe(data => {
+      if (data.lang === 'vi') {
+        this.isVietnamese = true;
+        this.LANGUAGE = LANG_VI;
+      } else {
+        this.isVietnamese = false;
+        this.LANGUAGE = LANG_JP;
+      }
+    });
 
+    //
+  
+  
+  // Header URL
+    this.headerURL = this._getDataService.getHeaderURL();
+    
     // Footer URL
     this.footerURL = this._getDataService.getContactURL();
 
@@ -107,8 +150,23 @@ export class HeaderComponent implements OnInit {
     this._http.get(this.footerURL).subscribe(data => {
       this.footerData = data;
     }); 
-         
+    //Get sub-menu header for career-oppotunity and service-partner
+    this.apiCategories = this._getDataService.getCategoriesURL();
+    this.http.get(this.apiCategories).subscribe(data => {
+      this.item = data;
+      console.log(this.item);
+      for (let i=0; i< this.item.length; i++) {
+        if (this.item[i].Parent && (this.item[i].Parent.Name === this.LANGUAGE.CAREER_OPPOTUNITY || this.item[i].Parent.Japanese_Name === this.LANGUAGE.CAREER_OPPOTUNITY)) {
+          this.itemData.push(this.item[i]);
+        }
+        if (this.item[i].Parent && (this.item[i].Parent.Name === this.LANGUAGE.SERVICE_AND_PARTNER || this.item[i].Parent.Japanese_Name === this.LANGUAGE.SERVICE_AND_PARTNER)){
+          this.itemData1.push(this.item[i]);}
+      }
+    });    
 
+  }
+   onChangeIntroduction(item){
+    this.introductionsDataActive  = item;
   }
 
   changeURL(parentID: string, path?: string) {
@@ -116,6 +174,14 @@ export class HeaderComponent implements OnInit {
     if (path) {
       this.router.navigate([parentPathName, path], {relativeTo: this._activatedRoute, queryParams: { lang: this.lang?'vi':'jp' }});
     }
+  }
+//routerlink for Career-Oppotunity
+  changeCareer(item){
+    this.router.navigate(['/','co-hoi-nghe-nghiep'], {relativeTo: this._activatedRoute, queryParams: { lang: this.lang == 'vi' ?'vi':'jp', id :  item._id }});
+  }
+  //routerlink for Service
+  changeService(item){ 
+    this.router.navigate(['/','dich-vu-doi-tac'],{relativeTo: this._activatedRoute, queryParams: { lang: this.lang == 'vi' ?'vi':'jp', id :  item._id }});
   }
 
   // Handle when click on Change language icon
@@ -138,4 +204,5 @@ export class HeaderComponent implements OnInit {
       $('#bubble').removeClass('verticle-align');
     }
   }
+
 }

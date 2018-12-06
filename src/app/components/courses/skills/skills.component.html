@@ -15,13 +15,13 @@
     <li class="breadcrumb-item">
       <a routerLink="/trang-chu" [queryParams]="{lang: lang === 'jp' ? 'jp' : 'vi'}">{{LANGUAGE.HOME_PAGE}}</a>
     </li>
-    <li class="breadcrumb-item">
+    <li class="breadcrumb-item active">
       <a routerLink="/khoa-hoc" [queryParams]="{lang: lang === 'jp' ? 'jp' : 'vi'}">{{LANGUAGE.COURSE}}</a>
     </li>
     <li class="breadcrumb-item active" aria-current="page">{{LANGUAGE.SKILL_COURSE}}</li>
   </ol>
 </nav>
-<hr>
+
 <div class="row">
   <div class="col-md-4 col-lg-3 left-navigation">
     <ul class="nav nav-tabs d-none d-md-block">

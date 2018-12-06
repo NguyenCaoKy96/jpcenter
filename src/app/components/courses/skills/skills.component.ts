@@ -1,3 +1,4 @@
+
 import { Component, OnInit } from '@angular/core';
 import * as $ from 'jquery';
 import {Title} from '@angular/platform-browser';
@@ -36,7 +37,7 @@ export class SkillsComponent implements OnInit {
   homeImagesURL: { [key: number]: string } = [];
   serverURL: any;
   data: any;
-  lang: string ;
+  lang : string = 'vi' ;
   public LANGUAGE: any = LANG_VI;
 
   // Carousel config

@@ -72,19 +72,6 @@ ngx-carousel {
     }
 }
 
-/* .left-menu {
-    border: solid 1px #e5e5e5;
-    margin-bottom: 30em;
-}
-
-.nav {
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-}
-
-.col-md-8 {
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-} */
-
 #japancenter {
     font-size: 17px;
 }
@@ -157,11 +144,6 @@ a:hover {
     display: block;
     font-size: 15px;
 }
-/*.nav-tabs.nav-link {
-    border-top-left-radius: .25rem;
-    border-top-right-radius: .25rem;
-    border:none;
-}*/
 
 .left-navigation .nav-link {
     font-size: 18px;
@@ -243,16 +225,13 @@ pagination-controls {
     margin-left: -1px;
 }
 
-.card-body {
-   /* flex: 1 1 auto;*/
-   /* padding: 1rem !important;*/
-}
 
 /* Eventa */
 .read-more {
     color: #e11f26;
     font-size: 12px;
     font-weight: 600;
+    margin-left: 20px;
 }
 
 /* Letter */
@@ -356,10 +335,6 @@ th {
     min-width: 45px;
 }
 
-thead {
-    background-color: brown;
-    color: white;
-}
 
 @media only screen and (max-width: 767px) {
     #schedule {
@@ -409,3 +384,89 @@ thead {
         max-width: 940px !important;
     }
 }
+/* ======================================================== */
+:root {
+    --ck-highlight-marker-yellow: #fdfd77;
+    --ck-highlight-marker-green: #63f963;
+    --ck-highlight-marker-pink:#fc7999;
+    --ck-highlight-marker-blue: #72cdfd;
+    --ck-highlight-pen-red:#e91313;
+    --ck-highlight-pen-green: #180
+    }
+    .marker-yellow{background-color:var(--ck-highlight-marker-yellow)}
+    .marker-green{background-color:var(--ck-highlight-marker-green)}
+    .marker-pink{background-color:var(--ck-highlight-marker-pink)}
+    .marker-blue{background-color:var(--ck-highlight-marker-blue)}
+    .pen-red{color:var(--ck-highlight-pen-red)}
+    .pen-green,.pen-red{background-color:transparent}
+    .pen-green{color:var(--ck-highlight-pen-green)
+    }
+
+.image{
+    clear:both;
+    text-align:center;
+    margin:1em 0
+}
+.image img{
+    display:block;
+    margin:0 auto;
+    max-width:100%
+}
+
+
+:root{--ck-image-style-spacing:1.5em}
+.image-style-align-center,.image-style-align-left,.image-style-align-right,.image-style-side{
+    max-width:50%
+}
+.image-style-side{
+    float:right;
+    margin-left:var(--ck-image-style-spacing)
+}
+.image-style-align-left{
+    float:left;
+    margin-right:var(--ck-image-style-spacing)
+}
+.image-style-align-center{margin-left:auto;
+    margin-right:auto
+}
+.image-style-align-right{
+    float:right;
+    margin-left:var(--ck-image-style-spacing)
+}
+
+.course-content ol{
+    padding-left: 25px;
+}
+.course-content ol li{
+    display: list-item;
+    list-style: inherit;
+}
+.course-content ul{
+    padding-left: 30px;
+}
+.course-content ul li{
+    display: list-item;
+    list-style: inherit;
+}
+
+.table{
+    margin:1em auto;
+    display:table;
+    width: 100%;
+}
+.table table{
+    border-collapse:collapse;
+    border-spacing:0;
+    border:1px double #b3b3b3;
+}
+.table table td,.table table th{
+    min-width:2em;
+    padding:.4em;
+    /* border-color:#d9d9d9 */
+    border: 1px solid  #b3b3b3;
+}
+/*.table table th{
+    font-weight:700;
+    background:#fafafa;
+}
+*/

@@ -35,7 +35,7 @@ export class JlptComponent implements OnInit {
   homeImagesURL: { [key: number]: string } = [];
   serverURL: any;
   data: any;
-  lang: string;
+  lang : string = 'vi' ;
   public LANGUAGE: any = LANG_VI;
 
   // Carousel config
@@ -53,6 +53,10 @@ export class JlptComponent implements OnInit {
   jlptItemData;
   trimmedString;
   japantrimmedString;
+  jlptDataItem;
+  jlptContent;
+  jlptUrl;
+  jlptdata;
   EDUCATION_PROGRAM = 'Chương trình đào tạo';
 
   constructor(
@@ -71,9 +75,20 @@ export class JlptComponent implements OnInit {
           this.japantrimmedString = this.jlptData[i].JapaneseSkill.substr(0, 200);
         } 
       });
+
+     // get title jlpt
+      this.jlptUrl = this._getDataService.getjlptURL();
+      this.http.get(this.jlptUrl).subscribe(data =>{
+        this.jlptdata = data;
+        this.jlptDataItem = this.jlptdata.Name;
+        this.jlptContent = this.jlptdata.Japanese_Name ;
+        console.log(data);
+      });
+
     }
 
   ngOnInit() {
+     
      // Change language
      this._route.queryParams.subscribe(data => {
       if (data.lang === 'vi') {
@@ -108,12 +123,12 @@ export class JlptComponent implements OnInit {
 
   onmoveFn(data: NgxCarouselStore) { };
   
-  // onchangeCourse(id){
-  //   let jlptItemDataURL = this._getDataService.getCourseItemURL(id);
-  //   this.http.get(jlptItemDataURL).subscribe(data => {
-  //     this.jlptItemData = data;
-  //     console.log(this.jlptItemData);  
-  //   });
-  //   $('#left-item').hide();
-  //  }
+  onchangeCourse(id){
+    let jlptItemDataURL = this._getDataService.getCourseItemURL(id);
+    this.http.get(jlptItemDataURL).subscribe(data => {
+      this.jlptItemData = data;
+      console.log(this.jlptItemData);  
+    });
+    $('#left-item').hide();
+   }
 }

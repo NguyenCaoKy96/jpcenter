@@ -1,80 +1,4 @@
- <!-- <div class="custom-container">
-  <ngx-carousel [inputs]="carouselBanner" [moveToSlide]="1" (onMove)="onmoveFn($event)">
-    <ngx-item NgxCarouselItem class="bannerStyle" *ngFor="let item of homeImagesURL | slice:0:3" [ngStyle]="{'background-image': 'url(' + item + ')'}">
-    </ngx-item>
-    <button NgxCarouselPrev></button>
-    <button NgxCarouselNext></button>
-  </ngx-carousel>
-  <div class="banner">
-    <div class="banner-bottom"></div>
-    <h1 class="banner-title" *ngIf="lang === 'vi'"><b>Giới thiệu</b></h1>
-    <h1 class="banner-title" *ngIf="lang === 'jp'"><b>紹介</b></h1>
-  </div>
-</div>
-
-<nav aria-label="breadcrumb" *ngIf="lang === 'vi'">
-  <ol class="breadcrumb">
-    <li class="breadcrumb-item">
-      <a routerLink="/trang-chu">Trang chủ</a>
-    </li>
-    <li *ngFor="let breadcrumb of data">
-      <a [routerLink]="[breadcrumb.url, breadcrumb.params]">{{breadcrumb.label}}</a>
-    </li>
-
-    <li *ngIf="isLoading == false && lang === 'vi'" class="breadcrumb-item active" aria-current="page">{{introductionItemData.name}}</li>
-    <li *ngIf="isLoading == false && lang === 'jp'" class="breadcrumb-item active" aria-current="page">{{introductionItemData.japanses_name}}</li>
-  </ol>
-</nav>
-<nav aria-label="breadcrumb" *ngIf="lang === 'jp'">
-    <ol class="breadcrumb">
-      <li class="breadcrumb-item">
-        <a routerLink="/trang-chu">ホーム</a>
-      </li>
-      <li class="breadcrumb-item active">
-        <a routerLink="/gioi-thieu">紹介</a>
-      </li>
-      <li class="breadcrumb-item active" aria-current="page">日本センター</li>
-    </ol>
-</nav>
-
-  <div class="row left-navigation" *ngIf="lang === 'vi'">
-      <div class="col-md-4 col-lg-3 ">
-        <ul class="nav nav-tabs d-none d-md-block" *ngFor="let item of introductionsData1">
-          <li class="nav-item">
-            <a class="nav-link left-item" id="JCenter-tab"  [ngClass]="{'active': item.name == introductionItemData.name}" (click)="onChangeIntroduction(item.id, $event)">{{item.Name}}</a>
-          </li>
-        </ul>
-      </div>
-      <div class="col-md-8 col-lg-9">
-        <div class="tab-content" *ngIf="isLoading == false">
-          <div class="tab-pane active">
-            <h4 class="section-title">{{introductionsData1.name}}</h4>
-            <div class="course-content pt-3" [innerHTML]="introductionsData1">
-            </div>
-          </div>        
-        </div>
-      </div>
-  </div>
- -->
- <!--  <div class="row left-navigation" *ngIf="lang === 'jp'">
-      <div class="col-md-4 col-lg-3 ">
-        <ul class="nav nav-tabs d-none d-md-block" *ngFor="let item of introductionsData">
-          <li class="nav-item">
-            <a class="nav-link left-item" id="JCenter-tab" (click)="onChangeIntroduction(item.id, $event)">{{item.japanese_name}}</a>
-          </li>
-        </ul>
-      </div>
-      <div class="col-md-8 col-lg-9">
-        <div class="tab-content" *ngIf="isLoading == false">
-          <div class="tab-pane active">
-            <h4 class="section-title">{{introductionItemData.japanese_name}}</h4>
-            <div class="course-content pt-3">
-              {{introductionItemData.japanese_contents}}
-            </div>
-          </div>        
-        </div>
-      </div>
-  </div> -->
+ 
 <div class="custom-container">
   <ngx-carousel [inputs]="carouselBanner" [moveToSlide]="1" (onMove)="onmoveFn($event)">
       <ngx-item NgxCarouselItem class="bannerStyle"  *ngFor="let item of sliderImagesURL | slice:0:3" [ngStyle]="{'background-image': 'url(' + item + ')'}">
@@ -90,10 +14,16 @@
 <nav aria-label="breadcrumb">
   <ol class="breadcrumb">
     <li class="breadcrumb-item">
-      <a routerLink = "/trang-chu" [queryParams]="{lang: lang ? 'jp' : 'vi'}">{{LANGUAGE.HOME_PAGE}}</a>
+      <a routerLink="/trang-chu" [queryParams]="{lang: lang === 'vi' ? 'vi' : 'jp'}">{{LANGUAGE.HOME_PAGE}}</a>
     </li>
-    <li class="breadcrumb-item active">
-      <a routerLink = "/gioi-thieu" [queryParams]="{lang: lang ? 'jp' : 'vi'}">{{LANGUAGE.INTRODUCTION_PAGE}}</a>
+    <li class="breadcrumb-item">
+      <a routerLink="/trang-chu" [queryParams]="{lang: lang === 'vi' ? 'vi' : 'jp'}">{{LANGUAGE.INTRODUCTION_PAGE}}</a>
+    </li>
+    <li class="breadcrumb-item active" *ngIf="isVietnamese"  >
+      <a routerLink = "/gioi-thieu"> {{introductionsDataActive.Name}}</a>
+    </li>
+    <li class="breadcrumb-item active" *ngIf="!isVietnamese"  >
+      <a routerLink = "/gioi-thieu"> {{introductionsDataActive.Japanese_Name}}</a>
     </li>
   </ol>
 </nav>
@@ -101,28 +31,44 @@
 <div class="row" *ngIf="introductionsDataActive">
   <div class="col-md-4 col-lg-4 ">
     <ul class="nav nav-tabs d-none d-md-block">
-      <li class="nav-item">
-        <a class="nav-link left-item" id="JCenter-tab"  [ngClass]="{'active': item.Name == introductionsDataActive.Name}" (click)="onChangeIntroduction(item)" *ngFor="let item of menuLeftData; let i = index">{{item.Name}}</a>
+      <li class="nav-item" *ngIf="isVietnamese" >
+        <a class=" nav-link left-item" id="JCenter-tab"  [ngClass]="{'active': item.Name == introductionsDataActive.Name}" (click)="onChangeIntroduction(item)" *ngFor="let item of menuLeftData; let i = index">{{item.Name}}</a>
+        
       </li>
+      <li class="nav-item" *ngIf=" !isVietnamese">
+        <a class="nav-link left-item" id="JCenter-tab"  [ngClass]="{'active': item.Name == introductionsDataActive.Name}" (click)="onChangeIntroduction(item)" *ngFor="let item of menuLeftData; let i = index">{{item.Japanese_Name}}</a>
+      </li>
+      
     </ul>
   </div>
 
   <div class="col-md-8" *ngIf="introductionsDataActive.Slug != '/gioi-thieu/nhan-su-trung-tam'">
     <div class="tab-content">
       <div class="tab-pane active">
-        <h4 class="section-title">
+        <h4 class="section-title" *ngIf=" isVietnamese">
         {{introductionsDataActive.Name}}
         </h4>
-        <div class="course-content pt-3 a"  [innerHTML]="introductionsDataActive.contents.Content"></div>
+        <h4 class="section-title" *ngIf=" !isVietnamese">
+        {{introductionsDataActive.Japanese_Name}}
+        </h4>
+        <div   *ngIf=" isVietnamese" class="course-content pt-3 a"  [innerHTML]="introductionsDataActive.contents.Content"></div>
+        <div   *ngIf=" !isVietnamese" class="course-content pt-3 a"  [innerHTML]="introductionsDataActive.contents.Japanese_Content"></div>
       </div>
     </div>
   </div>
   <div class="col-md-8" *ngIf="introductionsDataActive.Slug == '/gioi-thieu/nhan-su-trung-tam'">
 
-    <div class="tab-content">
+    <div class="tab-content" *ngIf="isVietnamese">
       <div class="tab-pane active">
         <h4 class="section-title">
         {{introductionsDataActive.Name}}
+        </h4>
+      </div>
+    </div>
+   <div class="tab-content" *ngIf="!isVietnamese">
+      <div class="tab-pane active">
+        <h4 class="section-title">
+        {{introductionsDataActive.Japanese_Name}}
         </h4>
       </div>
     </div>
@@ -133,8 +79,10 @@
           <div class=" d-inline-block" *ngFor="let person of personnelData; let personIndex = index;">
              <div class="col-md-12 text-center person" (click)="onChangePerson(person, content)" *ngIf="personIndex == 0">
                 <img class="img-fluid" src="{{serverURL}}{{person.Image.url}}" alt="Personnel image">
-                <div class="personnel-name">{{person.Name}}</div>
-                <p class="position">{{person.Position}}</p>
+                <div class="personnel-name"  *ngIf="isVietnamese">{{person.Name}}</div>
+                 <div class="personnel-name"  *ngIf="!isVietnamese">{{person.Japanese_Name}}</div>
+                <p class="position" *ngIf="isVietnamese">{{person.Position}}</p>
+                <p class="position" *ngIf="!isVietnamese">{{person.Japanese_Position}}</p>
             </div>
           </div>
 
@@ -142,8 +90,10 @@
           <div class="d-inline-block" *ngFor="let person of personnelData; let personIndex = index;">
               <div class="col-md-12 text-center person" *ngIf="personIndex != 0" (click)="onChangePerson(person, content)">
                   <img class="img-fluid" src="{{serverURL}}{{person.Image.url}}" alt="Personnel image">
-                  <div class="personnel-name">{{person.Name}}</div>
-                  <p class="position">{{person.Position}}</p>
+                  <div class="personnel-name"  *ngIf="isVietnamese">{{person.Name}}</div>
+                   <div class="personnel-name"  *ngIf="!isVietnamese">{{person.Japanese_Name}}</div>
+                  <p class="position"  *ngIf="isVietnamese">{{person.Position}}</p>
+                  <p class="position"  *ngIf="!isVietnamese">{{person.Japanese_Position}}</p>
               </div>
           </div>
         </div>
@@ -158,12 +108,15 @@
             <img src="{{personDetail.imageUrl}}" alt="profile image">
         </div>
         <div class="personInfo">
-            <h4>{{personDetail.Name}}</h4>
-            <p *ngIf="personDetail.Position == 'Giám đốc'">{{personDetail.Position}}</p>
+            <h4 *ngIf="!isVietnamese">{{personDetail.Japanese_Name}}</h4>
+            <h4 *ngIf="isVietnamese">{{personDetail.Name}}</h4>
+            <p *ngIf="personDetail.Position == 'Giám đốc'&& isVietnamese">{{personDetail.Position}}</p>
+            <p *ngIf="personDetail.Position == 'Giám đốc' && !isVietnamese">{{personDetail.Japanese_Position}}</p>
         </div>
     </div>
     <div class="description">
-        <p [innerHTML]="personDetail.Information">
+        <p *ngIf="isVietnamese" [innerHTML]="personDetail.Information">
+          <p *ngIf="!isVietnamese" [innerHTML]="personDetail.Japanese_Information">
         </p>
     </div>
     <div class="text-center">

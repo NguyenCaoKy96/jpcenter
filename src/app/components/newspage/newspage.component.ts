@@ -86,9 +86,12 @@ export class NewspageComponent implements OnInit {
   ImageEvent;
 
   EventsFirst: any;
+  EventsSecond: any;
+  EventsThird: any;
   newHeaderData: any;
   imageHeaderData: string;
   newsPageItems:any[] = [];
+  public isVietnamese: boolean = true;
 
   constructor(
     private _titleService: Title,
@@ -101,9 +104,34 @@ export class NewspageComponent implements OnInit {
     // Change language
     this._route.queryParams.subscribe(data => {
       if (data.lang === 'vi') {
+         this.isVietnamese = true;
         this.LANGUAGE = LANG_VI;
       } else {
+         this.isVietnamese = false;
         this.LANGUAGE = LANG_JP;
+      }
+
+      if (data.idFirst !== undefined){
+        this.eventsURL = this._getDataService.getNewsURL();
+        this._http.get(this.eventsURL).subscribe(data =>{
+          this.eventsData = data;
+          for(var i = 0; i < this.eventsData.length; i++){
+            this.EventsFirst = this.eventsData[this.eventsData.length -1];
+          } 
+          $('#article').hide();
+          $('#new-article').show();
+          window.scrollTo(0, 0);      
+        });
+      }
+
+      if (data.id !== undefined){
+        let jlptItemDataURL = this._getDataService.getNewsItemURL(data.id);
+        this._http.get(jlptItemDataURL).subscribe(data => {
+          this.newItemData = data;
+          $('#FirstNews').hide();
+        });
+        window.scrollTo(0, 0);
+        
       }
     });
     //get data newspage for card
@@ -116,6 +144,7 @@ export class NewspageComponent implements OnInit {
         this.imageNew = this.IsNewsData[k].Thumbnail;
         this.arrImage[k] = this.serverURL + this.imageNew.url;     
       }
+
     });
 
     //First card
@@ -136,6 +165,7 @@ export class NewspageComponent implements OnInit {
       this.newItemData = data;
       console.log(this.newItemData);  
     });
+    window.scrollTo(0, 0);
     $('#FirstNews').hide();
    }
   //display first acticrle 
@@ -150,6 +180,7 @@ export class NewspageComponent implements OnInit {
     });
     $('#article').hide();
     $('#new-article').show();
+    window.scrollTo(0, 0);
   }
   ngOnInit() {
     // Pagin

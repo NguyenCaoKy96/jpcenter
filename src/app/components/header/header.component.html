@@ -48,7 +48,8 @@
     </div>
     <nav class="navbar  navbar-expand-lg navbar-light top-navbar" id="nav" data-toggle="sticky-onscroll">
       <div class="container">
-        <a [routerLink]="['/trang-chu']" [queryParams]="{lang: lang ? 'vi' : 'jp'}"> <img  id="logo-hide" src="./assets/images/qnu-logo.svg" width="60px" height="60px" alt="logo"></a>
+        <a [routerLink]="['/trang-chu']" [queryParams]="{lang: lang ? 'vi' : 'jp'}"> 
+          <img  id="logo-hide" src="./assets/images/qnu-logo.svg" width="60px" height="60px" alt="logo"></a>
           <div></div>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -58,14 +59,13 @@
             <li class="nav-item dropdown">
               <a id="home-page" class="nav-link" [routerLink]="['/trang-chu']" [queryParams]="{lang: lang ? 'vi' : 'jp'}">{{LANGUAGE.HOME_PAGE}}<span class="caret"></span></a>
             </li>
-            <li class="nav-item dropdown">
+            <li class="nav-item dropdown" >
               <a id="introduction-page" class="nav-link" [routerLink]="['/gioi-thieu']" [queryParams]="{lang: lang ? 'vi' : 'jp'}">{{LANGUAGE.INTRODUCTION_PAGE}}<span class="caret"></span></a>
-              <div class="dropdown-content">
-                <a class="dropdown-item" (click)="changeURL('introduction-page', LANGUAGE.URL_JAPAN_CENTER)">{{LANGUAGE.JAPAN_CENTER}}</a>
-                <a class="dropdown-item" (click)="changeURL('introduction-page', LANGUAGE.URL_QUY_NHON_UNIVERSITY)">{{LANGUAGE.QUY_NHON_UNIVERSITY}}</a>
-                <a class="dropdown-item" (click)="changeURL('introduction-page', LANGUAGE.URL_QUY_NHON_BINH_DINH)">{{LANGUAGE.QUY_NHON_BINH_DINH}}</a>
-                <a class="dropdown-item" (click)="changeURL('introduction-page', LANGUAGE.URL_HUMAN_RESOURCE)">{{LANGUAGE.HUMAN_RESOURCE}}</a>
-                <a class="dropdown-item" (click)="changeURL('introduction-page', LANGUAGE.URL_RESON_TO_CHOOESE_QNU_JAPAN_CENTER)">{{LANGUAGE.RESON_TO_CHOOESE_QNU_JAPAN_CENTER}}</a>
+              <div class="dropdown-content" *ngIf="isVietnamese">
+                <a  *ngFor="let item of menuLeftData" class="dropdown-item" [routerLink]="[item.Slug]" [queryParams]="{lang: lang ? 'vi' : 'jp'}">{{item.Name}}</a>
+              </div>
+              <div class="dropdown-content" *ngIf="!isVietnamese">
+                <a  *ngFor="let item of menuLeftData" class="dropdown-item" [routerLink]="[item.Slug]" [queryParams]="{lang: lang ? 'vi' : 'jp'}">{{item.Japanese_Name}}</a>
               </div>
             </li>
             <li class="nav-item dropdown">
@@ -90,28 +90,34 @@
             <li class="nav-item dropdown">
               <a id="services-and-partner-page" class="nav-link" [routerLink]="['/dich-vu-doi-tac']" [queryParams]="{lang: lang ? 'vi' : 'jp'}">{{LANGUAGE.SERVICE_AND_PARTNER}}<span class="caret"></span></a>
               <div class="dropdown-content">
-                <a class="dropdown-item" (click)="changeURL('services-and-partner-page', 'tu-van-du-hoc-va-viec-lam')">{{LANGUAGE.APPROAD_STUDY_AND_EMPLOYMENT}}</a>
-                <a class="dropdown-item" (click)="changeURL('services-and-partner-page', 'xuat-khau-lao-dong')">{{LANGUAGE.LABOR_EXPORT}}</a>
-                <a class="dropdown-item" (click)="changeURL('services-and-partner-page', 'du-an')">{{LANGUAGE.PROJECT}}</a>
-                <a class="dropdown-item" (click)="changeURL('services-and-partner-page', 'doi-tac')">{{LANGUAGE.PARTNER}}</a>
-                <a class="dropdown-item" (click)="changeURL('services-and-partner-page', 'doi-tac')">{{LANGUAGE.PARTNER}}</a>
-              </div>
+                  <li class="nav-item active" *ngIf="isVietnamese">
+                      <a class="dropdown-item" *ngFor="let item of itemData1" (click)="changeService(item)">{{item.Name}}</a>
+                 </li>
+                 <li class="nav-item active" *ngIf="!isVietnamese">
+                    <a class="dropdown-item" *ngFor="let item of itemData1" (click)="changeService(item)">{{item.Japanese_Name}}</a>
+                 </li>
+                  </div>
             </li>
             <li class="nav-item dropdown">
               <a id="career-oppotunity-page" class="nav-link" [routerLink]="['/co-hoi-nghe-nghiep']" [queryParams]="{lang: lang ? 'vi' : 'jp'}">{{LANGUAGE.CAREER_OPPOTUNITY}}<span class="caret"></span></a>
-              <div class="dropdown-content">
-                <a class="dropdown-item" (click)="changeURL('career-oppotunity-page', 'trung-tam-nhat-ban')">{{LANGUAGE.JAPAN_CENTER_OPPOTUNITY}}</a>
-                <a class="dropdown-item" (click)="changeURL('career-oppotunity-page', 'doanh-nghiep')">{{LANGUAGE.ENTERPRISE}}</a>
+              <div class="dropdown-content"  >
+                  <li class="nav-item active" *ngIf="isVietnamese">
+                      <a class="dropdown-item" *ngFor="let item of itemData" (click)="changeCareer(item)">{{item.Name}}</a>
+                  </li>
+                  <li class="nav-item active" *ngIf="!isVietnamese">
+                      <a class="dropdown-item" *ngFor="let item of itemData" (click)="changeCareer(item)">{{item.Japanese_Name}}</a>
+                  </li>
+              
               </div>
-            </li>
-            <li class="nav-item dropdown">
+            <!-- </li> -->
+            <!-- <li class="nav-item dropdown">
               <a id="career-oppotunity-page" class="nav-link" [routerLink]="['/hoc-vien']" [queryParams]="{lang: lang ? 'vi' : 'jp'}">{{LANGUAGE.STUDENT}}<span class="caret"></span></a>
               <div class="dropdown-content">
                 <a class="dropdown-item" (click)="changeURL('career-oppotunity-page', 'trung-tam-nhat-ban')">{{LANGUAGE.VOCATIONAL_GUIDANCE}}</a>
                 <a class="dropdown-item" (click)="changeURL('career-oppotunity-page', 'doanh-nghiep')">{{LANGUAGE.STUDENT_LIFE}}</a>
-                <a class="dropdown-item" (click)="changeURL('career-oppotunity-page', 'doanh-nghiep')">{{LANGUAGE.ALUMNI}}</a>
-              </div>
-            </li>
+                <a class="dropdown-item" (click)="changeURL('career-oppotunity-page', 'doanh-nghiep')">{{LANGUAGE.ALUMNI}}</a> -->
+              <!-- </div>
+            </li> -->
           </ul>
         </div>
       </div>

@@ -36,9 +36,9 @@ a:-webkit-any-link {
 .read-more {
     color: rgb(188, 0, 45);
 }
-strong {
+/* strong {
     color: rgb(188, 0, 45);
-}
+} */
 .thumnail > img {
     width: 10% !important;
 }
@@ -51,7 +51,14 @@ strong {
 .post-highlight{
     height: 325px;
     border: solid 1px #e5e5e5;
+    overflow: hidden;
+    margin-left: 15px;
 }
+#FirstNews{
+    margin-left: 15px;
+    margin-right: 0;
+}
+
 .breadcrumb-item a:hover {
    color:inherit;
 }
@@ -72,4 +79,13 @@ a:hover {
 }
 .mb-4{
     margin-left: 60px
+}
+.col-lg-7{
+    padding-left: 0;
+}
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    margin-right: -15px;
+    margin-left: 0;
 }

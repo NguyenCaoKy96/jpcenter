@@ -42,6 +42,11 @@ export class GetDataService {
 		return coursesURL;
 	}
 
+	// Content URL
+	// getContentsURL() : string{
+	// 	let contentsURL
+	// }
+
 	// Students URL
 	getStudentsURL(): string {
 		let studentsURL = this.serverURL + '/students';
@@ -153,10 +158,10 @@ export class GetDataService {
 		return ServicesURL;
 	}
 	// jlpt URL
-	getjlptURL() : string {
-		let jlptURL = this.serverURL + '/jlpts';
-		return jlptURL;
-	}
+	// getjlptURL() : string {
+	// 	let jlptURL = this.serverURL + '/jlpts';
+	// 	return jlptURL;
+	// }
 	// jlpt id
 	getjlptItemURL(id) : string {
 		let jlptItemURL = this.serverURL + '/jlpts/' + id;
@@ -270,6 +275,11 @@ export class GetDataService {
 	getschildrenURL(): string {
 		let childrenURL = this.serverURL + '/categories/5bffd838a929700548a09663';
 		return childrenURL;
+	}
+	// Get jlpt Course
+	getjlptURL(): string {
+		let JlptURl = this.serverURL + '/categories/5bffd822a929700548a09662';
+		return JlptURl;
 	}
 
 	// Get new Why QNU of home page

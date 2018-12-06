@@ -1,63 +1,9 @@
 
-/* 
-a, a:visited{
-    color: black;
-    text-decoration: none;
-}
-a:hover{
-    color:#dc3545;
-}
-.breadcrumb-item.active {
-    color: #6c757d;
-}
-
-.breadcrumb-item+.breadcrumb-item {
-    padding-left: .5rem;
-}
-
-li {
-    list-style: none;
-    display: block;
-}
-
-ol, li {
-    margin: 0;
-    padding: 0;
-}
-
-
-li {
-    display: list-item;
-    text-align: -webkit-match-parent;
-}
-
-.breadcrumb {
-    display: flex;
-    flex-wrap: wrap;
-    padding: .75rem 1rem;
-    margin-bottom: 1rem;
-    list-style: none;
-    border-radius: .25rem;
-    background: none !important;
-}
-.breadcrumb .breadcrumb-item + .breadcrumb-item::before {
-    content: ">";
-}
-.breadcrumb-item.active>a {
-    color: #7c232f;
-} 
-.pt-3{
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-    padding-left: 30px;
-    padding-bottom: 30px;
-    padding-right: 30px;
-}
-.active-link {
-    color: red;
-    font-weight: bold;
-} */
 .image img {
     width: 100% !important
+}
+.course-content p{
+    text-align: justify;
 }
 .nav-tabs .nav-link:hover,.nav-tabs .nav-link:active {
     border: none !important;

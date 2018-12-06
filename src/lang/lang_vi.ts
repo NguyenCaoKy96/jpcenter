@@ -34,6 +34,7 @@ const LANG_VI  = {
      APPROAD_STUDY_AND_EMPLOYMENT : 'Tư vấn du học và việc làm',
      LABOR_EXPORT : 'Xuất khẩu lao động',
      PROJECT : 'Dự án',
+     C0LLABORATIVE_PROJECT: 'Dự án hợp tác đầy tiềm năng',
      PARTNER : 'Đối tác',
      JAPAN_CENTER_OPPOTUNITY  : 'Trung tâm Nhật Bản',
      ENTERPRISE : 'Doanh nghiệp',

@@ -2,40 +2,40 @@
   <h3 class="text-center section-lg-title">{{LANGUAGE.NEWS_AND_EVENTS_UPPER_CASE}}</h3>
   <div class="row">
     <div class="col-md-4 card-wrap"> 
-      <a class="card" [routerLink]="[linkQnuJapan]">
-        <img class="card-img-top" [src]="[imageQnuJapan]">
+      <a class="card" (click) = "OnEventsFrist(eventsFrist)">
+        <img class="card-img-top" [src]="[ImageFrist]">
         <div class="card-body">
-          <p *ngIf="lang === 'vi'" [innerHTML]="newQnuName" style="font-size: 24px; color: black; font-weight: 600"></p>
-          <p *ngIf="lang === 'jp'" [innerHTML]="newQnuJapanName" style="font-size: 24px; color: black; font-weight: 600"></p>
+          <p *ngIf="lang === 'vi'" [innerHTML]="eventNameFrist" style="font-size: 24px; color: black; font-weight: 600"></p>
+          <p *ngIf="lang === 'jp'" [innerHTML]="eventJapanNameFrist" style="font-size: 24px; color: black; font-weight: 600"></p>
 
-          <p class="card-text"  *ngIf="lang === 'vi'" [innerHTML]="newQnuObject"><span class="read-more"  [innerHTML]="LANGUAGE.CONTINUE_READING"  > </span></p>  
-          <p class="card-text"  *ngIf="lang === 'jp'" [innerHTML]="newQnuJapanObject"> </p>
+          <p class="card-text"  *ngIf="lang === 'vi'" [innerHTML]="eventObjectFrist"><span class="read-more"  [innerHTML]="LANGUAGE.CONTINUE_READING"  > </span></p>  
+          <p class="card-text"  *ngIf="lang === 'jp'" [innerHTML]="eventJpObjectFrist"> </p>
           <span class="read-more"  [innerHTML]="LANGUAGE.CONTINUE_READING"></span>
         </div>
       </a>
     </div>
     <div class="col-md-4 card-wrap"> 
-      <a class="card" [routerLink]="[linkDollJapan]">
-        <img class="card-img-top" [src]="[imageDollJapan]">
+      <a class="card" (click) = "OnEventsSecond(eventsSecond)">
+        <img class="card-img-top" [src]="[ImageSecond]">
         <div class="card-body">
-            <p *ngIf="lang === 'vi'" [innerHTML]="newDollName" style="font-size: 24px; color: black; font-weight: 600"></p>
-            <p *ngIf="lang === 'jp'" [innerHTML]="newDollJapanName" style="font-size: 24px; color: black; font-weight: 600"></p>
+            <p *ngIf="lang === 'vi'" [innerHTML]="eventNameSecond" style="font-size: 24px; color: black; font-weight: 600"></p>
+            <p *ngIf="lang === 'jp'" [innerHTML]="eventJapanNameSecond" style="font-size: 24px; color: black; font-weight: 600"></p>
 
-          <p class="card-text"  *ngIf="lang === 'vi'" [innerHTML]="newDollObject"><span class="read-more"  [innerHTML]="LANGUAGE.CONTINUE_READING"  > </span></p>  
-          <p class="card-text"  *ngIf="lang === 'jp'" [innerHTML]="newDollJapanObject"> </p>
+          <p class="card-text"  *ngIf="lang === 'vi'" [innerHTML]="eventObjectSecond"><span class="read-more"  [innerHTML]="LANGUAGE.CONTINUE_READING"  > </span></p>  
+          <p class="card-text"  *ngIf="lang === 'jp'" [innerHTML]="eventJpObjectSecond"> </p>
           <span class="read-more"  [innerHTML]="LANGUAGE.CONTINUE_READING"></span>
         </div>
       </a>
     </div>
     <div class="col-md-4 card-wrap">
-      <a class="card" [routerLink]="[linkAmbassJapan]" >
-        <img class="card-img-top" [src]="[imageAmbassJapan]" alt="Card img cap">
+      <a class="card" (click) = "OnEventsSecond(eventsThird)">
+        <img class="card-img-top" [src]="[ImageThird]" alt="Card img cap">
         <div class="card-body">
-            <p *ngIf="lang === 'vi'" [innerHTML]="newAmbassName" style="font-size: 24px; color: black; font-weight: 600"></p>
-            <p *ngIf="lang === 'jp'" [innerHTML]="newAmbassJapanName" style="font-size: 24px; color: black; font-weight: 600"></p>
+            <p *ngIf="lang === 'vi'" [innerHTML]="eventNameThird" style="font-size: 24px; color: black; font-weight: 600"></p>
+            <p *ngIf="lang === 'jp'" [innerHTML]="eventJapanNameThrid" style="font-size: 24px; color: black; font-weight: 600"></p>
             
-          <p class="card-text"  *ngIf="lang === 'vi'" [innerHTML]="newAmbassObject"><span class="read-more"  [innerHTML]="LANGUAGE.CONTINUE_READING"  > </span></p>  
-          <p class="card-text"  *ngIf="lang === 'jp'" [innerHTML]="newAmbassJapanObject"> </p>
+          <p class="card-text"  *ngIf="lang === 'vi'" [innerHTML]="eventObjectThird"><span class="read-more"  [innerHTML]="LANGUAGE.CONTINUE_READING"  > </span></p>  
+          <p class="card-text"  *ngIf="lang === 'jp'" [innerHTML]="eventJpObjectThird"> </p>
           <span class="read-more"  [innerHTML]="LANGUAGE.CONTINUE_READING"></span>
         </div>
       </a>

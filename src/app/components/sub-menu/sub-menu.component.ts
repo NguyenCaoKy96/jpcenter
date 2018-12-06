@@ -23,7 +23,7 @@ export class SubMenuComponent implements OnInit {
 
   public LANGUAGE : any;
   public isVietnamese: boolean = true;
-  lang: string = "vi";
+  lang: string;
   public
   headerURL: string;
   headerData;
@@ -113,9 +113,11 @@ export class SubMenuComponent implements OnInit {
      // Change language
      this._route.queryParams.subscribe(data => {
       if (data.lang === 'vi') {
+        this.lang = 'vi';
         this.isVietnamese = true;
         this.LANGUAGE = LANG_VI;
       } else {
+        this.lang = 'jp';
         this.isVietnamese = false;
         this.LANGUAGE = LANG_JP;
       }
@@ -127,7 +129,7 @@ export class SubMenuComponent implements OnInit {
   }
 
   selectIntro(intro) {
-    this.router.navigate(['/','gioi-thieu'], {relativeTo: this._route, queryParams: { lang: this.lang == 'vi' ?'vi':'jp' }});
+    this.router.navigate(['/','gioi-thieu'], {relativeTo: this._route, queryParams: { lang: this.lang == 'vi' ?'vi':'jp'}});
     let tempContents; 
     let vietnameseSlug; 
       let itemContentURL = this.apiCategories + '/' + intro._id;
@@ -137,7 +139,6 @@ export class SubMenuComponent implements OnInit {
         this.itemContents.vietnameseName =  tempContents.contents.Name;
         vietnameseSlug = tempContents.contents.Name;
         this.slug.vietnameseSlug = vietnameseSlug.toLowerCase().replace(/ /g,'-').replace(/[^\w-]+/g,'');
-        console.log(this.slug.vietnameseSlug);
         window.location.hash = (this.slug.vietnameseSlug);
         this.itemContents.japaneseContents = tempContents.contents.Japanese_Content;
         this.itemContents.japaneseName =  tempContents.contents.Japanese_Name;
@@ -145,36 +146,10 @@ export class SubMenuComponent implements OnInit {
   }
 
   selectService(service) {
-    this.router.navigate(['/','dich-vu-doi-tac'], {relativeTo: this._route, queryParams: { lang: this.lang == 'vi' ?'vi':'jp' }});
-    let tempContents; 
-    let vietnameseSlug; 
-      let itemContentURL = this.apiCategories + '/' + service._id;
-      this.http.get(itemContentURL).subscribe(data => {
-        tempContents = data;
-        this.itemContents.vietnameseContents = tempContents.contents.Content;
-        this.itemContents.vietnameseName =  tempContents.contents.Name;
-        vietnameseSlug = tempContents.contents.Name;
-        this.slug.vietnameseSlug = vietnameseSlug.toLowerCase().replace(/ /g,'-').replace(/[^\w-]+/g,'');
-        window.location.hash = (this.slug.vietnameseSlug);
-        this.itemContents.japaneseContents = tempContents.contents.Japanese_Content;
-        this.itemContents.japaneseName =  tempContents.contents.Japanese_Name;
-      });
+    this.router.navigate(['/','dich-vu-doi-tac'], {relativeTo: this._route, queryParams: { lang: this.lang == 'vi' ?'vi':'jp', id :  service._id }});
   }
 
   selectCareer(career) {
-    this.router.navigate(['/','co-hoi-nghe-nghiep'], {relativeTo: this._route, queryParams: { lang: this.lang == 'vi' ?'vi':'jp' }});
-    let tempContents; 
-    let vietnameseSlug; 
-      let itemContentURL = this.apiCategories + '/' + career._id;
-      this.http.get(itemContentURL).subscribe(data => {
-        tempContents = data;
-        this.itemContents.vietnameseContents = tempContents.contents.Content;
-        this.itemContents.vietnameseName =  tempContents.contents.Name;
-        vietnameseSlug = tempContents.contents.Name;
-        this.slug.vietnameseSlug = vietnameseSlug.toLowerCase().replace(/ /g,'-').replace(/[^\w-]+/g,'');
-        window.location.hash = (this.slug.vietnameseSlug);
-        this.itemContents.japaneseContents = tempContents.contents.Japanese_Content;
-        this.itemContents.japaneseName =  tempContents.contents.Japanese_Name;
-      });
+    this.router.navigate(['/','co-hoi-nghe-nghiep'], {relativeTo: this._route, queryParams: { lang: this.lang == 'vi' ?'vi':'jp', id :  career._id }});
   }
 }

@@ -12,15 +12,15 @@
 </div>
 <nav aria-label="breadcrumb">
     <ol class="breadcrumb">
-      <li class="breadcrumb-item">
-        <a routerLink="/trang-chu" [queryParams]="{lang: lang === 'jp' ? 'jp' : 'vi'}">{{LANGUAGE.HOME_PAGE}}</a>
-      </li>
-      <li class="breadcrumb-item">
-        <a routerLink="/khoa-hoc" [queryParams]="{lang: lang === 'jp' ? 'jp' : 'vi'}">{{LANGUAGE.COURSE}}</a>
-      </li>
-      <li class="breadcrumb-item active" aria-current="page">{{LANGUAGE.CHILDREN_COURSE}}</li>
+        <li class="breadcrumb-item">
+            <a routerLink="/trang-chu" [queryParams]="{lang: lang === 'jp' ? 'jp' : 'vi'}">{{LANGUAGE.HOME_PAGE}}</a>
+        </li>
+        <li class="breadcrumb-item">
+            <a routerLink="/khoa-hoc" [queryParams]="{lang: lang === 'jp' ? 'jp' : 'vi'}">{{LANGUAGE.COURSE}}</a>
+        </li>
+        <li class="breadcrumb-item active" aria-current="page">{{LANGUAGE.JLPT_COURSE}}</li>
     </ol>
-  </nav>
+</nav>
 <div class="row">
     <div class="col-md-4 col-lg-3 left-navigation">
         <ul class="nav nav-tabs d-none d-md-block">
@@ -46,66 +46,75 @@
     </div>
     <!-- card VN -->
     <div id="left-item" class="col-md-8 col-lg-9">
+        <div class="col-md-8 col-lg-9" *ngIf="lang === 'vi'">
+            <h5 class="section-title"[innerHTML] = "jlptDataItem"></h5>
+        </div>
+        <div class="col-md-8 col-lg-9 " *ngIf="lang === 'jp'">
+            <h5 class="section-title" [innerHTML] = "jlptContent"></h5>
+        </div>
         <div class="row" *ngIf="lang === 'vi'">
             <div class="col-md-6" *ngFor="let item of jlptData">
                 <div class="card course-block card-wrap left-item" (click)="onchangeCourse(item.id)">
                     <h5 class="card-title" [innerHTML] = "item.Name"></h5>
-                    <p class="course-description" [innerHTML] = "trimmedString"></p>
-                    <span class="read-more">{{LANGUAGE.CONTINUE_READING }}</span>  
-                    <hr>                  
+                    <p class="course-description" [innerHTML]="trimmedString"></p>
+                    <span class="read-more">{{LANGUAGE.CONTINUE_READING }}</span>
+                    <hr>
                     <i aria-hidden="true" class="fa fa-clock-o mr-2"></i>
-                    <p class="content-sub"  [innerHTML] = "item.TotalTime"></p>
-                    <p class="content-sub"  [innerHTML] = "item.Time"></p>
+                    <p class="content-sub" [innerHTML]="item.TotalTime"></p>
+                    <p class="content-sub" [innerHTML]="item.Time"></p>
                 </div>
             </div>
         </div>
-        
-    <!-- card japanese -->
-    <div class="row" *ngIf="lang === 'jp'">
-        <div class="col-md-5" *ngFor="let item of jlptData">
-            <div class="card course-block card-wrap left-item" (click)="onchangeCourse(item.id)">
-                <h5 class="card-title" [innerHTML] = "item.JapaneseName"></h5>
-                <p class="course-description" [innerHTML] = "japantrimmedString"></p>
-                <span class="read-more">{{LANGUAGE.CONTINUE_READING }}</span>  
-                <hr>
-                <p class="content-sub"  [innerHTML] = "item.JapaneseTotalTime"></p>
-                <p class="content-sub"  [innerHTML] = "item.JapaneseTime"></p>
-                <p class="content-sub" [innerHTML] = "item.JapaneseFee"></p>
+        <!-- card japanese -->
+        <div class="row" *ngIf="lang === 'jp'">
+            <div class="col-md-5" *ngFor="let item of jlptData">
+                <div class="card course-block card-wrap left-item" (click)="onchangeCourse(item.id)">
+                    <h5 class="card-title" [innerHTML] = "item.JapaneseName"></h5>
+                    <p class="course-description" [innerHTML]="japantrimmedString"></p>
+                    <span class="read-more">{{LANGUAGE.CONTINUE_READING }}</span>
+                    <hr>
+                    <p class="content-sub" [innerHTML]="item.JapaneseTotalTime"></p>
+                    <p class="content-sub" [innerHTML]="item.JapaneseTime"></p>
+                    <p class="content-sub" [innerHTML]="item.JapaneseFee"></p>
+                </div>
             </div>
         </div>
     </div>
-    </div>
-        <!-- VN article -->
-    <div class="col-md-8 col-lg-9 " *ngIf="lang === 'vi' && jlptItemData !== undefined ">
-        <div class="tab-pane active" id="JLPT" role="tabpanel" aria-labelledby="JLPT-tab">
-            <h4 [innerHTML] = "jlptItemData.Name"></h4>
-            <p class="content-sub" [innerHTML] = "jlptItemData.Skill">
+
+    <!-- VN article -->
+    <div class="card col-md-8 col-lg-9 " *ngIf="lang === 'vi' && jlptItemData !== undefined ">
+
+        <div class=" tab-pane active" id="JLPT" role="tabpanel" aria-labelledby="JLPT-tab">
+            <h4 class="section-title" [innerHTML] = "jlptItemData.Name"></h4>
+            <p class="content-sub" [innerHTML]="jlptItemData.Skill">
             </p>
-            <p class="content-sub"  [innerHTML] = "jlptItemData.TotalTime">
+            <p class="content-sub" [innerHTML]="jlptItemData.TotalTime">
             </p>
-            <p class="content-sub"  [innerHTML] = "jlptItemData.Time">
+            <p class="content-sub" [innerHTML]="jlptItemData.Time">
             </p>
-            <p class="content-sub" [innerHTML] = "jlptItemData.Fee">
+            <p class="content-sub" [innerHTML]="jlptItemData.Fee">
             </p>
             <br>
-            <p class="content-sub" [innerHTML] = "jlptItemData.Location">
+            <p class="content-sub" [innerHTML]="jlptItemData.Location">
             </p>
         </div>
     </div>
-        <!-- japanese article -->
-    <div class="col-md-8 col-lg-9 " *ngIf="lang === 'jp' && jlptItemData !== undefined">
+
+   
+    <!-- japanese article -->
+    <div class="card col-md-8 col-lg-9 " *ngIf="lang === 'jp' && jlptItemData !== undefined">
         <div class="tab-pane active" id="JLPT" role="tabpanel" aria-labelledby="JLPT-tab">
-            <h4 [innerHTML] = "jlptItemData.JapaneseName"></h4>
-            <p class="content-sub" [innerHTML] = "jlptItemData.JapaneseSkill">
+            <h4 class="section-title" [innerHTML] = "jlptItemData.JapaneseName"></h4>
+            <p class="content-sub" [innerHTML]="jlptItemData.JapaneseSkill">
             </p>
-            <p class="content-sub"  [innerHTML] = "jlptItemData.JapaneseTotalTime">
+            <p class="content-sub" [innerHTML]="jlptItemData.JapaneseTotalTime">
             </p>
-            <p class="content-sub"  [innerHTML] = "jlptItemData.JapaneseTime">
+            <p class="content-sub" [innerHTML]="jlptItemData.JapaneseTime">
             </p>
-            <p class="content-sub" [innerHTML] = "jlptItemData.JapaneseFee">
+            <p class="content-sub" [innerHTML]="jlptItemData.JapaneseFee">
             </p>
             <br>
-            <p class="content-sub" [innerHTML] = "jlptItemData.JapaneseLocation">
+            <p class="content-sub" [innerHTML]="jlptItemData.JapaneseLocation">
             </p>
         </div>
     </div>

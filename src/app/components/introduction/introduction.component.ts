@@ -19,6 +19,7 @@ import { Router, ActivatedRoute, NavigationEnd } from '@angular/router';
 //import { $ } from 'protractor';
 import * as $ from 'jquery';
 import { default as LANG_VI } from '../../../lang/lang_vi';
+import { default as LANG_JP } from './../../../lang/lang_jp';
 import { NgbModalConfig, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 @Component({
   selector: 'app-introduction',
@@ -36,6 +37,7 @@ export class IntroductionComponent implements OnInit {
    sliderImages: any[] = [];
   sliderImagesURL: { [key: number]: string } = [];
   public LANGUAGE : any = LANG_VI;
+  public isVietnamese: boolean = true;
   TrungtamNhatBan = 'one';
   public page = 'one';
   carouselBanner: any;
@@ -44,6 +46,7 @@ export class IntroductionComponent implements OnInit {
   homeImagesURL: { [key: number]: string } = [];
   serverURL: any;
   data: any;
+  
  public introData: SafeHtml;
   // Carousel config
   index = 0;
@@ -62,43 +65,105 @@ export class IntroductionComponent implements OnInit {
   lang: string ;
   menuLeftData:any=[];
   introductionsDataActive:any;
+  introductionContent:SafeHtml;
   personnelData:any;
   personDetail:any;
   results=[];
+  id:string;
+  EventsFirst: any;
+
   constructor(
     private _titleService: Title,
     private http: HttpClient,
     private _getDataService: GetDataService,
     private _getImageService: GetImagesService,
-    private router:Router, 
+    private _router:Router, 
     private route: ActivatedRoute,
     config: NgbModalConfig,
     private modalService: NgbModal,
     private santized: DomSanitizer
   ) 
   {    
-    // get data introduction
-    let categoriesURL = this._getDataService.getCategoriesURL();
+    this.route.queryParams.subscribe(data => {
+      if (data.lang === 'vi') {
+        this.LANGUAGE = LANG_VI;
+      } else {
+        this.LANGUAGE = LANG_JP;
+      }
+    if (data.idFirst !== undefined) {
+      let categoriesURL = this._getDataService.getCategoriesURL();
     this.http.get(categoriesURL).subscribe(data => {
       this.categoriesData = data;
-      console.log('All categories',this.categoriesData);
+      for(var i=0; i<this.categoriesData.length; i++) {
+        if(this.categoriesData[i].Parent && (this.categoriesData[i].Parent.Name === this.LANGUAGE.INTRODUCTION_PAGE  || this.categoriesData[i].Parent.Japanese_Name === this.LANGUAGE.INTRODUCTION_PAGE )) { 
+            this.introductionsDataActive = this.categoriesData[this.categoriesData.length - 3];
+        }
+      }
+    });
+    }
+
+    if (data.idThrid !== undefined) {
+      let categoriesURL = this._getDataService.getCategoriesURL();
+    this.http.get(categoriesURL).subscribe(data => {
+      this.categoriesData = data;
+      for(var i=0; i<this.categoriesData.length; i++) {
+        if(this.categoriesData[i].Parent && (this.categoriesData[i].Parent.Name === this.LANGUAGE.INTRODUCTION_PAGE  || this.categoriesData[i].Parent.Japanese_Name === this.LANGUAGE.INTRODUCTION_PAGE )) { 
+            this.introductionsDataActive = this.categoriesData[0];
+        }
+      }
+    });
+    }    
+    });
+    
+    // get data introduction
+    
+    let categoriesURL = this._getDataService.getCategoriesURL();
+    
+    
+    this.http.get(categoriesURL).subscribe(data => {
+      this.categoriesData = data;
+      // console.log('All categories',this.categoriesData);
 
       for(var i=0; i<this.categoriesData.length; i++) {
         if(this.categoriesData[i].Parent && (this.categoriesData[i].Parent.Name === this.LANGUAGE.INTRODUCTION_PAGE  || this.categoriesData[i].Parent.Japanese_Name === this.LANGUAGE.INTRODUCTION_PAGE )) {
           
           if(this.introductionsDataActive == undefined){
             this.introductionsDataActive = this.categoriesData[i];
+            console.log('le',this.categoriesData[i]);
           }
+          
 
           this.menuLeftData.push(this.categoriesData[i]);
-          console.log('categories',this.categoriesData[i]);
+          //console.log('categories',this.categoriesData[i]);
         }
       }
-
+      this.introductionContent = this.santized.bypassSecurityTrustHtml(this.introductionsDataActive.contents.Content)
+      this.route.params.subscribe(params => {
+        this.id = params['id'];
+         for(var i=0; i<this.categoriesData.length; i++) {
+           if (this.id != undefined) {
+                  const slug = "/gioi-thieu/" + this.id;
+                  if(this.categoriesData[i].Slug === slug) {
+                    this.onChangeIntroduction(this.categoriesData[i]);
+              }
+            }
+         }
+      });
     });
   }  
 
   ngOnInit() {
+    // change language
+    this.route.queryParams.subscribe(data => {
+      if (data.lang === 'vi') {
+        this.isVietnamese = true;
+        this.LANGUAGE = LANG_VI;
+      } else {
+        this.isVietnamese = false;
+        this.LANGUAGE = LANG_JP;
+      }
+    });
+ 
     // Get language
     this.route.queryParams.subscribe(data => {
       this.lang = data.lang;
@@ -132,7 +197,7 @@ export class IntroductionComponent implements OnInit {
       for(var i=0; i<this.headerData.length; i++) {
         if(this.headerData[i].Slug === "/gioi-thieu") {
           this.introduction = this.headerData[i];
-          //console.log(this.headerData[i]);
+          // console.log(this.headerData[i]);
         }
       }
     });
@@ -158,7 +223,7 @@ export class IntroductionComponent implements OnInit {
     this.personDetail.imageUrl = this.serverURL + person.Image.url;
     //open popup here
     $("#btnModal").click();
-    console.log('person', this.personDetail);
+    //console.log('person', this.personDetail);
    
   }
 

@@ -10,3 +10,7 @@ button a:hover{
 td a:hover{
 	color: red;
 }
+thead {
+    background-color: brown;
+    color: white;
+}

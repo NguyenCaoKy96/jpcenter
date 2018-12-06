@@ -16,9 +16,11 @@
     <li class="breadcrumb-item">
       <a routerLink="/trang-chu" [queryParams]="{lang: lang ? 'jp' : 'vi'}">{{LANGUAGE.HOME_PAGE}}</a>
     </li>
-    <li class="breadcrumb-item active">
+    <li class="breadcrumb-item ">
       <a routerLink="/tin-tuc-su-kien" [queryParams]="{lang: lang ? 'jp' : 'vi'}">{{LANGUAGE.NEWS_AND_EVENTS}}</a>
     </li>
+    <li class="breadcrumb-item active" *ngIf = " EventsFirst != undefined"> {{EventsFirst.Name}}</li>
+    <li class="breadcrumb-item active" *ngIf = " newItemData != undefined"> {{newItemData.Name}}</li>
   </ol>
 </nav>
 <!-- article Events -->
@@ -29,20 +31,25 @@
                 <img [src]="[ImageEvent]" class="card-img-top" alt="news-main"/>
             </div>
             <div class="col-lg-5 card-body card-wrap">
-                <h5 class="card-title" [innerHTML]="eventsFirst.Name">
+                <h5 class="card-title" *ngIf=" isVietnamese" [innerHTML]="eventsFirst.Name">
+                </h5>
+                <h5 class="card-title" *ngIf=" !isVietnamese" [innerHTML]="eventsFirst.Japanese_Name">
                 </h5>
                 <p class="card-text">
-                    <span [innerHTML]="eventsFirst.Object"></span>
+                    <span *ngIf=" isVietnamese" [innerHTML]="eventsFirst.Object"></span>
+                    <span *ngIf=" !isVietnamese" [innerHTML]="eventsFirst.Object_Japanese"></span>
                     <span class="read-more"> {{LANGUAGE.CONTINUE_READING}}</span>
                 </p>
             </div> 
         </a>
     </div>
     <!-- display article for news body -->
-        <div id="articleNews" *ngIf = "OnChangeNews && newItemData != undifile" >
-            <p [innerHTML]="newItemData.Content">
-            </p>
-        </div>
+    <div class="course-content" id="articleNews" *ngIf = "OnChangeNews && newItemData != undefined" >
+        <p *ngIf=" isVietnamese" [innerHTML]="newItemData.Content">
+        </p>
+        <p *ngIf=" !isVietnamese" [innerHTML]="newItemData.Japanese_Content">
+        </p>
+    </div>
     <!-- display card news -->
     <div class="card-container pb-5">
         <div class="row">
@@ -50,11 +57,15 @@
             <a class="card" (click) = "OnChangeNews(item.id)">
                     <img class="card-img-top" [src]="[arrImage[itemIndex]]" alt="Card img cap">
                     <div class="card-body">
-                        <h5 class="card-title">
+                        <h5 *ngIf=" isVietnamese" class="card-title">
                             {{item.Name}}
                         </h5>
+                        <h5 *ngIf=" !isVietnamese" class="card-title">
+                            {{item.Japanese_Name}}
+                        </h5>
                         <p class="card-text">
-                            <span [innerHTML]="item.Object"></span>
+                            <span *ngIf=" isVietnamese" [innerHTML]="item.Object"></span>
+                            <span *ngIf=" !isVietnamese" [innerHTML]="item.Object_Japanese"></span>
                             <span class="read-more"> {{LANGUAGE.CONTINUE_READING}}</span>
                         </p>
                     </div>
@@ -64,10 +75,13 @@
     </div>
 </div>
     <!-- display First article -->
-    <div id="new-article" class="container"  *ngIf = " EventsFirst != undifile">
+    <div id="new-article" class="container"  *ngIf = " EventsFirst != undefined">
         <div class="course-content pt-4 mb-0">
-            <h4>{{EventsFirst.Name}}</h4>       
-            <p class="mb-4" [innerHTML]="EventsFirst.Content"></p>           
+            <h4 *ngIf=" isVietnamese">{{EventsFirst.Name}}</h4>  
+            <h4 *ngIf=" !isVietnamese">{{EventsFirst.Japanese_Name}}</h4>      
+            <p class="mb-4" *ngIf=" isVietnamese" [innerHTML]="EventsFirst.Content"></p> 
+            <p class="mb-4" *ngIf=" !isVietnamese" [innerHTML]="EventsFirst.Japanese_Content"></p>  
+                     
         </div>
     </div>
 

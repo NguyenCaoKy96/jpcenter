@@ -47,6 +47,8 @@ export class CareerOpportunitiesComponent implements OnInit {
   getjobsURL: string;
   jobs;
   jobsItem;
+  careerDataActive: any;
+  newsFour: any;
 
   // Carousel config
   index = 0;
@@ -80,6 +82,7 @@ export class CareerOpportunitiesComponent implements OnInit {
 
   ngOnInit() {
 
+    this.apiCategories = this._getDataService.getCategoriesURL();
     this._route.queryParams.subscribe(data => {
       if (data.lang === 'vi') {
         this.isVietnamese = true;
@@ -88,7 +91,39 @@ export class CareerOpportunitiesComponent implements OnInit {
         this.isVietnamese = false;
         this.LANGUAGE = LANG_JP;
       }
-    });
+ if (data.id !== undefined){
+        console.log(data.itemContent);
+        let tempContents;
+        let vietnameseSlug; 
+        let itemContentURL = this.apiCategories + '/' + data.id;
+        this.http.get(itemContentURL).subscribe(data => {
+          tempContents = data;
+          this.itemContents.vietnameseContents = tempContents.contents.Content;
+          this.itemContents.vietnameseName =  tempContents.contents.Name;
+          vietnameseSlug = tempContents.contents.Name;
+          this.slug.vietnameseSlug = vietnameseSlug.toLowerCase().replace(/ /g,'-').replace(/[^\w-]+/g,'');
+          window.location.hash = (this.slug.vietnameseSlug);
+          this.itemContents.japaneseContents = tempContents.contents.Japanese_Content;
+          this.itemContents.japaneseName =  tempContents.contents.Japanese_Name;
+        });
+      }
+
+      
+      if (data.idFour !== undefined){
+        let tempContents;
+        let vietnameseSlug; 
+        let itemContentURL = this.apiCategories + '/' + data.idFour;
+        this.http.get(itemContentURL).subscribe(data => {
+          tempContents = data;
+          this.itemContents.vietnameseContents = tempContents.contents.Content;
+          this.itemContents.vietnameseName =  tempContents.contents.Name;
+          vietnameseSlug = tempContents.contents.Name;
+          this.slug.vietnameseSlug = vietnameseSlug.toLowerCase().replace(/ /g,'-').replace(/[^\w-]+/g,'');
+          window.location.hash = (this.slug.vietnameseSlug);
+          this.itemContents.japaneseContents = tempContents.contents.Japanese_Content;
+          this.itemContents.japaneseName =  tempContents.contents.Japanese_Name;
+        });
+      }    });
 
     this._titleService.setTitle(this.LANGUAGE.CAREER_OPPOTUNITY);
 
@@ -99,7 +134,7 @@ export class CareerOpportunitiesComponent implements OnInit {
     this.data.then(res => {
       this.homeImages = res;
       for (var i = 0; i < this.homeImages.length; i++) {
-        if (this.homeImages[i].Name === "Cơ hội nghề nghiệp") {
+        if (this.homeImages[i].Name === "Dịch vụ và Đối tác") {
           for (var k = 0; k < this.homeImages[i].Image.length; k++) {
             this.homeImagesURL[k] = this.serverURL + this.homeImages[i].Image[k].url;
           }
@@ -110,10 +145,20 @@ export class CareerOpportunitiesComponent implements OnInit {
     this.apiCategories = this._getDataService.getCategoriesURL();
     this.http.get(this.apiCategories).subscribe(data => {
       this.item = data;
+      console.log(this.item);
       for (let i=0; i< this.item.length; i++) {
         if (this.item[i].Parent && (this.item[i].Parent.Name === this.LANGUAGE.CAREER_OPPOTUNITY || this.item[i].Parent.Japanese_Name === this.LANGUAGE.CAREER_OPPOTUNITY)) {
           this.itemData.push(this.item[i]);
+          //console.log(this.itemData);
+          //console.log(this.item[i].Name);
+
         }
+      }
+      if (this.itemData !== undefined){
+        this.itemContents.japaneseContents = this.itemData[0].contents.Japanese_Content;
+        this.itemContents.japaneseName =  this.itemData[0].contents.Japanese_Name;
+        this.itemContents.vietnameseContents = this.itemData[0].contents.Content;
+        this.itemContents.vietnameseName =  this.itemData[0].contents.Name;
       }
     });
   }
@@ -131,21 +176,18 @@ export class CareerOpportunitiesComponent implements OnInit {
     }
   }
 
-  selectItem(item) {
+  selectItem(id) {
     let tempContents;
     let vietnameseSlug; 
-      let itemContentURL = this.apiCategories + '/' + item._id;
+      let itemContentURL = this.apiCategories + '/' + id;
       this.http.get(itemContentURL).subscribe(data => {
         tempContents = data;
         this.itemContents.vietnameseContents = tempContents.contents.Content;
-        //console.log(this.itemContents.vietnameseContents);
         this.itemContents.vietnameseName =  tempContents.contents.Name;
-        //console.log(this.itemContents.vietnameseName);
         vietnameseSlug = tempContents.contents.Name;
         this.slug.vietnameseSlug = vietnameseSlug.toLowerCase().replace(/ /g,'-').replace(/[^\w-]+/g,'');
         window.location.hash = (this.slug.vietnameseSlug);
         this.itemContents.japaneseContents = tempContents.contents.Japanese_Content;
-        //console.log(this.itemContents.japaneseContents);
         this.itemContents.japaneseName =  tempContents.contents.Japanese_Name;
       });
   }
