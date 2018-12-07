@@ -60,8 +60,6 @@ export class CalendarComponent implements OnInit {
     ) { } 
 
   ngOnInit() {
-       // Title 
-        // this._titleService.setTitle('Học vụ');
       
          // Change language
      this._route.queryParams.subscribe(data => {

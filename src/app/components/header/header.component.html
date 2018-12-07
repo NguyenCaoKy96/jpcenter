@@ -1,12 +1,12 @@
 <header>
   <div class="container" id="main-menu">
-    <a [routerLink]="['/trang-chu']" [queryParams]="{lang: lang ? 'vi' : 'jp'}"><img class="logo-main" src="./assets/images/qnu-logo.svg" width="60px" height="60px" alt="Trung tâm Nhật ngữ Đại học Quy Nhơn"></a>
+    <a [routerLink]="['/trang-chu']" [queryParams]="{lang: lang === 'jp' ? 'jp' : 'vi'}"><img class="logo-main" src="./assets/images/qnu-logo.svg" width="60px" height="60px" alt="Trung tâm Nhật ngữ Đại học Quy Nhơn"></a>
     <div class="name-center">
       <p class="name" >
-        <a [routerLink]="['/trang-chu']" [queryParams]="{lang: lang ? 'vi' : 'jp'}">{{LANGUAGE.QNU_NAME}}</a>
+        <a [routerLink]="['/trang-chu']" [queryParams]="{lang: lang === 'jp' ? 'jp' : 'vi'}">{{LANGUAGE.QNU_NAME}}</a>
       </p>
       <p class="sub-name">
-        <a [routerLink]="['/trang-chu']" [queryParams]="{lang: lang ? 'vi' : 'jp'}">{{LANGUAGE.JAPAN_CENTER_NAME}}</a>
+        <a [routerLink]="['/trang-chu']" [queryParams]="{lang: lang === 'jp' ? 'jp' : 'vi'}">{{LANGUAGE.JAPAN_CENTER_NAME}}</a>
       </p>
     </div>
     <div class="container" style="position: relative;">
@@ -48,7 +48,7 @@
     </div>
     <nav class="navbar  navbar-expand-lg navbar-light top-navbar" id="nav" data-toggle="sticky-onscroll">
       <div class="container">
-        <a [routerLink]="['/trang-chu']" [queryParams]="{lang: lang ? 'vi' : 'jp'}"> 
+        <a [routerLink]="['/trang-chu']" [queryParams]="{lang: lang === 'jp' ? 'jp' : 'vi'}"> 
           <img  id="logo-hide" src="./assets/images/qnu-logo.svg" width="60px" height="60px" alt="logo"></a>
           <div></div>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -57,41 +57,41 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav">
             <li class="nav-item dropdown">
-              <a id="home-page" class="nav-link" [routerLink]="['/trang-chu']" [queryParams]="{lang: lang ? 'vi' : 'jp'}">{{LANGUAGE.HOME_PAGE}}<span class="caret"></span></a>
+              <a id="home-page" class="nav-link" [routerLink]="['/trang-chu']" [queryParams]="{lang: lang === 'jp' ? 'jp' : 'vi'}">{{LANGUAGE.HOME_PAGE}}<span class="caret"></span></a>
             </li>
             <li class="nav-item dropdown" >
-              <a id="introduction-page" class="nav-link" [routerLink]="['/gioi-thieu']" [queryParams]="{lang: lang ? 'vi' : 'jp'}">{{LANGUAGE.INTRODUCTION_PAGE}}<span class="caret"></span></a>
+              <a id="introduction-page" class="nav-link" [routerLink]="['/gioi-thieu']" [queryParams]="{lang: lang === 'jp' ? 'jp' : 'vi'}">{{LANGUAGE.INTRODUCTION_PAGE}}<span class="caret"></span></a>
               <div class="dropdown-content" *ngIf="isVietnamese">
-                <a  *ngFor="let item of menuLeftData" class="dropdown-item" [routerLink]="[item.Slug]" [queryParams]="{lang: lang ? 'vi' : 'jp'}">{{item.Name}}</a>
+                <a  *ngFor="let item of menuLeftData" class="dropdown-item" [routerLink]="[item.Slug]" [queryParams]="{lang: lang === 'jp' ? 'jp' : 'vi'}">{{item.Name}}</a>
               </div>
               <div class="dropdown-content" *ngIf="!isVietnamese">
-                <a  *ngFor="let item of menuLeftData" class="dropdown-item" [routerLink]="[item.Slug]" [queryParams]="{lang: lang ? 'vi' : 'jp'}">{{item.Japanese_Name}}</a>
+                <a  *ngFor="let item of menuLeftData" class="dropdown-item" [routerLink]="[item.Slug]" [queryParams]="{lang: lang === 'jp' ? 'jp' : 'vi'}">{{item.Japanese_Name}}</a>
               </div>
             </li>
             <li class="nav-item dropdown">
-              <a id="academic-page" class="nav-link" [routerLink]="['/hoc-vu']" [queryParams]="{lang: lang ? 'vi' : 'jp'}">{{LANGUAGE.ACADEMIC}}<span class="caret"></span></a>
+              <a id="academic-page" class="nav-link" [routerLink]="['/hoc-vu']" [queryParams]="{lang: lang === 'jp' ? 'jp' : 'vi'}">{{LANGUAGE.ACADEMIC}}<span class="caret"></span></a>
               <div class="dropdown-content">
-                <a class="dropdown-item" [routerLink]="['/hoc-vu/lich-hoc']" [queryParams]="{lang: lang ? 'vi' : 'jp'}">{{LANGUAGE.SCHEDULE}}</a>
-                <a class="dropdown-item" [routerLink]="['/hoc-vu/lich-thi']" [queryParams]="{lang: lang ? 'vi' : 'jp'}">{{LANGUAGE.EXAM_SCHEDULE}}</a>
-                <a class="dropdown-item" [routerLink]="['/hoc-vu/diem-thi']" [queryParams]="{lang: lang ? 'vi' : 'jp'}">{{LANGUAGE.MARK}}</a>
+                <a class="dropdown-item" [routerLink]="['/hoc-vu/lich-hoc']" [queryParams]="{lang: lang === 'jp' ? 'jp' : 'vi'}">{{LANGUAGE.SCHEDULE}}</a>
+                <a class="dropdown-item" [routerLink]="['/hoc-vu/lich-thi']" [queryParams]="{lang: lang === 'jp' ? 'jp' : 'vi'}">{{LANGUAGE.EXAM_SCHEDULE}}</a>
+                <a class="dropdown-item" [routerLink]="['/hoc-vu/diem-thi']" [queryParams]="{lang: lang === 'jp' ? 'jp' : 'vi'}">{{LANGUAGE.MARK}}</a>
               </div>
             </li>
             <li class="nav-item dropdown">
-              <a id="course-page" class="nav-link" [routerLink]="['/khoa-hoc']" [queryParams]="{lang: lang ? 'vi' : 'jp'}">{{LANGUAGE.COURSE}}<span class="caret"></span></a>
+              <a id="course-page" class="nav-link" [routerLink]="['/khoa-hoc']" [queryParams]="{lang: lang === 'jp' ? 'jp' : 'vi'}">{{LANGUAGE.COURSE}}<span class="caret"></span></a>
               <div class="dropdown-content">
-                <a class="dropdown-item" [routerLink]="['/khoa-hoc/cac-khoa-tieng-nhat-JLPT']" [queryParams]="{lang: lang ? 'vi' : 'jp'}">{{LANGUAGE.JLPT_COURSE}}</a>
-                <a class="dropdown-item" [routerLink]="['/khoa-hoc/tieng-nhat-cho-thieu-nhi']" [queryParams]="{lang: lang ? 'vi' : 'jp'}">{{LANGUAGE.CHILDREN_COURSE}}</a>
-                <a class="dropdown-item" [routerLink]="['/khoa-hoc/cac-khoa-ky-nang-mem']" [queryParams]="{lang: lang ? 'vi' : 'jp'}">{{LANGUAGE.SKILL_COURSE}}</a>
+                <a class="dropdown-item" [routerLink]="['/khoa-hoc/cac-khoa-tieng-nhat-JLPT']" [queryParams]="{lang: lang === 'jp' ? 'jp' : 'vi'}">{{LANGUAGE.JLPT_COURSE}}</a>
+                <a class="dropdown-item" [routerLink]="['/khoa-hoc/tieng-nhat-cho-thieu-nhi']" [queryParams]="{lang: lang === 'jp' ? 'jp' : 'vi'}">{{LANGUAGE.CHILDREN_COURSE}}</a>
+                <a class="dropdown-item" [routerLink]="['/khoa-hoc/cac-khoa-ky-nang-mem']" [queryParams]="{lang: lang === 'jp' ? 'jp' : 'vi'}">{{LANGUAGE.SKILL_COURSE}}</a>
               </div>
             </li>
             <li class="nav-item dropdown">
-              <a id="news-and-events" class="nav-link" [routerLink]="['/tin-tuc-su-kien']" [queryParams]="{lang: lang ? 'vi' : 'jp'}">{{LANGUAGE.NEWS_AND_EVENTS}}<span class="caret"></span></a>
+              <a id="news-and-events" class="nav-link" [routerLink]="['/tin-tuc-su-kien']" [queryParams]="{lang: lang === 'jp' ? 'jp' : 'vi'}">{{LANGUAGE.NEWS_AND_EVENTS}}<span class="caret"></span></a>
             </li>
             <li class="nav-item dropdown">
-              <a id="services-and-partner-page" class="nav-link" [routerLink]="['/dich-vu-doi-tac']" [queryParams]="{lang: lang ? 'vi' : 'jp'}">{{LANGUAGE.SERVICE_AND_PARTNER}}<span class="caret"></span></a>
+              <a id="services-and-partner-page" class="nav-link" [routerLink]="['/dich-vu-doi-tac']" [queryParams]="{lang: lang === 'jp' ? 'jp' : 'vi'}">{{LANGUAGE.SERVICE_AND_PARTNER}}<span class="caret"></span></a>
               <div class="dropdown-content">
                   <li class="nav-item active" *ngIf="isVietnamese">
-                      <a class="dropdown-item" *ngFor="let item of itemData1" (click)="changeService(item)">{{item.Name}}</a>
+                    <a class="dropdown-item" *ngFor="let item of itemData1" (click)="changeService(item)">{{item.Name}}</a>
                  </li>
                  <li class="nav-item active" *ngIf="!isVietnamese">
                     <a class="dropdown-item" *ngFor="let item of itemData1" (click)="changeService(item)">{{item.Japanese_Name}}</a>
@@ -99,7 +99,7 @@
                   </div>
             </li>
             <li class="nav-item dropdown">
-              <a id="career-oppotunity-page" class="nav-link" [routerLink]="['/co-hoi-nghe-nghiep']" [queryParams]="{lang: lang ? 'vi' : 'jp'}">{{LANGUAGE.CAREER_OPPOTUNITY}}<span class="caret"></span></a>
+              <a id="career-oppotunity-page" class="nav-link" [routerLink]="['/co-hoi-nghe-nghiep']" [queryParams]="{lang: lang === 'jp' ? 'jp' : 'vi'}">{{LANGUAGE.CAREER_OPPOTUNITY}}<span class="caret"></span></a>
               <div class="dropdown-content"  >
                   <li class="nav-item active" *ngIf="isVietnamese">
                       <a class="dropdown-item" *ngFor="let item of itemData" (click)="changeCareer(item)">{{item.Name}}</a>
@@ -107,20 +107,10 @@
                   <li class="nav-item active" *ngIf="!isVietnamese">
                       <a class="dropdown-item" *ngFor="let item of itemData" (click)="changeCareer(item)">{{item.Japanese_Name}}</a>
                   </li>
-              
               </div>
-            <!-- </li> -->
-            <!-- <li class="nav-item dropdown">
-              <a id="career-oppotunity-page" class="nav-link" [routerLink]="['/hoc-vien']" [queryParams]="{lang: lang ? 'vi' : 'jp'}">{{LANGUAGE.STUDENT}}<span class="caret"></span></a>
-              <div class="dropdown-content">
-                <a class="dropdown-item" (click)="changeURL('career-oppotunity-page', 'trung-tam-nhat-ban')">{{LANGUAGE.VOCATIONAL_GUIDANCE}}</a>
-                <a class="dropdown-item" (click)="changeURL('career-oppotunity-page', 'doanh-nghiep')">{{LANGUAGE.STUDENT_LIFE}}</a>
-                <a class="dropdown-item" (click)="changeURL('career-oppotunity-page', 'doanh-nghiep')">{{LANGUAGE.ALUMNI}}</a> -->
-              <!-- </div>
-            </li> -->
           </ul>
         </div>
       </div>
     </nav>
-    <div cdkDrag id="bubble" class="verticle-align" routerLink='/dang-ky-hoc' [queryParams]="{lang: lang ? 'vi' : 'jp'}">{{LANGUAGE.SIGN_UP}}</div>
+    <div cdkDrag id="bubble" class="verticle-align" routerLink='/dang-ky-hoc' [queryParams]="{lang: lang === 'jp' ? 'jp' : 'vi'}">{{LANGUAGE.SIGN_UP}}</div>
 </header>

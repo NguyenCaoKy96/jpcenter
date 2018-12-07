@@ -11,9 +11,20 @@ img{
     color: red !important;
 }
 .nav-link.active {
-    color: #495057 !important;
+    color: #495057;
 }
 .nav-link.active:hover {
     color: #000000 !important;
     font-weight: 700 !important;
+}
+.breadcrumb-item a:hover {
+    color: red !important;
+    text-decoration: none;
+}
+.breadcrumb-item.active{
+    cursor:text !important;
+    color:#6c757d !important;
+}
+.breadcrumb-item.active a {
+    color: #6c757d !important;;
 }

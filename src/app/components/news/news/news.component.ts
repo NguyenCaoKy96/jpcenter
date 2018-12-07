@@ -122,19 +122,15 @@ export class NewsComponent implements OnInit {
     });
   }
 
-  OnNewsFrist(newsFirst) {
-    this.router.navigate(['/','gioi-thieu'], {relativeTo: this._route, queryParams: { lang: this.lang == 'vi' ?'vi':'jp', idFirst: newsFirst._id}});
+  OnNewsFrist(index) {
+    this.router.navigate(['/','gioi-thieu'], {relativeTo: this._route, queryParams: { lang: this.lang == 'vi' ?'vi':'jp', id: index}});
   }
 
   OnNewsSecond(newsSecond) {
-    this.router.navigate(['/','dich-vu-doi-tac'], {relativeTo: this._route, queryParams: { lang: this.lang == 'vi' ?'vi':'jp', idSecond: newsSecond._id}});
-  }
-
-  OnNewsThrid(newsThrid) {
-    this.router.navigate(['/','gioi-thieu'], {relativeTo: this._route, queryParams: { lang: this.lang == 'vi' ?'vi':'jp', idThrid: newsThrid._id}});
+    this.router.navigate(['/','dich-vu-doi-tac'], {relativeTo: this._route, queryParams: { lang: this.lang == 'vi' ?'vi':'jp', id: newsSecond._id}});
   }
 
   OnNewsFour(newsFour) {
-    this.router.navigate(['/','co-hoi-nghe-nghiep'], {relativeTo: this._route, queryParams: { lang: this.lang == 'vi' ?'vi':'jp', idFour: newsFour._id}});
+    this.router.navigate(['/','co-hoi-nghe-nghiep'], {relativeTo: this._route, queryParams: { lang: this.lang == 'vi' ?'vi':'jp', id: newsFour._id}});
   }
 }

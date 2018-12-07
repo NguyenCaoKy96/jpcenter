@@ -1,10 +1,12 @@
 import { Component, OnInit,ViewEncapsulation } from '@angular/core';
 import {DomSanitizer, SafeHtml} from '@angular/platform-browser';
 import { Title } from '@angular/platform-browser';
+
 import * as $ from 'jquery';
 
+ 
 import { HttpClient } from '@angular/common/http';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 // Service
 import { GetDataService } from './../../services/get-data/get-data.service';
@@ -71,11 +73,15 @@ export class NewspageComponent implements OnInit {
   newData;
   NewsData;
   IsNewsData;
+  CkNewsData : SafeHtml;
+  JapanCkNewsData : SafeHtml;
   SubFirstData;
   imageNew;
   eventsURL;
   eventsData;
   eventsFirst = [];
+  CkeventsFirst:SafeHtml = [];
+  JapanCkeventsFirst:SafeHtml = [];
   imageEvent;
   arrImage:any[] = [];
   newArrImage: any[]= [];
@@ -92,6 +98,9 @@ export class NewspageComponent implements OnInit {
   imageHeaderData: string;
   newsPageItems:any[] = [];
   public isVietnamese: boolean = true;
+  lang: string;
+
+ eventName;
 
   constructor(
     private _titleService: Title,
@@ -99,18 +108,20 @@ export class NewspageComponent implements OnInit {
     private _getDataService: GetDataService,
     private _getImageService: GetImagesService,
     private _route: ActivatedRoute,
-    private santized: DomSanitizer
+    private santized: DomSanitizer,
+    private router : Router
   ) { 
     // Change language
     this._route.queryParams.subscribe(data => {
       if (data.lang === 'vi') {
+        this.lang ='vi';
          this.isVietnamese = true;
         this.LANGUAGE = LANG_VI;
       } else {
+        this.lang ='jp';
          this.isVietnamese = false;
         this.LANGUAGE = LANG_JP;
       }
-
       if (data.idFirst !== undefined){
         this.eventsURL = this._getDataService.getNewsURL();
         this._http.get(this.eventsURL).subscribe(data =>{
@@ -120,8 +131,9 @@ export class NewspageComponent implements OnInit {
           } 
           $('#article').hide();
           $('#new-article').show();
-          window.scrollTo(0, 0);      
+          window.scrollTo(0, 0);        
         });
+
       }
 
       if (data.id !== undefined){
@@ -138,13 +150,12 @@ export class NewspageComponent implements OnInit {
     this.newURL = this._getDataService.getNewsURL();
     this._http.get(this.newURL).subscribe(data =>{
       this.newData = data;
-      this.NewsData = this.newData.slice().reverse()
-      this.IsNewsData = this.NewsData.slice(1, this.NewsData.length) 
+      this.NewsData = this.newData.slice().reverse();
+      this.IsNewsData = this.NewsData.slice(1, this.NewsData.length);
       for(var k = 0; k < this.IsNewsData.length; k++){
         this.imageNew = this.IsNewsData[k].Thumbnail;
         this.arrImage[k] = this.serverURL + this.imageNew.url;     
       }
-
     });
 
     //First card
@@ -159,11 +170,13 @@ export class NewspageComponent implements OnInit {
 
    }
    // display acticrle news
-   OnChangeNews(id){
-    let jlptItemDataURL = this._getDataService.getNewsItemURL(id);
+   OnChangeNews(item){
+    let jlptItemDataURL = this._getDataService.getNewsItemURL(item._id);
     this._http.get(jlptItemDataURL).subscribe(data => {
       this.newItemData = data;
-      console.log(this.newItemData);  
+      this.CkNewsData = this.santized.bypassSecurityTrustHtml(this.newItemData.Content);
+      this.JapanCkNewsData = this.santized.bypassSecurityTrustHtml(this.newItemData.Japanese_Content);
+      this.router.navigate(['/','tin-tuc-su-kien'], {relativeTo: this._route, queryParams: { lang: this.lang == 'vi' ?'vi':'jp', name: item.Name}});
     });
     window.scrollTo(0, 0);
     $('#FirstNews').hide();
@@ -174,8 +187,9 @@ export class NewspageComponent implements OnInit {
     this._http.get(this.eventsURL).subscribe(data =>{
       this.eventsData = data;
       for(var i = 0; i < this.eventsData.length; i++){
-      this.EventsFirst = this.eventsData[this.eventsData.length -1];
-      //this.imageEvent = this.serverURL + this.evnetsData[0].Thumbnail.url;     
+      this.EventsFirst = this.eventsData[this.eventsData.length -1]; 
+      this.CkeventsFirst = this.santized.bypassSecurityTrustHtml(this.EventsFirst.Content);  
+      this.JapanCkeventsFirst = this.santized.bypassSecurityTrustHtml(this.EventsFirst.Japanese_Content);
       }       
     });
     $('#article').hide();
@@ -184,9 +198,10 @@ export class NewspageComponent implements OnInit {
   }
   ngOnInit() {
     // Pagin
-    for (let i = 1; i <= 100; i++) {
+      for (let i = 1; i <= 100; i++) {
       this.collection.push(`item ${i}`);
-    }
+    }     
+   
 
     this._titleService.setTitle(this.LANGUAGE.NEWS_AND_EVENTS);
 
@@ -197,48 +212,18 @@ export class NewspageComponent implements OnInit {
     this.data.then(res => {
       this.homeImages = res;
       for (var i = 0; i < this.homeImages.length; i++) {
-        if (this.homeImages[i].Name === this.LANGUAGE.NEWS_AND_EVENTS) {
+        if (this.homeImages[i].Name === "Tin tức và Sự kiện") {
           for (var k = 0; k < this.homeImages[i].Image.length; k++) {
             this.homeImagesURL[k] = this.serverURL + this.homeImages[i].Image[k].url;
           }
         }
-      }
+      }     
     });
-
-    //this.getNewestArticle();
-    
+   
   }
+
+
 
   onmoveFn(data: NgxCarouselStore) { };
 
-  // Get newest article
-  // getNewestArticle() {
-  //   var tempArticle: any;
-  //   var tempNewestArticleIndex: number;
-  //   var longContent: string;
-  //   var maxShortContentLength: number = 200;
-  //   var isPublished: boolean = false;
-
-  //   this.newsURL = this._getDataService.getNewsURL();
-  //   this._http.get(this.newsURL).subscribe(data => {
-  //     tempArticle = data;
-  //     this.newestArticle = tempArticle[tempArticle.length - 1];
-  //     for (var i = tempArticle.length - 1; i>=0; i--) {
-  //       if(this.newestArticle.Status === "Published") {
-  //         isPublished = true;
-  //         longContent = this.newestArticle.Content;
-  //         this.shortArticleContent = longContent.substr(0, maxShortContentLength);
-  //         this.shortArticleContent = this.shortArticleContent.substr(0, Math.min(this.shortArticleContent.length, this.shortArticleContent.lastIndexOf(" ")));
-  //         this.figure = $(longContent).find('img:first').prevObject[1];
-  //         var a = $(this.figure).clone();
-  //         $('figure', a).remove();
-  //         $('.thumnail').append(a.html());
-  //         break;
-  //       } else {
-  //         isPublished = false;
-  //         this.newestArticle = tempArticle[tempArticle.length - i];
-  //       }
-  //     }
-  //   });
-  //} 
 }

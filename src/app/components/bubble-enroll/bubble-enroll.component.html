@@ -5,50 +5,27 @@
                 <h3 class="text-center mb-4">
                     {{LANGUAGE.SIGN_UP}}
                 </h3>
-                <form [formGroup]="frmUser" id="register_form" action="" method="post" autocomplete="false" novalidate="true"
-                    (ngSubmit)="onSubmitForm()">
+                <form [formGroup]="frmUser" id="register_form" action="" method="post" autocomplete="false" novalidate="true" (ngSubmit)="onSubmitForm()">
                     <div class="form-group has-error">
                         <label for="">{{LANGUAGE.FULL_NAME}}<a>*</a>:</label>
-                        <input class="form-control input-lg" id="name" placeholder="{{LANGUAGE.FULL_NAME}}" name="txtFullname"
-                            type="text" formControlName="fullname"  maxlength="100" autofocus>
+                        <input class="form-control input-lg" id="name" placeholder="{{LANGUAGE.FULL_NAME}}" name="txtFullname" type="text" formControlName="fullname" maxlength="100" autofocus>
                         <span class="lable lable-danger" *ngIf="frmUser.controls.fullname.invalid && frmUser.controls.fullname.touched">
-                            <!-- {{LANGUAGE.MESSAGE_EMPTY_NAME}} -->
                             {{LANGUAGE.MESSAGE_INVALID_NAME}}
                         </span>
-                        <!-- <span class="lable lable-danger" *ngIf="frmUser.controls.fullname.dirty && frmUser.controls.fullname.errors.required">
-                            {{LANGUAGE.MESSAGE_INVALID_NAME}}
-                        </span> -->
-                        <!-- <span class="lable lable-danger" *ngIf="frmUser.controls.fullname.dirty && frmUser.controls.fullname.errors?.pattern">
-                            {{LANGUAGE.MESSAGE_INVALID_NAME}}
-                        </span> -->
                         <span class="val_fname"></span>
                     </div>
                     <div class="form-group has-success">
                         <label for="">{{LANGUAGE.EMAIL}}<a>*</a>:</label>
-                        <input class="form-control input-lg" placeholder="{{LANGUAGE.EMAIL}}" id="email" name="txtEmail" type="email"
-                            formControlName="email" maxlength="255">
-                       <!--  <span class="lable lable-danger" *ngIf="frmUser.controls.email.dirty && frmUser.controls.email.errors?.required">
-                            {{LANGUAGE.MESSAGE_EMPTY_EMAIL}}
-                        </span> -->
-                         <span class="lable lable-danger" *ngIf="frmUser.controls.email.invalid && frmUser.controls.email.touched">
+                        <input class="form-control input-lg" placeholder="{{LANGUAGE.EMAIL}}" id="email" name="txtEmail" type="email" formControlName="email" maxlength="255">
+                        <span class="lable lable-danger" *ngIf="frmUser.controls.email.invalid && frmUser.controls.email.touched">
                             {{LANGUAGE.MESSAGE_INVALID_EMAIL}}
                         </span>
-                       <!--  <span class="lable lable-danger" *ngIf="frmUser.controls.email.dirty && frmUser.controls.email.errors?.pattern">
-                            {{LANGUAGE.MESSAGE_INVALID_EMAIL}}
-                        </span> -->
                         <span class="val_email"></span>
                     </div>
                     <div class="form-group has-success">
                         <label for="">{{LANGUAGE.PHONE_NUMBER}}<a>*</a>:</label>
-                        <input class="form-control input-lg" placeholder="{{LANGUAGE.PHONE_NUMBER}}" id="phone" name="txtPhone"
-                            type="tel" formControlName="phone" maxlength="10">
-                        <!-- <span class="lable lable-danger" *ngIf="frmUser.controls.phone.dirty && frmUser.controls.phone.errors?.required">
-                            {{LANGUAGE.MESSAGE_EMPTY_PHONE_NUMBER}}
-                        </span> -->
-                       <!--  <span class="lable lable-danger" *ngIf="frmUser.controls.phone.dirty && frmUser.controls.phone.errors?.pattern">
-                            {{LANGUAGE.MESSAGE_INVALID_PHONE_NUMBER}}
-                        </span> -->
-                         <span class="lable lable-danger" *ngIf="frmUser.controls.phone.invalid && frmUser.controls.phone.touched">
+                        <input class="form-control input-lg" placeholder="{{LANGUAGE.PHONE_NUMBER}}" id="phone" name="txtPhone" type="tel" formControlName="phone" maxlength="10">
+                        <span class="lable lable-danger" *ngIf="frmUser.controls.phone.invalid && frmUser.controls.phone.touched">
                             {{LANGUAGE.MESSAGE_INVALID_PHONE_NUMBER}}
                         </span>
                         <span class="val_phone"></span>
@@ -59,18 +36,14 @@
                             <option selecterd=""></option>
                             <option selecterd="" *ngFor="let register of registerData">{{register.Class}} </option>
                         </select>
-                       <!--  <span class="lable lable-danger" *ngIf="frmUser.controls.course.dirty && frmUser.controls.course.errors?.required">
-                            {{LANGUAGE.MESSAGE_EMPTY_COURSE}}
-                        </span> -->
-                         <span class="lable lable-danger" *ngIf="frmUser.controls.course.invalid && frmUser.controls.course.touched">
+                        <span class="lable lable-danger" *ngIf="frmUser.controls.course.invalid && frmUser.controls.course.touched">
                             {{LANGUAGE.MESSAGE_EMPTY_COURSE}}
                         </span>
                         <span class="val_course"></span>
                     </div>
                     <div class="form-group">
                         <label>{{ LANGUAGE.NOTE}}:</label>
-                        <textarea class="form-control" id="notes" rows="3" placeholder="{{LANGUAGE.NOTE}}" formControlName="notes"
-                            type="text" maxlength="200" (blur)=onNoteBlur()></textarea>
+                        <textarea class="form-control" id="notes" rows="3" placeholder="{{LANGUAGE.NOTE}}" formControlName="notes" type="text" maxlength="200" (blur)=onNoteBlur()></textarea>
                     </div>
                     <button [disabled]="frmUser.invalid" class="btn btn" type="submit" name="submit" id="register">{{LANGUAGE.SIGN_UP}}</button>
                 </form>

@@ -156,10 +156,13 @@ const routes: Routes = [
     path: 'gioi-thieu',
     component: IntroductionComponent
   },
-
+  {
+    path: 'gioi-thieu/:id',
+    component: IntroductionComponent
+  },
   {
     path: 'gioi-thieu/日本センター',
-    component: IntroductionOneComponent
+    component: IntroductionComponent
   },
   
   {
@@ -177,29 +180,6 @@ const routes: Routes = [
   {
     path: 'dich-vu-doi-tac',
     component: ServicePartnerComponent,
-    children:
-    [
-       {
-        path: '',
-        component: StudyComponent
-      },
-      {
-        path: 'tu-van-du-hoc-va-viec-lam',
-        component: StudyComponent
-      },
-      {
-        path: 'xuat-khau-lao-dong',
-        component: LaborComponent
-      },
-      {
-        path: 'du-an',
-        component: ProjectsComponent
-      },
-      {
-        path: 'doi-tac',
-        component: PartnerComponent
-      },
-    ]
   },
   {
     path: 'khoa-hoc',
@@ -234,17 +214,6 @@ const routes: Routes = [
   {
     path: 'co-hoi-nghe-nghiep',
     component: CareerOpportunitiesComponent,
-    children:
-    [
-      {
-        path: 'trung-tam-nhat-ban',
-        component: JapanCenterComponent
-      },
-      {
-        path: 'doanh-nghiep',
-        component: EnterpriseComponent
-      }
-    ]
   },
   
   {

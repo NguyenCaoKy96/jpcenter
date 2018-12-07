@@ -13,11 +13,12 @@
 <nav aria-label="breadcrumb">
     <ol class="breadcrumb">
         <li class="breadcrumb-item">
-            <a routerLink="/trang-chu" [queryParams]="{lang: lang ? 'jp' : 'vi'}">{{LANGUAGE.HOME_PAGE}}</a>
+            <a routerLink="/trang-chu" [queryParams]="{lang: lang === 'jp' ? 'jp' : 'vi'}">{{LANGUAGE.HOME_PAGE}}</a>
         </li>
         <li class="breadcrumb-item ">
-            <a routerLink="/dich-vu-doi-tac/tu-van-du-hoc-va-viec-lam" [queryParams]="{lang: lang ? 'jp' : 'vi'}">{{LANGUAGE.SERVICE_AND_PARTNER}}</a>
+            <a routerLink="/dich-vu-doi-tac/tu-van-du-hoc-va-viec-lam" [queryParams]="{lang: lang === 'jp' ? 'jp' : 'vi'}">{{LANGUAGE.SERVICE_AND_PARTNER}}</a>
         </li>
+
         <li class="breadcrumb-item active" *ngIf="isVietnamese">
             {{itemContents.vietnameseName}}
         </li>
@@ -30,20 +31,22 @@
     <div class="col-md-4 col-lg-3 left-navigation">
         <ul class="nav nav-tabs d-none d-md-block">
             <li class="nav-item active" *ngIf="isVietnamese">
-                <a class="nav-link" id="JCenter-tab" *ngFor="let x of itemData; let i = index" (click)="selectItem(x._id)">{{x.Name}}</a>
+                <a class="nav-link" id="JCenter-tab" [ngClass]="{'active': x.Name == serviceDataActive.Name}" *ngFor="let x of itemData; let i = index"
+                    (click)="selectItem(x._id)">{{x.Name}}</a>
             </li>
             <li class="nav-item active" *ngIf="!isVietnamese">
-                <a class="nav-link" id="JCenter-tab" *ngFor="let x of itemData; let i = index" (click)="selectItem(x._id)">{{x.Japanese_Name}}</a>
+                <a class="nav-link" id="JCenter-tab" [ngClass]="{'active': x.Japanese_Name == serviceDataActive.Japanese_Name}"
+                    *ngFor="let x of itemData; let i = index" (click)="selectItem(x._id)">{{x.Japanese_Name}}</a>
             </li>
         </ul>
     </div>
     <div class="col-md-8">
         <div class="tab-content">
             <div class="tab-pane active">
-                <h4 class="section-title" *ngIf="!isVietnamese" [innerHTML]="ServiceDataActive.contents.Japanese_Name"></h4>
-                <h4 class="section-title" *ngIf="isVietnamese" [innerHTML]="ServiceDataActive.contents.Name"></h4>
-                <div class="course-content pt-3" *ngIf="!isVietnamese" [innerHTML]="ServiceDataActive.contents.Japanese_Content"></div>
-                <div class="course-content pt-3" *ngIf="isVietnamese" [innerHTML]="ServiceDataActive.contents.Content"></div>
+                <h4 class="section-title" *ngIf="!isVietnamese" [innerHTML]="itemContents.japaneseName"></h4>
+                <h4 class="section-title" *ngIf="isVietnamese" [innerHTML]="itemContents.vietnameseName"></h4>
+                <div class="course-content pt-3" *ngIf="!isVietnamese" [innerHTML]="serviceJpContent"></div>
+                <div class="course-content pt-3" *ngIf="isVietnamese" [innerHTML]="serviceContent"></div>
             </div>
         </div>
     </div>

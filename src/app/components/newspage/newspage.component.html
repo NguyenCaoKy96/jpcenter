@@ -1,23 +1,23 @@
 <div class="custom-container">
-  <ngx-carousel [inputs]="carouselBanner" [moveToSlide]="1" (onMove)="onmoveFn($event)">
-    <ngx-item NgxCarouselItem class="bannerStyle" *ngFor="let item of homeImagesURL | slice:0:1" [ngStyle]="{'background-image': 'url(' + item + ')'}">
-    </ngx-item>
-    <button NgxCarouselPrev></button>
-    <button NgxCarouselNext></button>
-  </ngx-carousel>
-  <div class="banner">
-    <div class="banner-bottom"></div>
-    <h1 class="banner-title"><b>{{LANGUAGE.NEWS_AND_EVENTS}}</b></h1>
-  </div>
+    <ngx-carousel [inputs]="carouselBanner" [moveToSlide]="1" (onMove)="onmoveFn($event)">
+        <ngx-item NgxCarouselItem class="bannerStyle" *ngFor="let item of homeImagesURL | slice:0:1" [ngStyle]="{'background-image': 'url(' + item + ')'}">
+        </ngx-item>
+        <button NgxCarouselPrev></button>
+        <button NgxCarouselNext></button>
+    </ngx-carousel>
+    <div class="banner">
+        <div class="banner-bottom"></div>
+        <h1 class="banner-title"><b>{{LANGUAGE.NEWS_AND_EVENTS}}</b></h1>
+    </div>
 </div>
-<!-- creat breadscrumb -->
+<!-- creat breadscrumb --> 
 <nav aria-label="breadcrumb">
   <ol class="breadcrumb">
     <li class="breadcrumb-item">
-      <a routerLink="/trang-chu" [queryParams]="{lang: lang ? 'jp' : 'vi'}">{{LANGUAGE.HOME_PAGE}}</a>
+      <a routerLink="/trang-chu" [queryParams]="{lang: lang === 'jp' ? 'jp' : 'vi'}">{{LANGUAGE.HOME_PAGE}}</a>
     </li>
     <li class="breadcrumb-item ">
-      <a routerLink="/tin-tuc-su-kien" [queryParams]="{lang: lang ? 'jp' : 'vi'}">{{LANGUAGE.NEWS_AND_EVENTS}}</a>
+      <a routerLink="/tin-tuc-su-kien" [queryParams]="{lang: lang === 'jp' ? 'jp' : 'vi'}">{{LANGUAGE.NEWS_AND_EVENTS}}</a>  
     </li>
     <li class="breadcrumb-item active" *ngIf = " EventsFirst != undefined"> {{EventsFirst.Name}}</li>
     <li class="breadcrumb-item active" *ngIf = " newItemData != undefined"> {{newItemData.Name}}</li>
@@ -26,7 +26,7 @@
 <!-- article Events -->
 <div id="article" class="container">
     <div id="FirstNews" class="row">
-        <a class="row mr-0 ml-0 post-highlight" (click) = "OnChangeActicrles()">
+        <a class="row mr-0 ml-0 post-highlight" (click) = "OnChangeActicrles(FirstNews)">
             <div class="col-lg-7" >
                 <img [src]="[ImageEvent]" class="card-img-top" alt="news-main"/>
             </div>
@@ -45,17 +45,17 @@
     </div>
     <!-- display article for news body -->
     <div class="course-content" id="articleNews" *ngIf = "OnChangeNews && newItemData != undefined" >
-        <p *ngIf=" isVietnamese" [innerHTML]="newItemData.Content">
+        <p *ngIf=" isVietnamese" [innerHTML]="CkNewsData">
         </p>
-        <p *ngIf=" !isVietnamese" [innerHTML]="newItemData.Japanese_Content">
+        <p *ngIf=" !isVietnamese" [innerHTML]="JapanCkNewsData">
         </p>
     </div>
     <!-- display card news -->
     <div class="card-container pb-5">
         <div class="row">
-            <div class="col-md-6 col-lg-4 card-wrap" *ngFor="let item of IsNewsData ; let itemIndex = index ;">
-            <a class="card" (click) = "OnChangeNews(item.id)">
-                    <img class="card-img-top" [src]="[arrImage[itemIndex]]" alt="Card img cap">
+            <div class="col-md-6 col-lg-4 card-wrap" *ngFor="let item of IsNewsData | paginate: { itemsPerPage: 6, currentPage: p } ; let itemIndex = index;">
+            <a class="card" (click) = "OnChangeNews(item)">
+                    <img class="card-img-top" [src]="[arrImage[itemIndex+(p-1)*6]]" alt="Card img cap">
                     <div class="card-body">
                         <h5 *ngIf=" isVietnamese" class="card-title">
                             {{item.Name}}
@@ -79,17 +79,13 @@
         <div class="course-content pt-4 mb-0">
             <h4 *ngIf=" isVietnamese">{{EventsFirst.Name}}</h4>  
             <h4 *ngIf=" !isVietnamese">{{EventsFirst.Japanese_Name}}</h4>      
-            <p class="mb-4" *ngIf=" isVietnamese" [innerHTML]="EventsFirst.Content"></p> 
-            <p class="mb-4" *ngIf=" !isVietnamese" [innerHTML]="EventsFirst.Japanese_Content"></p>  
-                     
+            <p class="mb-4" *ngIf=" isVietnamese" [innerHTML]="CkeventsFirst"></p> 
+            <p class="mb-4" *ngIf=" !isVietnamese" [innerHTML]="JapanCkeventsFirst"></p>                      
         </div>
     </div>
 
-
 <!-- create Pagination -->
-<!-- <div class="pagination">
-  <ul>
-    <li *ngFor="let item of collection | paginate: { itemsPerPage: 10, currentPage: p }"></li>
-  </ul>
+ <div class="pagination">
   <pagination-controls (pageChange)="p = $event"></pagination-controls>
-</div> -->
+</div> 
+

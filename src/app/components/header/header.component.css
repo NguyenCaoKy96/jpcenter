@@ -263,7 +263,7 @@ span {
     top: 250px;
     z-index: 99999;
     width: 60px;
-    height: 60px;
+    height: 57px;
     border-radius: 50%;
     position: absolute;
     box-shadow: 0 0px 20px rgba(0, 0, 0, 0.19), 0 0px 6px rgba(0, 0, 0, 0.23);
@@ -285,8 +285,8 @@ span {
 
 @media only screen and (max-width: 767px) {
     #bubble {
-        width:  46px;
-        height: 47px;
+        width:  49px;
+        height: 46px;
         padding: 15px 0px;
         margin-top: -57px;
         font-size: 10px;

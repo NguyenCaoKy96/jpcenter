@@ -16,7 +16,7 @@
   margin-top: 10px !important;
   /* Nội dung vượt quá thì sẽ thêm thanh scroll vào thành phần. */
 }
-@media (min-width: 576px) {
+@media (min-width: 767px) {
   .carousel-item active.img-responsive{
     max-width: 540px;
   }
@@ -73,4 +73,8 @@ ngx-item {
 }
 ngx-carousel {
   margin: 0em 0 0 0;
+}
+.card {
+    height: 100% !important; 
+    margin-bottom: 30px !important;
 }

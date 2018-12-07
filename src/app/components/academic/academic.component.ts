@@ -50,6 +50,7 @@ export class AcademicComponent implements OnInit {
   public isVietnamese: boolean = true;
   public LANGUAGE : any = LANG_VI;
 
+
   
 
   constructor(private titleService: Title,
@@ -75,10 +76,7 @@ export class AcademicComponent implements OnInit {
   }
   ngOnInit() {
 
-  	// Title 
-  	this._titleService.setTitle('Học vụ');
-    // this._titleService.setTitle('教育');
-
+  	
     // Change language
      this._route.queryParams.subscribe(data => {
       if (data.lang === 'vi') {
@@ -90,7 +88,11 @@ export class AcademicComponent implements OnInit {
         this.isVietnamese = false;
         this.LANGUAGE = LANG_JP;
       }
+
     });
+
+     // Title 
+     this._titleService.setTitle(this.LANGUAGE.ACADEMIC);
 
   	//get data openings
   	this.openingURL = this._getDataService.getOpeningScheduleURL();

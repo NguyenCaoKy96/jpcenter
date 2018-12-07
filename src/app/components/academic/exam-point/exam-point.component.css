@@ -14,3 +14,7 @@ thead {
     background-color: brown;
     color: white;
 }
+.nav-tabs .nav-link.active{
+	font-weight: 700;
+	color: #495057;
+}

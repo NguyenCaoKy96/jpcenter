@@ -51,8 +51,8 @@
         <h4 class="section-title" *ngIf=" !isVietnamese">
         {{introductionsDataActive.Japanese_Name}}
         </h4>
-        <div   *ngIf=" isVietnamese" class="course-content pt-3 a"  [innerHTML]="introductionsDataActive.contents.Content"></div>
-        <div   *ngIf=" !isVietnamese" class="course-content pt-3 a"  [innerHTML]="introductionsDataActive.contents.Japanese_Content"></div>
+        <div   *ngIf=" isVietnamese" class="course-content pt-3 a"  [innerHTML]="introductionContent"></div>
+        <div   *ngIf=" !isVietnamese" class="course-content pt-3 a"  [innerHTML]="introductionContentJP"></div>
       </div>
     </div>
   </div>

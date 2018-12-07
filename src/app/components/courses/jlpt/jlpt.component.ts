@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+
+import { Component, OnInit,ViewEncapsulation } from '@angular/core';
+import {DomSanitizer, SafeHtml} from '@angular/platform-browser';
 import * as $ from 'jquery';
 import {Title} from '@angular/platform-browser';
 
@@ -38,6 +40,10 @@ export class JlptComponent implements OnInit {
   lang : string = 'vi' ;
   public LANGUAGE: any = LANG_VI;
 
+  // Ck css
+  CkjlptItemData:SafeHtml;
+  JPCkjlptItemData:SafeHtml;
+
   // Carousel config
   index = 0;
   infinite = true;
@@ -65,6 +71,7 @@ export class JlptComponent implements OnInit {
     private _getDataService: GetDataService,
     private _getImageService: GetImagesService,
     private _route: ActivatedRoute,
+    private santized: DomSanitizer,
   ) {     
       // Get jlpt data
       this.jlptURL = this._getDataService.getCourseURL();
@@ -75,18 +82,14 @@ export class JlptComponent implements OnInit {
           this.japantrimmedString = this.jlptData[i].JapaneseSkill.substr(0, 200);
         } 
       });
-
      // get title jlpt
       this.jlptUrl = this._getDataService.getjlptURL();
       this.http.get(this.jlptUrl).subscribe(data =>{
         this.jlptdata = data;
         this.jlptDataItem = this.jlptdata.Name;
         this.jlptContent = this.jlptdata.Japanese_Name ;
-        console.log(data);
       });
-
     }
-
   ngOnInit() {
      
      // Change language
@@ -100,8 +103,7 @@ export class JlptComponent implements OnInit {
       }
     }); 
     this._titleService.setTitle(this.LANGUAGE.JLPT_COURSE);
-    //console.log(this.LANGUAGE.EDUCATION_PROGRAM);
-
+    // get Image course
     this.carouselBanner = this._getImageService.carouselBanner;
     this.imageURLs = this._getDataService.getImagesURL();
     this.serverURL = this._getDataService.serverURL;
@@ -116,18 +118,18 @@ export class JlptComponent implements OnInit {
         }
       }
     });
+    // change language
     this._route.queryParams.subscribe(data => {
       this.lang = data.lang;
     });
   }
-
   onmoveFn(data: NgxCarouselStore) { };
-  
   onchangeCourse(id){
     let jlptItemDataURL = this._getDataService.getCourseItemURL(id);
     this.http.get(jlptItemDataURL).subscribe(data => {
-      this.jlptItemData = data;
-      console.log(this.jlptItemData);  
+      this.jlptItemData = data;   
+      this.CkjlptItemData = this.santized.bypassSecurityTrustHtml(this.jlptItemData.Fee);
+      this.JPCkjlptItemData = this.santized.bypassSecurityTrustHtml(this.jlptItemData.JapaneseFee);
     });
     $('#left-item').hide();
    }

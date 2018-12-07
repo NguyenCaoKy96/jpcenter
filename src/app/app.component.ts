@@ -17,6 +17,7 @@ export class AppComponent{
   constructor(
     private router: Router,
   ) {
+   this.language = "vi" ;
     this.router.navigate(['/trang-chu'], { queryParams: { lang: 'vi'} });
   }
 

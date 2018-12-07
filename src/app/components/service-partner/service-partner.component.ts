@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {Title} from '@angular/platform-browser';
+import { Title, SafeHtml, DomSanitizer } from '@angular/platform-browser';
 import { HttpClient } from '@angular/common/http';
 import { Http, Response, Headers } from "@angular/http";
 import { Observable, BehaviorSubject, of, throwError } from "rxjs";
@@ -12,7 +12,7 @@ import { GetImagesService } from './../../services/get-image-slider/get-images.s
 import * as $ from 'jquery';
 
 // Carousel
-import { NgxCarousel, NgxCarouselStore  } from 'ngx-carousel';
+import { NgxCarousel, NgxCarouselStore } from 'ngx-carousel';
 
 // Language
 import { default as LANG_VI } from '../../../lang/lang_vi';
@@ -29,25 +29,20 @@ import { default as LANG_JP } from '../../../lang/lang_jp';
 })
 
 export class ServicePartnerComponent implements OnInit {
-  
+
   public carouselConfig: NgxCarousel;
-  public LANGUAGE : any = LANG_VI;
+  public LANGUAGE: any = LANG_VI;
   public isVietnamese: boolean = true;
   carouselBanner: any;
   imageURLs: any;
   homeImages: any[] = [];
   homeImagesURL: { [key: number]: string } = [];
-  japanURL: string;
-  japanData: any;
-  japanName: any;
-  japanJapanName: any;
-  Contents: any;
   serverURL: any;
   data: any;
-  newsFirst: any;
-  getjobsURL: string;
-  jobs;
-  jobsItem;
+  serviceDataActive: any;
+  lang: string;
+  serviceContent: SafeHtml;
+  serviceJpContent: SafeHtml;
 
   // Carousel config
   index = 0;
@@ -56,47 +51,47 @@ export class ServicePartnerComponent implements OnInit {
   directionToggle = true;
   autoplay = true;
 
-    // Side navigation item
-    apiCategories: string;
-    item: any;
-    itemData: any = [];
-    itemContents: any = {
-      vietnameseName: '',
-      japaneseName: '',
-      vietnameseContents : '',
-      japaneseContents : ''
-    };
-    slug: any = {
-      vietnameseSlug : '',
-      japaneseSlug : ''
-    };
-    ServiceDataActive:any;
+  // Side navigation item
+  apiCategories: string;
+  item: any;
+  itemData: any = [];
+  itemContents: any = {
+    vietnameseName: '',
+    japaneseName: '',
+    vietnameseContents: '',
+    japaneseContents: ''
+  };
+  slug: any = {
+    vietnameseSlug: '',
+    japaneseSlug: ''
+  };
 
   constructor(
-  	private _titleService: Title,
+    private _titleService: Title,
     private http: HttpClient,
     private _route: ActivatedRoute,
     private _getDataService: GetDataService,
-    private _getImageService: GetImagesService
+    private _getImageService: GetImagesService,
+    private santized: DomSanitizer
   ) { }
 
   ngOnInit() {
 
+    let hasData = false;
     this.apiCategories = this._getDataService.getCategoriesURL();
     this._route.queryParams.subscribe(data => {
       if (data.lang === 'vi') {
+        this.lang = 'vi';
         this.isVietnamese = true;
         this.LANGUAGE = LANG_VI;
       } else {
+        this.lang = 'jp';
         this.isVietnamese = false;
         this.LANGUAGE = LANG_JP;
       }
-      if (data.id !== undefined){
+      if (data.id !== undefined) {
         this.selectItem(data.id);
-      }
-
-      if (data.idSecond !== undefined){
-        this.selectItem(data.idSecond);
+        hasData = true;
       }
     });
 
@@ -120,53 +115,47 @@ export class ServicePartnerComponent implements OnInit {
     this.apiCategories = this._getDataService.getCategoriesURL();
     this.http.get(this.apiCategories).subscribe(data => {
       this.item = data;
-      for (let i=0; i< this.item.length; i++) {
+      for (let i = 0; i < this.item.length; i++) {
         if (this.item[i].Parent && (this.item[i].Parent.Name === this.LANGUAGE.SERVICE_AND_PARTNER || this.item[i].Parent.Japanese_Name === this.LANGUAGE.SERVICE_AND_PARTNER)) {
-          if(this.ServiceDataActive == undefined){
-            this.ServiceDataActive = this.item[i];
-            console.log('le',this.item[i]);
+
+          if (this.serviceDataActive == undefined) {
+            this.serviceDataActive = this.item[i];
+            //console.log(this.item[i]);
           }
+
           this.itemData.push(this.item[i]);
-          console.log(this.itemData);
         }
       }
-      if (this.itemData !== undefined){
+      if (this.itemData !== undefined && !hasData) {
         this.itemContents.japaneseContents = this.itemData[0].contents.Japanese_Content;
-        this.itemContents.japaneseName =  this.itemData[0].contents.Japanese_Name;
+        this.serviceJpContent = this.santized.bypassSecurityTrustHtml(this.itemContents.japaneseContents);
+        this.itemContents.japaneseName = this.itemData[0].contents.Japanese_Name;
         this.itemContents.vietnameseContents = this.itemData[0].contents.Content;
-        this.itemContents.vietnameseName =  this.itemData[0].contents.Name;
+        this.serviceContent = this.santized.bypassSecurityTrustHtml(this.itemContents.vietnameseContents);
+        this.itemContents.vietnameseName = this.itemData[0].contents.Name;
       }
     });
   }
 
   onmoveFn(data: NgxCarouselStore) { };
-  
-  onChangeJobs(id, evt?) {
-    let jobsItemURL = this._getDataService.getJobsItemURL(id);
-    this.http.get(jobsItemURL).subscribe(data => {
-      this.jobsItem = data;
-    });
-    $('.left-item').removeClass('active-link');
-    if (evt) {
-      $(evt.target).addClass('active-link');
-    }
-  }
 
   selectItem(id) {
-    this.ServiceDataActive = item;
-    console.log('item', item);
-    /*let tempContents;
-    let vietnameseSlug; 
-      let itemContentURL = this.apiCategories + '/' + id;
-      this.http.get(itemContentURL).subscribe(data => {
-        tempContents = data;
-        this.itemContents.vietnameseContents = tempContents.contents.Content;
-        this.itemContents.vietnameseName =  tempContents.contents.Name;
-        vietnameseSlug = tempContents.contents.Name;
-        this.slug.vietnameseSlug = vietnameseSlug.toLowerCase().replace(/ /g,'-').replace(/[^\w-]+/g,'');
-        window.location.hash = (this.slug.vietnameseSlug);
-        this.itemContents.japaneseContents = tempContents.contents.Japanese_Content;
-        this.itemContents.japaneseName =  tempContents.contents.Japanese_Name;
-      });*/
+    //console.log(id);
+    let tempContents;
+    let vietnameseSlug;
+    let itemContentURL = this.apiCategories + '/' + id;
+    this.http.get(itemContentURL).subscribe(data => {
+      tempContents = data;
+      this.itemContents.vietnameseContents = tempContents.contents.Content;
+      this.serviceContent = this.santized.bypassSecurityTrustHtml(this.itemContents.vietnameseContents);
+      this.itemContents.vietnameseName = tempContents.contents.Name;
+      vietnameseSlug = tempContents.contents.Name;
+      this.serviceDataActive = tempContents;
+      this.slug.vietnameseSlug = vietnameseSlug.toLowerCase().replace(/ /g, '-').replace(/[^\w-]+/g, '');
+      window.location.hash = (this.slug.vietnameseSlug);
+      this.itemContents.japaneseContents = tempContents.contents.Japanese_Content;
+      this.serviceJpContent = this.santized.bypassSecurityTrustHtml(this.itemContents.japaneseContents);
+      this.itemContents.japaneseName = tempContents.contents.Japanese_Name;
+    });
   }
 }

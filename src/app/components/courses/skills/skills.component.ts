@@ -72,8 +72,7 @@ export class SkillsComponent implements OnInit {
         this.childContent = this.Contents.Content;
         this.japanchildDataItem = this.skillsData.Japanese_Name;
         this.japanContents = this.skillsData.contents;
-        this.japanchildContent = this.japanContents.Japanese_Content ;
-        console.log(this.japanchildDataItem)        
+        this.japanchildContent = this.japanContents.Japanese_Content ;       
      });
   }
 
@@ -90,7 +89,6 @@ export class SkillsComponent implements OnInit {
     });
     
     this._titleService.setTitle(this.LANGUAGE.SKILL_COURSE);
-    //console.log(this.LANGUAGE.EDUCATION_PROGRAM);
 
     this.carouselBanner = this._getImageService.carouselBanner;
     this.imageURLs = this._getDataService.getImagesURL();

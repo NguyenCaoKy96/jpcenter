@@ -26,6 +26,6 @@ img{
 .fa {
     margin-left: 20px;
 }
-/*.card{
-    height: 330px;
-}*/
+.card {
+    height: 100% !important; 
+}

@@ -70,7 +70,6 @@ export class CoursesComponent implements OnInit {
     let jlptItemDataURL = this._getDataService.getCourseItemURL(id);
     this.http.get(jlptItemDataURL).subscribe(data => {
       this.jlptItemData = data;
-      console.log(this.jlptItemData);  
     });
     $('#left-item').hide();
   }
@@ -97,7 +96,6 @@ export class CoursesComponent implements OnInit {
         if (this.homeImages[i].Name === "Khóa học") {
           for (var k = 0; k < this.homeImages[i].Image.length; k++) {
             this.homeImagesURL[k] = this.serverURL + this.homeImages[i].Image[k].url;
-            console.log(this.homeImagesURL)
           }
         }
       }

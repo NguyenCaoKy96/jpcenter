@@ -34,33 +34,22 @@ import { NgbModalConfig, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 export class IntroductionComponent implements OnInit {
 
-   sliderImages: any[] = [];
+  sliderImages: any[] = [];
   sliderImagesURL: { [key: number]: string } = [];
   public LANGUAGE : any = LANG_VI;
   public isVietnamese: boolean = true;
-  TrungtamNhatBan = 'one';
-  public page = 'one';
   carouselBanner: any;
   imageURLs: any;
   homeImages: any[] = [];
   homeImagesURL: { [key: number]: string } = [];
   serverURL: any;
   data: any;
-  
- public introData: SafeHtml;
-  // Carousel config
+  public introData: SafeHtml;
   index = 0;
   infinite = true;
-  direction = 'left';
-  directionToggle = true;
-  autoplay = true;
   categoriesData:any;
-  introductionsData0;
   introductionItemData;
   introductionURL: string;
-  isLoading: boolean = true;
-  headerURL: string;
-  headerData: any;
   introduction: any=[];
   lang: string ;
   menuLeftData:any=[];
@@ -71,6 +60,7 @@ export class IntroductionComponent implements OnInit {
   results=[];
   id:string;
   EventsFirst: any;
+  introductionContentJP:SafeHtml;
 
   constructor(
     private _titleService: Title,
@@ -83,6 +73,7 @@ export class IntroductionComponent implements OnInit {
     private modalService: NgbModal,
     private santized: DomSanitizer
   ) 
+            // change language
   {    
     this.route.queryParams.subscribe(data => {
       if (data.lang === 'vi') {
@@ -90,54 +81,42 @@ export class IntroductionComponent implements OnInit {
       } else {
         this.LANGUAGE = LANG_JP;
       }
-    if (data.idFirst !== undefined) {
+
+      // check url with header
+    if (data.id !== undefined) {
       let categoriesURL = this._getDataService.getCategoriesURL();
-    this.http.get(categoriesURL).subscribe(data => {
-      this.categoriesData = data;
+      this.http.get(categoriesURL).subscribe(dataObj => {
+      this.categoriesData = dataObj;
+      let arrTemp = [];
       for(var i=0; i<this.categoriesData.length; i++) {
         if(this.categoriesData[i].Parent && (this.categoriesData[i].Parent.Name === this.LANGUAGE.INTRODUCTION_PAGE  || this.categoriesData[i].Parent.Japanese_Name === this.LANGUAGE.INTRODUCTION_PAGE )) { 
-            this.introductionsDataActive = this.categoriesData[this.categoriesData.length - 3];
+          arrTemp.push(this.categoriesData[i]);
         }
+      }
+      if (arrTemp[data.id] !== undefined){
+        this.introductionsDataActive = arrTemp[data.id];
       }
     });
     }
+    });
 
-    if (data.idThrid !== undefined) {
-      let categoriesURL = this._getDataService.getCategoriesURL();
-    this.http.get(categoriesURL).subscribe(data => {
-      this.categoriesData = data;
-      for(var i=0; i<this.categoriesData.length; i++) {
-        if(this.categoriesData[i].Parent && (this.categoriesData[i].Parent.Name === this.LANGUAGE.INTRODUCTION_PAGE  || this.categoriesData[i].Parent.Japanese_Name === this.LANGUAGE.INTRODUCTION_PAGE )) { 
-            this.introductionsDataActive = this.categoriesData[0];
-        }
-      }
-    });
-    }    
-    });
-    
+    // Title
+     this._titleService.setTitle(this.LANGUAGE.INTRODUCTION_PAGE);
+
     // get data introduction
-    
-    let categoriesURL = this._getDataService.getCategoriesURL();
-    
-    
-    this.http.get(categoriesURL).subscribe(data => {
+let categoriesURL = this._getDataService.getCategoriesURL();    this.http.get(categoriesURL).subscribe(data => {
       this.categoriesData = data;
-      // console.log('All categories',this.categoriesData);
 
       for(var i=0; i<this.categoriesData.length; i++) {
         if(this.categoriesData[i].Parent && (this.categoriesData[i].Parent.Name === this.LANGUAGE.INTRODUCTION_PAGE  || this.categoriesData[i].Parent.Japanese_Name === this.LANGUAGE.INTRODUCTION_PAGE )) {
-          
           if(this.introductionsDataActive == undefined){
-            this.introductionsDataActive = this.categoriesData[i];
-            console.log('le',this.categoriesData[i]);
-          }
-          
-
+            this.introductionsDataActive = this.categoriesData[i];   
+             }
           this.menuLeftData.push(this.categoriesData[i]);
-          //console.log('categories',this.categoriesData[i]);
         }
       }
       this.introductionContent = this.santized.bypassSecurityTrustHtml(this.introductionsDataActive.contents.Content)
+      this.introductionContentJP = this.santized.bypassSecurityTrustHtml(this.introductionsDataActive.contents.Japanese_Content)
       this.route.params.subscribe(params => {
         this.id = params['id'];
          for(var i=0; i<this.categoriesData.length; i++) {
@@ -163,16 +142,10 @@ export class IntroductionComponent implements OnInit {
         this.LANGUAGE = LANG_JP;
       }
     });
- 
     // Get language
     this.route.queryParams.subscribe(data => {
       this.lang = data.lang;
     });
-
-    this.http.get(this.headerURL).subscribe(data => {
-      this.data = data;
-    }); 
-
     //Get Images data
     this.carouselBanner = this._getImageService.carouselBanner;
 
@@ -190,20 +163,6 @@ export class IntroductionComponent implements OnInit {
         }
       }
     });
-
-    //Get Header data
-    this.http.get(this.headerURL).subscribe(data => {
-      this.headerData = data;
-      for(var i=0; i<this.headerData.length; i++) {
-        if(this.headerData[i].Slug === "/gioi-thieu") {
-          this.introduction = this.headerData[i];
-          // console.log(this.headerData[i]);
-        }
-      }
-    });
-
-    //Get Breadcrumbs data
-    
   }
 
   onChangeIntroduction(item) {
@@ -212,21 +171,22 @@ export class IntroductionComponent implements OnInit {
        let personnelURL = this._getDataService.getpersonnelURL();
        this.http.get(personnelURL).subscribe(data=>{
          this.personnelData = data;
-         console.log('personal',this.personnelData);
+        // console.log('personal',this.personnelData);
        })
      }
-  }
+     this.introductionContent = this.santized.bypassSecurityTrustHtml(this.introductionsDataActive.contents.Content)
+     this.introductionContentJP = this.santized.bypassSecurityTrustHtml(this.introductionsDataActive.contents.Japanese_Content)
 
+
+  }
 
   onChangePerson(person, content){
     this.personDetail = person;
     this.personDetail.imageUrl = this.serverURL + person.Image.url;
+   
     //open popup here
     $("#btnModal").click();
-    //console.log('person', this.personDetail);
-   
   }
-
   open(content) {
     this.modalService.open(content, { size: 'lg', centered: true, windowClass : "personModal" });
   }

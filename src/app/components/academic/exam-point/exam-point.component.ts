@@ -56,11 +56,6 @@ export class ExamPointComponent implements OnInit {
     ) { }
 
   ngOnInit() {
-  	// Title
-  	// this._titleService.setTitle('Học vụ');
-    
-
-     
 
     //get data Mark
     this.markURL = this._getDataService.getMarkURL();
@@ -71,8 +66,6 @@ export class ExamPointComponent implements OnInit {
       console.log(this.link);
     }
     });
-
-    
 
   	 // Change language
      this._route.queryParams.subscribe(data => {

@@ -86,7 +86,6 @@ export class ChildrenComponent implements OnInit {
       }
     });
     this._titleService.setTitle(this.LANGUAGE.CHILDREN_COURSE);
-    //console.log(this.LANGUAGE.EDUCATION_PROGRAM);
 
     this.carouselBanner = this._getImageService.carouselBanner;
     this.imageURLs = this._getDataService.getImagesURL();
@@ -102,11 +101,11 @@ export class ChildrenComponent implements OnInit {
         }
       }
     });
+    //change language
     this._route.queryParams.subscribe(data => {
       this.lang = data.lang;
     });
-  }
-  
+  } 
   onmoveFn(data: NgxCarouselStore) { };
 
 }
