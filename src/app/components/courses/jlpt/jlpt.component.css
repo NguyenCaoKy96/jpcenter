@@ -15,10 +15,6 @@ img{
     font-size: 18px;
     display: block;
 }
-.nav-tabs .nav-link.active{
-	font-weight: 700;
-	color: #495057;
-}
 .card-title {
     margin-top: 10px;
     margin-left: 20px;
@@ -28,4 +24,25 @@ img{
 }
 .card {
     height: 100% !important; 
+}
+.nav-link:hover{
+    color: red !important;
+}
+.nav-link.active {
+    color: #495057 !important;
+}
+.nav-link.active:hover {
+    color: #000000 !important;
+    font-weight: 700 !important;
+}
+.breadcrumb-item a:hover {
+    color: red !important;
+    text-decoration: none;
+}
+.breadcrumb-item.active{
+    cursor:text !important;
+    color:#6c757d !important;
+}
+.breadcrumb-item.active a {
+    color: #6c757d !important;;
 }

@@ -44,7 +44,7 @@
   font-weight: bold;
  }
  label a{
-     color: red;
+     color: red !important;
  }
 textarea{
      max-height: 80px;

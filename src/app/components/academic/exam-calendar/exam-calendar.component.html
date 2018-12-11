@@ -15,10 +15,15 @@
         <li class="breadcrumb-item">
             <a routerLink = "/trang-chu" [queryParams]="{lang: lang === 'jp' ? 'jp' : 'vi'}">{{LANGUAGE.HOME_PAGE}}</a>
         </li>
-        <li class="breadcrumb-item ">
-            <a routerLink="/hoc-vu" [queryParams]="{lang: lang === 'jp' ? 'jp' : 'vi'}">{{LANGUAGE.ACADEMIC}}</a> </li>
+        <li class="breadcrumb-item">
+            <a routerLink="/hoc-vu" [queryParams]="{lang: lang === 'jp' ? 'jp' : 'vi'}">
+                {{LANGUAGE.ACADEMIC}} 
+            </a>
+        </li>
         <li class="breadcrumb-item active">
-            {{LANGUAGE.EXAM_SCHEDULE}}
+            <a routerLink="/hoc-vu/lich-thi" [queryParams]="{lang: lang === 'jp' ? 'jp' : 'vi'}">
+                {{LANGUAGE.EXAM_SCHEDULE}}
+            </a> 
         </li>
     </ol>
 </nav>

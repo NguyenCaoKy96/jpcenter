@@ -73,11 +73,9 @@ export class HeaderComponent implements OnInit {
           
           if(this.introductionsDataActive == undefined){
             this.introductionsDataActive = this.categoriesData[i];
-            //console.log('le',this.categoriesData[i]);
           }
           
           this.menuLeftData.push(this.categoriesData[i]);
-          //console.log('categories',this.categoriesData[i]);
         }
       }
 
@@ -96,9 +94,6 @@ export class HeaderComponent implements OnInit {
       }
     });
 
-    //
-  
-  
   // Header URL
     this.headerURL = this._getDataService.getHeaderURL();
     

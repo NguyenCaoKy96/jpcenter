@@ -17,7 +17,7 @@ import { GetImagesService } from './../../../services/get-image-slider/get-image
 import { NgxCarousel, NgxCarouselStore  } from 'ngx-carousel';
 import { default as LANG_VI } from '../../../../lang/lang_vi';
 import { default as LANG_JP } from '../../../../lang/lang_jp';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-jlpt',
@@ -72,6 +72,7 @@ export class JlptComponent implements OnInit {
     private _getImageService: GetImagesService,
     private _route: ActivatedRoute,
     private santized: DomSanitizer,
+    private router : Router,
   ) {     
       // Get jlpt data
       this.jlptURL = this._getDataService.getCourseURL();
@@ -124,12 +125,13 @@ export class JlptComponent implements OnInit {
     });
   }
   onmoveFn(data: NgxCarouselStore) { };
-  onchangeCourse(id){
-    let jlptItemDataURL = this._getDataService.getCourseItemURL(id);
+  onchangeCourse(item){
+    let jlptItemDataURL = this._getDataService.getCourseItemURL(item._id);
     this.http.get(jlptItemDataURL).subscribe(data => {
       this.jlptItemData = data;   
       this.CkjlptItemData = this.santized.bypassSecurityTrustHtml(this.jlptItemData.Fee);
       this.JPCkjlptItemData = this.santized.bypassSecurityTrustHtml(this.jlptItemData.JapaneseFee);
+      this.router.navigate(['/','khoa-hoc'], {relativeTo: this._route, queryParams: {name: item.Slug,lang: this.lang == 'vi' ?'vi':'jp' }});
     });
     $('#left-item').hide();
    }

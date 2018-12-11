@@ -16,7 +16,9 @@
       <a routerLink="/trang-chu" [queryParams]="{lang: lang === 'jp' ? 'jp' : 'vi'}">{{LANGUAGE.HOME_PAGE}}</a>
     </li>
     <li class="breadcrumb-item">
-      <a routerLink="/khoa-hoc" [queryParams]="{lang: lang === 'jp' ? 'jp' : 'vi'}">{{LANGUAGE.COURSE}}</a>
+      <a routerLink="/khoa-hoc" [queryParams]="{lang: lang === 'jp' ? 'jp' : 'vi'}">
+        {{LANGUAGE.COURSE}}
+      </a>  
     </li>
     <li class="breadcrumb-item active" aria-current="page">{{LANGUAGE.CHILDREN_COURSE}}</li>
   </ol>

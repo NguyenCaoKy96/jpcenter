@@ -15,18 +15,18 @@
     font-weight: 600;
   }
   .btn-outline {
-    border: 1px solid #e11f26;
+    border: 1px solid #e11f26 !important;
     border-radius: 3em;
-    color: #e11f26;
-    background-color: white;
-    font-weight: bold;
+    color: #e11f26 !important;
+    background-color: white !important;
+    font-weight: 600 !important;
     font-size: 18px;
     width: 13em;
     padding: 3px 78px;
   }
   .btn-outline:hover, .btn-outline:focus {
-    background-color: #e11f26;
-    color: #fff;
+    background-color: #e11f26 !important;
+    color: #fff !important;
     box-shadow: none;
   }
   .card-img-top {

@@ -15,8 +15,8 @@
         <li class="breadcrumb-item">
             <a routerLink="/trang-chu" [queryParams]="{lang: lang === 'jp' ? 'jp' : 'vi'}">{{LANGUAGE.HOME_PAGE}}</a>
         </li>
-        <li class="breadcrumb-item ">
-            <a routerLink="/dich-vu-doi-tac/tu-van-du-hoc-va-viec-lam" [queryParams]="{lang: lang === 'jp' ? 'jp' : 'vi'}">{{LANGUAGE.SERVICE_AND_PARTNER}}</a>
+        <li class="breadcrumb-item" (click) = "back()">
+            <a>{{LANGUAGE.SERVICE_AND_PARTNER}}</a>
         </li>
 
         <li class="breadcrumb-item active" *ngIf="isVietnamese">

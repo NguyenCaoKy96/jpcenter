@@ -16,14 +16,14 @@
     <li class="breadcrumb-item">
       <a routerLink="/trang-chu" [queryParams]="{lang: lang === 'vi' ? 'vi' : 'jp'}">{{LANGUAGE.HOME_PAGE}}</a>
     </li>
-    <li class="breadcrumb-item">
-      <a routerLink="/trang-chu" [queryParams]="{lang: lang === 'vi' ? 'vi' : 'jp'}">{{LANGUAGE.INTRODUCTION_PAGE}}</a>
+    <li class="breadcrumb-item" (click) = "back()">
+      <a>{{LANGUAGE.INTRODUCTION_PAGE}}</a>
     </li>
     <li class="breadcrumb-item active" *ngIf="isVietnamese"  >
-      <a routerLink = "/gioi-thieu"> {{introductionsDataActive.Name}}</a>
+       {{introductionsDataActive.Name}}
     </li>
     <li class="breadcrumb-item active" *ngIf="!isVietnamese"  >
-      <a routerLink = "/gioi-thieu"> {{introductionsDataActive.Japanese_Name}}</a>
+     {{introductionsDataActive.Japanese_Name}}
     </li>
   </ol>
 </nav>
@@ -32,11 +32,11 @@
   <div class="col-md-4 col-lg-4 ">
     <ul class="nav nav-tabs d-none d-md-block">
       <li class="nav-item" *ngIf="isVietnamese" >
-        <a class=" nav-link left-item" id="JCenter-tab"  [ngClass]="{'active': item.Name == introductionsDataActive.Name}" (click)="onChangeIntroduction(item)" *ngFor="let item of menuLeftData; let i = index">{{item.Name}}</a>
+        <a class=" nav-link left-item" id="JCenter-tab"  [ngClass]="{'active': item.Name == introductionsDataActive.Name}" (click)="onChangeIntroduction(item)" *ngFor="let item of menuLeftData; let i = index" [routerLink]="[item.Slug]" [queryParams]="{lang: lang === 'jp' ? 'jp' : 'vi'}">{{item.Name}}</a>
         
       </li>
       <li class="nav-item" *ngIf=" !isVietnamese">
-        <a class="nav-link left-item" id="JCenter-tab"  [ngClass]="{'active': item.Name == introductionsDataActive.Name}" (click)="onChangeIntroduction(item)" *ngFor="let item of menuLeftData; let i = index">{{item.Japanese_Name}}</a>
+        <a class="nav-link left-item" id="JCenter-tab"  [ngClass]="{'active': item.Name == introductionsDataActive.Name}" (click)="onChangeIntroduction(item)" *ngFor="let item of menuLeftData; let i = index" [routerLink]="[item.Slug]" [queryParams]="{lang: lang === 'jp' ? 'jp' : 'vi'}">{{item.Japanese_Name}}</a>
       </li>
       
     </ul>

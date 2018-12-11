@@ -258,8 +258,6 @@ span {
 }
 
 #bubble {
-    position: sticky;
-    position: -webkit-sticky;
     top: 250px;
     z-index: 99999;
     width: 60px;
@@ -283,14 +281,14 @@ span {
 }
 
 
+
 @media only screen and (max-width: 767px) {
     #bubble {
         width:  49px;
         height: 46px;
-        padding: 15px 0px;
         margin-top: -57px;
         font-size: 10px;
-
+        padding-top: 15px;
 
     }
 }

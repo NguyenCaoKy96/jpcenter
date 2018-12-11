@@ -16,17 +16,20 @@
     <li class="breadcrumb-item">
       <a routerLink="/trang-chu" [queryParams]="{lang: lang === 'jp' ? 'jp' : 'vi'}">{{LANGUAGE.HOME_PAGE}}</a>
     </li>
-    <li class="breadcrumb-item ">
-      <a routerLink="/tin-tuc-su-kien" [queryParams]="{lang: lang === 'jp' ? 'jp' : 'vi'}">{{LANGUAGE.NEWS_AND_EVENTS}}</a>  
+    <li class="breadcrumb-item " (click) = "back()">
+      <a>{{LANGUAGE.NEWS_AND_EVENTS}}</a> 
     </li>
-    <li class="breadcrumb-item active" *ngIf = " EventsFirst != undefined"> {{EventsFirst.Name}}</li>
-    <li class="breadcrumb-item active" *ngIf = " newItemData != undefined"> {{newItemData.Name}}</li>
+    <li class="breadcrumb-item active" *ngIf = " isVietnamese && EventsFirst != undefined"> {{EventsFirst.Name}}</li>
+    <li class="breadcrumb-item active" *ngIf = " isVietnamese && newItemData != undefined"> {{newItemData.Name}}</li>
+    <li class="breadcrumb-item active" *ngIf = " !isVietnamese && EventsFirst != undefined"> {{EventsFirst.Japanese_Name}}</li>
+    <li class="breadcrumb-item active" *ngIf = " !isVietnamese && newItemData != undefined"> {{newItemData.Japanese_Name}}</li>
   </ol>
 </nav>
-<!-- article Events -->
+
 <div id="article" class="container">
+    <!-- article Events -->
     <div id="FirstNews" class="row">
-        <a class="row mr-0 ml-0 post-highlight" (click) = "OnChangeActicrles(FirstNews)">
+        <a class="row mr-0 ml-0 post-highlight" (click) = "OnChangeActicrles(item)">
             <div class="col-lg-7" >
                 <img [src]="[ImageEvent]" class="card-img-top" alt="news-main"/>
             </div>
@@ -43,6 +46,15 @@
             </div> 
         </a>
     </div>
+    <!-- display First article -->
+    <div id="new-article" class="container"  *ngIf = " EventsFirst != undefined">
+        <div class="course-content pt-4 mb-0">
+            <h4 *ngIf=" isVietnamese">{{EventsFirst.Name}}</h4>  
+            <h4 *ngIf=" !isVietnamese">{{EventsFirst.Japanese_Name}}</h4>      
+            <p class="mb-4" *ngIf=" isVietnamese" [innerHTML]="CkeventsFirst"></p> 
+            <p class="mb-4" *ngIf=" !isVietnamese" [innerHTML]="JapanCkeventsFirst"></p>                      
+        </div>
+    </div>
     <!-- display article for news body -->
     <div class="course-content" id="articleNews" *ngIf = "OnChangeNews && newItemData != undefined" >
         <p *ngIf=" isVietnamese" [innerHTML]="CkNewsData">
@@ -50,12 +62,15 @@
         <p *ngIf=" !isVietnamese" [innerHTML]="JapanCkNewsData">
         </p>
     </div>
+    <div id="Other-tiltle">
+        <h2>{{LANGUAGE.OTHER_NEW}}</h2>
+    </div>
     <!-- display card news -->
     <div class="card-container pb-5">
         <div class="row">
-            <div class="col-md-6 col-lg-4 card-wrap" *ngFor="let item of IsNewsData | paginate: { itemsPerPage: 6, currentPage: p } ; let itemIndex = index;">
+            <div class="col-md-6 col-lg-4 card-wrap" *ngFor="let item of IsNewsData ; let itemIndex = index;">
             <a class="card" (click) = "OnChangeNews(item)">
-                    <img class="card-img-top" [src]="[arrImage[itemIndex+(p-1)*6]]" alt="Card img cap">
+                    <img class="card-img-top" [src]="[arrImage[itemIndex]]" alt="Card img cap">
                     <div class="card-body">
                         <h5 *ngIf=" isVietnamese" class="card-title">
                             {{item.Name}}
@@ -73,19 +88,9 @@
             </div>
         </div> 
     </div>
-</div>
-    <!-- display First article -->
-    <div id="new-article" class="container"  *ngIf = " EventsFirst != undefined">
-        <div class="course-content pt-4 mb-0">
-            <h4 *ngIf=" isVietnamese">{{EventsFirst.Name}}</h4>  
-            <h4 *ngIf=" !isVietnamese">{{EventsFirst.Japanese_Name}}</h4>      
-            <p class="mb-4" *ngIf=" isVietnamese" [innerHTML]="CkeventsFirst"></p> 
-            <p class="mb-4" *ngIf=" !isVietnamese" [innerHTML]="JapanCkeventsFirst"></p>                      
-        </div>
-    </div>
-
+</div>  
 <!-- create Pagination -->
- <div class="pagination">
+ <!-- <div class="pagination">
   <pagination-controls (pageChange)="p = $event"></pagination-controls>
-</div> 
+</div>  -->
 

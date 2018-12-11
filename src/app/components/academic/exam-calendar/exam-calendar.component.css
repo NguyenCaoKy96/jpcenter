@@ -5,7 +5,7 @@
 	float: right;
 }
 button a{
-	color: white;
+	color: white !important;
 }
 button a:hover{
 	text-decoration: none;

@@ -5,7 +5,7 @@
 	float: right;
 }
 button a{
-	color: white;
+	color: white !important;
 }
 button a:hover{
 	text-decoration: none;
@@ -14,7 +14,7 @@ thead {
     background-color: brown;
     color: white;
 }
-.nav-tabs .nav-link.active{
+.nav-tabs .nav-link.active li a{
 	font-weight: 700;
 	color: #495057;
 }

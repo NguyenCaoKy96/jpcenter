@@ -4,7 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { Http, Response, Headers } from "@angular/http";
 import { Observable, BehaviorSubject, of, throwError } from "rxjs";
 import { map, catchError } from "rxjs/operators";
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 // Service
 import { GetDataService } from './../../services/get-data/get-data.service';
@@ -43,6 +43,7 @@ export class ServicePartnerComponent implements OnInit {
   lang: string;
   serviceContent: SafeHtml;
   serviceJpContent: SafeHtml;
+  serviceItemData: any;
 
   // Carousel config
   index = 0;
@@ -72,7 +73,8 @@ export class ServicePartnerComponent implements OnInit {
     private _route: ActivatedRoute,
     private _getDataService: GetDataService,
     private _getImageService: GetImagesService,
-    private santized: DomSanitizer
+    private santized: DomSanitizer,
+    private router : Router,
   ) { }
 
   ngOnInit() {
@@ -149,13 +151,18 @@ export class ServicePartnerComponent implements OnInit {
       this.itemContents.vietnameseContents = tempContents.contents.Content;
       this.serviceContent = this.santized.bypassSecurityTrustHtml(this.itemContents.vietnameseContents);
       this.itemContents.vietnameseName = tempContents.contents.Name;
-      vietnameseSlug = tempContents.contents.Name;
+      vietnameseSlug = tempContents.contents.Slug;
       this.serviceDataActive = tempContents;
-      this.slug.vietnameseSlug = vietnameseSlug.toLowerCase().replace(/ /g, '-').replace(/[^\w-]+/g, '');
+      this.slug.vietnameseSlug = vietnameseSlug.substring(vietnameseSlug.lastIndexOf("/"),vietnameseSlug.length);
       window.location.hash = (this.slug.vietnameseSlug);
       this.itemContents.japaneseContents = tempContents.contents.Japanese_Content;
       this.serviceJpContent = this.santized.bypassSecurityTrustHtml(this.itemContents.japaneseContents);
       this.itemContents.japaneseName = tempContents.contents.Japanese_Name;
     });
+  }
+
+  back(item){
+    this.selectItem("5bffd860a929700548a09665");
+    this.router.navigate(['/','dich-vu-doi-tac'],{relativeTo: this._route, queryParams: { lang: this.lang == 'vi' ?'vi':'jp', id :  item._id }});
   }
 }

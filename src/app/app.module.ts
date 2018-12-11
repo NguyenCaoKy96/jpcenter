@@ -212,6 +212,10 @@ const routes: Routes = [
     component: NewspageComponent
   },
   {
+    path: 'trang-chu/tin-tuc-su-kien',
+    component: NewspageComponent
+  },
+  {
     path: 'co-hoi-nghe-nghiep',
     component: CareerOpportunitiesComponent,
   },
@@ -269,11 +273,7 @@ const routes: Routes = [
     path: 'quan-ly-diem',
     component: ManagePointComponent
   },
-  {
-    path: 'hoc-vien',
-    component: AboutLearnerComponent
-  },
- 
+
 ];
 
 const childRoutes: Routes = [

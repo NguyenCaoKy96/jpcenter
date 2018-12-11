@@ -12,7 +12,7 @@
     color: red !important;
 }
 .nav-link.active {
-    color: #495057;
+    color: #495057 !important;
 }
 .nav-link.active:hover {
     color: #000000;

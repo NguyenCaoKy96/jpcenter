@@ -16,9 +16,13 @@
             <a routerLink="/trang-chu" [queryParams]="{lang: lang === 'jp' ? 'jp' : 'vi'}">{{LANGUAGE.HOME_PAGE}}</a>
         </li>
         <li class="breadcrumb-item">
-            <a routerLink="/khoa-hoc" [queryParams]="{lang: lang === 'jp' ? 'jp' : 'vi'}">{{LANGUAGE.COURSE}}</a>
+            <a routerLink="/khoa-hoc" [queryParams]="{lang: lang === 'jp' ? 'jp' : 'vi'}">
+                {{LANGUAGE.COURSE}}
+            </a>
         </li>
         <li class="breadcrumb-item active" aria-current="page">{{LANGUAGE.JLPT_COURSE}}</li>
+        <li class="breadcrumb-item active " aria-current="page" *ngIf="lang === 'vi' && jlptItemData !== undefined ">{{jlptItemData.Name}}</li>
+        <li class="breadcrumb-item active " aria-current="page" *ngIf="lang === 'jp' && jlptItemData !== undefined ">{{jlptItemData.JapaneseName}}</li>
     </ol>
 </nav>
 <div class="row">
@@ -53,8 +57,8 @@
             <h5 class="section-title" [innerHTML] = "jlptContent"></h5>
         </div>
         <div class="row" *ngIf="lang === 'vi'">
-            <div class="col-md-6" *ngFor="let item of jlptData">
-                <a class="card course-block card-wrap left-item" (click)="onchangeCourse(item.id)">
+            <div class="col-md-6" *ngFor="let item of jlptData" > 
+                <a class="card course-block card-wrap " (click)="onchangeCourse(item)">
                     <h5 class="card-title" [innerHTML] = "item.Name"></h5>
                     <p class="course-description">{{trimmedString}}</p>
                     <span class="read-more">{{LANGUAGE.CONTINUE_READING }}</span>
@@ -67,8 +71,8 @@
         </div>
         <!-- card japanese -->
         <div class="row" *ngIf="lang === 'jp'">
-            <div class="col-md-5" *ngFor="let item of jlptData">
-                <a class="card course-block card-wrap left-item" (click)="onchangeCourse(item.id)">
+            <div class="col-md-6" *ngFor="let item of jlptData">
+                <a class="card course-block card-wrap left-item" (click)="onchangeCourse(item)">
                     <h5 class="card-title" [innerHTML] = "item.JapaneseName"></h5>
                     <p class="course-description">{{japantrimmedString}}</p>
                     <span class="read-more">{{LANGUAGE.CONTINUE_READING }}</span>

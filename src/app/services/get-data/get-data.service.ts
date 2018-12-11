@@ -10,7 +10,7 @@ export class GetDataService {
 	private port: number;
 	constructor() {
 		this.protocol = 'http';
-		this.serverDomain = '10.1.0.66';
+		this.serverDomain = '103.199.7.56';
 		this.port = 1336;
 	}
 

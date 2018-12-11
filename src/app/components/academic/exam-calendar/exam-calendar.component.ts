@@ -55,10 +55,7 @@ export class ExamCalendarComponent implements OnInit {
     ) { }
 
   ngOnInit() {
-    // title
-    // this._titleService.setTitle('Học vụ');
-   
-
+  
      // Change language
     this._route.queryParams.subscribe(data => {
       if (data.lang === 'vi') {

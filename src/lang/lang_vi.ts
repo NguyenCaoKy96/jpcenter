@@ -1,4 +1,5 @@
 const LANG_VI  = {
+     OTHER_NEW: 'Tin tức và sự kiện khác',
      QNU_NAME : 'QNU UNIVERSITY',
      JAPAN_CENTER_NAME : 'JAPAN CENTER',
      QNU_RESGISTER:'QNU Japan Center - Đăng ký học viên',

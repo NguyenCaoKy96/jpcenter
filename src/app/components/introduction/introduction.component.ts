@@ -193,4 +193,8 @@ let categoriesURL = this._getDataService.getCategoriesURL();    this.http.get(ca
 
   onmoveFn(data: NgxCarouselStore) { };
 
+  back(){
+    this.introductionsDataActive = undefined;
+    this._router.navigate(['gioi-thieu'], { queryParams: {lang: this.lang === 'jp' ? 'jp' : 'vi'} });
+  }
 }

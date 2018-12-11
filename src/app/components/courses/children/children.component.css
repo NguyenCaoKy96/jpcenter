@@ -4,14 +4,26 @@ img{
     display: block;
     margin: 0 auto;
 }
-.nav-tabs .nav-link:hover,.nav-tabs .nav-link {
-    border: none !important;
-    font-size: 18px;
-    display: block;
+.nav-link:hover{
+    color: red !important;
 }
-.nav-tabs .nav-link.active{
-	font-weight: 700;
-	color: #495057;
+.nav-link.active {
+    color: #495057 !important;
+}
+.nav-link.active:hover {
+    color: #000000 !important;
+    font-weight: 700 !important;
+}
+.breadcrumb-item a:hover {
+    color: red !important;
+    text-decoration: none;
+}
+.breadcrumb-item.active{
+    cursor:text !important;
+    color:#6c757d !important;
+}
+.breadcrumb-item.active a {
+    color: #6c757d !important;;
 }
 #child{
 	height: 50px;

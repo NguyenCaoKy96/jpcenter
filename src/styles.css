@@ -127,7 +127,7 @@ li {
 }
 
 a, a:visited {
-    color: black;
+    color: black !important;
     text-decoration: none;
 }
 
@@ -195,10 +195,12 @@ pagination-controls {
 
 .row {
     margin-top: 2em;
+    margin-bottom: 20px;
 }
 
 .card-wrap {
-    margin-bottom: 30px;
+    margin-bottom: 0 !important;
+    padding: 10px 10px
 }
 
 .card {
@@ -254,6 +256,7 @@ pagination-controls {
     padding: 30px;
     margin: 20px 0 60px;
     background-color: white;
+    border: 1px solid #e5e5e5;
 }
 
 .course-content img {
@@ -458,6 +461,7 @@ th {
     border-collapse:collapse;
     border-spacing:0;
     border:1px double #b3b3b3;
+    margin: 1em auto; margin-top: 1em; margin-right: auto; margin-bottom: 1em; margin-left: auto;
 }
 .table table td,.table table th{
     min-width:2em;

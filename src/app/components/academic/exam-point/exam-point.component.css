@@ -8,7 +8,7 @@ button a:hover{
 	float: right;
 }
 td a:hover{
-	color: red;
+	color: red !important;
 }
 thead {
     background-color: brown;

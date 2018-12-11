@@ -1,4 +1,5 @@
 const LANG_JP = {
+     OTHER_NEW: 'ニュースとイベント',
      QNU_NAME : 'QNUユニバーシティ',
      JAPAN_CENTER_NAME : '日本センター',
      HOTLINE : 'ホットライン',
@@ -73,7 +74,7 @@ const LANG_JP = {
      SUBMIT : '転記',
      CONTENT : 'コンテンツ',
      TITLE : 'タイトル',
-     SIGN_UP : 'サインアップ',
+     SIGN_UP : '登録',
      REGISTER : '登録',
      ENROLL_LIST : '登録されたリスト',
      CONTACTED_LIST : '連絡先',

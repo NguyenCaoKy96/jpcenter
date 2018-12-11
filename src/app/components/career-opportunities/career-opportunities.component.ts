@@ -39,6 +39,7 @@ export class CareerOpportunitiesComponent implements OnInit {
   homeImagesURL: { [key: number]: string } = [];
   serverURL: any;
   data: any;
+  careerItemData: any;
   careerDataActive: any;
   lang: string;
   careerContent: SafeHtml;
@@ -70,6 +71,7 @@ export class CareerOpportunitiesComponent implements OnInit {
     private _titleService: Title,
     private http: HttpClient,
     private _route: ActivatedRoute,
+    private router : Router,
     private _getDataService: GetDataService,
     private _getImageService: GetImagesService,
     private santized: DomSanitizer
@@ -148,12 +150,17 @@ export class CareerOpportunitiesComponent implements OnInit {
       this.careerContent = this.santized.bypassSecurityTrustHtml(this.itemContents.vietnameseContents);
       this.itemContents.vietnameseName = tempContents.contents.Name;
       this.careerDataActive = tempContents;
-      vietnameseSlug = tempContents.contents.Name;
-      this.slug.vietnameseSlug = vietnameseSlug.toLowerCase().replace(/ /g, '-').replace(/[^\w-]+/g, '');
+      vietnameseSlug = tempContents.contents.Slug;
+      this.slug.vietnameseSlug = vietnameseSlug.substring(vietnameseSlug.lastIndexOf("/"),vietnameseSlug.length);
       window.location.hash = (this.slug.vietnameseSlug);
       this.itemContents.japaneseContents = tempContents.contents.Japanese_Content;
       this.careerJpContent = this.santized.bypassSecurityTrustHtml(this.itemContents.japaneseContents);
       this.itemContents.japaneseName = tempContents.contents.Japanese_Name;
     });
+  }
+
+  back(item){
+    this.selectItem("5bffd8aba929700548a0967a");
+    this.router.navigate(['/','co-hoi-nghe-nghiep'],{relativeTo: this._route, queryParams: { lang: this.lang == 'vi' ?'vi':'jp', id :  item._id }});
   }
 }
