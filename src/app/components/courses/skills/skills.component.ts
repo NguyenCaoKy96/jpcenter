@@ -112,7 +112,7 @@ export class SkillsComponent implements OnInit {
       }
     });
     
-    this._titleService.setTitle(this.LANGUAGE.SKILL_COURSE);
+    // this._titleService.setTitle(this.LANGUAGE.SKILL_COURSE);
 
     this.carouselBanner = this._getImageService.carouselBanner;
     this.imageURLs = this._getDataService.getImagesURL();

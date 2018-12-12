@@ -126,7 +126,7 @@ export class JlptComponent implements OnInit {
         this.LANGUAGE = LANG_JP;
       }
     }); 
-    this._titleService.setTitle(this.LANGUAGE.JLPT_COURSE);
+    this._titleService.setTitle(this.LANGUAGE.COURSE);
     // get Image course
     this.carouselBanner = this._getImageService.carouselBanner;
     this.imageURLs = this._getDataService.getImagesURL();

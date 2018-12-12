@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { ActivatedRoute } from '@angular/router';
+import { Title } from '@angular/platform-browser';
 import * as $ from 'jquery';
 
 // Service
@@ -25,8 +26,10 @@ export class FooterComponent implements OnInit {
   public tel: string;
   public hotline: string;
   public email: string;
+  lang: string;
 
   constructor(
+     private _titleService: Title,
     private _http: HttpClient,
     private _getDataService: GetDataService,
     private _route: ActivatedRoute
@@ -35,8 +38,10 @@ export class FooterComponent implements OnInit {
     // Change language
     this._route.queryParams.subscribe(data => {
       if (data.lang === 'vi') {
+        this.lang = 'vi';
         this.LANGUAGE = LANG_VI;
       } else {
+        this.lang ='jp';
         this.LANGUAGE = LANG_JP;
       }
     });
@@ -88,5 +93,11 @@ export class FooterComponent implements OnInit {
       } else if (icon === "youtube-normal") {
         $('#youtube-icon').attr("src","./assets/images/youtube-logo.png");
       }
+
+       // Get Title for each Footer and menu bar
+    let title = this._titleService.getTitle();
+    if(title === LANG_VI.HOME_PAGE || title === LANG_JP.HOME_PAGE){
+      this._titleService.setTitle(this.LANGUAGE.HOME_PAGE);
+    } 
   }
 }
