@@ -125,19 +125,6 @@ export class NewspageComponent implements OnInit {
         this.LANGUAGE = LANG_JP;
       }
       if (data.idFirst !== undefined){
-        // this.eventsURL = this._getDataService.getNewsURL();
-        // this._http.get(this.eventsURL).subscribe(data =>{
-        //   this.eventsData = data;
-        //   for(var i = 0; i < this.eventsData.length; i++){
-        //     this.EventsFirst = this.eventsData[this.eventsData.length -1];
-        //     this.CkeventsFirst = this.santized.bypassSecurityTrustHtml(this.EventsFirst.Content);  
-        //     this.JapanCkeventsFirst = this.santized.bypassSecurityTrustHtml(this.EventsFirst.Japanese_Content);
-        //   } 
-        //   $('#article').hide();
-        //   $('#new-article').show();
-        //   window.scrollTo(0, 0);        
-        // });
-        let item;
         this.eventsURL = this._getDataService.getNewsURL();
         this._http.get(this.eventsURL).subscribe(data =>{
           this.eventsData = data;
@@ -145,19 +132,13 @@ export class NewspageComponent implements OnInit {
           this.EventsFirst = this.eventsData[this.eventsData.length -1]; 
           this.CkeventsFirst = this.santized.bypassSecurityTrustHtml(this.EventsFirst.Content);  
           this.JapanCkeventsFirst = this.santized.bypassSecurityTrustHtml(this.EventsFirst.Japanese_Content);
-          this.router.navigate(['/','tin-tuc-su-kien'], {relativeTo: this._route, queryParams: { slug:item.Slug,lang:this.lang == 'vi' ?'vi':'jp'}});
           }      
         });
         this.newItemData = undefined;
         this.EventsFirst = undefined;
-        $('#article').hide();
-        //$('#new-article').show();
-        $('#FirstNews').hide();
-        //$('#articleNews').hide();
-        //$('#Other-tiltle').show();
-        window.scrollTo(0, 0);       
-
+        this.router.navigate(['/','tin-tuc-su-kien'], {relativeTo: this._route, queryParams: { slug:data.idFirst,lang:this.lang == 'vi' ?'vi':'jp'}});                
       }
+      $('#FirstNews').hide();
 
       if (data.id !== undefined){
         let jlptItemDataURL = this._getDataService.getNewsItemURL(data.id);
@@ -165,10 +146,8 @@ export class NewspageComponent implements OnInit {
           this.newItemData = data;
           this.CkNewsData = this.santized.bypassSecurityTrustHtml(this.newItemData.Content);
           this.JapanCkNewsData = this.santized.bypassSecurityTrustHtml(this.newItemData.Japanese_Content);
-          $('#FirstNews').hide();
-        });
-        window.scrollTo(0, 0);
-        
+        }); 
+       this.router.navigate(['/','tin-tuc-su-kien'], {relativeTo: this._route, queryParams: { slug:data.id,lang:this.lang == 'vi' ?'vi':'jp'}});
       }
     });
     //get data news page for card
@@ -214,8 +193,8 @@ export class NewspageComponent implements OnInit {
       this.CkNewsData = this.santized.bypassSecurityTrustHtml(this.newItemData.Content);
       this.JapanCkNewsData = this.santized.bypassSecurityTrustHtml(this.newItemData.Japanese_Content);
       this.router.navigate(['/','tin-tuc-su-kien'], {relativeTo: this._route, queryParams: { slug:item.Name,lang:this.lang == 'vi' ?'vi':'jp'}});
-      console.log(this.IsNewsData);
     });
+    console.log(this.CkNewsData)
     this.newItemData = undefined;
     this.EventsFirst = undefined;
     window.scrollTo(0, 0);
@@ -232,8 +211,8 @@ export class NewspageComponent implements OnInit {
       this.EventsFirst = this.eventsData[this.eventsData.length -1]; 
       this.CkeventsFirst = this.santized.bypassSecurityTrustHtml(this.EventsFirst.Content);  
       this.JapanCkeventsFirst = this.santized.bypassSecurityTrustHtml(this.EventsFirst.Japanese_Content);
-      this.router.navigate(['/','tin-tuc-su-kien'], {relativeTo: this._route, queryParams: { slug:item.Slug,lang:this.lang == 'vi' ?'vi':'jp'}});
-      }      
+      }  
+      this.router.navigate(['/','tin-tuc-su-kien'], {relativeTo: this._route, queryParams: { name:item.Name,lang:this.lang == 'vi' ?'vi':'jp'}});    
     });
     this.newItemData = undefined;
     this.EventsFirst = undefined;

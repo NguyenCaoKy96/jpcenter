@@ -16,7 +16,7 @@ import { GetImagesService } from './../../../services/get-image-slider/get-image
 import { NgxCarousel, NgxCarouselStore  } from 'ngx-carousel';
 import { default as LANG_VI } from '../../../../lang/lang_vi';
 import { default as LANG_JP } from '../../../../lang/lang_jp';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 
 @Component({
@@ -51,9 +51,18 @@ export class SkillsComponent implements OnInit {
   skillDataItem;
   skillsURL: string;
   skillsData;
+  japanSkillDataItem;
   japanchildDataItem;
   japanContents;
   japanchildContent;
+  jlptUrl;
+  jlptdata;
+  jlptDataItem;
+  japanjlptName;
+  jlptContent;
+  childrensURL;
+  childrensData;
+  childDataItem
 
 
   constructor(
@@ -62,15 +71,30 @@ export class SkillsComponent implements OnInit {
     private _getDataService: GetDataService,
     private _getImageService: GetImagesService,
     private _route: ActivatedRoute,
-  ) {     
-     // Get jlpt data
+    private router :Router
+  ) {   
+       // Get children data
+     this.childrensURL = this._getDataService.getschildrenURL();
+     this.http.get(this.childrensURL).subscribe(data => {
+        this.childrensData = data;
+        this.childDataItem = this.childrensData.Name;
+        this.japanchildDataItem = this.childrensData.Japanese_Name;
+     });
+    //  Get jlpt data
+    this.jlptUrl = this._getDataService.getjlptURL();
+      this.http.get(this.jlptUrl).subscribe(data =>{
+        this.jlptdata = data;
+        this.jlptDataItem = this.jlptdata.Name;
+        this.japanjlptName = this.jlptdata.Japanese_Name ;
+      }); 
+     // Get skill data
      this.skillsURL = this._getDataService.getSkillURL();
      this.http.get(this.skillsURL).subscribe(data => {
         this.skillsData = data;
         this.skillDataItem = this.skillsData.Name;
         this.Contents = this.skillsData.contents;
         this.childContent = this.Contents.Content;
-        this.japanchildDataItem = this.skillsData.Japanese_Name;
+        this.japanSkillDataItem = this.skillsData.Japanese_Name;
         this.japanContents = this.skillsData.contents;
         this.japanchildContent = this.japanContents.Japanese_Content ;       
      });
@@ -110,5 +134,4 @@ export class SkillsComponent implements OnInit {
   }
 
   onmoveFn(data: NgxCarouselStore) { };
-
 }

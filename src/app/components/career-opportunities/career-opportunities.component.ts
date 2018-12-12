@@ -159,8 +159,8 @@ export class CareerOpportunitiesComponent implements OnInit {
     });
   }
 
-  back(item){
+  back(){
     this.selectItem("5bffd8aba929700548a0967a");
-    this.router.navigate(['/','co-hoi-nghe-nghiep'],{relativeTo: this._route, queryParams: { lang: this.lang == 'vi' ?'vi':'jp', id :  item._id }});
+    this.router.navigate(['/','co-hoi-nghe-nghiep'],{relativeTo: this._route, queryParams: { lang: this.lang == 'vi' ?'vi':'jp', id :  "5bffd8aba929700548a0967a" }});
   }
 }

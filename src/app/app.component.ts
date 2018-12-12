@@ -18,7 +18,7 @@ export class AppComponent{
     private router: Router,
   ) {
    this.language = "vi" ;
-    this.router.navigate([''], { queryParams: { lang: 'vi'} });
+    this.router.navigate(['trang-chu'], { queryParams: { lang: 'vi'} });
   }
 
   ngOnInit() { 

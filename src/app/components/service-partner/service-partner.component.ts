@@ -161,8 +161,8 @@ export class ServicePartnerComponent implements OnInit {
     });
   }
 
-  back(item){
+  back(){
     this.selectItem("5bffd860a929700548a09665");
-    this.router.navigate(['/','dich-vu-doi-tac'],{relativeTo: this._route, queryParams: { lang: this.lang == 'vi' ?'vi':'jp', id :  item._id }});
+    this.router.navigate(['/','dich-vu-doi-tac'],{relativeTo: this._route, queryParams: { lang: this.lang == 'vi' ?'vi':'jp', id : "5bffd860a929700548a09665" }});
   }
 }

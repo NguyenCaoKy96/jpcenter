@@ -134,7 +134,7 @@ a, a:visited {
 a:hover {
     color: #dc3545;
     text-decoration: none;
-
+    cursor: pointer;
 }
 
 .nav-tabs {

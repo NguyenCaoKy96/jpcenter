@@ -61,8 +61,17 @@ export class JlptComponent implements OnInit {
   japantrimmedString;
   jlptDataItem;
   jlptContent;
+  japanjpltName;
   jlptUrl;
   jlptdata;
+  skillsURL;
+  skillsData;
+  skillDataItem;
+  japanSkillDataItem;
+  japanchildDataItem;
+  childDataItem;
+  childrensURL;
+  childrensData;
   EDUCATION_PROGRAM = 'Chương trình đào tạo';
 
   constructor(
@@ -88,8 +97,22 @@ export class JlptComponent implements OnInit {
       this.http.get(this.jlptUrl).subscribe(data =>{
         this.jlptdata = data;
         this.jlptDataItem = this.jlptdata.Name;
-        this.jlptContent = this.jlptdata.Japanese_Name ;
+        this.japanjpltName = this.jlptdata.Japanese_Name ;
       });
+       // Get skill data
+       this.skillsURL = this._getDataService.getSkillURL();
+       this.http.get(this.skillsURL).subscribe(data => {
+          this.skillsData = data;
+          this.skillDataItem = this.skillsData.Name;
+          this.japanSkillDataItem = this.skillsData.Japanese_Name;     
+       });
+         // Get children data
+     this.childrensURL = this._getDataService.getschildrenURL();
+     this.http.get(this.childrensURL).subscribe(data => {
+        this.childrensData = data;
+        this.childDataItem = this.childrensData.Name;
+        this.japanchildDataItem = this.childrensData.Japanese_Name;
+     });
     }
   ngOnInit() {
      
@@ -130,9 +153,15 @@ export class JlptComponent implements OnInit {
     this.http.get(jlptItemDataURL).subscribe(data => {
       this.jlptItemData = data;   
       this.CkjlptItemData = this.santized.bypassSecurityTrustHtml(this.jlptItemData.Fee);
-      this.JPCkjlptItemData = this.santized.bypassSecurityTrustHtml(this.jlptItemData.JapaneseFee);
-      this.router.navigate(['/','khoa-hoc'], {relativeTo: this._route, queryParams: {name: item.Slug,lang: this.lang == 'vi' ?'vi':'jp' }});
-    });
-    $('#left-item').hide();
+      this.JPCkjlptItemData = this.santized.bypassSecurityTrustHtml(this.jlptItemData.JapaneseFee); 
+      this.router.navigate(['/khoa-hoc','cac-khoa-tieng-nhat-JLPT'], {relativeTo: this._route, queryParams: { name:item.Name,lang:this.lang == 'vi' ?'vi':'jp'}});
+      $('#left-item').hide();
+    }); 
+    
+   }
+   back(){
+    this.jlptItemData = undefined;
+    $('#left-item').show();
+    this.router.navigate(['/khoa-hoc','cac-khoa-tieng-nhat-JLPT'], { queryParams: {lang: this.lang === 'jp' ? 'jp' : 'vi'} });
    }
 }

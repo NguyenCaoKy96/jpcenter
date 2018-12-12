@@ -49,10 +49,18 @@ export class ChildrenComponent implements OnInit {
   childDataItem;
   childrensURL: string;
   childrensData;
+  japanSkillDataItem;
   japanContents;
   japanchildDataItem;
   japanchildContent;
   lang : string = 'vi' ;
+  jlptUrl;
+  jlptdata;
+  jlptDataItem;
+  japanjlptName;
+  skillsURL;
+  skillsData;
+  skillDataItem
   constructor(
     private _titleService: Title,
     private http: HttpClient,
@@ -72,6 +80,20 @@ export class ChildrenComponent implements OnInit {
         this.japanContents = this.childrensData.contents;
         this.japanchildContent = this.japanContents.Japanese_Content ;
      });
+      //  Get jlpt data
+    this.jlptUrl = this._getDataService.getjlptURL();
+    this.http.get(this.jlptUrl).subscribe(data =>{
+      this.jlptdata = data;
+      this.jlptDataItem = this.jlptdata.Name;
+      this.japanjlptName = this.jlptdata.Japanese_Name ;
+    }); 
+      // Get skill data
+      this.skillsURL = this._getDataService.getSkillURL();
+      this.http.get(this.skillsURL).subscribe(data => {
+         this.skillsData = data;
+         this.skillDataItem = this.skillsData.Name;
+         this.japanSkillDataItem = this.skillsData.Japanese_Name;     
+      });
   }
 
   ngOnInit() {
@@ -79,7 +101,6 @@ export class ChildrenComponent implements OnInit {
       if (data.lang === 'vi') {
         this.lang= 'vi';
         this.LANGUAGE = LANG_VI;
-        console.log(this.LANGUAGE);
       } else {
         this.lang= 'jp';
         this.LANGUAGE = LANG_JP;

@@ -77,11 +77,16 @@
               </div>
             </li>
             <li class="nav-item dropdown">
-              <a id="course-page" class="nav-link" [routerLink]="['/khoa-hoc']" [queryParams]="{lang: lang === 'jp' ? 'jp' : 'vi'}">{{LANGUAGE.COURSE}}<span class="caret"></span></a>
-              <div class="dropdown-content">
-                <a class="dropdown-item" [routerLink]="['/khoa-hoc/cac-khoa-tieng-nhat-JLPT']" [queryParams]="{lang: lang === 'jp' ? 'jp' : 'vi'}">{{LANGUAGE.JLPT_COURSE}}</a>
-                <a class="dropdown-item" [routerLink]="['/khoa-hoc/tieng-nhat-cho-thieu-nhi']" [queryParams]="{lang: lang === 'jp' ? 'jp' : 'vi'}">{{LANGUAGE.CHILDREN_COURSE}}</a>
-                <a class="dropdown-item" [routerLink]="['/khoa-hoc/cac-khoa-ky-nang-mem']" [queryParams]="{lang: lang === 'jp' ? 'jp' : 'vi'}">{{LANGUAGE.SKILL_COURSE}}</a>
+              <a id="course-page" class="nav-link" [routerLink]="['/khoa-hoc/cac-khoa-tieng-nhat-JLPT']" [queryParams]="{lang: lang === 'jp' ? 'jp' : 'vi'}">{{LANGUAGE.COURSE}}<span class="caret"></span></a>
+              <div class="dropdown-content" *ngIf="isVietnamese">
+                <a class="dropdown-item" [routerLink]="['/khoa-hoc/cac-khoa-tieng-nhat-JLPT']" [queryParams]="{lang: lang === 'jp' ? 'jp' : 'vi'}">{{jlptDataItem}}</a>
+                <a class="dropdown-item" [routerLink]="['/khoa-hoc/tieng-nhat-cho-thieu-nhi']" [queryParams]="{lang: lang === 'jp' ? 'jp' : 'vi'}">{{childDataItem}}</a>
+                <a class="dropdown-item" [routerLink]="['/khoa-hoc/cac-khoa-ky-nang-mem']" [queryParams]="{lang: lang === 'jp' ? 'jp' : 'vi'}">{{skillDataItem}}</a>
+              </div>
+              <div class="dropdown-content" *ngIf="!isVietnamese">
+                  <a class="dropdown-item" [routerLink]="['/khoa-hoc/cac-khoa-tieng-nhat-JLPT']" [queryParams]="{lang: lang === 'jp' ? 'jp' : 'vi'}">{{japanjlptName}}</a>
+                  <a class="dropdown-item" [routerLink]="['/khoa-hoc/tieng-nhat-cho-thieu-nhi']" [queryParams]="{lang: lang === 'jp' ? 'jp' : 'vi'}">{{japanchildDataItem}}</a>
+                  <a class="dropdown-item" [routerLink]="['/khoa-hoc/cac-khoa-ky-nang-mem']" [queryParams]="{lang: lang === 'jp' ? 'jp' : 'vi'}">{{japanSkillDataItem}}</a>
               </div>
             </li>
             <li class="nav-item dropdown">

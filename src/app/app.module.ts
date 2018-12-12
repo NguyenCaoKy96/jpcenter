@@ -181,10 +181,10 @@ const routes: Routes = [
     path: 'dich-vu-doi-tac',
     component: ServicePartnerComponent,
   },
-  {
-    path: 'khoa-hoc',
-    component: JlptComponent,
-  },
+  // {
+  //   path: 'khoa-hoc',
+  //   component: JlptComponent,
+  // },
 
   {
     path: 'khoa-hoc/cac-khoa-tieng-nhat-JLPT',
