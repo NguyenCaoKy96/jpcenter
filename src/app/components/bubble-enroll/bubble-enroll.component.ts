@@ -61,7 +61,7 @@ export class BubbleEnrollComponent implements OnInit {
           // if have a field is blank, return false	
           return;
         } else {
-          $.post('http://10.1.0.66:1336/registers', {
+          $.post('http://103.199.7.56:1336/registers', {
             Fullname: name,
             Email: email,
             Phone: phone,
